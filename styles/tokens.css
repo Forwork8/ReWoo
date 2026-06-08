@@ -1,0 +1,158 @@
+/* ==========================================================================
+   NexOS — Design Tokens
+   Single source of truth. All values from CLAUDE.md §5–§8.
+   Never hard-code values; always reference a token.
+   ========================================================================== */
+
+:root {
+
+  /* --------------------------------------------------------------------------
+     Typography — Fraunces (display) + Inter (text/UI)
+     Fluid scale via clamp(), ratio 1.250 (major third), 16px base
+  -------------------------------------------------------------------------- */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-text: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --text-xs:   clamp(0.78rem,  0.76rem + 0.10vw, 0.83rem);
+  --text-sm:   clamp(0.90rem,  0.87rem + 0.15vw, 0.95rem);
+  --text-base: clamp(1.00rem,  0.97rem + 0.20vw, 1.0625rem);
+  --text-lg:   clamp(1.20rem,  1.10rem + 0.40vw, 1.35rem);
+  --text-xl:   clamp(1.50rem,  1.30rem + 0.90vw, 1.85rem);
+  --text-2xl:  clamp(2.00rem,  1.60rem + 1.80vw, 2.75rem);
+  --text-3xl:  clamp(2.70rem,  2.00rem + 3.20vw, 4.00rem);
+  --text-hero: clamp(3.20rem,  2.20rem + 5.00vw, 6.00rem);
+
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+
+  --leading-tight:  1.08;
+  --leading-snug:   1.15;
+  --leading-normal: 1.60;
+  --leading-relaxed:1.70;
+
+  --tracking-tight:  -0.025em;
+  --tracking-tighter:-0.03em;
+  --tracking-normal: 0em;
+  --tracking-wide:   0.08em;
+  --tracking-wider:  0.12em;
+
+  --measure-body: 72ch;
+  --measure-reading: 65ch;
+
+  /* --------------------------------------------------------------------------
+     Colors — Near-monochrome + single restrained accent
+  -------------------------------------------------------------------------- */
+
+  /* Neutrals */
+  --ink:            #0A0A0B;
+  --paper:          #FAFAF7;
+  --graphite-50:    #F4F4F2;
+  --graphite-100:   #E9E9E6;
+  --graphite-200:   #D6D6D2;
+  --graphite-400:   #9A9A95;
+  --graphite-600:   #5C5C58;
+  --graphite-800:   #2A2A2A;
+
+  /* Single accent — sparingly: CTAs, focus, key highlights only */
+  --accent:         #2347E6;
+  --accent-ink:     #1733B0;
+  --accent-subtle:  rgba(35, 71, 230, 0.08);
+  --accent-ring:    rgba(35, 71, 230, 0.35);
+
+  /* Dark expression */
+  --surface-dark:   #0A0A0B;
+  --on-dark:        #FAFAF7;
+  --dark-graphite:  #1A1A1C;
+  --dark-border:    rgba(250, 250, 247, 0.10);
+  --dark-subtle:    rgba(250, 250, 247, 0.06);
+
+  /* Semantic */
+  --success:  #1E9E6A;
+  --warning:  #C77A21;
+  --danger:   #D23B3B;
+
+  /* --------------------------------------------------------------------------
+     Spacing — 8px base grid
+  -------------------------------------------------------------------------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+  --space-11: 160px;
+  --space-12: 192px;
+
+  /* Section vertical rhythm */
+  --section-py-desktop: 140px;
+  --section-py-mobile:  80px;
+
+  /* --------------------------------------------------------------------------
+     Layout
+  -------------------------------------------------------------------------- */
+  --container-max:  1280px;
+  --reading-max:    740px;
+  --gutter:         clamp(20px, 6vw, 64px);
+  --col-gap:        24px;
+  --nav-height:     72px;
+
+  /* --------------------------------------------------------------------------
+     Animation — purposeful, subtle, fast
+  -------------------------------------------------------------------------- */
+  --dur-fast: 160ms;
+  --dur:      240ms;
+  --dur-slow: 480ms;
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --------------------------------------------------------------------------
+     Border & Radius
+  -------------------------------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius:    10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --border-subtle: 1px solid var(--graphite-100);
+  --border-mid:    1px solid var(--graphite-200);
+}
+
+/* Dark mode — toggled via html.dark class (set by JS based on toggle or system pref) */
+html.dark {
+  --ink:           #FAFAF7;
+  --paper:         #0C0C0E;
+  --graphite-50:   #1A1A1D;
+  --graphite-100:  #252528;
+  --graphite-200:  #38383C;
+  --graphite-400:  #6A6A68;
+  --graphite-600:  #9A9A96;
+  --graphite-800:  #D6D6D2;
+  --border-subtle: 1px solid rgba(250,250,247,0.09);
+  --border-mid:    1px solid rgba(250,250,247,0.16);
+  --accent-subtle: rgba(35, 71, 230, 0.15);
+}
+
+/* System preference fallback (when JS hasn't run yet or user hasn't toggled) */
+@media (prefers-color-scheme: dark) {
+  html:not(.light) {
+    --ink:           #FAFAF7;
+    --paper:         #0C0C0E;
+    --graphite-50:   #1A1A1D;
+    --graphite-100:  #252528;
+    --graphite-200:  #38383C;
+    --graphite-400:  #6A6A68;
+    --graphite-600:  #9A9A96;
+    --graphite-800:  #D6D6D2;
+    --border-subtle: 1px solid rgba(250,250,247,0.09);
+    --border-mid:    1px solid rgba(250,250,247,0.16);
+    --accent-subtle: rgba(35, 71, 230, 0.15);
+  }
+}

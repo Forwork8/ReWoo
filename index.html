@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReWoo â€” Run Your Company on AI You Can Trust</title>
+  <meta name="description" content="ReWoo is the operating system for AI-run companies. Deploy reliable AI agents that handle real operations â€” from customer support to finance to logistics. Trust-first, enterprise-ready." />
+  <link rel="canonical" href="https://rewoo.tech/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rewoo.tech/" />
+  <meta property="og:title" content="ReWoo â€” Run Your Company on AI You Can Trust" />
+  <meta property="og:description" content="The operating system for AI-run companies. Reliable agents. Real operations. Total confidence." />
+  <meta property="og:image" content="https://rewoo.tech/assets/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ReWoo â€” Run Your Company on AI You Can Trust" />
+  <meta name="twitter:description" content="The operating system for AI-run companies. Reliable agents. Real operations." />
+  <meta name="twitter:image" content="https://rewoo.tech/assets/og-image.png" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ReWoo",
+    "url": "https://rewoo.tech",
+    "description": "The operating system for AI-run companies",
+    "slogan": "Run your company on AI you can trust."
+  }
+  </script>
+
+  <!-- Preload critical fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/sections.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Anti-FOUC: apply theme class before CSS renders to prevent flash -->
+  <script>
+    (function() {
+      var stored = localStorage.getItem('rewoo-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = stored === 'dark' || (!stored && prefersDark);
+      document.documentElement.classList.add(isDark ? 'dark' : 'light');
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ====================================================================
+       Navigation
+  ==================================================================== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="ReWoo home">
+        <div class="nav__logo-mark" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="5" height="5" rx="1" fill="white" opacity="0.9"/>
+            <rect x="9" y="2" width="5" height="5" rx="1" fill="white" opacity="0.6"/>
+            <rect x="2" y="9" width="5" height="5" rx="1" fill="white" opacity="0.6"/>
+            <rect x="9" y="9" width="5" height="5" rx="1" fill="white" opacity="0.3"/>
+          </svg>
+        </div>
+        ReWoo
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#how" class="nav__link">How it works</a></li>
+        <li><a href="#proof" class="nav__link">Results</a></li>
+        <li><a href="#capabilities" class="nav__link">Capabilities</a></li>
+        <li><a href="#pricing" class="nav__link">Pricing</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+      </ul>
+
+      <a href="#pricing" class="btn btn-primary nav__cta" id="nav-cta">Get started</a>
+
+      <button
+        class="nav__theme-toggle"
+        id="theme-toggle"
+        aria-label="Switch to dark mode"
+        title="Toggle dark / light mode"
+      >
+        <!-- Sun icon (shown in dark mode) -->
+        <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+      </button>
+
+      <button
+        class="nav__hamburger"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        id="hamburger-btn"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="nav__mobile" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <a href="#how" class="nav__mobile-link">How it works</a>
+    <a href="#proof" class="nav__mobile-link">Results</a>
+    <a href="#capabilities" class="nav__mobile-link">Capabilities</a>
+    <a href="#pricing" class="nav__mobile-link">Pricing</a>
+    <a href="#about" class="nav__mobile-link">About</a>
+    <a href="#pricing" class="btn btn-primary" style="margin-top: auto;" id="mobile-cta">Get started</a>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ==================================================================
+         Â§1  Hero
+    ================================================================== -->
+    <section id="hero" class="hero" aria-label="Introduction">
+      <div class="hero__inner">
+
+        <!-- Content -->
+        <div class="hero__content">
+          <div class="hero__eyebrow reveal">
+            <span class="badge badge-accent">Now in general availability</span>
+          </div>
+
+          <h1 class="hero__heading reveal" data-delay="1">
+            Run your company<br />on AI you can <em>trust.</em>
+          </h1>
+
+          <p class="hero__subheading reveal" data-delay="2">
+            ReWoo deploys reliable AI agents that handle real operations â€”
+            without the hallucinations, the hand-holding, or the uncertainty.
+            Finally, AI built for people who actually have to deliver results.
+          </p>
+
+          <div class="hero__actions reveal" data-delay="3">
+            <a href="#pricing" class="btn btn-primary btn-lg" id="hero-cta-primary">
+              Start with ReWoo
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#how" class="btn btn-ghost btn-lg" id="hero-cta-secondary">See how it works</a>
+          </div>
+
+          <div class="hero__social-proof reveal" data-delay="4">
+            <div class="hero__avatars" aria-hidden="true">
+              <div class="hero__avatar hero__avatar--1"><span class="hero__avatar-text">MR</span></div>
+              <div class="hero__avatar hero__avatar--2"><span class="hero__avatar-text">JL</span></div>
+              <div class="hero__avatar hero__avatar--3"><span class="hero__avatar-text">AK</span></div>
+              <div class="hero__avatar hero__avatar--4"><span class="hero__avatar-text">SC</span></div>
+            </div>
+            <p class="hero__proof-text">
+              Trusted by <strong>400+ companies</strong><br />
+              running operations on ReWoo today
+            </p>
+          </div>
+        </div>
+
+        <!-- UI Visual -->
+        <div class="hero__visual reveal" data-delay="2" aria-hidden="true">
+          <div class="hero__ui" role="img" aria-label="ReWoo agent dashboard showing active AI operations">
+            <div class="hero__ui-titlebar">
+              <div class="hero__ui-dot"></div>
+              <div class="hero__ui-dot"></div>
+              <div class="hero__ui-dot"></div>
+              <span class="hero__ui-tab">Operations</span>
+              <span class="hero__ui-tab is-active" style="margin-left:8px;">Active Agents</span>
+              <span class="hero__ui-tab" style="margin-left:8px;">Analytics</span>
+            </div>
+            <div class="hero__ui-body">
+              <div class="agent-row">
+                <div class="agent-row__status agent-row__status--active"></div>
+                <span class="agent-row__name">Customer Support Agent</span>
+                <span class="agent-row__task">Processing 12 tickets</span>
+                <span class="agent-row__metric">99.2% âœ“</span>
+              </div>
+              <div class="agent-row">
+                <div class="agent-row__status agent-row__status--running"></div>
+                <span class="agent-row__name">Finance Reconciliation</span>
+                <span class="agent-row__task">Q2 close â€” 87% done</span>
+                <span class="agent-row__metric">On track</span>
+              </div>
+              <div class="agent-row">
+                <div class="agent-row__status agent-row__status--active"></div>
+                <span class="agent-row__name">Logistics Coordinator</span>
+                <span class="agent-row__task">48 shipments managed</span>
+                <span class="agent-row__metric">0 exceptions</span>
+              </div>
+              <div class="agent-row">
+                <div class="agent-row__status agent-row__status--idle"></div>
+                <span class="agent-row__name">Compliance Monitor</span>
+                <span class="agent-row__task">Awaiting batch</span>
+                <span class="agent-row__metric">Standby</span>
+              </div>
+
+              <div class="hero__ui-chart">
+                <div class="chart-label">Task completion rate â€” last 7 days</div>
+                <div class="chart-bars">
+                  <div class="chart-bar" style="height:55%"></div>
+                  <div class="chart-bar" style="height:70%"></div>
+                  <div class="chart-bar" style="height:62%"></div>
+                  <div class="chart-bar is-peak" style="height:82%"></div>
+                  <div class="chart-bar" style="height:75%"></div>
+                  <div class="chart-bar is-peak" style="height:91%"></div>
+                  <div class="chart-bar is-active" style="height:97%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating badge -->
+          <div class="hero__float-badge">
+            <div class="hero__float-badge-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 2l1.5 3.5L13 6l-2.5 2.5.5 3.5L8 10.5 5 12l.5-3.5L3 6l3.5-.5L8 2z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="hero__float-badge-text">
+              <span class="hero__float-badge-main">99.97% uptime</span>
+              <span class="hero__float-badge-sub">Last 12 months</span>
+            </div>
+          </div>
+
+          <!-- Floating stat card -->
+          <div class="hero__float-card">
+            <div class="hero__float-card-value">3.4Ã—</div>
+            <div class="hero__float-card-label">Avg. output gain</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         Â§2  The Problem / Why Now
+    ================================================================== -->
+    <section id="problem" class="problem" aria-label="The problem with AI today">
+      <div class="problem__inner">
+        <p class="label problem__label reveal" style="color: rgba(250,250,247,0.35); margin-bottom: var(--space-4);">The honest reality</p>
+        <h2 class="problem__heading reveal" data-delay="1">
+          Most AI demos look impressive.<br />
+          Most AI products disappoint.
+        </h2>
+        <p class="problem__body reveal" data-delay="2">
+          The gap between what AI promises and what it reliably delivers
+          has cost businesses real money, real credibility, and real trust.
+          <strong>Unreliable outputs. Invisible failures. No accountability.</strong>
+          You've been asked to bet your operations on technology that wasn't
+          built for operations.
+        </p>
+        <p class="problem__body reveal" data-delay="3" style="margin-top: var(--space-5);">
+          ReWoo was built to close that gap â€” permanently. Not by making AI
+          louder, but by making it reliable enough to actually run your company on.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         Â§3  How ReWoo Works
+    ================================================================== -->
+    <section id="how" class="how" aria-label="How ReWoo works">
+      <div class="how__inner">
+
+        <header class="how__header">
+          <p class="label how__header-label reveal">How it works</p>
+          <h2 class="how__heading reveal" data-delay="1">
+            Deployed in days.<br />Trusted for years.
+          </h2>
+          <p class="how__subheading reveal" data-delay="2">
+            Three calm steps from signed contract to reliable agents
+            running your real operations.
+          </p>
+        </header>
+
+        <div class="how__steps">
+
+          <div class="how__step-card reveal" data-delay="1">
+            <div class="how__step-num">01</div>
+            <div class="how__step-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                <rect x="12" y="3" width="7" height="7" rx="1"/>
+                <rect x="3" y="12" width="7" height="7" rx="1"/>
+                <path d="M12 15.5h7M15.5 12v7"/>
+              </svg>
+            </div>
+            <h3 class="how__step-title">Configure</h3>
+            <p class="how__step-body">
+              Connect your systems â€” CRM, ERP, support desk, whatever you run on.
+              Define the operations you want agents to own. We configure the guardrails
+              that make failure safe and recoverable.
+            </p>
+          </div>
+
+          <div class="how__step-card reveal" data-delay="2">
+            <div class="how__step-num">02</div>
+            <div class="how__step-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M11 7v4l3 3"/>
+              </svg>
+            </div>
+            <h3 class="how__step-title">Operate</h3>
+            <p class="how__step-body">
+              Agents go to work â€” 24/7, no coffee breaks, no context-switching.
+              Every action is logged, explainable, and auditable. When something
+              is genuinely uncertain, they escalate gracefully to a human.
+            </p>
+          </div>
+
+          <div class="how__step-card reveal" data-delay="3">
+            <div class="how__step-num">03</div>
+            <div class="how__step-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 17l4-4 4 4 4-8 4 4"/>
+              </svg>
+            </div>
+            <h3 class="how__step-title">Scale</h3>
+            <p class="how__step-body">
+              As trust compounds, expand scope. More departments, more complexity,
+              more volume â€” without adding headcount. The operations you used to
+              hire for, handled at the speed of software.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         Â§4  Proof & Trust
+    ================================================================== -->
+    <section id="proof" class="proof" aria-label="Results and proof">
+      <div class="proof__inner">
+
+        <header class="proof__header">
+          <p class="label proof__label reveal">Proof, not promises</p>
+          <h2 class="proof__heading reveal" data-delay="1">
+            Real companies.<br />Real results.
+          </h2>
+          <p class="proof__subheading reveal" data-delay="2">
+            Numbers from production deployments â€” not cherry-picked pilots,
+            not lab benchmarks.
+          </p>
+        </header>
+
+        <!-- Metrics -->
+        <div class="proof__metrics reveal" role="list" aria-label="Key performance metrics">
+          <div class="proof__metric-cell" role="listitem">
+            <div class="proof__metric-value"
+              data-countup="99.97"
+              data-suffix="%"
+              data-decimals="2">99.97%</div>
+            <div class="proof__metric-label">Platform uptime over the last 12 months</div>
+          </div>
+          <div class="proof__metric-cell" role="listitem">
+            <div class="proof__metric-value"
+              data-countup="3.4"
+              data-suffix="Ã—"
+              data-decimals="1">3.4Ã—</div>
+            <div class="proof__metric-label">Average increase in operational throughput</div>
+          </div>
+          <div class="proof__metric-cell" role="listitem">
+            <div class="proof__metric-value"
+              data-countup="400"
+              data-suffix="+"
+              data-decimals="0">400+</div>
+            <div class="proof__metric-label">Companies running operations on ReWoo</div>
+          </div>
+          <div class="proof__metric-cell" role="listitem">
+            <div class="proof__metric-value"
+              data-countup="68"
+              data-suffix="%"
+              data-decimals="0">68%</div>
+            <div class="proof__metric-label">Average reduction in operational cost</div>
+          </div>
+        </div>
+
+        <!-- Testimonial -->
+        <figure class="proof__testimonial reveal">
+          <div>
+            <blockquote class="proof__quote">
+              "We handed ReWoo our entire customer operations. Three months later,
+              response times dropped by 80% and our team was doing the work only
+              humans should be doing. It's the only AI product that's actually
+              kept its promises."
+            </blockquote>
+          </div>
+          <figcaption class="proof__attribution">
+            <span class="proof__attr-name">Maya Reeves</span>
+            <span class="proof__attr-role">COO, Meridian Logistics</span>
+          </figcaption>
+        </figure>
+
+        <!-- Trust signals -->
+        <div class="proof__trust reveal" role="list" aria-label="Security and compliance certifications">
+          <div class="proof__trust-item" role="listitem">
+            <svg class="proof__trust-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M10 2L3 5v5c0 4.4 3 7.5 7 8.5 4-1 7-4.1 7-8.5V5L10 2z" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 10l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            SOC 2 Type II
+          </div>
+          <div class="proof__trust-item" role="listitem">
+            <svg class="proof__trust-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="9" width="14" height="9" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 9V6a3 3 0 116 0v3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            GDPR compliant
+          </div>
+          <div class="proof__trust-item" role="listitem">
+            <svg class="proof__trust-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="10" cy="10" r="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 6v4l3 3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            99.97% uptime SLA
+          </div>
+          <div class="proof__trust-item" role="listitem">
+            <svg class="proof__trust-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M4 7l6-4 6 4v6l-6 4-6-4V7z" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            ISO 27001 certified
+          </div>
+          <div class="proof__trust-item" role="listitem">
+            <svg class="proof__trust-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="10" cy="10" r="7"/>
+              <path d="M10 7v3l2 2" stroke-linecap="round"/>
+            </svg>
+            Full audit trail
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         Â§5  Capabilities
+    ================================================================== -->
+    <section id="capabilities" class="capabilities" aria-label="Platform capabilities">
+      <div class="capabilities__inner">
+
+        <header class="capabilities__header">
+          <p class="label reveal">Platform capabilities</p>
+          <h2 class="capabilities__heading reveal" data-delay="1">
+            Everything operations<br />demands. Nothing it doesn't.
+          </h2>
+          <p class="capabilities__subheading reveal" data-delay="2">
+            Four capabilities that make the difference between an AI demo
+            and an AI company.
+          </p>
+        </header>
+
+        <div class="capabilities__grid" role="list" aria-label="Platform capabilities">
+
+          <div class="cap-cell reveal" role="listitem">
+            <div class="cap-cell__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.5L10 14.5l-4.9 2.7.9-5.5L2 7.8l5.5-.8L10 2z"/>
+              </svg>
+            </div>
+            <h3 class="cap-cell__title">Reliable by design</h3>
+            <p class="cap-cell__body">
+              Every agent operates within defined boundaries. Outputs are validated
+              before they touch your systems. Uncertainty triggers escalation,
+              not guesswork. We ship confidence, not probability.
+            </p>
+            <div class="mock-ui" aria-hidden="true">
+              <div class="mock-ui__row">
+                <div class="mock-ui__dot"></div>
+                <div class="mock-ui__line mock-ui__line--med"></div>
+              </div>
+              <div class="mock-ui__row">
+                <div class="mock-ui__dot"></div>
+                <div class="mock-ui__line"></div>
+              </div>
+              <div class="mock-ui__row">
+                <div class="mock-ui__dot mock-ui__dot--warn"></div>
+                <div class="mock-ui__line mock-ui__line--short"></div>
+              </div>
+              <div style="margin-top: 10px; padding: 8px 10px; border-radius: 6px; background: rgba(30,158,106,0.12); border: 1px solid rgba(30,158,106,0.2);">
+                <span style="font-size:11px; color: rgba(250,250,247,0.6); font-family: var(--font-text);">âœ“ All outputs validated â€” 0 errors this session</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cap-cell reveal" data-delay="1" role="listitem">
+            <div class="cap-cell__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 10h16M10 2v16"/>
+                <circle cx="10" cy="10" r="8"/>
+              </svg>
+            </div>
+            <h3 class="cap-cell__title">Full observability</h3>
+            <p class="cap-cell__body">
+              Every action, every decision, every handoff â€” logged with full context.
+              You see what your agents did, why they did it, and what happened next.
+              Compliance, audit, and debugging built in from day one.
+            </p>
+            <div class="mock-ui" aria-hidden="true">
+              <div style="display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; justify-content: space-between; align-items:center; padding: 6px 8px; border-radius:4px; background:rgba(255,255,255,0.04);">
+                  <span style="font-size:10px; color:rgba(250,250,247,0.5); font-family: var(--font-text);">09:14:02</span>
+                  <span style="font-size:10px; color:rgba(250,250,247,0.7); font-family: var(--font-text);">Ticket #4821 resolved</span>
+                  <span style="font-size:10px; color:var(--success); font-family: var(--font-text);">âœ“</span>
+                </div>
+                <div style="display:flex; justify-content: space-between; align-items:center; padding: 6px 8px; border-radius:4px; background:rgba(255,255,255,0.04);">
+                  <span style="font-size:10px; color:rgba(250,250,247,0.5); font-family: var(--font-text);">09:14:18</span>
+                  <span style="font-size:10px; color:rgba(250,250,247,0.7); font-family: var(--font-text);">Refund $240 processed</span>
+                  <span style="font-size:10px; color:var(--success); font-family: var(--font-text);">âœ“</span>
+                </div>
+                <div style="display:flex; justify-content: space-between; align-items:center; padding: 6px 8px; border-radius:4px; background:rgba(255,255,255,0.04);">
+                  <span style="font-size:10px; color:rgba(250,250,247,0.5); font-family: var(--font-text);">09:14:55</span>
+                  <span style="font-size:10px; color:rgba(250,250,247,0.7); font-family: var(--font-text);">Escalated to human</span>
+                  <span style="font-size:10px; color:var(--warning); font-family: var(--font-text);">â†‘</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cap-cell reveal" data-delay="2" role="listitem">
+            <div class="cap-cell__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="16" height="12" rx="2"/>
+                <path d="M6 8h8M6 12h5"/>
+              </svg>
+            </div>
+            <h3 class="cap-cell__title">Deep integrations</h3>
+            <p class="cap-cell__body">
+              Works with the tools your team already relies on. Native connectors
+              for 200+ business systems â€” Salesforce, HubSpot, NetSuite, Zendesk,
+              Slack, and your custom stack. No rip-and-replace.
+            </p>
+            <div class="mock-ui" aria-hidden="true">
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px;">
+                <div style="padding: 8px; border-radius:6px; background:rgba(255,255,255,0.06); text-align:center; font-size:9px; color:rgba(250,250,247,0.6); font-family: var(--font-text);">Salesforce</div>
+                <div style="padding: 8px; border-radius:6px; background:rgba(255,255,255,0.06); text-align:center; font-size:9px; color:rgba(250,250,247,0.6); font-family: var(--font-text);">Zendesk</div>
+                <div style="padding: 8px; border-radius:6px; background:rgba(255,255,255,0.06); text-align:center; font-size:9px; color:rgba(250,250,247,0.6); font-family: var(--font-text);">Slack</div>
+                <div style="padding: 8px; border-radius:6px; background:rgba(255,255,255,0.06); text-align:center; font-size:9px; color:rgba(250,250,247,0.6); font-family: var(--font-text);">NetSuite</div>
+                <div style="padding: 8px; border-radius:6px; background:rgba(255,255,255,0.06); text-align:center; font-size:9px; color:rgba(250,250,247,0.6); font-family: var(--font-text);">HubSpot</div>
+                <div style="padding: 8px; border-radius:6px; background:rgba(35,71,230,0.2); text-align:center; font-size:9px; color:rgba(250,250,247,0.7); font-family: var(--font-text);">+195 more</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cap-cell reveal" data-delay="3" role="listitem">
+            <div class="cap-cell__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2C6.1 2 3 5.1 3 9s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7z"/>
+                <path d="M10 6v4l2.5 2.5"/>
+              </svg>
+            </div>
+            <h3 class="cap-cell__title">Human-in-the-loop</h3>
+            <p class="cap-cell__body">
+              AI does what AI is good at. Humans handle what needs human judgment.
+              ReWoo knows the difference and routes accordingly â€” automatically,
+              gracefully, without drama.
+            </p>
+            <div class="mock-ui" aria-hidden="true">
+              <div style="padding: 10px; border-radius:6px; background:rgba(35,71,230,0.1); border: 1px solid rgba(35,71,230,0.2); margin-bottom: 8px;">
+                <div style="font-size:10px; color:rgba(250,250,247,0.45); font-family:var(--font-text); margin-bottom:4px; letter-spacing:0.05em; text-transform:uppercase;">Escalation request</div>
+                <div style="font-size:11px; color:rgba(250,250,247,0.75); font-family:var(--font-text);">Refund over $1,000 threshold â€” requires human approval</div>
+              </div>
+              <div style="display:flex; gap:6px;">
+                <div style="flex:1; padding:7px; border-radius:4px; background:rgba(30,158,106,0.15); border:1px solid rgba(30,158,106,0.25); font-size:10px; color:var(--success); text-align:center; font-family:var(--font-text);">Approve</div>
+                <div style="flex:1; padding:7px; border-radius:4px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); font-size:10px; color:rgba(250,250,247,0.4); text-align:center; font-family:var(--font-text);">Decline</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         Â§6  Pricing / Get Started
+    ================================================================== -->
+    <section id="pricing" class="pricing" aria-label="Pricing plans">
+      <div class="pricing__inner">
+
+        <header class="pricing__header">
+          <p class="label reveal">Simple, honest pricing</p>
+          <h2 class="pricing__heading reveal" data-delay="1">
+            Start running. Scale with confidence.
+          </h2>
+          <p class="pricing__subheading reveal" data-delay="2">
+            No per-seat pricing. No surprise bills. Pay for the operations
+            you run, not the seats you fill.
+          </p>
+        </header>
+
+        <div class="pricing__cards">
+
+          <!-- Starter -->
+          <div class="plan-card reveal" data-delay="1">
+            <div class="plan-card__name">Starter</div>
+            <div class="plan-card__price">
+              <span class="plan-card__amount">$499</span>
+              <span class="plan-card__period">/ month</span>
+            </div>
+            <p class="plan-card__desc">
+              For small teams ready to hand off their first operations to AI.
+              Up to 3 active agents, 10,000 tasks/month.
+            </p>
+            <hr class="plan-card__divider" />
+            <ul class="plan-card__features" aria-label="Starter plan features">
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Up to 3 AI agents
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                10,000 tasks per month
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                20+ integrations included
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Full audit log
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Email support
+              </li>
+            </ul>
+            <a href="#" class="btn btn-ghost" id="starter-cta">Start with Starter</a>
+          </div>
+
+          <!-- Scale â€” Featured -->
+          <div class="plan-card is-featured reveal" data-delay="2">
+            <div class="plan-card__name">Scale</div>
+            <div class="plan-card__price">
+              <span class="plan-card__amount">$1,999</span>
+              <span class="plan-card__period">/ month</span>
+            </div>
+            <p class="plan-card__desc">
+              For growing companies making AI central to how they operate.
+              Unlimited agents, 100,000 tasks/month, priority support.
+            </p>
+            <hr class="plan-card__divider" />
+            <ul class="plan-card__features" aria-label="Scale plan features">
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Unlimited AI agents
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                100,000 tasks per month
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                200+ integrations
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Custom agent configuration
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Dedicated onboarding
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                SLA-backed uptime
+              </li>
+            </ul>
+            <a href="#" class="btn btn-primary" id="scale-cta">Start with Scale</a>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="plan-card reveal" data-delay="3">
+            <div class="plan-card__name">Enterprise</div>
+            <div class="plan-card__price">
+              <span class="plan-card__amount">Custom</span>
+            </div>
+            <p class="plan-card__desc">
+              For organizations deploying ReWoo across divisions.
+              Private infrastructure, custom SLAs, executive onboarding.
+            </p>
+            <hr class="plan-card__divider" />
+            <ul class="plan-card__features" aria-label="Enterprise plan features">
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Unlimited everything
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Private cloud deployment
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Custom SLA &amp; contracts
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                SAML/SSO, advanced security
+              </li>
+              <li class="plan-card__feature">
+                <svg class="plan-card__check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Dedicated account team
+              </li>
+            </ul>
+            <a href="mailto:enterprise@rewoo.tech" class="btn btn-ghost" id="enterprise-cta">Talk to us</a>
+          </div>
+
+        </div>
+
+        <p class="pricing__note reveal">
+          All plans include a 14-day trial. No credit card required to start.
+          Cancel anytime.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         Â§7  About / Vision
+    ================================================================== -->
+    <section id="about" class="about" aria-label="About ReWoo and our vision">
+      <div class="about__inner">
+
+        <p class="label about__label reveal">Our conviction</p>
+
+        <p class="about__vision reveal" data-delay="1">
+          "The era of AI that assists is ending. The era of AI that operates
+          is beginning. We're building the infrastructure layer that makes
+          that transition trustworthy."
+        </p>
+
+        <p class="about__body reveal" data-delay="2">
+          ReWoo was founded by operators who lived the frustration of AI
+          products that looked brilliant in demos and broke in production.
+          We set out to build the thing we wished had existed â€” not another
+          chatbot, not another assistant, but a genuine operational platform
+          for the companies that have to actually deliver on AI's promise.
+        </p>
+
+        <p class="about__body reveal" data-delay="3">
+          We believe trust is earned through reliability, transparency, and
+          the discipline to say what AI can and can't do. We're building ReWoo
+          to last â€” the infrastructure for the AI-run company, for the next
+          decade and beyond.
+        </p>
+
+        <div class="about__signature reveal" data-delay="4">
+          <span class="about__sig-name">Adil Hassan</span>
+          <span class="about__sig-role">Co-founder &amp; CEO, ReWoo</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         Final CTA Banner
+    ================================================================== -->
+    <div class="cta-banner" role="complementary" aria-label="Call to action">
+      <div class="cta-banner__inner">
+        <div class="cta-banner__text reveal">
+          <h2 class="cta-banner__heading">
+            Your company is ready<br />for AI that actually works.
+          </h2>
+          <p class="cta-banner__subheading">
+            Join 400+ companies running real operations on ReWoo.
+            Start in 14 days. See results in 30.
+          </p>
+        </div>
+        <a href="#pricing" class="cta-banner__btn reveal" data-delay="1" id="final-cta">
+          Get started today
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ====================================================================
+       Footer
+  ==================================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner container">
+
+      <!-- Brand column -->
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo" style="color: var(--on-dark);" aria-label="ReWoo home">
+          <div class="nav__logo-mark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <rect x="2" y="2" width="5" height="5" rx="1" fill="white" opacity="0.9"/>
+              <rect x="9" y="2" width="5" height="5" rx="1" fill="white" opacity="0.6"/>
+              <rect x="2" y="9" width="5" height="5" rx="1" fill="white" opacity="0.6"/>
+              <rect x="9" y="9" width="5" height="5" rx="1" fill="white" opacity="0.3"/>
+            </svg>
+          </div>
+          ReWoo
+        </a>
+        <p class="footer__tagline">
+          The operating system for AI-run companies.<br />
+          Run your company on AI you can trust.
+        </p>
+        <div class="footer__social" aria-label="Social media links">
+          <a href="#" class="footer__social-link" aria-label="Follow ReWoo on Twitter/X">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M12.6 1h2.4L9.9 6.8 16 15h-4.8l-3.7-4.8L3.2 15H.8l5.5-6.3L0 1h5l3.3 4.4L12.6 1z"/>
+            </svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Follow ReWoo on LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M0 1.15C0 .51.52 0 1.16 0h13.68C15.48 0 16 .51 16 1.15v13.7c0 .63-.52 1.15-1.16 1.15H1.16C.52 16 0 15.48 0 14.85V1.15zM4.8 13.4V6.17H2.42V13.4H4.8zM3.61 5.19a1.38 1.38 0 100-2.76 1.38 1.38 0 000 2.76zM8.8 13.4V9.44c0-.22.02-.43.08-.59.17-.43.57-.88 1.23-.88.87 0 1.22.66 1.22 1.63V13.4H13.6V9.32c0-2.2-1.17-3.22-2.74-3.22a2.37 2.37 0 00-2.16 1.2V6.17H6.33c.03.67 0 7.23 0 7.23H8.8z"/>
+            </svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="ReWoo on GitHub">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product column -->
+      <div>
+        <h3 class="footer__col-title">Product</h3>
+        <ul class="footer__links" role="list">
+          <li><a href="#how" class="footer__link">How it works</a></li>
+          <li><a href="#capabilities" class="footer__link">Capabilities</a></li>
+          <li><a href="#pricing" class="footer__link">Pricing</a></li>
+          <li><a href="#" class="footer__link">Changelog</a></li>
+          <li><a href="#" class="footer__link">Roadmap</a></li>
+        </ul>
+      </div>
+
+      <!-- Company column -->
+      <div>
+        <h3 class="footer__col-title">Company</h3>
+        <ul class="footer__links" role="list">
+          <li><a href="#about" class="footer__link">About</a></li>
+          <li><a href="#" class="footer__link">Blog</a></li>
+          <li><a href="#" class="footer__link">Careers</a></li>
+          <li><a href="#" class="footer__link">Press</a></li>
+          <li><a href="mailto:hello@rewoo.tech" class="footer__link">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal column -->
+      <div>
+        <h3 class="footer__col-title">Legal</h3>
+        <ul class="footer__links" role="list">
+          <li><a href="#" class="footer__link">Privacy Policy</a></li>
+          <li><a href="#" class="footer__link">Terms of Service</a></li>
+          <li><a href="#" class="footer__link">Security</a></li>
+          <li><a href="#" class="footer__link">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom container">
+      <p class="footer__legal">
+        &copy; 2026 ReWoo, Inc. All rights reserved.
+      </p>
+      <p class="footer__legal">
+        Designed with obsessive care.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/main.js" defer></script>
+
+</body>
+</html>
+
+
+
