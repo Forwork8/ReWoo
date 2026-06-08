@@ -1,0 +1,1132 @@
+/* =============================================================================
+   ReWoo v1.0 — styles.css
+   Production Stylesheet & Design System
+   https://rewoo.tech
+
+   Architecture:
+   1. Design Tokens (typography, spacing, motion, layout)
+   2. Theme Definitions (dark + light)
+   3. Reset & Base Styles
+   4. Navigation (brand, links, hamburger, toggle, buttons)
+   5. Hero Section (entrance animations, orbit constellation)
+   6. Content Sections (vision, team, leverage, trust, CTA)
+   7. Footer
+   8. Scroll Reveal System
+   9. Accessibility (reduced motion, print)
+
+   Design System Reference: CLAUDE.md §5–§8
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. DESIGN TOKENS
+   All values are centralized here. No magic numbers in component styles.
+   ============================================================================= */
+
+:root {
+  /* --- Typography Scale (modular 1.25 ratio, fluid via clamp) --- */
+  --text-xs:   clamp(0.78rem, 0.76rem + 0.1vw, 0.82rem);
+  --text-sm:   clamp(0.9rem, 0.87rem + 0.15vw, 0.95rem);
+  --text-base: clamp(1rem, 0.97rem + 0.2vw, 1.0625rem);
+  --text-lg:   clamp(1.2rem, 1.1rem + 0.4vw, 1.4rem);
+  --text-xl:   clamp(1.6rem, 1.3rem + 1.1vw, 2rem);
+  --text-2xl:  clamp(2.2rem, 1.7rem + 2.2vw, 3.25rem);
+  --text-3xl:  clamp(2.8rem, 2rem + 3.6vw, 4.5rem);
+  --text-hero: clamp(3.2rem, 2rem + 6.5vw, 7.5rem);
+
+  /* --- Spacing Scale (8px base unit) --- */
+  --space-1: 4px;    --space-2: 8px;    --space-3: 12px;   --space-4: 16px;
+  --space-6: 24px;   --space-8: 32px;   --space-12: 48px;  --space-16: 64px;
+  --space-24: 96px;  --space-32: 128px; --space-40: 160px; --space-48: 192px;
+  --space-60: 240px;
+
+  /* --- Motion (duration + easing curves) --- */
+  --dur-fast: 160ms;
+  --dur:      260ms;
+  --dur-slow: 520ms;
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* --- Layout --- */
+  --maxw: 1280px;
+  --space-section: clamp(96px, 12vw, 200px);
+  --r: 16px;
+
+  /* --- Brand Accent (single color, used sparingly) --- */
+  --accent: #6E97FF;
+}
+
+
+/* =============================================================================
+   2. THEME DEFINITIONS
+   Two first-class themes. All colors reference CSS variables so every
+   component automatically adapts. No per-component theme overrides needed.
+   ============================================================================= */
+
+/* Dark theme: cinematic, near-black canvas (default) */
+[data-theme="dark"] {
+  --bg: #0A0A0B;
+  --surface: #111114;
+  --surface-2: #17171B;
+  --text: #FAFAF7;
+  --dim: #A6A6A2;
+  --line: rgba(255, 255, 255, 0.10);
+  --accent: #6E97FF;
+  --glow: rgba(110, 151, 255, 0.16);
+  --hairline: rgba(255, 255, 255, 0.06);
+  --nav: rgba(10, 10, 11, 0.72);
+  --grain-opacity: 0.032;
+  --card-hover-bg: rgba(255, 255, 255, 0.02);
+  --logo-filter: invert(1) brightness(2);  /* Makes dark logo visible on dark bg */
+}
+
+/* Light theme: refined, warm, cream canvas */
+[data-theme="light"] {
+  --bg: #FAF9F6;
+  --surface: #FFFFFF;
+  --surface-2: #F1F1EC;
+  --text: #0A0A0B;
+  --dim: #5C5C58;
+  --line: rgba(10, 10, 11, 0.12);
+  --accent: #2347E6;
+  --glow: rgba(35, 71, 230, 0.10);
+  --hairline: rgba(10, 10, 11, 0.05);
+  --nav: rgba(250, 249, 246, 0.78);
+  --grain-opacity: 0.022;
+  --card-hover-bg: rgba(35, 71, 230, 0.02);
+  --logo-filter: none;  /* Logo is dark on light bg — no filter needed */
+}
+
+
+/* =============================================================================
+   3. RESET & BASE STYLES
+   ============================================================================= */
+
+/* Universal box-sizing + margin reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Smooth scrolling, text sizing fix */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Base body: font stack, color, theme transition */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background var(--dur-slow) var(--ease-out),
+              color var(--dur-slow) var(--ease-out);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Film grain overlay: subtle noise texture for cinematic depth.
+   Fixed position with pointer-events:none so it doesn't block interaction.
+   Uses an inline SVG filter to avoid an extra network request. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* Custom scrollbar (webkit + Firefox) */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--dim); }
+html { scrollbar-color: var(--line) var(--bg); scrollbar-width: thin; }
+
+/* Content container: centered, max-width, side padding */
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 6%;
+}
+
+/* Heading hierarchy: serif display face */
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+
+/* Utility serif class */
+.serif { font-family: 'Fraunces', serif; }
+
+/* Links: no underline, inherit color */
+a { color: inherit; text-decoration: none; }
+
+/* Images: block-level, responsive */
+img { display: block; max-width: 100%; height: auto; }
+
+/* Selection highlight: brand accent color */
+::selection { background: var(--accent); color: #fff; }
+
+/* Focus ring: visible, accessible, brand-colored */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+
+/* =============================================================================
+   SKIP LINK
+   Hidden by default; appears on Tab for keyboard/screen reader users.
+   ============================================================================= */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  padding: var(--space-3) var(--space-6);
+  border-radius: 0 0 var(--r) var(--r);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  z-index: 200;
+  transition: top var(--dur) var(--ease-out);
+}
+.skip-link:focus { top: 0; }
+
+
+/* =============================================================================
+   4. NAVIGATION
+   Sticky, blurred glass-effect nav bar.
+   ============================================================================= */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  background: var(--nav);
+  border-bottom: 1px solid var(--hairline);
+}
+
+nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+/* --- Brand (logo icon + wordmark) --- */
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: var(--text-lg);
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: opacity var(--dur) var(--ease-out);
+}
+.brand:hover { opacity: 0.8; }
+.brand b { color: var(--accent); font-weight: 500; }
+
+/* Logo icon: adapts to theme via CSS filter */
+.brand-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  object-fit: cover;
+  filter: var(--logo-filter);
+  transition: filter var(--dur-slow) var(--ease-out);
+}
+
+/* --- Nav Links (desktop) --- */
+.navlinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--text-sm);
+  color: var(--dim);
+}
+
+/* Animated underline on hover */
+.navlinks a:not(.btn) {
+  position: relative;
+  transition: color var(--dur) var(--ease-out);
+  padding: var(--space-1) 0;
+}
+.navlinks a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur) var(--ease-out);
+}
+.navlinks a:not(.btn):hover { color: var(--text); }
+.navlinks a:not(.btn):hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* --- Hamburger Menu Button (mobile only) ---
+   3-line icon that morphs to X when open.
+   Hidden on desktop via display:none. */
+.hamburger {
+  display: none;
+  width: 44px;                      /* 44px minimum touch target per WCAG */
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: transparent;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: border-color var(--dur) var(--ease-out);
+  z-index: 101;
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform var(--dur) var(--ease-out),
+              opacity var(--dur-fast);
+  transform-origin: center;
+}
+
+.hamburger:hover { border-color: var(--accent); }
+
+/* X icon state when menu is open */
+.hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile breakpoint: slide-in nav drawer */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+
+  .navlinks {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(320px, 85vw);
+    height: 100vh;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 88px var(--space-8) var(--space-8);
+    gap: var(--space-6);
+    background: var(--surface);
+    border-left: 1px solid var(--hairline);
+    transform: translateX(100%);          /* Off-screen by default */
+    transition: transform var(--dur-slow) var(--ease-out);
+    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.2);
+    font-size: var(--text-base);
+  }
+
+  /* Active state: slide in from right */
+  .navlinks.open { transform: translateX(0); }
+
+  /* Show all links in mobile drawer */
+  .navlinks .lk { display: block; }
+
+  /* Full-width CTA in mobile drawer */
+  .navlinks .btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: var(--space-4);
+  }
+}
+
+/* Mobile overlay backdrop (created by JS) */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-slow) var(--ease-out);
+}
+.nav-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- Theme Toggle Button --- */
+.toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: border-color var(--dur) var(--ease-out),
+              transform var(--dur) var(--ease-out),
+              box-shadow var(--dur) var(--ease-out);
+}
+.toggle:hover {
+  transform: scale(1.06);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--glow);
+}
+.toggle svg { width: 18px; height: 18px; }
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: var(--accent);
+  color: #fff;
+  padding: 0.7rem 1.3rem;
+  border-radius: 100px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease-out),
+              box-shadow var(--dur) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent; /* Remove mobile tap flash */
+}
+
+/* Shine overlay on hover */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 60%);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--glow);
+}
+.btn:hover::before { opacity: 1; }
+
+/* Active/pressed state feedback */
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 16px var(--glow);
+}
+
+/* Ghost variant: transparent with border */
+.btn.ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+.btn.ghost::before { display: none; }
+.btn.ghost:hover {
+  border-color: var(--accent);
+  background: var(--glow);
+}
+
+/* Large size variant */
+.btn.lg {
+  padding: 0.95rem 1.8rem;
+  font-size: var(--text-base);
+}
+
+
+/* =============================================================================
+   5. HERO SECTION
+   Full-viewport cinematic entrance with staggered text reveal.
+   ============================================================================= */
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 0 60px;
+  overflow: hidden;
+}
+
+/* Dual radial glow background */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 50% at 70% 30%, var(--glow), transparent 70%),
+    radial-gradient(40% 40% at 20% 80%, var(--glow), transparent 70%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Hero grid: text left, orbit right */
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--space-12);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero .wrap {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
+
+/* Eyebrow label above headline */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: var(--space-6);
+}
+
+/* Pulsing accent dot */
+.eyebrow .pip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--glow);
+  animation: pipPulse 3s var(--ease-in-out) infinite;
+}
+
+@keyframes pipPulse {
+  0%, 100% { box-shadow: 0 0 0 4px var(--glow); }
+  50%      { box-shadow: 0 0 0 8px var(--glow), 0 0 16px var(--glow); }
+}
+
+/* Main headline */
+h1.hl {
+  font-size: var(--text-hero);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+}
+h1.hl em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+/* Supporting subtitle */
+.sub {
+  font-size: var(--text-lg);
+  color: var(--dim);
+  max-width: 46ch;
+  margin: var(--space-6) 0 var(--space-8);
+  line-height: 1.6;
+}
+
+/* CTA button row */
+.cta-row {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Micro-text below CTA */
+.micro {
+  font-size: var(--text-sm);
+  color: var(--dim);
+  margin-top: var(--space-6);
+  opacity: 0.7;
+}
+
+/* --- Hero Staggered Entrance Animation ---
+   Each .hero-stagger child fades up with increasing delay,
+   creating a cinematic reveal sequence. */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.hero-stagger {
+  opacity: 0;
+  animation: heroFadeUp 0.9s var(--ease-out) forwards;
+}
+.hero-stagger:nth-child(1) { animation-delay: 0.15s; }  /* eyebrow */
+.hero-stagger:nth-child(2) { animation-delay: 0.30s; }  /* h1 */
+.hero-stagger:nth-child(3) { animation-delay: 0.50s; }  /* subtitle */
+.hero-stagger:nth-child(4) { animation-delay: 0.70s; }  /* CTA row */
+.hero-stagger:nth-child(5) { animation-delay: 0.85s; }  /* micro text */
+
+/* Orbit entrance: scale-in with delay */
+.hero-orbit-entrance {
+  opacity: 0;
+  animation: heroFadeIn 1.2s var(--ease-out) 0.5s forwards;
+}
+
+
+/* =============================================================================
+   ORBIT / CONSTELLATION VISUAL
+   A circular arrangement of executive role "chips" around a central
+   "You / Founder" core. Rings rotate slowly for an alive feeling.
+   ============================================================================= */
+
+.orbit {
+  position: relative;
+  aspect-ratio: 1;
+  max-width: 440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .orbit {
+    max-width: 320px;
+    margin-top: var(--space-8);
+    opacity: 0.9;
+  }
+}
+
+.orbit svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Concentric rings with subtle rotation */
+.ring {
+  position: absolute;
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+}
+.ring.r1 { inset: 8%;  animation: ringRotate 120s linear infinite; }
+.ring.r2 { inset: 24%; animation: ringRotate 90s linear infinite reverse; }
+.ring.r3 { inset: 40%; animation: ringRotate 150s linear infinite; }
+
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Center "You / Founder" core with pulsing glow */
+.core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 34%;
+  height: 34%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: radial-gradient(circle at 50% 35%, var(--surface-2), var(--surface));
+  border: 1px solid var(--line);
+  animation: corePulse 4s var(--ease-in-out) infinite;
+}
+
+@keyframes corePulse {
+  0%, 100% { box-shadow: 0 0 40px var(--glow); }
+  50%      { box-shadow: 0 0 70px var(--glow), 0 0 100px rgba(110, 151, 255, 0.05); }
+}
+
+.core .y {
+  font-family: 'Fraunces', serif;
+  font-size: var(--text-xl);
+  font-weight: 500;
+}
+.core .yl {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-top: 0.2rem;
+}
+
+/* Executive role chips (positioned by JS) */
+.chip {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 0.34rem 0.6rem;
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: border-color var(--dur) var(--ease-out),
+              color var(--dur) var(--ease-out),
+              box-shadow var(--dur) var(--ease-out);
+  animation: chipFloat 6s var(--ease-in-out) infinite;
+}
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 18px var(--glow);
+}
+
+@keyframes chipFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50%      { transform: translate(-50%, -50%) translateY(-4px); }
+}
+
+/* Staggered float delays for organic feel (chips are 6th+ children in orbit) */
+.chip:nth-child(6)  { animation-delay: 0s; }
+.chip:nth-child(7)  { animation-delay: 0.6s; }
+.chip:nth-child(8)  { animation-delay: 1.2s; }
+.chip:nth-child(9)  { animation-delay: 1.8s; }
+.chip:nth-child(10) { animation-delay: 2.4s; }
+.chip:nth-child(11) { animation-delay: 3.0s; }
+.chip:nth-child(12) { animation-delay: 3.6s; }
+.chip:nth-child(13) { animation-delay: 4.2s; }
+.chip:nth-child(14) { animation-delay: 4.8s; }
+.chip:nth-child(15) { animation-delay: 5.4s; }
+
+/* SVG connection lines: subtle breathing opacity */
+.orbit svg line { animation: linePulse 4s var(--ease-in-out) infinite; }
+.orbit svg line:nth-child(2n) { animation-delay: 2s; }
+.orbit svg line:nth-child(3n) { animation-delay: 1s; }
+
+@keyframes linePulse {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 0.6; }
+}
+
+
+/* =============================================================================
+   6. CONTENT SECTIONS
+   ============================================================================= */
+
+/* --- Shared Section Styles --- */
+section { position: relative; }
+
+.band {
+  padding: var(--space-section) 0;
+  border-top: 1px solid var(--hairline);
+}
+
+/* Section eyebrow label */
+.kick {
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-4);
+  font-weight: 500;
+}
+
+/* Section heading */
+h2 {
+  font-size: var(--text-3xl);
+  font-weight: 300;
+  max-width: 18ch;
+}
+h2 em { font-style: normal; color: var(--accent); }
+
+/* Large lead text (used in Vision and Trust) */
+.big-lead {
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  max-width: 24ch;
+  font-family: 'Fraunces', serif;
+}
+
+/* Body paragraph */
+.p {
+  font-size: var(--text-base);
+  color: var(--dim);
+  max-width: 60ch;
+  margin-top: var(--space-4);
+  line-height: 1.7;
+}
+
+
+/* --- Vision Section --- */
+#vision { overflow: hidden; }
+
+/* Ambient glow (decorative, pointer-events disabled) */
+#vision::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: -15%;
+  width: 40%;
+  height: 70%;
+  background: radial-gradient(circle, var(--glow), transparent 70%);
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+
+/* --- Executive Team Section --- */
+.teamhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-12);
+}
+
+/* Card grid: responsive 3→2→1 columns */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+
+/* Executive team cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: var(--space-6);
+  transition: transform var(--dur) var(--ease-out),
+              border-color var(--dur) var(--ease-out),
+              box-shadow var(--dur-slow) var(--ease-out),
+              background var(--dur) var(--ease-out);
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 40px var(--glow);
+  background: var(--card-hover-bg);
+}
+
+.card .role {
+  font-family: 'Fraunces', serif;
+  font-size: var(--text-lg);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.card .role span { color: var(--accent); }
+
+.card p {
+  font-size: var(--text-sm);
+  color: var(--dim);
+  line-height: 1.55;
+}
+
+/* Team section ambient glow */
+#team { overflow: hidden; }
+#team::before {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 50%;
+  background: radial-gradient(ellipse, var(--glow), transparent 70%);
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+
+/* --- Leverage Section --- */
+.leverage-section { overflow: hidden; }
+
+.leverage-section::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: -15%;
+  width: 45%;
+  height: 60%;
+  background: radial-gradient(circle, var(--glow), transparent 70%);
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+/* Two-column layout: stat left, list right */
+.leverage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .leverage {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+}
+
+/* Giant stat number */
+.statbig {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(4rem, 11vw, 8.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+.statbig em {
+  font-style: normal;
+  color: var(--accent);
+  text-shadow: 0 0 60px var(--glow);
+}
+
+.statcap {
+  font-size: var(--text-base);
+  color: var(--dim);
+  margin-top: var(--space-3);
+  max-width: 34ch;
+  line-height: 1.6;
+}
+
+/* Numbered outcome list */
+.outs { display: flex; flex-direction: column; }
+
+.out {
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--hairline);
+  display: flex;
+  gap: var(--space-4);
+  align-items: baseline;
+  transition: background var(--dur) var(--ease-out);
+}
+.out:first-child { border-top: 1px solid var(--hairline); }
+.out:hover { background: var(--card-hover-bg); }
+
+.out .n {
+  font-family: 'Fraunces', serif;
+  color: var(--accent);
+  font-size: var(--text-base);
+  min-width: 2.2rem;
+  font-weight: 500;
+}
+
+.out h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+  letter-spacing: -0.01em;
+}
+
+.out p {
+  font-size: var(--text-sm);
+  color: var(--dim);
+  line-height: 1.55;
+}
+
+
+/* --- Trust Section --- */
+.trust .big-lead { margin-bottom: var(--space-3); }
+
+.trustgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+@media (max-width: 768px) { .trustgrid { grid-template-columns: 1fr; } }
+
+.tg {
+  padding: var(--space-8) var(--space-6);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+  transition: transform var(--dur) var(--ease-out),
+              border-color var(--dur) var(--ease-out),
+              box-shadow var(--dur-slow) var(--ease-out);
+}
+.tg:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 32px var(--glow);
+}
+
+.tg h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
+}
+.tg p {
+  font-size: var(--text-sm);
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+
+/* --- Finale CTA Section --- */
+.finale {
+  text-align: center;
+  padding: calc(var(--space-section) + 20px) 0;
+  overflow: hidden;
+}
+
+/* Centered radial glow behind CTA */
+.finale::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 80%;
+  background: radial-gradient(ellipse, var(--glow), transparent 65%);
+  pointer-events: none;
+  opacity: 0.22;
+}
+
+.finale h2 {
+  margin: 0 auto;
+  max-width: 20ch;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+}
+.finale .sub { margin: var(--space-6) auto var(--space-8); }
+.finale .cta-row { justify-content: center; }
+
+
+/* =============================================================================
+   7. FOOTER
+   Clean single-row layout: brand+tagline | nav links | copyright.
+   ============================================================================= */
+
+footer {
+  border-top: 1px solid var(--hairline);
+  padding: 54px 0 64px;
+  color: var(--dim);
+  font-size: var(--text-sm);
+}
+
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+footer .brand {
+  font-size: 1.15rem;
+  color: var(--text);
+}
+
+.foot-tagline { margin-top: 0.4rem; }
+
+/* Horizontal footer links */
+.flinks { display: flex; gap: 1.6rem; }
+.flinks a { transition: color var(--dur) var(--ease-out); }
+.flinks a:hover { color: var(--text); }
+
+
+/* =============================================================================
+   8. SCROLL REVEAL SYSTEM
+   Elements with .reveal start invisible and slide up when they enter
+   the viewport (triggered by IntersectionObserver in script.js).
+   ============================================================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease-out),
+              transform 0.7s var(--ease-out);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* =============================================================================
+   9. ACCESSIBILITY & PRINT
+   ============================================================================= */
+
+/* Reduced Motion: respect user preference.
+   All animations are disabled; reveals are instant. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .hero-stagger,
+  .hero-orbit-entrance {
+    opacity: 1;
+    transform: none;
+  }
+
+  .chip  { animation: none !important; }
+  .ring  { animation: none !important; }
+  .core  { animation: none !important; box-shadow: 0 0 60px var(--glow); }
+  .eyebrow .pip { animation: none !important; }
+}
+
+/* Print Styles: clean output without decorative elements */
+@media print {
+  body::after,
+  .hero-glow,
+  .orbit,
+  .nav-overlay { display: none !important; }
+
+  nav {
+    position: static;
+    backdrop-filter: none;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .hamburger,
+  .toggle { display: none !important; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
