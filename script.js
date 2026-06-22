@@ -192,17 +192,25 @@
     // Log the email (replace with Formspree / ConvertKit in production)
     console.log('ReWoo waitlist signup:', email);
 
-    // Hide form, show success
-    form.style.display = 'none';
-    success.style.display = 'block';
-
-    // TODO: replace the console.log above with a real form submission
-    // Example with Formspree:
-    // fetch('https://formspree.io/f/YOUR_FORM_ID', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ email: email })
-    // });
+    // Submit form to Formspree
+    var data = new FormData(form);
+    fetch(form.action || 'https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(function(response) {
+      if (response.ok) {
+        // Hide form, show success
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        alert('Oops! There was a problem submitting your form');
+      }
+    }).catch(function(error) {
+      alert('Oops! There was a problem submitting your form');
+    });
   });
 
   // Reset border color on input

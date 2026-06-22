@@ -21,7 +21,7 @@
   --dim-2:     #6E6E73;
   --accent:    #6E97FF;
   --accent-2:  #A8C4FF;
-  --glow:      rgba(110, 151, 255, 0.15);
+  --glow:      var(--glow);
   --line:      rgba(255,255,255,0.08);
   --line-2:    rgba(255,255,255,0.05);
 
@@ -405,9 +405,9 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(110,151,255,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(110,151,255,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(110,151,255,0.04) 0%, transparent 50%);
+    radial-gradient(ellipse 80% 60% at 50% 0%, var(--glow) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, var(--glow) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, var(--glow) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }
@@ -554,12 +554,12 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   padding: 14px 30px;
   font-size: var(--size-base);
   font-weight: 500;
-  box-shadow: 0 0 0 0 rgba(110,151,255,0);
+  box-shadow: 0 0 0 0 var(--glow);
 }
 .btn--primary:hover {
   opacity: 0.88;
   transform: scale(1.02);
-  box-shadow: 0 8px 40px rgba(110,151,255,0.3);
+  box-shadow: 0 8px 40px var(--glow);
 }
 .btn--primary:active { transform: scale(0.98); }
 
@@ -791,7 +791,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
               transform var(--dur) var(--ease-apple);
 }
 .concept-card:hover {
-  border-color: rgba(110,151,255,0.3);
+  border-color: var(--glow);
   transform: translateY(-3px);
 }
 
@@ -979,8 +979,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   border-bottom-left-radius: 4px;
 }
 .chat-bubble--ai {
-  background: rgba(110,151,255,0.12);
-  border: 1px solid rgba(110,151,255,0.2);
+  background: var(--glow);
+  border: 1px solid var(--glow);
   color: var(--text);
   align-self: flex-end;
   border-bottom-right-radius: 4px;
@@ -991,7 +991,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   font-weight: 500;
   color: var(--accent);
   text-align: right;
-  margin-top: -var(--sp-2);
+  margin-top: calc(-1 * var(--sp-2));
   opacity: 0.8;
 }
 
@@ -1017,8 +1017,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--accent);
-  background: rgba(110,151,255,0.08);
-  border: 1px solid rgba(110,151,255,0.15);
+  background: var(--glow);
+  border: 1px solid var(--glow);
   border-radius: 6px;
   padding: 4px 10px;
   width: fit-content;
@@ -1083,7 +1083,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   left: calc(33.33% - 10px);
   width: calc(33.33% + 20px);
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(110,151,255,0.4), transparent);
+  background: linear-gradient(90deg, transparent, var(--glow), transparent);
   pointer-events: none;
 }
 
@@ -1096,7 +1096,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   z-index: 1;
   transition: border-color var(--dur) var(--ease-apple);
 }
-.step-card:hover { border-color: rgba(110,151,255,0.25); }
+.step-card:hover { border-color: var(--glow); }
 
 .step-card__num {
   font-family: var(--font-display);
@@ -1131,8 +1131,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--accent);
-  background: rgba(110,151,255,0.08);
-  border: 1px solid rgba(110,151,255,0.15);
+  background: var(--glow);
+  border: 1px solid var(--glow);
   padding: 4px 10px;
   border-radius: 6px;
 }
@@ -1166,7 +1166,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   position: absolute;
   top: 0; left: 0;
   width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(110,151,255,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -1260,10 +1260,10 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .pricing-card:hover { transform: translateY(-4px); }
 
 .pricing-card--featured {
-  border-color: rgba(110,151,255,0.5);
+  border-color: var(--glow);
   background: var(--surface-2);
-  box-shadow: 0 0 0 1px rgba(110,151,255,0.2),
-              0 20px 60px rgba(110,151,255,0.08);
+  box-shadow: 0 0 0 1px var(--glow),
+              0 20px 60px var(--glow);
 }
 
 .pricing-card__pill {
@@ -1408,7 +1408,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(110,151,255,0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, var(--glow) 0%, transparent 70%);
   pointer-events: none;
   z-index: -1;
 }
@@ -1481,7 +1481,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .waitlist-input::placeholder { color: var(--dim-2); }
 .waitlist-input:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(110,151,255,0.1);
+  box-shadow: 0 0 0 3px var(--glow);
 }
 
 [data-theme="light"] .waitlist-input:focus {
