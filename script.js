@@ -1,283 +1,162 @@
 /**
  * =============================================================================
- * ReWoo v1.0 — script.js
+ * ReWoo v2.0 — script.js
  * Production JavaScript — All site interactions
  * https://rewoo.tech
  *
- * Modules (all wrapped in IIFEs to avoid global scope pollution):
- *   1. Theme Toggle        — Dark/light mode with localStorage persistence
- *   2. Mobile Menu          — Hamburger drawer with overlay and keyboard support
- *   3. Orbit Constellation  — Dynamic role chip placement and SVG connections
- *   4. Scroll Reveals       — IntersectionObserver-based staggered reveal
- *   5. Smooth Scroll        — Anchor link scrolling with sticky nav offset
- *   6. Active Nav Tracking  — Highlights current section in nav
- *   7. Footer Year          — Dynamic copyright year
+ * Modules:
+ *   1. Theme Toggle        — Dark/light with localStorage + prefers-color-scheme
+ *   2. Mobile Menu          — Full-screen overlay, Escape close, body scroll lock
+ *   3. Tab Switcher         — Section 6 product tabs
+ *   4. Waitlist Form        — Email capture with success state
+ *   5. Scroll Animations    — IntersectionObserver on [data-animate]
+ *   6. Nav Scroll Shadow    — Box-shadow after 80px scroll
+ *   7. Smooth Scroll        — Anchor links with nav offset
  *
- * Browser Support: All modern browsers (ES5 compatible, no transpile needed)
- * Dependencies: None (zero external libraries)
+ * Zero dependencies. Vanilla JS only.
  * =============================================================================
  */
 
 
 /* =============================================================================
    1. THEME TOGGLE
-   Switches between dark and light mode. Persists choice in localStorage.
-   SVG icons swap between sun (dark mode active) and moon (light mode active).
    ============================================================================= */
 (function () {
   'use strict';
 
   var root = document.documentElement;
-  var btn  = document.getElementById('themeToggle');
-  var icon = document.getElementById('icon');
+  var btn  = document.getElementById('theme-toggle');
+  var icon = document.getElementById('theme-icon');
 
-  // Exit gracefully if elements aren't found (defensive coding)
   if (!btn || !icon) return;
 
-  // SVG icon markup (inline to avoid extra network requests)
-  var sunIcon  = '<circle cx="12" cy="12" r="4"></circle>'
+  var sunPath  = '<circle cx="12" cy="12" r="4"></circle>'
                + '<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4'
                + 'M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>';
 
-  var moonIcon = '<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"></path>';
+  var moonPath = '<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"></path>';
 
-  /**
-   * Sync the toggle button's icon and ARIA attributes
-   * to match the current theme state.
-   */
-  function sync() {
+  function syncTheme() {
     var isDark = root.getAttribute('data-theme') === 'dark';
-    icon.innerHTML = isDark ? sunIcon : moonIcon;
+    icon.innerHTML = isDark ? sunPath : moonPath;
     btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-    btn.setAttribute('aria-pressed', String(!isDark));
   }
 
-  // Initialize on load
-  sync();
+  syncTheme();
 
-  // Toggle theme on click
   btn.addEventListener('click', function () {
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
-
-    // Persist to localStorage (wrapped in try/catch for private browsing)
-    try {
-      localStorage.setItem('rewoo-theme', next);
-    } catch (e) {
-      // Silently fail — localStorage may be unavailable in private mode
-    }
-
-    sync();
+    try { localStorage.setItem('rewoo-theme', next); } catch (e) {}
+    syncTheme();
   });
 })();
 
 
 /* =============================================================================
    2. MOBILE MENU
-   Creates a slide-in nav drawer with:
-   - Semi-transparent overlay backdrop
-   - Body scroll lock when open
-   - Escape key to close
-   - Auto-close when a nav link is clicked
    ============================================================================= */
 (function () {
   'use strict';
 
-  var menuBtn  = document.getElementById('menuToggle');
-  var navlinks = document.getElementById('navlinks');
+  var hamburger  = document.getElementById('menu-toggle');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var overlay    = document.getElementById('nav-overlay');
 
-  // Exit if elements aren't on the page
-  if (!menuBtn || !navlinks) return;
+  if (!hamburger || !mobileMenu || !overlay) return;
 
-  // Create overlay element dynamically (not in HTML to keep markup clean)
-  var overlay = document.createElement('div');
-  overlay.className = 'nav-overlay';
-  overlay.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(overlay);
-
-  /** Open the mobile menu drawer */
   function openMenu() {
-    navlinks.classList.add('open');
-    menuBtn.setAttribute('aria-expanded', 'true');
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scroll
+    mobileMenu.classList.add('is-open');
+    overlay.classList.add('is-active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Close menu');
+    document.body.style.overflow = 'hidden';
+    // Focus first link for accessibility
+    var firstLink = mobileMenu.querySelector('a');
+    if (firstLink) firstLink.focus();
   }
 
-  /** Close the mobile menu drawer */
   function closeMenu() {
-    navlinks.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-    overlay.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
+    mobileMenu.classList.remove('is-open');
+    overlay.classList.remove('is-active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open menu');
+    document.body.style.overflow = '';
   }
 
-  // Toggle on hamburger click
-  menuBtn.addEventListener('click', function () {
-    var isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
-    if (isOpen) {
+  hamburger.addEventListener('click', function () {
+    if (hamburger.getAttribute('aria-expanded') === 'true') {
       closeMenu();
     } else {
       openMenu();
     }
   });
 
-  // Close when clicking the overlay
   overlay.addEventListener('click', closeMenu);
 
-  // Close when a nav link is clicked (user navigated)
-  var links = navlinks.querySelectorAll('a');
+  // Close on any link click inside the mobile menu
+  var links = mobileMenu.querySelectorAll('a');
   for (var i = 0; i < links.length; i++) {
     links[i].addEventListener('click', closeMenu);
   }
 
-  // Close on Escape key press (accessibility)
+  // Close on Escape key
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
+    if ((e.key === 'Escape' || e.key === 'Esc') &&
+        hamburger.getAttribute('aria-expanded') === 'true') {
       closeMenu();
-      menuBtn.focus(); // Return focus to the toggle button
+      hamburger.focus();
     }
   });
 })();
 
 
 /* =============================================================================
-   3. ORBIT CONSTELLATION
-   Dynamically positions executive role "chips" in a circle around the
-   central "You" core. Also draws SVG connection lines from center to each chip.
+   3. TAB SWITCHER (Section 6 — Product In Action)
    ============================================================================= */
 (function () {
   'use strict';
 
-  var roles = [
-    'CEO', 'CFO', 'COO', 'Product', 'Marketing',
-    'Sales', 'Success', 'Ops', 'Analytics', 'Strategy'
-  ];
+  var pills  = document.querySelectorAll('.tab-pill');
+  var panels = document.querySelectorAll('.tab-panel');
 
-  var orbit = document.getElementById('orbit');
-  if (!orbit) return;
+  if (!pills.length || !panels.length) return;
 
-  var svg   = document.getElementById('links');
-  var lines = '';
-  var total = roles.length;
-
-  for (var i = 0; i < total; i++) {
-    // Calculate position on the circle
-    var angle  = (i / total) * Math.PI * 2 - Math.PI / 2; // Start from top
-    var radius = [34, 44, 39][i % 3]; // Alternating radii for organic feel
-    var x      = 50 + Math.cos(angle) * radius;
-    var y      = 50 + Math.sin(angle) * radius;
-
-    // Create chip element
-    var chip = document.createElement('div');
-    chip.className   = 'chip';
-    chip.style.left  = x + '%';
-    chip.style.top   = y + '%';
-    chip.textContent = roles[i];
-    orbit.appendChild(chip);
-
-    // Build SVG line from center (50,50) to chip position
-    lines += '<line x1="50" y1="50" x2="' + x + '" y2="' + y
-           + '" stroke="var(--hairline)" stroke-width="0.3"/>';
-  }
-
-  // Inject all connection lines at once (single DOM write)
-  if (svg) {
-    svg.innerHTML = lines;
-  }
-})();
-
-
-/* =============================================================================
-   4. SCROLL REVEALS WITH STAGGER
-   Uses IntersectionObserver to detect when .reveal elements enter the viewport.
-   Sibling reveals within the same parent get staggered delays for a cascade effect.
-   Falls back to instant visibility if:
-   - User prefers reduced motion
-   - Browser doesn't support IntersectionObserver
-   ============================================================================= */
-(function () {
-  'use strict';
-
-  // Respect reduced motion preference
-  var prefersReducedMotion = window.matchMedia
-    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  var elements = document.querySelectorAll('.reveal');
-
-  // Fallback: show everything immediately
-  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-    for (var i = 0; i < elements.length; i++) {
-      elements[i].classList.add('in');
+  function activateTab(targetId) {
+    // Update pills
+    for (var i = 0; i < pills.length; i++) {
+      var isActive = pills[i].getAttribute('id') === targetId ||
+                     pills[i].getAttribute('aria-controls') === targetId.replace('tab-', 'panel-');
+      pills[i].classList.toggle('is-active', isActive);
+      pills[i].setAttribute('aria-selected', String(isActive));
     }
-    return;
-  }
-
-  var observer = new IntersectionObserver(function (entries) {
-    for (var i = 0; i < entries.length; i++) {
-      var entry = entries[i];
-
-      if (entry.isIntersecting) {
-        // Calculate stagger delay based on sibling position
-        var parent   = entry.target.parentElement;
-        var siblings = parent.querySelectorAll(':scope > .reveal');
-        var index    = Array.prototype.indexOf.call(siblings, entry.target);
-
-        if (index > 0) {
-          entry.target.style.transitionDelay = (index * 60) + 'ms';
-        }
-
-        // Trigger the reveal
-        entry.target.classList.add('in');
-
-        // Stop observing this element (reveal is one-shot)
-        observer.unobserve(entry.target);
-      }
+    // Update panels
+    var panelId = targetId.replace('tab-', 'panel-');
+    for (var j = 0; j < panels.length; j++) {
+      panels[j].classList.toggle('is-active', panels[j].id === panelId);
     }
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -8% 0px' // Trigger slightly before element is fully in view
-  });
-
-  // Start observing all reveal elements
-  for (var i = 0; i < elements.length; i++) {
-    observer.observe(elements[i]);
   }
-})();
 
+  for (var i = 0; i < pills.length; i++) {
+    pills[i].addEventListener('click', function () {
+      activateTab(this.id);
+    });
+  }
 
-/* =============================================================================
-   5. SMOOTH SCROLL FOR ANCHOR LINKS
-   Intercepts clicks on anchor links (#section) and scrolls smoothly,
-   accounting for the sticky navigation bar height.
-   Updates the URL hash without triggering a jump.
-   ============================================================================= */
-(function () {
-  'use strict';
-
-  var anchorLinks = document.querySelectorAll('a[href^="#"]');
-  var nav         = document.querySelector('nav');
-
-  for (var i = 0; i < anchorLinks.length; i++) {
-    anchorLinks[i].addEventListener('click', function (e) {
-      var href   = this.getAttribute('href');
-      var target = href && href !== '#' ? document.querySelector(href) : null;
-
-      if (target) {
+  // Keyboard navigation for tabs (arrow keys)
+  for (var k = 0; k < pills.length; k++) {
+    pills[k].addEventListener('keydown', function (e) {
+      var idx = Array.prototype.indexOf.call(pills, this);
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         e.preventDefault();
-
-        // Calculate scroll position minus sticky nav height
-        var navHeight = nav ? nav.offsetHeight : 0;
-        var targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-
-        window.scrollTo({
-          top: targetPos,
-          behavior: 'smooth'
-        });
-
-        // Update URL without scrolling
-        if (history.pushState) {
-          history.pushState(null, null, href);
-        }
+        var next = (idx + 1) % pills.length;
+        pills[next].focus();
+        activateTab(pills[next].id);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        var prev = (idx - 1 + pills.length) % pills.length;
+        pills[prev].focus();
+        activateTab(pills[prev].id);
       }
     });
   }
@@ -285,51 +164,147 @@
 
 
 /* =============================================================================
-   6. ACTIVE NAV LINK HIGHLIGHTING
-   Uses IntersectionObserver to track which content section is currently
-   in view and highlights the corresponding nav link.
+   4. WAITLIST FORM
    ============================================================================= */
 (function () {
   'use strict';
 
-  var sections = document.querySelectorAll('section[id], header[id]');
-  var navLinks = document.querySelectorAll('.navlinks .lk');
+  var form    = document.getElementById('waitlist-form');
+  var input   = document.getElementById('waitlist-email');
+  var success = document.getElementById('waitlist-success');
 
-  // Only run if we have both sections and nav links
-  if (!sections.length || !navLinks.length) return;
+  if (!form || !input || !success) return;
 
-  var observer = new IntersectionObserver(function (entries) {
-    for (var i = 0; i < entries.length; i++) {
-      if (entries[i].isIntersecting) {
-        var activeId = entries[i].target.getAttribute('id');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-        // Update nav link styles
-        for (var j = 0; j < navLinks.length; j++) {
-          var href = navLinks[j].getAttribute('href');
-          navLinks[j].style.color = (href === '#' + activeId) ? 'var(--text)' : '';
-        }
-      }
+    var email = (input.value || '').trim();
+
+    // Basic email validation
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      input.style.borderColor = '#ef4444';
+      input.focus();
+      return;
     }
-  }, {
-    threshold: 0,
-    rootMargin: '-40% 0px -55% 0px' // Centered detection zone
+
+    input.style.borderColor = '';
+
+    // Log the email (replace with Formspree / ConvertKit in production)
+    console.log('ReWoo waitlist signup:', email);
+
+    // Hide form, show success
+    form.style.display = 'none';
+    success.style.display = 'block';
+
+    // TODO: replace the console.log above with a real form submission
+    // Example with Formspree:
+    // fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ email: email })
+    // });
   });
 
-  for (var i = 0; i < sections.length; i++) {
-    observer.observe(sections[i]);
+  // Reset border color on input
+  if (input) {
+    input.addEventListener('input', function () {
+      input.style.borderColor = '';
+    });
   }
 })();
 
 
 /* =============================================================================
-   7. FOOTER YEAR
-   Dynamically inserts the current year into the copyright notice.
+   5. SCROLL ANIMATIONS — IntersectionObserver on [data-animate]
    ============================================================================= */
 (function () {
   'use strict';
 
-  var yearEl = document.getElementById('yr');
-  if (yearEl) {
-    yearEl.textContent = '\u00A9 ' + new Date().getFullYear() + ' ReWoo. All rights reserved.';
+  var prefersReducedMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var elements = document.querySelectorAll('[data-animate]');
+
+  // Fallback: show all immediately
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].classList.add('is-visible');
+    }
+    return;
   }
+
+  var observer = new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) {
+        entries[i].target.classList.add('is-visible');
+        observer.unobserve(entries[i].target);
+      }
+    }
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -5% 0px'
+  });
+
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+
+
+/* =============================================================================
+   6. NAV SCROLL SHADOW
+   ============================================================================= */
+(function () {
+  'use strict';
+
+  var nav = document.getElementById('site-nav');
+  if (!nav) return;
+
+  var ticking = false;
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(function () {
+        if (window.scrollY > 80) {
+          nav.classList.add('nav--scrolled');
+        } else {
+          nav.classList.remove('nav--scrolled');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+
+/* =============================================================================
+   7. SMOOTH SCROLL — Anchor links with nav height offset
+   ============================================================================= */
+(function () {
+  'use strict';
+
+  var nav = document.getElementById('site-nav');
+
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    var href   = link.getAttribute('href');
+    var target = href && href !== '#' ? document.querySelector(href) : null;
+    if (!target) return;
+
+    e.preventDefault();
+
+    var navHeight = nav ? nav.offsetHeight : 0;
+    var targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight;
+
+    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+
+    if (history.pushState) {
+      history.pushState(null, null, href);
+    }
+  });
 })();

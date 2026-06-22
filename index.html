@@ -1,58 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <!-- =============================================
-       ReWoo v1.0 — Production Build
+  <!-- ============================================================
+       ReWoo v3.0 — The Premium Edition
        https://rewoo.tech
-       Build the billion-dollar company. Alone.
-       ============================================= -->
+       ============================================================ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Primary Meta Tags -->
-  <title>ReWoo — Build the billion-dollar company. Alone.</title>
-  <meta name="description" content="ReWoo gives any company a complete autonomous AI executive team — virtual CEO, CFO, COO, product, marketing, sales and more — so one founder can build and run a billion-dollar company.">
+  <!-- SEO -->
+  <title>ReWoo — AI Workforce Built for Founders</title>
+  <meta name="description" content="ReWoo deploys a complete AI executive team for your business — so one founder can run what once took a hundred people. Ten executives. Zero salaries. Day one.">
   <meta name="author" content="ReWoo">
+  <link rel="canonical" href="https://rewoo.tech/">
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="ReWoo — Build the billion-dollar company. Alone.">
-  <meta property="og:description" content="A complete autonomous AI executive team. One founder. An entire company, run by agents.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="ReWoo — AI Workforce Built for Founders">
+  <meta property="og:description" content="Ten AI executives. Zero salaries. Day one. Build the company you always imagined.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rewoo.tech/">
   <meta property="og:image" content="https://rewoo.tech/assets/logo.jpg">
-  <meta property="og:image:width" content="1024">
-  <meta property="og:image:height" content="1024">
   <meta property="og:site_name" content="ReWoo">
 
-  <!-- Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ReWoo — Build the billion-dollar company. Alone.">
-  <meta name="twitter:description" content="A complete autonomous AI executive team. One founder. An entire company, run by agents.">
+  <meta name="twitter:title" content="ReWoo — AI Workforce Built for Founders">
+  <meta name="twitter:description" content="Ten AI executives. Zero salaries. Day one.">
   <meta name="twitter:image" content="https://rewoo.tech/assets/logo.jpg">
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://rewoo.tech/">
-
-  <!-- Favicon & Icons -->
+  <!-- Icons -->
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
   <link rel="apple-touch-icon" href="assets/logo.jpg">
-
-  <!-- PWA Manifest -->
   <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 
-  <!-- Browser Theme Color (adapts to user preference) -->
-  <meta name="theme-color" content="#0A0A0B" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#FAF9F6" media="(prefers-color-scheme: light)">
-
-  <!-- Fonts: Fraunces (display) + Inter (text/UI) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,200..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Main Stylesheet -->
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Structured Data: Organization -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -60,303 +51,656 @@
     "name": "ReWoo",
     "url": "https://rewoo.tech",
     "logo": "https://rewoo.tech/assets/logo.jpg",
-    "description": "ReWoo gives any company a complete autonomous AI executive team so one founder can build and run a billion-dollar company.",
-    "foundingDate": "2024"
+    "description": "ReWoo deploys AI employees for SMEs — a complete AI executive team.",
+    "foundingDate": "2026",
+    "foundingLocation": { "@type": "Place", "name": "Dhaka, Bangladesh" },
+    "contactPoint": { "@type": "ContactPoint", "email": "hello@rewoo.tech" }
   }
   </script>
 
-  <!-- Structured Data: WebSite (enables sitelinks search in Google) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "ReWoo",
-    "url": "https://rewoo.tech"
-  }
+  <!-- Analytics -->
+  <script defer data-domain="rewoo.tech" src="https://plausible.io/js/script.js"></script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "CLARITY_PROJECT_ID");
   </script>
 
-  <!--
-    Critical inline script: detect and apply saved theme BEFORE first paint.
-    This prevents a flash of the wrong theme color on page load.
-    Must remain inline — cannot be deferred.
-  -->
+  <!-- No FOUC: apply saved theme before first paint -->
   <script>
     (function(){
       try {
         var t = localStorage.getItem('rewoo-theme');
-        if (!t) {
-          t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        }
+        if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', t);
-      } catch(e) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
+      } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
     })();
   </script>
+
+  <style>
+    /* Hero entrance animation */
+    .hero__eyebrow  { animation: heroUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both; }
+    .hero__headline { animation: heroUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.35s both; }
+    .hero__sub      { animation: heroUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s both; }
+    .hero__cta-row  { animation: heroUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.65s both; }
+    @keyframes heroUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Skip Link: screen reader and keyboard accessibility -->
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- =============================================
-       NAVIGATION
-       Sticky nav with brand, links, theme toggle,
-       CTA button, and mobile hamburger menu.
-       ============================================= -->
-  <nav aria-label="Primary navigation">
-    <div class="wrap">
+  <!-- ============================================================
+       SECTION 0 — NAVIGATION
+       ============================================================ -->
+  <nav class="nav" id="site-nav" aria-label="Primary navigation">
+    <div class="nav__inner">
 
-      <!-- Brand: Logo icon + wordmark -->
-      <a href="#top" class="brand" aria-label="ReWoo — Home">
-        <img src="assets/logo.jpg" alt="" class="brand-icon" width="30" height="30" aria-hidden="true">
-        <span>Re<b>Woo</b></span>
+      <a href="#top" class="nav__logo" aria-label="ReWoo — Home" id="nav-logo">
+        <img src="assets/logo.jpg" alt="ReWoo" class="nav__logo-img" width="28" height="28">
+        <span class="nav__wordmark">ReWoo</span>
       </a>
 
-      <!-- Desktop nav links + theme toggle + CTA -->
-      <div class="navlinks" id="navlinks">
-        <a href="#vision" class="lk">Vision</a>
-        <a href="#team" class="lk">Your team</a>
-        <a href="#leverage" class="lk">What you'll build</a>
+      <ul class="nav__links" aria-label="Site sections">
+        <li><a href="#how-it-works" id="nl-how">How it works</a></li>
+        <li><a href="#team" id="nl-team">Our Team</a></li>
+        <li><a href="#pricing" id="nl-pricing">Pricing</a></li>
+      </ul>
 
-        <!-- Theme toggle: sun/moon icon, keyboard accessible -->
-        <button class="toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Toggle theme">
-          <svg id="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <div class="nav__right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
+          <svg id="theme-icon" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="4"></circle>
             <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
           </svg>
         </button>
-
-        <!-- Primary CTA -->
-        <a href="#start" class="btn" id="nav-cta">Start building</a>
+        <a href="mailto:hello@rewoo.tech" class="nav__cta" id="nav-cta">Book a Call</a>
       </div>
 
-      <!-- Mobile hamburger button (hidden on desktop) -->
-      <button class="hamburger" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="nav__hamburger" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
       </button>
-
     </div>
   </nav>
 
+  <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
+  <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+    <a href="#how-it-works" id="mn-how">How it works</a>
+    <a href="#team" id="mn-team">Our Team</a>
+    <a href="#pricing" id="mn-pricing">Pricing</a>
+    <a href="mailto:hello@rewoo.tech" class="nav__cta" id="mn-cta">Book a Call</a>
+  </div>
 
-  <!-- =============================================
-       HERO SECTION
-       The emotional anchor: dream-selling promise,
-       CTA, and the orbit constellation visual.
-       ============================================= -->
-  <header class="hero" id="top">
-    <!-- Background glow effect -->
-    <div class="hero-glow" aria-hidden="true"></div>
 
-    <div class="wrap">
-      <!-- Hero copy: staggered entrance animation -->
-      <div>
-        <span class="eyebrow hero-stagger">
-          <span class="pip"></span>rewoo.tech · the autonomous company OS
+  <main id="main-content" aria-label="Main content">
+
+    <!-- ============================================================
+         SECTION 1 — HERO
+         ============================================================ -->
+    <section class="hero" id="top" aria-label="Hero">
+      <div class="hero__inner">
+
+        <span class="hero__eyebrow" aria-hidden="true">
+          <span class="hero__eyebrow-dot"></span>
+          AI Workforce · Built for Founders
         </span>
-        <h1 class="hl hero-stagger">
-          Build the<br>
-          billion-dollar<br>
-          company. <em>Alone.</em>
+
+        <h1 class="hero__headline">
+          Build the company<br>
+          <em>you always imagined.</em>
         </h1>
-        <p class="sub hero-stagger">
-          ReWoo gives you a complete AI executive team — a virtual CEO, CFO,
-          product lead, marketing, sales and operations — so one founder can
-          build and run what once took hundreds.
+
+        <p class="hero__sub">
+          ReWoo gives you a complete AI executive team — support, sales, marketing, operations, finance, analytics — so one founder can run what once took a hundred people.
         </p>
-        <div class="cta-row hero-stagger">
-          <a href="#start" class="btn lg" id="hero-cta-primary">Start building</a>
-          <a href="#vision" class="btn ghost lg" id="hero-cta-secondary">See the vision</a>
+
+        <div class="hero__cta-row">
+          <a href="#waitlist" class="btn btn--primary" id="hero-cta-primary">Hire Your First AI Employee →</a>
+          <a href="#how-it-works" class="btn btn--ghost" id="hero-cta-secondary">See how it works ↓</a>
         </div>
-        <p class="micro hero-stagger">You set the vision. ReWoo runs the company.</p>
+
       </div>
 
-      <!-- Orbit constellation: "You" at center, executive roles around -->
-      <div class="hero-orbit-entrance" aria-hidden="true">
-        <div class="orbit" id="orbit">
-          <div class="ring r1"></div>
-          <div class="ring r2"></div>
-          <div class="ring r3"></div>
-          <svg id="links" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
-          <div class="core">
-            <div>
-              <div class="y">You</div>
-              <div class="yl">Founder</div>
-            </div>
-          </div>
-          <!-- Role chips are positioned dynamically by script.js -->
-        </div>
+      <div class="hero__scroll-indicator" aria-hidden="true">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 2 — PROOF STRIP
+         ============================================================ -->
+    <div class="proof-strip" role="region" aria-label="Proof points">
+      <div class="proof-strip__inner">
+        <span class="proof-strip__item proof-strip__item--primary">🇬🇧&nbsp; UK startup · Live in 10 days</span>
+        <div class="proof-strip__divider" aria-hidden="true"></div>
+        <span class="proof-strip__item proof-strip__item--secondary">Marketing · HR · Collections — automated</span>
+        <div class="proof-strip__divider" aria-hidden="true"></div>
+        <span class="proof-strip__item proof-strip__item--accent">International revenue from Day 1</span>
       </div>
     </div>
-  </header>
 
 
-  <!-- =============================================
-       MAIN CONTENT
-       Emotional arc: dream → revelation → leverage
-       → trust → call to action.
-       ============================================= -->
-  <main id="main-content">
-
-    <!-- ===== VISION: The paradigm shift ===== -->
-    <section class="band" id="vision" aria-label="Vision">
-      <div class="wrap reveal">
-        <div class="kick">The shift</div>
-        <p class="big-lead">
-          For the first time in history, one person can run an <em>entire company</em>.
-        </p>
-        <p class="p">
-          Every era of business was limited by headcount — you could only build as big
-          as the people you could hire, manage, and afford. ReWoo removes that ceiling.
-          A coordinated team of AI agents handles strategy, finance, product, growth,
-          sales, support, and operations — working every hour, learning every day,
-          executing in concert. Your ambition is no longer capped by your team.
-          It's capped only by your vision.
-        </p>
-      </div>
-    </section>
-
-    <!-- ===== TEAM: The AI executive team ===== -->
-    <section class="band" id="team" aria-label="Your AI executive team">
+    <!-- ============================================================
+         SECTION 3 — THE PROBLEM
+         ============================================================ -->
+    <section class="section section--bg" id="problem" aria-label="The problem">
       <div class="wrap">
-        <div class="teamhead reveal">
-          <div>
-            <div class="kick">Your AI executive team</div>
-            <h2>An entire C-suite, <em>at your command.</em></h2>
-          </div>
-          <p class="p" style="margin:0;max-width:34ch">
-            Ten specialized agents that think and operate like world-class leaders
-            — coordinated, accountable, and always on. You direct. They execute.
+        <div class="problem-inner">
+          <span class="overline" data-animate>The cost you're already paying</span>
+          <p class="problem-pull" data-animate style="transition-delay:80ms">
+            You're doing the work of ten people.<br>And it's still not enough.
           </p>
-        </div>
-
-        <!-- Executive team card grid (3 cols desktop, 2 tablet, 1 mobile) -->
-        <div class="grid" id="exec-grid">
-          <div class="card reveal">
-            <div class="role">Virtual <span>CEO</span></div>
-            <p>Turns your vision into priorities and orchestrates the whole team — so the company always moves as one.</p>
-          </div>
-          <div class="card reveal">
-            <div class="role"><span>CFO</span></div>
-            <p>Owns cash, margins, forecasts and investor-ready numbers. Your money, managed with discipline.</p>
-          </div>
-          <div class="card reveal">
-            <div class="role"><span>COO</span></div>
-            <p>Runs execution and operations end to end — flawless delivery without the management overhead.</p>
-          </div>
-          <div class="card reveal">
-            <div class="role">Product <span>Lead</span></div>
-            <p>Shapes the roadmap from real customer signal and ships what matters. Product-market fit, pursued relentlessly.</p>
-          </div>
-          <div class="card reveal">
-            <div class="role">Marketing</div>
-            <p>Builds the brand and a compounding demand engine — content, positioning, and growth that scales itself.</p>
-          </div>
-          <div class="card reveal">
-            <div class="role">Sales</div>
-            <p>Answers every lead instantly, qualifies, follows up and closes — a pipeline that never sleeps.</p>
-          </div>
-          <div class="card reveal">
-            <div class="role">Customer <span>Success</span></div>
-            <p>Onboards, supports and retains — turning customers into advocates and recurring revenue.</p>
-          </div>
-          <div class="card reveal">
-            <div class="role">Operations</div>
-            <p>Automates the internal machine — systems, workflows and reliability that hold under real load.</p>
-          </div>
-          <div class="card reveal">
-            <div class="role">Analytics</div>
-            <p>One source of truth: live dashboards, forecasts and early warnings that sharpen every decision.</p>
+          <div class="problem-body" data-animate style="transition-delay:160ms">
+            <p>Every day, you handle customer queries that should answer themselves. You follow up on invoices that should chase themselves. You write content that should write itself. You compile reports that should compile themselves.</p>
+            <p><strong>You're not building the company. You're maintaining it.</strong></p>
+            <p>The bottleneck isn't your idea. It's the size of your team.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== LEVERAGE: What you'll build ===== -->
-    <section class="band leverage-section" id="leverage" aria-label="What you'll build">
-      <div class="wrap leverage">
-        <div class="reveal">
-          <div class="statbig">1&nbsp;<em>&rarr;</em>&nbsp;&infin;</div>
-          <p class="statcap">
-            One founder. The output of a thousand-person company.
-            That's the leverage ReWoo hands you.
+
+    <!-- ============================================================
+         SECTION 4 — THE REVELATION
+         ============================================================ -->
+    <section class="section section--surface" id="revelation" aria-label="A new kind of company">
+      <div class="wrap">
+        <div class="revelation-inner">
+          <span class="overline" data-animate>A new kind of company</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">
+            <em>What if your company<br>ran itself?</em>
+          </h2>
+          <div class="s-body" data-animate style="transition-delay:160ms">
+            <p>ReWoo doesn't sell you a tool to manage. It gives you a team to deploy. Ten AI executives — each with a defined role, a scope of authority, and a daily operating rhythm — running your company functions from day one.</p>
+            <p>Not a chatbot. Not a dashboard. A complete AI workforce.</p>
+          </div>
+
+          <div class="concept-cards" role="list">
+            <div class="concept-card" role="listitem" data-animate style="transition-delay:240ms">
+              <svg class="concept-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+              </svg>
+              <p class="concept-card__text">Human founders set vision and approve decisions.</p>
+            </div>
+            <div class="concept-card" role="listitem" data-animate style="transition-delay:320ms">
+              <svg class="concept-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+              </svg>
+              <p class="concept-card__text">AI executives run every function, every day, without being asked.</p>
+            </div>
+            <div class="concept-card" role="listitem" data-animate style="transition-delay:400ms">
+              <svg class="concept-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+              <p class="concept-card__text">Nothing irreversible happens without your approval.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 5 — MEET YOUR TEAM
+         ============================================================ -->
+    <section class="section section--bg" id="team" aria-label="Your AI executive team">
+      <div class="wrap">
+        <div class="team-inner">
+          <span class="overline overline--accent" data-animate>Your AI executive team</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">Ten executives.<br>Zero salaries. Day one.</h2>
+          <p class="s-subhead" data-animate style="transition-delay:160ms">
+            Each agent has a defined mission, a scope of authority, and a daily operating rhythm. They coordinate with each other so you don't have to.
           </p>
-        </div>
-        <div class="outs reveal">
-          <div class="out">
-            <div class="n">01</div>
-            <div>
-              <h4>Launch in days, not years</h4>
-              <p>Stand up a fully-staffed company — every function running — in the time it used to take to write a job post.</p>
-            </div>
-          </div>
-          <div class="out">
-            <div class="n">02</div>
-            <div>
-              <h4>Operate 24/7</h4>
-              <p>Your agents work every hour, in every timezone, without burnout, drama, or downtime.</p>
-            </div>
-          </div>
-          <div class="out">
-            <div class="n">03</div>
-            <div>
-              <h4>Scale without hiring</h4>
-              <p>Add capacity by adding agents — growth uncoupled from headcount, payroll, and management.</p>
-            </div>
-          </div>
-          <div class="out">
-            <div class="n">04</div>
-            <div>
-              <h4>Keep the upside</h4>
-              <p>The company you build is yours. ReWoo is the team; you are the owner and the visionary.</p>
-            </div>
+
+          <div class="team-grid" role="list">
+
+            <article class="team-card" role="listitem" data-animate style="transition-delay:0ms">
+              <div class="team-card__role">CEO</div>
+              <div class="team-card__name">Atlas</div>
+              <p class="team-card__mission">Turns your vision into daily OKRs. Runs the company when you're building it.</p>
+            </article>
+
+            <article class="team-card" role="listitem" data-animate style="transition-delay:60ms">
+              <div class="team-card__role">CFO</div>
+              <div class="team-card__name">Finance</div>
+              <p class="team-card__mission">Owns cash, burn, runway, and margins. Flags financial risk before it becomes a fire.</p>
+            </article>
+
+            <article class="team-card" role="listitem" data-animate style="transition-delay:120ms">
+              <div class="team-card__role">COO</div>
+              <div class="team-card__name">Operations</div>
+              <p class="team-card__mission">Turns plans into systems. Runs the daily workflow and manages delivery.</p>
+            </article>
+
+            <article class="team-card" role="listitem" data-animate style="transition-delay:180ms">
+              <div class="team-card__role">Product Manager</div>
+              <div class="team-card__name">Product</div>
+              <p class="team-card__mission">Shapes the roadmap from real customer signal. Prioritises ruthlessly.</p>
+            </article>
+
+            <article class="team-card" role="listitem" data-animate style="transition-delay:240ms">
+              <div class="team-card__role">Marketing</div>
+              <div class="team-card__name">Marketing</div>
+              <p class="team-card__mission">Builds brand and compounding demand. Owns content, SEO, and referrals.</p>
+            </article>
+
+            <article class="team-card" role="listitem" data-animate style="transition-delay:300ms">
+              <div class="team-card__role">Sales</div>
+              <div class="team-card__name">Sales</div>
+              <p class="team-card__mission">Qualifies leads, drafts proposals, moves the pipeline. Tracks win rate.</p>
+            </article>
+
+            <article class="team-card" role="listitem" data-animate style="transition-delay:360ms">
+              <div class="team-card__role">Customer Success</div>
+              <div class="team-card__name">Success</div>
+              <p class="team-card__mission">Onboards, supports, retains. Turns clients into case studies and referrals.</p>
+            </article>
+
+            <article class="team-card" role="listitem" data-animate style="transition-delay:420ms">
+              <div class="team-card__role">Operations</div>
+              <div class="team-card__name">Ops</div>
+              <p class="team-card__mission">Runs internal systems and automation. Monitors reliability.</p>
+            </article>
+
+            <article class="team-card" role="listitem" data-animate style="transition-delay:480ms">
+              <div class="team-card__role">Analytics</div>
+              <div class="team-card__name">Analytics</div>
+              <p class="team-card__mission">Single source of truth. Automates dashboards and flags anomalies.</p>
+            </article>
+
+            <article class="team-card" role="listitem" data-animate style="transition-delay:540ms">
+              <div class="team-card__role">Strategy</div>
+              <div class="team-card__name">Strategy</div>
+              <p class="team-card__mission">Long-range radar. Runs competitive intelligence and models scenarios.</p>
+            </article>
+
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== TRUST: You stay the visionary ===== -->
-    <section class="band trust" aria-label="Trust and control">
-      <div class="wrap reveal">
-        <div class="kick">You stay the visionary</div>
-        <p class="big-lead">Total leverage. <em>Total control.</em></p>
-        <p class="p">
-          Ambition needs trust. ReWoo is built so you command the company without
-          babysitting it — agents act within the limits you set, escalate the
-          decisions that matter, and log everything they do.
-        </p>
-        <div class="trustgrid">
-          <div class="tg">
-            <h4>You're in command</h4>
-            <p>Set the vision and the rules; approve the big calls. The agents handle the rest, exactly as directed.</p>
+
+    <!-- ============================================================
+         SECTION 6 — PRODUCT IN ACTION
+         ============================================================ -->
+    <section class="section section--surface" id="product" aria-label="Product in action">
+      <div class="wrap">
+        <div class="product-inner">
+          <span class="overline" data-animate style="text-align:center;display:block;">What it actually looks like</span>
+          <h2 class="s-headline s-headline--centered" data-animate style="transition-delay:80ms">Your AI team, at work.</h2>
+
+          <div style="margin-top:60px;" data-animate style="transition-delay:160ms">
+
+            <ul class="tab-pills" role="tablist" aria-label="Product demos">
+              <li role="presentation">
+                <button class="tab-pill is-active" id="tab-support" role="tab" aria-selected="true" aria-controls="panel-support">Customer Support</button>
+              </li>
+              <li role="presentation">
+                <button class="tab-pill" id="tab-marketing" role="tab" aria-selected="false" aria-controls="panel-marketing">Marketing</button>
+              </li>
+              <li role="presentation">
+                <button class="tab-pill" id="tab-collections" role="tab" aria-selected="false" aria-controls="panel-collections">Collections</button>
+              </li>
+            </ul>
+
+            <!-- Panel 1: Customer Support -->
+            <div class="tab-panel is-active" id="panel-support" role="tabpanel" aria-labelledby="tab-support">
+              <div class="tab-panel__bar">
+                ReWoo Support · AI Agent
+                <span class="online-dot" title="Online"></span>
+                <span style="font-size:0.75rem;color:var(--dim);font-weight:400;">Online</span>
+              </div>
+              <div class="tab-panel__body">
+                <div class="chat">
+                  <div class="chat-bubble chat-bubble--customer">My order hasn't arrived — order #BD-4821</div>
+                  <div class="chat-bubble chat-bubble--ai">Hi Nasrin! I've checked order #BD-4821 — it shipped on June 18 and is due June 22. Here's your tracking link: <a href="#">track →</a>. Can I help with anything else?</div>
+                  <p class="chat-meta">Replied in 12 seconds</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 2: Marketing -->
+            <div class="tab-panel" id="panel-marketing" role="tabpanel" aria-labelledby="tab-marketing">
+              <div class="tab-panel__bar">Marketing Agent · LinkedIn Draft</div>
+              <div class="tab-panel__body">
+                <div class="marketing-mock">
+                  <p class="mock-label">Scheduled for today · 9:00 AM</p>
+                  <p class="mock-post">"Three weeks ago we had zero clients. Today we have two in two countries. Here's what happened when we deployed an AI workforce instead of hiring a team — and why it's the only decision that made sense for a 10-day-old startup."</p>
+                  <span class="mock-tag">Est. reach: 1,200</span>
+                  <div class="mock-status">
+                    <span class="done">✓ Drafted</span>
+                    <span class="done">✓ Scheduled</span>
+                    <span>Awaiting publish</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Collections -->
+            <div class="tab-panel" id="panel-collections" role="tabpanel" aria-labelledby="tab-collections">
+              <div class="tab-panel__bar">Collections Agent · Overdue Follow-up</div>
+              <div class="tab-panel__body">
+                <div class="email-mock">
+                  <p class="email-subject">Invoice #INV-0042 · 14 days overdue</p>
+                  <p class="email-body">Hi James, this is a friendly reminder that invoice #INV-0042 for £850 is now 14 days past due. You can pay instantly here: <a href="#">Pay now →</a>.</p>
+                  <p class="email-status">Sent automatically · No action required from you</p>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div class="tg">
-            <h4>Reliable by design</h4>
-            <p>Every action is evaluated, monitored, and auditable — with guardrails on anything high-stakes.</p>
-          </div>
-          <div class="tg">
-            <h4>Yours, entirely</h4>
-            <p>Your company, your data, your equity, your name. ReWoo is the engine; you keep the wheel.</p>
+
+          <p class="tab-caption">Every output is checked against a quality bar before it reaches your customers. If it doesn't pass, it doesn't go.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 7 — HOW IT WORKS
+         ============================================================ -->
+    <section class="section section--bg" id="how-it-works" aria-label="How it works">
+      <div class="wrap">
+        <div class="steps-inner">
+          <span class="overline overline--accent" data-animate>The engagement</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">From nothing to running<br>in ten days.</h2>
+
+          <div class="steps" role="list">
+
+            <article class="step-card" role="listitem" data-animate style="transition-delay:0ms">
+              <div class="step-card__num" aria-hidden="true">01</div>
+              <h3 class="step-card__title">We map your highest-value process.</h3>
+              <p class="step-card__body">A paid discovery session. We interview your team, document the workflow, and identify exactly where AI delivers the most value. No guesswork.</p>
+              <span class="step-card__tag">~1 week · $150–$350</span>
+            </article>
+
+            <article class="step-card" role="listitem" data-animate style="transition-delay:160ms">
+              <div class="step-card__num" aria-hidden="true">02</div>
+              <h3 class="step-card__title">We build and quality-test the agents.</h3>
+              <p class="step-card__body">We build your AI employees, load them with your real data, and run them against a quality benchmark before they touch a single live customer. If they don't pass, we don't deploy.</p>
+              <span class="step-card__tag">6–8 weeks · $600–$1,800</span>
+            </article>
+
+            <article class="step-card" role="listitem" data-animate style="transition-delay:320ms">
+              <div class="step-card__num" aria-hidden="true">03</div>
+              <h3 class="step-card__title">Your company runs itself.</h3>
+              <p class="step-card__body">Monthly retainer. Your agents handle the workflow. We monitor, catch drift, and expand to the next process. You set the vision. ReWoo runs the company.</p>
+              <span class="step-card__tag">Ongoing · $120–$600/mo</span>
+            </article>
+
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== FINALE: Call to action ===== -->
-    <section class="band finale" id="start" aria-label="Call to action">
-      <div class="wrap reveal">
-        <div class="kick">Your move</div>
-        <h2>Your empire is one <em>decision</em> away.</h2>
-        <p class="sub">
-          Stop building at the speed of hiring.
-          Start building at the speed of imagination.
-        </p>
-        <div class="cta-row">
-          <a href="#" class="btn lg" id="cta-final">Start building with ReWoo</a>
-          <a href="#top" class="btn ghost lg">Back to top</a>
+
+    <!-- ============================================================
+         SECTION 8 — THE PROOF
+         ============================================================ -->
+    <section class="section section--surface" id="proof" aria-label="Case study">
+      <div class="wrap">
+        <div class="proof-inner">
+          <span class="overline" data-animate>Case study · June 2026</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms; max-width:700px">
+            <em>A UK startup paid ReWoo to run their company. Ten days after we were founded.</em>
+          </h2>
+
+          <div class="proof-card" data-animate-scale style="transition-delay:160ms">
+            <div class="proof-metrics">
+              <div class="proof-metric">
+                <div class="proof-metric__num">3</div>
+                <div class="proof-metric__label">Functions automated</div>
+              </div>
+              <div class="proof-metric">
+                <div class="proof-metric__num">10</div>
+                <div class="proof-metric__label">Days to live</div>
+              </div>
+              <div class="proof-metric">
+                <div class="proof-metric__num">Day 1</div>
+                <div class="proof-metric__label">International revenue</div>
+              </div>
+            </div>
+
+            <div class="proof-divider" aria-hidden="true"></div>
+
+            <p class="proof-body">Marketing automation, HR operations, and collections management — all handled by ReWoo AI employees. A 10-day-old Bangladeshi startup. A client in the United Kingdom.</p>
+
+            <blockquote class="proof-quote">
+              <p>"[Client quote will go here — even one sentence changes everything.]"</p>
+            </blockquote>
+
+            <p class="proof-closer">That is not a forecast. That is proof.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 9 — PRICING
+         ============================================================ -->
+    <section class="section section--bg" id="pricing" aria-label="Pricing">
+      <div class="wrap">
+        <div class="pricing-inner">
+          <span class="overline" data-animate style="text-align:center;display:block;">Transparent engagement</span>
+          <h2 class="s-headline s-headline--centered" data-animate style="transition-delay:80ms">You know exactly what<br>you're getting into.</h2>
+          <p class="s-subhead s-subhead--centered" data-animate style="transition-delay:160ms">
+            No hidden enterprise gates. No "contact us for pricing." Three phases, honest numbers.
+          </p>
+
+          <div class="pricing-grid">
+
+            <article class="pricing-card" data-animate style="transition-delay:0ms">
+              <h3 class="pricing-card__title">Discovery Audit</h3>
+              <span class="pricing-card__badge">~1 week</span>
+              <div class="pricing-card__price-row">
+                <span class="pricing-card__price">$150–350</span>
+                <span class="pricing-card__per">/ one-time</span>
+              </div>
+              <ul class="pricing-card__bullets">
+                <li class="pricing-card__bullet">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Process mapping and bottleneck identification
+                </li>
+                <li class="pricing-card__bullet">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  ROI quantification — cost of NOT automating
+                </li>
+                <li class="pricing-card__bullet">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Prioritised roadmap + fixed project quote
+                </li>
+              </ul>
+              <div class="pricing-card__cta">
+                <a href="mailto:hello@rewoo.tech" class="btn btn--outline" id="cta-discovery">Book a Discovery Call →</a>
+              </div>
+            </article>
+
+            <article class="pricing-card pricing-card--featured" data-animate style="transition-delay:160ms">
+              <span class="pricing-card__pill">Most popular</span>
+              <h3 class="pricing-card__title">Agent Build</h3>
+              <span class="pricing-card__badge">6–8 weeks</span>
+              <div class="pricing-card__price-row">
+                <span class="pricing-card__price">$600–1,800</span>
+                <span class="pricing-card__per">/ project</span>
+              </div>
+              <ul class="pricing-card__bullets">
+                <li class="pricing-card__bullet">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Custom AI employees trained on your real data
+                </li>
+                <li class="pricing-card__bullet">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Quality-tested against a benchmark before going live
+                </li>
+                <li class="pricing-card__bullet">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Human-in-loop checkpoints at every stage
+                </li>
+              </ul>
+              <div class="pricing-card__cta">
+                <a href="mailto:hello@rewoo.tech" class="btn btn--accent-fill" id="cta-build">Book a Discovery Call →</a>
+              </div>
+            </article>
+
+            <article class="pricing-card" data-animate style="transition-delay:320ms">
+              <h3 class="pricing-card__title">Outcome Retainer</h3>
+              <span class="pricing-card__badge">Ongoing</span>
+              <div class="pricing-card__price-row">
+                <span class="pricing-card__price">$120–600</span>
+                <span class="pricing-card__per">/ month</span>
+              </div>
+              <ul class="pricing-card__bullets">
+                <li class="pricing-card__bullet">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Agents run your workflow daily
+                </li>
+                <li class="pricing-card__bullet">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Drift monitoring, continuous improvement
+                </li>
+                <li class="pricing-card__bullet">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Expand to the next process when ready
+                </li>
+              </ul>
+              <div class="pricing-card__cta">
+                <a href="mailto:hello@rewoo.tech" class="btn btn--outline" id="cta-retainer">Book a Discovery Call →</a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 10 — WHY REWOO
+         ============================================================ -->
+    <section class="section section--surface" id="why-rewoo" aria-label="Why ReWoo">
+      <div class="wrap">
+        <div class="why-inner">
+          <span class="overline" data-animate>The five-way combination</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">No one else<br>checks all five.</h2>
+
+          <div class="why-rows">
+
+            <div class="why-row" data-animate style="transition-delay:0ms">
+              <div class="why-row__num" aria-hidden="true">1</div>
+              <div>
+                <h3 class="why-row__title">Full AI team</h3>
+                <p class="why-row__desc">Not a single-function tool. A complete executive team across every business function.</p>
+              </div>
+            </div>
+
+            <div class="why-row" data-animate style="transition-delay:80ms">
+              <div class="why-row__num" aria-hidden="true">2</div>
+              <div>
+                <h3 class="why-row__title">Verified reliability</h3>
+                <p class="why-row__desc">Every agent clears a quality benchmark before touching a live customer. We call it the eval gate — it's why our deployments don't fail silently.</p>
+              </div>
+            </div>
+
+            <div class="why-row" data-animate style="transition-delay:160ms">
+              <div class="why-row__num" aria-hidden="true">3</div>
+              <div>
+                <h3 class="why-row__title">Outcome pricing</h3>
+                <p class="why-row__desc">You pay for results, not software seats. Tickets resolved. Leads followed. Hours saved.</p>
+              </div>
+            </div>
+
+            <div class="why-row" data-animate style="transition-delay:240ms">
+              <div class="why-row__num" aria-hidden="true">4</div>
+              <div>
+                <h3 class="why-row__title">Bangla and English, natively</h3>
+                <p class="why-row__desc">Built for South and Southeast Asian businesses. The first AI workforce company that works in your language and understands your market.</p>
+              </div>
+            </div>
+
+            <div class="why-row" data-animate style="transition-delay:320ms">
+              <div class="why-row__num" aria-hidden="true">5</div>
+              <div>
+                <h3 class="why-row__title">SME-affordable</h3>
+                <p class="why-row__desc">Priced for founders who are building, not enterprises that are maintaining.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 11 — THE VISION
+         ============================================================ -->
+    <section class="vision-section section--bg" id="vision" aria-label="The vision">
+      <div class="wrap">
+        <div data-animate>
+          <p class="vision-quote">
+            "For the first time in history,<br>
+            one person can build<br>
+            an entire company alone.<br>
+            <em>Not just manage it.<br>Really run it."</em>
+          </p>
+
+          <div class="vision-body">
+            <p>ReWoo started in Dhaka, Bangladesh, ten days ago. A student founder with a first-author research paper and a Kaggle Master rank. The first client was in the United Kingdom. The vision is to build the operating system for AI-run companies — starting where global players can't reach, and earning the right to expand everywhere.</p>
+            <p>You set the vision. ReWoo runs the company.</p>
+          </div>
+
+          <p class="vision-founder">Founded by Adil Shamim · Dhaka, Bangladesh · June 2026</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 12 — WAITLIST
+         ============================================================ -->
+    <section class="waitlist-section" id="waitlist" aria-label="Join the waitlist">
+      <div class="wrap">
+        <div class="waitlist-inner">
+          <h2 class="s-headline s-headline--centered" data-animate><em>Be among the first.</em></h2>
+          <p class="s-subhead s-subhead--centered" data-animate style="transition-delay:80ms">
+            We take on a limited number of new engagements each month. Join the waitlist and we'll reach out within 48 hours.
+          </p>
+
+          <div class="waitlist-form" data-animate style="transition-delay:160ms">
+            <form id="waitlist-form" novalidate aria-label="Waitlist signup">
+              <label for="waitlist-email" class="sr-only">Your email address</label>
+              <input
+                type="email"
+                id="waitlist-email"
+                name="email"
+                class="waitlist-input"
+                placeholder="your@email.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+              >
+              <button type="submit" class="waitlist-btn" id="waitlist-submit">Join the Waitlist →</button>
+            </form>
+
+            <div class="waitlist-success" id="waitlist-success" role="status" aria-live="polite">
+              You're on the list. We'll be in touch within 48 hours.
+            </div>
+
+            <p class="waitlist-micro">No spam. No newsletters. Just a conversation when the time is right.</p>
+            <p class="waitlist-privacy">By joining, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -364,28 +708,54 @@
   </main>
 
 
-  <!-- =============================================
-       FOOTER
-       Clean, quiet, complete. Brand + tagline,
-       horizontal nav links, copyright.
-       ============================================= -->
-  <footer aria-label="Footer">
-    <div class="wrap">
+  <!-- ============================================================
+       SECTION 13 — FOOTER
+       ============================================================ -->
+  <footer class="footer" aria-label="Footer">
+    <div class="footer__inner">
+
       <div>
-        <div class="brand">Re<b style="color:var(--accent)">Woo</b></div>
-        <div class="foot-tagline">Build the billion-dollar company. Alone. · rewoo.tech</div>
+        <a href="#top" class="footer__logo" aria-label="ReWoo — Home">
+          <img src="assets/logo.jpg" alt="ReWoo" class="footer__logo-img" width="22" height="22">
+          <span class="footer__wordmark">ReWoo</span>
+        </a>
+        <p class="footer__copy">© 2026 ReWoo. Dhaka, Bangladesh.</p>
+        <a href="mailto:hello@rewoo.tech" class="footer__email">hello@rewoo.tech</a>
       </div>
-      <div class="flinks">
-        <a href="#vision">Vision</a>
-        <a href="#team">Team</a>
-        <a href="#leverage">Leverage</a>
-        <a href="#start">Start</a>
+
+      <div>
+        <span class="footer__col-label">Company</span>
+        <ul class="footer__links">
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
       </div>
-      <div id="yr"></div>
+
+      <div>
+        <span class="footer__col-label">Connect</span>
+        <div class="footer__social">
+          <a href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on LinkedIn" id="social-linkedin">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="https://x.com/ReWootech8" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on X" id="social-twitter">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4l16 16M4 20L20 4" stroke-width="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
     </div>
+    <div class="footer__bottom">Built by ReWoo · AI employees for any business.</div>
   </footer>
 
-  <!-- Main JavaScript (deferred by placement at end of body) -->
   <script src="script.js"></script>
 </body>
 </html>
