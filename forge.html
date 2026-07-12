@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- ============================================================
+       Forge by ReWoo — Free, Worldwide Business Builder Demo
+       https://rewoo.tech/forge
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Forge by ReWoo — Type an idea. Watch a business appear.</title>
+  <meta name="description" content="Free, no-login demo. Type a business idea and watch AI build a name, storefront, marketing copy, and payment setup in under 2 minutes. Live today for Bangladesh. No signup required.">
+  <meta name="author" content="ReWoo">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://rewoo.tech/forge">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Forge by ReWoo — Type an idea. Watch a business appear.">
+  <meta property="og:description" content="Free, no-login. Type a business idea and AI builds a name, storefront, and payment setup live. No signup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rewoo.tech/forge">
+  <meta property="og:image" content="https://rewoo.tech/assets/og-image.png">
+  <meta property="og:site_name" content="ReWoo">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Forge by ReWoo — Type an idea. Watch a business appear.">
+  <meta name="twitter:description" content="Free, no-login. AI builds your business live. No signup.">
+  <meta name="twitter:image" content="https://rewoo.tech/assets/og-image.png">
+  <meta name="twitter:site" content="@adil_shamim8">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  <link rel="apple-touch-icon" href="assets/logo.jpg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,200..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="forge.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Forge by ReWoo",
+    "url": "https://rewoo.tech/forge",
+    "description": "Free AI business builder — type an idea, watch a business appear. Name, storefront, marketing, payments.",
+    "applicationCategory": "BusinessApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "creator": { "@type": "Organization", "name": "ReWoo", "url": "https://rewoo.tech" }
+  }
+  </script>
+
+  <!-- Analytics — Plausible -->
+  <script defer data-domain="rewoo.tech" src="https://plausible.io/js/script.js"></script>
+  <!-- Analytics — Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "abc123xyz0");
+  </script>
+
+  <!-- No FOUC: apply saved theme before first paint -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('rewoo-theme');
+        if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+    })();
+  </script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- ============================================================
+       NAVIGATION (reuses existing site nav)
+       ============================================================ -->
+  <nav class="nav" id="site-nav" aria-label="Primary navigation">
+    <div class="nav__inner">
+
+      <a href="index.html" class="nav__logo" aria-label="ReWoo — Home" id="nav-logo">
+        <img src="assets/logo.jpg" alt="ReWoo" class="nav__logo-img" width="28" height="28">
+        <span class="nav__wordmark">ReWoo</span>
+      </a>
+
+      <ul class="nav__links" aria-label="Site sections">
+        <li><a href="index.html" id="nl-home">Home</a></li>
+        <li>
+          <a href="forge.html" id="nl-forge" class="nav__forge-link">
+            <span class="nav__forge-link-dot" aria-hidden="true"></span>
+            Forge
+          </a>
+        </li>
+        <li><a href="index.html#pricing" id="nl-pricing">Pricing</a></li>
+      </ul>
+
+      <div class="nav__right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
+          <svg id="theme-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
+        </button>
+        <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="nav__cta" id="nav-cta">Book a Call</a>
+      </div>
+
+      <button class="nav__hamburger" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
+  <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+    <a href="index.html" id="mn-home">Home</a>
+    <a href="forge.html" id="mn-forge">Forge</a>
+    <a href="index.html#pricing" id="mn-pricing">Pricing</a>
+    <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="nav__cta" id="mn-cta">Book a Call</a>
+  </div>
+
+
+  <main id="main-content" aria-label="Forge — AI business builder demo">
+
+    <!-- ============================================================
+         HONEST ROADMAP STRIP (visible on every screen)
+         ============================================================ -->
+    <div class="forge-roadmap-strip" id="roadmap-strip" role="region" aria-label="Availability">
+      <p class="forge-roadmap-strip__text">
+        <strong>Live today: Bangladesh (bKash / Nagad).</strong>
+        Building next: India, Pakistan, Nigeria, Kenya.
+      </p>
+    </div>
+
+
+    <!-- ============================================================
+         STEP 0 — HERO / ENTRY
+         ============================================================ -->
+    <section class="forge-hero" id="forge-hero" aria-label="Forge — build your business free">
+      <div class="forge-hero__inner">
+
+        <span class="forge-hero__eyebrow" aria-hidden="true">
+          <span class="forge-hero__eyebrow-dot"></span>
+          <span data-i18n="eyebrow">Free · No login · No signup</span>
+        </span>
+
+        <h1 class="forge-hero__headline">
+          <span data-i18n="hero_h1_1">Type an idea.</span><br>
+          <em data-i18n="hero_h1_2">Watch a business appear.</em>
+        </h1>
+
+        <p class="forge-hero__sub" data-i18n="hero_sub">
+          Name, storefront, marketing copy, payment setup — AI builds it live in under two minutes. Free, for anyone on Earth. No account needed.
+        </p>
+
+        <div class="forge-entry" role="search">
+          <div class="forge-entry__input-wrap">
+            <label for="hero-idea-input" class="sr-only" data-i18n="label_idea">What do you want to sell?</label>
+            <input
+              type="text"
+              id="hero-idea-input"
+              class="forge-entry__input"
+              data-i18n-placeholder="hero_placeholder"
+              placeholder="What do you want to sell?"
+              autocomplete="off"
+              maxlength="200"
+              aria-label="Describe your business idea"
+            >
+            <button class="forge-entry__btn" id="hero-go-btn" data-i18n="hero_cta">
+              Build it now — free →
+            </button>
+          </div>
+          <p class="forge-entry__note" data-i18n="hero_note">3 free builds per day · No login required</p>
+
+          <!-- Generation count indicator -->
+          <div class="forge-count-indicator" aria-live="polite" id="count-indicator">
+            <span data-i18n="count_remaining">Builds remaining today:</span>
+            <div class="forge-count-dots" aria-hidden="true">
+              <div class="forge-count-dot" id="dot-1"></div>
+              <div class="forge-count-dot" id="dot-2"></div>
+              <div class="forge-count-dot" id="dot-3"></div>
+            </div>
+            <span id="count-text">3</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         STEP 1 — THREE QUICK INPUTS (single screen)
+         ============================================================ -->
+    <section class="forge-step" id="step-1" aria-label="Step 1 — Tell us about your business" hidden>
+      <button class="forge-step__back" id="step1-back" aria-label="Back to start">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-i18n="back">Back</span>
+      </button>
+
+      <div class="forge-step__label" data-i18n="step1_label">Step 1 of 1</div>
+      <h2 class="forge-step__title" data-i18n="step1_title">Tell us about your business.</h2>
+
+      <!-- Business idea textarea -->
+      <div class="forge-field">
+        <label for="idea-input" class="forge-field__label" data-i18n="label_idea_long">
+          What do you want to sell? <span style="font-weight:400;color:var(--dim)">(one sentence is enough)</span>
+        </label>
+        <textarea
+          id="idea-input"
+          class="forge-field__textarea"
+          data-i18n-placeholder="idea_placeholder"
+          placeholder="e.g. I make handmade leather bags and want to sell locally..."
+          rows="3"
+          maxlength="300"
+          aria-describedby="idea-chips-hint"
+        ></textarea>
+        <p id="idea-chips-hint" class="sr-only" data-i18n="chips_hint">Or click an example below to fill the field</p>
+
+        <!-- Example chips -->
+        <div class="forge-chips" role="list" aria-label="Example ideas">
+          <button class="forge-chip" role="listitem" data-chip="Handmade jewelry" data-i18n-chip="chip_jewelry">✦ Handmade jewelry</button>
+          <button class="forge-chip" role="listitem" data-chip="Home-cooked meals" data-i18n-chip="chip_meals">🍱 Home-cooked meals</button>
+          <button class="forge-chip" role="listitem" data-chip="Tailoring services" data-i18n-chip="chip_tailoring">✂️ Tailoring services</button>
+        </div>
+      </div>
+
+      <!-- Market picker -->
+      <div class="forge-field">
+        <span class="forge-field__label" data-i18n="label_market">Which market are you building for?</span>
+        <div class="forge-market-grid" role="radiogroup" aria-label="Market selection">
+
+          <button class="forge-market-btn is-selected"
+                  id="market-bd"
+                  role="radio"
+                  aria-checked="true"
+                  data-market="bangladesh"
+                  data-rail="bkash-nagad">
+            <span class="forge-market-btn__emoji">🇧🇩</span>
+            <span class="forge-market-btn__name" data-i18n="market_bd">Bangladesh</span>
+            <span class="forge-market-btn__rail">bKash / Nagad</span>
+          </button>
+
+          <button class="forge-market-btn is-coming-soon"
+                  id="market-in"
+                  role="radio"
+                  aria-checked="false"
+                  data-market="india"
+                  data-rail="upi"
+                  disabled
+                  aria-disabled="true">
+            <span class="forge-market-btn__coming-soon" data-i18n="coming_soon">Coming soon</span>
+            <span class="forge-market-btn__emoji">🇮🇳</span>
+            <span class="forge-market-btn__name" data-i18n="market_in">India</span>
+            <span class="forge-market-btn__rail">UPI</span>
+          </button>
+
+          <button class="forge-market-btn"
+                  id="market-global"
+                  role="radio"
+                  aria-checked="false"
+                  data-market="global"
+                  data-rail="stripe">
+            <span class="forge-market-btn__emoji">🌍</span>
+            <span class="forge-market-btn__name" data-i18n="market_global">Global / Card</span>
+            <span class="forge-market-btn__rail">Stripe</span>
+          </button>
+
+          <button class="forge-market-btn"
+                  id="market-cod"
+                  role="radio"
+                  aria-checked="false"
+                  data-market="cod"
+                  data-rail="cod">
+            <span class="forge-market-btn__emoji">💵</span>
+            <span class="forge-market-btn__name" data-i18n="market_cod">Cash on Delivery</span>
+            <span class="forge-market-btn__rail" data-i18n="market_cod_sub">Universal</span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Language picker -->
+      <div class="forge-field">
+        <span class="forge-field__label" data-i18n="label_language">Language for your storefront</span>
+        <div class="forge-lang-toggle" role="radiogroup" aria-label="Storefront language">
+          <button class="forge-lang-btn is-active" id="lang-en" role="radio" aria-checked="true" data-lang="en">
+            English
+          </button>
+          <button class="forge-lang-btn" id="lang-bn" role="radio" aria-checked="false" data-lang="bn">
+            বাংলা
+          </button>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button class="forge-submit" id="step1-submit" data-i18n="generate_cta">
+        ✦ Generate my business →
+      </button>
+
+      <!-- Rate limit message -->
+      <div class="forge-rate-limit" id="rate-limit-msg" role="alert" aria-live="assertive">
+        <div class="forge-rate-limit__icon">⏳</div>
+        <h3 class="forge-rate-limit__title" data-i18n="rate_limit_title">Forge is popular right now</h3>
+        <p class="forge-rate-limit__body" data-i18n="rate_limit_body">
+          You've used your 3 free builds for today. Come back in a few hours — or join the pilot list and we'll build yours personally.
+        </p>
+        <button class="forge-rate-limit__cta" id="rate-limit-cta" data-i18n="rate_limit_cta">
+          Join the pilot list →
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         STEP 2 — LIVE GENERATION (streamed results)
+         ============================================================ -->
+    <section class="forge-step" id="step-2" aria-label="Step 2 — AI is building your business" hidden>
+
+      <!-- Generation header + progress -->
+      <div class="forge-generation">
+        <div class="forge-generation__header">
+          <div class="forge-generation__spinner" id="gen-spinner" aria-hidden="true"></div>
+          <p class="forge-generation__status" id="gen-status" aria-live="polite" data-i18n="gen_status_1">
+            Building your business name…
+          </p>
+        </div>
+
+        <div class="forge-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="gen-progress-bar" aria-label="Generation progress">
+          <div class="forge-progress__fill" id="gen-progress-fill"></div>
+        </div>
+
+        <!-- BLOCK 1: Business name + one-liner -->
+        <div class="forge-result-block" id="block-name" aria-label="Your business name">
+          <div class="forge-result-block__label">
+            <span class="forge-result-block__label-dot" aria-hidden="true"></span>
+            <span data-i18n="block_name_label">Business Name</span>
+          </div>
+          <div class="forge-name-card">
+            <div class="forge-name-card__business-name" id="business-name" aria-live="polite">
+              <!-- AI-generated name appears here -->
+            </div>
+            <p class="forge-name-card__pitch" id="business-pitch" aria-live="polite">
+              <!-- AI-generated one-liner appears here -->
+            </p>
+          </div>
+        </div>
+
+        <!-- BLOCK 2: Mobile storefront (WhatsApp/Messenger catalog style) -->
+        <div class="forge-result-block" id="block-catalog" aria-label="Your mobile storefront preview">
+          <div class="forge-result-block__label">
+            <span class="forge-result-block__label-dot" aria-hidden="true"></span>
+            <span data-i18n="block_catalog_label">Mobile Storefront</span>
+            <span class="preview-badge" aria-label="This is a preview">Preview</span>
+          </div>
+
+          <div class="forge-catalog" role="region" aria-label="WhatsApp-style product catalog">
+            <div class="forge-catalog__bar">
+              <div class="forge-catalog__bar-avatar" id="catalog-avatar" aria-hidden="true">F</div>
+              <div class="forge-catalog__bar-info">
+                <div class="forge-catalog__bar-name" id="catalog-name">Your Business</div>
+                <div class="forge-catalog__bar-status" data-i18n="catalog_status">● Online · Catalog</div>
+              </div>
+            </div>
+
+            <div class="forge-catalog__scroll" id="catalog-products" aria-label="Product catalog">
+              <!-- Product cards rendered by JS -->
+            </div>
+
+            <div class="forge-catalog__timestamp" aria-hidden="true" data-i18n="catalog_timestamp">
+              Today · Preview only — not a live store
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 3: Marketing captions -->
+        <div class="forge-result-block" id="block-captions" aria-label="Your marketing captions">
+          <div class="forge-result-block__label">
+            <span class="forge-result-block__label-dot" aria-hidden="true"></span>
+            <span data-i18n="block_captions_label">Marketing Captions</span>
+          </div>
+          <div class="forge-captions" id="marketing-captions" aria-label="Social media captions">
+            <!-- Caption cards rendered by JS -->
+          </div>
+        </div>
+
+        <!-- BLOCK 4: Payment setup preview -->
+        <div class="forge-result-block" id="block-payment" aria-label="Payment setup preview">
+          <div class="forge-result-block__label">
+            <span class="forge-result-block__label-dot" aria-hidden="true"></span>
+            <span data-i18n="block_payment_label">Payment Setup</span>
+            <span class="preview-badge" aria-label="This is a preview">Preview</span>
+          </div>
+
+          <div class="forge-payment-card" id="payment-card" role="region" aria-label="Localized payment setup preview">
+            <div class="forge-payment-card__header">
+              <span class="forge-payment-card__rail-name" id="payment-rail-name">bKash / Nagad</span>
+              <span class="preview-badge" aria-label="Preview">Preview</span>
+            </div>
+            <div class="forge-payment-card__body">
+              <div class="forge-payment-card__amount" id="payment-amount">৳ 850</div>
+              <div class="forge-payment-card__currency" id="payment-currency">Bangladeshi Taka · Mobile Money</div>
+
+              <div class="forge-payment-card__field">
+                <div class="forge-payment-card__field-label" data-i18n="payment_phone_label">Phone Number</div>
+                <span id="payment-phone">017XXXXXXXX</span>
+              </div>
+
+              <div class="forge-payment-card__field">
+                <div class="forge-payment-card__field-label" data-i18n="payment_method_label">Payment Method</div>
+                <span id="payment-method">bKash / Nagad</span>
+              </div>
+
+              <p class="forge-payment-card__connect-note" data-i18n="payment_note">
+                "Preview — connect your real account after the pilot call"
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 5: Support agent demo -->
+        <div class="forge-result-block" id="block-agent" aria-label="Support agent demo">
+          <div class="forge-result-block__label">
+            <span class="forge-result-block__label-dot" aria-hidden="true"></span>
+            <span data-i18n="block_agent_label">Order-Taking Support Agent</span>
+          </div>
+
+          <div class="forge-agent-demo" role="region" aria-label="AI support agent demonstration">
+            <div class="forge-agent-demo__bar">
+              <div class="forge-agent-demo__bar-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <span class="forge-agent-demo__bar-title" data-i18n="agent_title">AI Order Agent · Human-in-loop</span>
+              <span class="preview-badge">Preview</span>
+            </div>
+
+            <div class="forge-agent-demo__body">
+              <p class="forge-agent-demo__instruction" data-i18n="agent_instruction">
+                Edit the customer message below or use the example, then click Extract Order.
+              </p>
+
+              <label for="agent-message-input" class="sr-only" data-i18n="agent_label">Customer message</label>
+              <textarea
+                id="agent-message-input"
+                class="forge-agent-demo__textarea"
+                rows="3"
+                aria-label="Customer message to extract order from"
+              >আমি ২টা লাল জামা নিতে চাই, ঢাকায় ডেলিভারি দিন। নম্বর: 01712345678</textarea>
+
+              <button class="forge-agent-demo__extract-btn" id="extract-order-btn" data-i18n="extract_btn">
+                Extract Order →
+              </button>
+
+              <!-- Order card extracted by AI -->
+              <div class="forge-order-card" id="order-card" aria-live="polite" aria-label="Extracted order details">
+                <div class="forge-order-card__title" data-i18n="order_card_title">✓ Order Extracted</div>
+                <div class="forge-order-card__rows" id="order-card-rows">
+                  <!-- Rows injected by JS -->
+                </div>
+                <div class="forge-order-card__confidence">
+                  <span data-i18n="confidence_label">Confidence:</span>
+                  <div class="forge-confidence-bar" aria-label="Confidence level">
+                    <div class="forge-confidence-bar__fill" id="confidence-fill" style="width:0%"></div>
+                  </div>
+                  <span id="confidence-pct">—</span>
+                </div>
+              </div>
+
+              <!-- Drafted reply + Approve -->
+              <div class="forge-agent-reply" id="agent-reply" aria-live="polite">
+                <div class="forge-agent-reply__label" data-i18n="reply_label">Drafted Reply</div>
+                <div class="forge-agent-reply__text" id="agent-reply-text"></div>
+                <div class="forge-approve-row" role="group" aria-label="Approve or edit this reply">
+                  <button class="forge-approve-btn" id="approve-btn" aria-label="Approve this reply" data-i18n="approve_btn">
+                    ✓ Approve
+                  </button>
+                  <button class="forge-edit-btn" id="edit-btn" data-i18n="edit_btn">Edit first</button>
+                </div>
+                <p class="forge-approve-note" data-i18n="approve_note">
+                  Nothing sends until you approve. Human-in-loop, always.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 6: Eval badge -->
+        <div class="forge-result-block" id="block-eval" aria-label="Accuracy evaluation badge">
+          <div class="forge-result-block__label">
+            <span class="forge-result-block__label-dot" aria-hidden="true"></span>
+            <span data-i18n="block_eval_label">Quality Benchmark</span>
+          </div>
+
+          <div class="forge-eval-badge" role="region" aria-label="Evaluation results">
+            <div class="forge-eval-badge__number" id="eval-number" aria-label="Accuracy percentage">—%</div>
+            <p class="forge-eval-badge__label" id="eval-label">
+              <!-- Populated by JS from API -->
+              <strong data-i18n="eval_loading">Running golden-set evaluation…</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Continue to result screen -->
+        <button class="forge-submit" id="continue-to-result" style="display:none;" data-i18n="see_result_cta">
+          See your full business summary →
+        </button>
+
+      </div><!-- /.forge-generation -->
+    </section>
+
+
+    <!-- ============================================================
+         STEP 3 — RESULT SCREEN
+         ============================================================ -->
+    <section class="forge-step" id="step-3" aria-label="Step 3 — Your business is alive" hidden>
+      <div class="forge-result">
+
+        <div class="forge-result__celebration" aria-hidden="true">🎉</div>
+        <h2 class="forge-result__headline" data-i18n="result_headline">Your business is alive.</h2>
+        <p class="forge-result__sub" data-i18n="result_sub">Everything AI built for you in one shareable card.</p>
+
+        <!-- Summary card -->
+        <div class="forge-summary-card" id="summary-card" aria-label="Business summary">
+          <div class="forge-summary-card__header">
+            <div class="forge-summary-card__brand" id="summary-brand">—</div>
+            <div class="forge-summary-card__tagline" id="summary-tagline">—</div>
+          </div>
+          <div class="forge-summary-card__body" id="summary-body">
+            <div class="forge-summary-card__row">
+              <span class="forge-summary-card__row-icon">🏪</span>
+              <span class="forge-summary-card__row-text" id="summary-storefront">Mobile storefront ready</span>
+            </div>
+            <div class="forge-summary-card__row">
+              <span class="forge-summary-card__row-icon">💳</span>
+              <span class="forge-summary-card__row-text" id="summary-payment">Payment setup configured</span>
+            </div>
+            <div class="forge-summary-card__row">
+              <span class="forge-summary-card__row-icon">📣</span>
+              <span class="forge-summary-card__row-text" id="summary-marketing">3 marketing captions drafted</span>
+            </div>
+            <div class="forge-summary-card__row">
+              <span class="forge-summary-card__row-icon">🤖</span>
+              <span class="forge-summary-card__row-text" id="summary-agent">Order-taking AI agent configured</span>
+            </div>
+          </div>
+          <div class="forge-summary-card__footer">
+            <span class="forge-summary-card__watermark">
+              Built by <a href="https://rewoo.tech" target="_blank" rel="noopener">Forge · rewoo.tech</a>
+            </span>
+            <span class="preview-badge" aria-label="Demo — not a live business">Demo</span>
+          </div>
+        </div>
+
+        <!-- Share + Try again -->
+        <div class="forge-action-row" role="group" aria-label="Share or start over">
+          <button class="forge-share-btn" id="share-btn" aria-label="Share your generated business">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span data-i18n="share_btn">Share this →</span>
+          </button>
+          <button class="forge-again-btn" id="try-again-btn" data-i18n="try_again_btn">Build another →</button>
+        </div>
+        <div class="forge-copied-toast" id="copied-toast" aria-live="polite" data-i18n="copied_toast">
+          ✓ Link copied to clipboard!
+        </div>
+
+        <!-- Scroll to pilot signup -->
+        <div style="margin-top: var(--sp-10); text-align:center;">
+          <button class="forge-submit" id="go-to-pilot-btn" data-i18n="pilot_cta_btn">
+            Want this to be real? →
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         STEP 4 — PILOT SIGNUP (the ONLY contact ask, after free value)
+         ============================================================ -->
+    <section class="forge-step" id="step-4" aria-label="Step 4 — Pilot program signup" hidden>
+      <div class="forge-pilot">
+
+        <span class="forge-pilot__eyebrow">
+          <span class="nav__forge-link-dot" aria-hidden="true"></span>
+          <span data-i18n="pilot_eyebrow">10 pilot spots this week</span>
+        </span>
+
+        <h2 class="forge-pilot__headline" data-i18n="pilot_headline">
+          Want this to be real?
+        </h2>
+
+        <p class="forge-pilot__sub" data-i18n="pilot_sub">
+          We'll set up real payments, a real phone number, and launch it with you. 10 pilot spots this week.
+          <strong style="color:var(--text)"> Name, contact, market — that's all we need.</strong>
+        </p>
+
+        <div class="forge-pilot__spots" role="status">
+          <div class="forge-pilot__spots-dot" aria-hidden="true"></div>
+          <span data-i18n="pilot_spots">Pilot spots: filling fast this week</span>
+        </div>
+
+        <form class="forge-pilot__form" id="pilot-form" novalidate aria-label="Pilot program signup form">
+
+          <div class="forge-pilot__field">
+            <label for="pilot-name" data-i18n="pilot_name_label">Your name</label>
+            <input
+              type="text"
+              id="pilot-name"
+              name="name"
+              data-i18n-placeholder="pilot_name_ph"
+              placeholder="e.g. Fatima Rahman"
+              autocomplete="name"
+              required
+              aria-required="true"
+              maxlength="100"
+            >
+          </div>
+
+          <div class="forge-pilot__field">
+            <label for="pilot-contact" data-i18n="pilot_contact_label">Email or phone (WhatsApp preferred)</label>
+            <input
+              type="text"
+              id="pilot-contact"
+              name="contact"
+              data-i18n-placeholder="pilot_contact_ph"
+              placeholder="email@example.com or +880 1X..."
+              autocomplete="email"
+              required
+              aria-required="true"
+              maxlength="150"
+            >
+          </div>
+
+          <div class="forge-pilot__field">
+            <label for="pilot-market" data-i18n="pilot_market_label">Your market</label>
+            <select id="pilot-market" name="market" aria-required="true">
+              <option value="bangladesh" data-i18n="market_bd">Bangladesh</option>
+              <option value="india" data-i18n="market_in">India</option>
+              <option value="global" data-i18n="market_global">Global / International</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <input type="hidden" name="business_idea" id="pilot-idea-hidden">
+          <input type="hidden" name="business_name" id="pilot-name-hidden">
+
+          <button type="submit" class="forge-pilot__submit" id="pilot-submit-btn" data-i18n="pilot_submit">
+            Join the pilot — it's free →
+          </button>
+
+          <p class="forge-pilot__micro" data-i18n="pilot_micro">
+            No spam. We'll message you personally within 48 hours.
+          </p>
+        </form>
+
+        <!-- Success state -->
+        <div class="forge-pilot__success" id="pilot-success" role="status" aria-live="polite">
+          <div class="forge-pilot__success-icon" aria-hidden="true">🚀</div>
+          <h3 class="forge-pilot__success-title" data-i18n="pilot_success_title">You're on the list.</h3>
+          <p class="forge-pilot__success-body" data-i18n="pilot_success_body">
+            We'll reach out personally within 48 hours to set up your real payments and launch your business.
+          </p>
+        </div>
+
+        <button class="forge-skip-link" id="skip-pilot-btn" data-i18n="skip_pilot">
+          Skip for now — just show me what was built
+        </button>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER (reuses existing site footer)
+       ============================================================ -->
+  <footer class="footer" aria-label="Footer">
+    <div class="footer__inner">
+
+      <div>
+        <a href="index.html" class="footer__logo" aria-label="ReWoo — Home">
+          <img src="assets/logo.jpg" alt="ReWoo" class="footer__logo-img" width="22" height="22">
+          <span class="footer__wordmark">ReWoo</span>
+        </a>
+        <p class="footer__copy">© 2026 ReWoo. Dhaka, Bangladesh.</p>
+        <a href="mailto:adilshamim696@gmail.com" class="footer__email">adilshamim696@gmail.com</a>
+      </div>
+
+      <div>
+        <span class="footer__col-label">Forge</span>
+        <ul class="footer__links">
+          <li><a href="#forge-hero">Try Forge — Free</a></li>
+          <li><a href="index.html">Back to ReWoo</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="footer__col-label">Connect</span>
+        <div class="footer__social">
+          <a href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="https://x.com/ReWootech8" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on X">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4l16 16M4 20L20 4" stroke-width="2"/>
+            </svg>
+          </a>
+        </div>
+        <p class="footer__copy" style="margin-top:var(--sp-4)">
+          <strong style="color:var(--text)">Live today: Bangladesh.</strong><br>
+          Building next: India, Pakistan, Nigeria, Kenya.
+        </p>
+      </div>
+
+    </div>
+    <div class="footer__bottom">Built by ReWoo · AI company builder for the world.</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="forge.js"></script>
+
+</body>
+</html>

@@ -46,6 +46,12 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Forge nav link pulse animation -->
+  <style>
+    @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
+    .nav__forge-link { display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; font-weight:500; color:var(--accent); transition:opacity 0.2s; }
+    .nav__forge-link:hover { opacity:0.8; }
+  </style>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -114,6 +120,12 @@
         <li><a href="#how-it-works" id="nl-how">How it works</a></li>
         <li><a href="#team" id="nl-team">Our Team</a></li>
         <li><a href="#pricing" id="nl-pricing">Pricing</a></li>
+        <li>
+          <a href="forge.html" id="nl-forge" class="nav__forge-link">
+            <span class="nav__forge-link-dot" aria-hidden="true" style="width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 2.5s ease-in-out infinite;"></span>
+            &nbsp;Forge
+          </a>
+        </li>
       </ul>
 
       <div class="nav__right">
@@ -137,6 +149,7 @@
     <a href="#how-it-works" id="mn-how">How it works</a>
     <a href="#team" id="mn-team">Our Team</a>
     <a href="#pricing" id="mn-pricing">Pricing</a>
+    <a href="forge.html" id="mn-forge" style="color:var(--accent);">✦ Try Forge — Free</a>
     <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="nav__cta" id="mn-cta">Book a Call</a>
   </div>
 
