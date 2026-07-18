@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <!-- ============================================================
        ReWoo v3.0 — The Premium Edition
@@ -10,7 +11,8 @@
 
   <!-- SEO -->
   <title>ReWoo — AI Workforce Built for Founders</title>
-  <meta name="description" content="ReWoo deploys a complete AI executive team for your business — so one founder can run what once took a hundred people. Ten executives. Zero salaries. Day one.">
+  <meta name="description"
+    content="ReWoo deploys a complete AI executive team for your business — so one founder can run what once took a hundred people. Ten executives. Zero salaries. Day one.">
   <meta name="author" content="ReWoo">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="keywords" content="AI workforce, AI executive team, AI employees, business automation, ReWoo">
@@ -18,7 +20,8 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="ReWoo — AI Workforce Built for Founders">
-  <meta property="og:description" content="Ten AI executives. Zero salaries. Day one. Build the company you always imagined.">
+  <meta property="og:description"
+    content="Ten AI executives. Zero salaries. Day one. Build the company you always imagined.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rewoo.tech/">
   <meta property="og:image" content="https://rewoo.tech/assets/og-image.png">
@@ -42,15 +45,55 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,200..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,200..500&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
   <!-- Forge nav link pulse animation -->
   <style>
-    @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
-    .nav__forge-link { display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; font-weight:500; color:var(--accent); transition:opacity 0.2s; }
-    .nav__forge-link:hover { opacity:0.8; }
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.3);
+      }
+    }
+
+    .nav__forge-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      transition: opacity 0.2s;
+    }
+
+    .nav__forge-link:hover {
+      opacity: 0.8;
+    }
+
+    .nav__orbit-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #3ECBAB;
+      transition: opacity 0.2s;
+    }
+
+    .nav__orbit-link:hover {
+      opacity: 0.8;
+    }
   </style>
 
   <!-- Structured Data -->
@@ -71,36 +114,56 @@
   <!-- Analytics -->
   <script defer data-domain="rewoo.tech" src="https://plausible.io/js/script.js"></script>
   <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "abc123xyz0");
   </script>
 
   <!-- No FOUC: apply saved theme before first paint -->
   <script>
-    (function(){
+    (function () {
       try {
         var t = localStorage.getItem('rewoo-theme');
         if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', t);
-      } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
     })();
   </script>
 
   <style>
     /* Hero entrance animation */
-    .hero__eyebrow  { animation: heroUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both; }
-    .hero__headline { animation: heroUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.35s both; }
-    .hero__sub      { animation: heroUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s both; }
-    .hero__cta-row  { animation: heroUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.65s both; }
+    .hero__eyebrow {
+      animation: heroUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+    }
+
+    .hero__headline {
+      animation: heroUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+    }
+
+    .hero__sub {
+      animation: heroUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+    }
+
+    .hero__cta-row {
+      animation: heroUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+    }
+
     @keyframes heroUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
+
 <body>
 
   <a href="#main-content" class="skip-link">Skip to content</a>
@@ -122,8 +185,16 @@
         <li><a href="#pricing" id="nl-pricing">Pricing</a></li>
         <li>
           <a href="forge.html" id="nl-forge" class="nav__forge-link">
-            <span class="nav__forge-link-dot" aria-hidden="true" style="width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 2.5s ease-in-out infinite;"></span>
+            <span class="nav__forge-link-dot" aria-hidden="true"
+              style="width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 2.5s ease-in-out infinite;"></span>
             &nbsp;Forge
+          </a>
+        </li>
+        <li>
+          <a href="orbit.html" id="nl-orbit" class="nav__orbit-link">
+            <span class="nav__orbit-dot" aria-hidden="true"
+              style="width:5px;height:5px;border-radius:50%;background:#3ECBAB;display:inline-block;animation:pulse 2.8s ease-in-out infinite;"></span>
+            &nbsp;Orbit
           </a>
         </li>
       </ul>
@@ -132,13 +203,17 @@
         <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
           <svg id="theme-icon" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+            <path
+              d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4">
+            </path>
           </svg>
         </button>
-        <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="nav__cta" id="nav-cta">Book a Call</a>
+        <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo"
+          class="nav__cta" id="nav-cta">Book a Call</a>
       </div>
 
-      <button class="nav__hamburger" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="nav__hamburger" id="menu-toggle" aria-label="Open menu" aria-expanded="false"
+        aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -150,7 +225,9 @@
     <a href="#team" id="mn-team">Our Team</a>
     <a href="#pricing" id="mn-pricing">Pricing</a>
     <a href="forge.html" id="mn-forge" style="color:var(--accent);">✦ Try Forge — Free</a>
-    <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="nav__cta" id="mn-cta">Book a Call</a>
+    <a href="orbit.html" id="mn-orbit" style="color:#3ECBAB;">◉ Orbit — Live view</a>
+    <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo"
+      class="nav__cta" id="mn-cta">Book a Call</a>
   </div>
 
 
@@ -174,7 +251,8 @@
         </h1>
 
         <p class="hero__sub">
-          ReWoo gives you a complete AI executive team — support, sales, marketing, operations, finance, analytics — so one founder can run what once took a hundred people.
+          ReWoo gives you a complete AI executive team — support, sales, marketing, operations, finance, analytics — so
+          one founder can run what once took a hundred people.
         </p>
 
         <div class="hero__cta-row">
@@ -186,7 +264,7 @@
 
       <div class="hero__scroll-indicator" aria-hidden="true">
         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
+          <path d="M12 5v14M5 12l7 7 7-7" />
         </svg>
       </div>
     </section>
@@ -217,7 +295,9 @@
             You're doing the work of ten people.<br>And it's still not enough.
           </p>
           <div class="problem-body" data-animate style="transition-delay:160ms">
-            <p>Every day, you handle customer queries that should answer themselves. You follow up on invoices that should chase themselves. You write content that should write itself. You compile reports that should compile themselves.</p>
+            <p>Every day, you handle customer queries that should answer themselves. You follow up on invoices that
+              should chase themselves. You write content that should write itself. You compile reports that should
+              compile themselves.</p>
             <p><strong>You're not building the company. You're maintaining it.</strong></p>
             <p>The bottleneck isn't your idea. It's the size of your team.</p>
           </div>
@@ -237,29 +317,32 @@
             <em>What if your company<br>ran itself?</em>
           </h2>
           <div class="s-body" data-animate style="transition-delay:160ms">
-            <p>ReWoo doesn't sell you a tool to manage. It gives you a team to deploy. Ten AI executives — each with a defined role, a scope of authority, and a daily operating rhythm — running your company functions from day one.</p>
+            <p>ReWoo doesn't sell you a tool to manage. It gives you a team to deploy. Ten AI executives — each with a
+              defined role, a scope of authority, and a daily operating rhythm — running your company functions from day
+              one.</p>
             <p>Not a chatbot. Not a dashboard. A complete AI workforce.</p>
           </div>
 
           <div class="concept-cards" role="list">
             <div class="concept-card" role="listitem" data-animate style="transition-delay:240ms">
               <svg class="concept-card__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                <circle cx="12" cy="8" r="4" />
+                <path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
               </svg>
               <p class="concept-card__text">Human founders set vision and approve decisions.</p>
             </div>
             <div class="concept-card" role="listitem" data-animate style="transition-delay:320ms">
               <svg class="concept-card__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
               </svg>
               <p class="concept-card__text">AI executives run every function, every day, without being asked.</p>
             </div>
             <div class="concept-card" role="listitem" data-animate style="transition-delay:400ms">
               <svg class="concept-card__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <polyline points="9 12 11 14 15 10"/>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <polyline points="9 12 11 14 15 10" />
               </svg>
               <p class="concept-card__text">Nothing irreversible happens without your approval.</p>
             </div>
@@ -276,9 +359,11 @@
       <div class="wrap">
         <div class="team-inner">
           <span class="overline overline--accent" data-animate>Your AI executive team</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">Ten executives.<br>Zero salaries. Day one.</h2>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">Ten executives.<br>Zero salaries. Day one.
+          </h2>
           <p class="s-subhead" data-animate style="transition-delay:160ms">
-            Each agent has a defined mission, a scope of authority, and a daily operating rhythm. They coordinate with each other so you don't have to.
+            Each agent has a defined mission, a scope of authority, and a daily operating rhythm. They coordinate with
+            each other so you don't have to.
           </p>
 
           <div class="team-grid" role="list">
@@ -286,13 +371,15 @@
             <article class="team-card" role="listitem" data-animate style="transition-delay:0ms">
               <div class="team-card__role">CEO</div>
               <div class="team-card__name">Atlas</div>
-              <p class="team-card__mission">Turns your vision into daily OKRs. Runs the company when you're building it.</p>
+              <p class="team-card__mission">Turns your vision into daily OKRs. Runs the company when you're building it.
+              </p>
             </article>
 
             <article class="team-card" role="listitem" data-animate style="transition-delay:60ms">
               <div class="team-card__role">CFO</div>
               <div class="team-card__name">Finance</div>
-              <p class="team-card__mission">Owns cash, burn, runway, and margins. Flags financial risk before it becomes a fire.</p>
+              <p class="team-card__mission">Owns cash, burn, runway, and margins. Flags financial risk before it becomes
+                a fire.</p>
             </article>
 
             <article class="team-card" role="listitem" data-animate style="transition-delay:120ms">
@@ -322,7 +409,8 @@
             <article class="team-card" role="listitem" data-animate style="transition-delay:360ms">
               <div class="team-card__role">Customer Success</div>
               <div class="team-card__name">Success</div>
-              <p class="team-card__mission">Onboards, supports, retains. Turns clients into case studies and referrals.</p>
+              <p class="team-card__mission">Onboards, supports, retains. Turns clients into case studies and referrals.
+              </p>
             </article>
 
             <article class="team-card" role="listitem" data-animate style="transition-delay:420ms">
@@ -355,20 +443,25 @@
     <section class="section section--surface" id="product" aria-label="Product in action">
       <div class="wrap">
         <div class="product-inner">
-          <span class="overline" data-animate style="text-align:center;display:block;">What it actually looks like</span>
-          <h2 class="s-headline s-headline--centered" data-animate style="transition-delay:80ms">Your AI team, at work.</h2>
+          <span class="overline" data-animate style="text-align:center;display:block;">What it actually looks
+            like</span>
+          <h2 class="s-headline s-headline--centered" data-animate style="transition-delay:80ms">Your AI team, at work.
+          </h2>
 
           <div style="margin-top:60px;" data-animate style="transition-delay:160ms">
 
             <ul class="tab-pills" role="tablist" aria-label="Product demos">
               <li role="presentation">
-                <button class="tab-pill is-active" id="tab-support" role="tab" aria-selected="true" aria-controls="panel-support">Customer Support</button>
+                <button class="tab-pill is-active" id="tab-support" role="tab" aria-selected="true"
+                  aria-controls="panel-support">Customer Support</button>
               </li>
               <li role="presentation">
-                <button class="tab-pill" id="tab-marketing" role="tab" aria-selected="false" aria-controls="panel-marketing">Marketing</button>
+                <button class="tab-pill" id="tab-marketing" role="tab" aria-selected="false"
+                  aria-controls="panel-marketing">Marketing</button>
               </li>
               <li role="presentation">
-                <button class="tab-pill" id="tab-collections" role="tab" aria-selected="false" aria-controls="panel-collections">Collections</button>
+                <button class="tab-pill" id="tab-collections" role="tab" aria-selected="false"
+                  aria-controls="panel-collections">Collections</button>
               </li>
             </ul>
 
@@ -382,7 +475,9 @@
               <div class="tab-panel__body">
                 <div class="chat">
                   <div class="chat-bubble chat-bubble--customer">My order hasn't arrived — order #BD-4821</div>
-                  <div class="chat-bubble chat-bubble--ai">Hi Nasrin! I've checked order #BD-4821 — it shipped on June 18 and is due June 22. Here's your tracking link: <a href="javascript:void(0)">track →</a>. Can I help with anything else?</div>
+                  <div class="chat-bubble chat-bubble--ai">Hi Nasrin! I've checked order #BD-4821 — it shipped on June
+                    18 and is due June 22. Here's your tracking link: <a href="javascript:void(0)">track →</a>. Can I
+                    help with anything else?</div>
                   <p class="chat-meta">Replied in 12 seconds</p>
                 </div>
               </div>
@@ -394,7 +489,9 @@
               <div class="tab-panel__body">
                 <div class="marketing-mock">
                   <p class="mock-label">Scheduled for today · 9:00 AM</p>
-                  <p class="mock-post">"Three weeks ago we had zero clients. Today we have two in two countries. Here's what happened when we deployed an AI workforce instead of hiring a team — and why it's the only decision that made sense for a 10-day-old startup."</p>
+                  <p class="mock-post">"Three weeks ago we had zero clients. Today we have two in two countries. Here's
+                    what happened when we deployed an AI workforce instead of hiring a team — and why it's the only
+                    decision that made sense for a 10-day-old startup."</p>
                   <span class="mock-tag">Est. reach: 1,200</span>
                   <div class="mock-status">
                     <span class="done">✓ Drafted</span>
@@ -411,7 +508,8 @@
               <div class="tab-panel__body">
                 <div class="email-mock">
                   <p class="email-subject">Invoice #INV-0042 · 14 days overdue</p>
-                  <p class="email-body">Hi James, this is a friendly reminder that invoice #INV-0042 for £850 is now 14 days past due. You can pay instantly here: <a href="javascript:void(0)">Pay now →</a>.</p>
+                  <p class="email-body">Hi James, this is a friendly reminder that invoice #INV-0042 for £850 is now 14
+                    days past due. You can pay instantly here: <a href="javascript:void(0)">Pay now →</a>.</p>
                   <p class="email-status">Sent automatically · No action required from you</p>
                 </div>
               </div>
@@ -419,7 +517,8 @@
 
           </div>
 
-          <p class="tab-caption">Every output is checked against a quality bar before it reaches your customers. If it doesn't pass, it doesn't go.</p>
+          <p class="tab-caption">Every output is checked against a quality bar before it reaches your customers. If it
+            doesn't pass, it doesn't go.</p>
         </div>
       </div>
     </section>
@@ -439,21 +538,24 @@
             <article class="step-card" role="listitem" data-animate style="transition-delay:0ms">
               <div class="step-card__num" aria-hidden="true">01</div>
               <h3 class="step-card__title">We map your highest-value process.</h3>
-              <p class="step-card__body">A paid discovery session. We interview your team, document the workflow, and identify exactly where AI delivers the most value. No guesswork.</p>
+              <p class="step-card__body">A paid discovery session. We interview your team, document the workflow, and
+                identify exactly where AI delivers the most value. No guesswork.</p>
               <span class="step-card__tag">~1 week · $150–$350</span>
             </article>
 
             <article class="step-card" role="listitem" data-animate style="transition-delay:160ms">
               <div class="step-card__num" aria-hidden="true">02</div>
               <h3 class="step-card__title">We build and quality-test the agents.</h3>
-              <p class="step-card__body">We build your AI employees, load them with your real data, and run them against a quality benchmark before they touch a single live customer. If they don't pass, we don't deploy.</p>
+              <p class="step-card__body">We build your AI employees, load them with your real data, and run them against
+                a quality benchmark before they touch a single live customer. If they don't pass, we don't deploy.</p>
               <span class="step-card__tag">6–8 weeks · $600–$1,800</span>
             </article>
 
             <article class="step-card" role="listitem" data-animate style="transition-delay:320ms">
               <div class="step-card__num" aria-hidden="true">03</div>
               <h3 class="step-card__title">Your company runs itself.</h3>
-              <p class="step-card__body">Monthly retainer. Your agents handle the workflow. We monitor, catch drift, and expand to the next process. You set the vision. ReWoo runs the company.</p>
+              <p class="step-card__body">Monthly retainer. Your agents handle the workflow. We monitor, catch drift, and
+                expand to the next process. You set the vision. ReWoo runs the company.</p>
               <span class="step-card__tag">Ongoing · $120–$600/mo</span>
             </article>
 
@@ -492,11 +594,12 @@
 
             <div class="proof-divider" aria-hidden="true"></div>
 
-            <p class="proof-body">Marketing automation, HR operations, and collections management — all handled by ReWoo AI employees.</p>
+            <p class="proof-body">Marketing automation, HR operations, and collections management — all handled by ReWoo
+              AI employees.</p>
 
             <p class="proof-closer">
               "A 10-day-old Bangladeshi startup. A client in the United Kingdom.
-               That is not a forecast. That is proof."
+              That is not a forecast. That is proof."
             </p>
           </div>
         </div>
@@ -511,7 +614,8 @@
       <div class="wrap">
         <div class="pricing-inner">
           <span class="overline" data-animate style="text-align:center;display:block;">Transparent engagement</span>
-          <h2 class="s-headline s-headline--centered" data-animate style="transition-delay:80ms">You know exactly what<br>you're getting into.</h2>
+          <h2 class="s-headline s-headline--centered" data-animate style="transition-delay:80ms">You know exactly
+            what<br>you're getting into.</h2>
           <p class="s-subhead s-subhead--centered" data-animate style="transition-delay:160ms">
             No hidden enterprise gates. No "contact us for pricing." Three phases, honest numbers.
           </p>
@@ -527,20 +631,27 @@
               </div>
               <ul class="pricing-card__bullets">
                 <li class="pricing-card__bullet">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                   Process mapping and bottleneck identification
                 </li>
                 <li class="pricing-card__bullet">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                   ROI quantification — cost of NOT automating
                 </li>
                 <li class="pricing-card__bullet">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                   Prioritised roadmap + fixed project quote
                 </li>
               </ul>
               <div class="pricing-card__cta">
-                <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="btn btn--outline" id="cta-discovery">Book a Discovery Call →</a>
+                <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo"
+                  class="btn btn--outline" id="cta-discovery">Book a Discovery Call →</a>
               </div>
             </article>
 
@@ -554,20 +665,27 @@
               </div>
               <ul class="pricing-card__bullets">
                 <li class="pricing-card__bullet">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                   Custom AI employees trained on your real data
                 </li>
                 <li class="pricing-card__bullet">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                   Quality-tested against a benchmark before going live
                 </li>
                 <li class="pricing-card__bullet">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                   Human-in-loop checkpoints at every stage
                 </li>
               </ul>
               <div class="pricing-card__cta">
-                <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="btn btn--accent-fill" id="cta-build">Book a Discovery Call →</a>
+                <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo"
+                  class="btn btn--accent-fill" id="cta-build">Book a Discovery Call →</a>
               </div>
             </article>
 
@@ -580,20 +698,27 @@
               </div>
               <ul class="pricing-card__bullets">
                 <li class="pricing-card__bullet">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                   Agents run your workflow daily
                 </li>
                 <li class="pricing-card__bullet">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                   Drift monitoring, continuous improvement
                 </li>
                 <li class="pricing-card__bullet">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                   Expand to the next process when ready
                 </li>
               </ul>
               <div class="pricing-card__cta">
-                <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="btn btn--outline" id="cta-retainer">Book a Discovery Call →</a>
+                <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo"
+                  class="btn btn--outline" id="cta-retainer">Book a Discovery Call →</a>
               </div>
             </article>
 
@@ -618,7 +743,8 @@
               <div class="why-row__num" aria-hidden="true">1</div>
               <div>
                 <h3 class="why-row__title">Full AI team</h3>
-                <p class="why-row__desc">Not a single-function tool. A complete executive team across every business function.</p>
+                <p class="why-row__desc">Not a single-function tool. A complete executive team across every business
+                  function.</p>
               </div>
             </div>
 
@@ -626,7 +752,8 @@
               <div class="why-row__num" aria-hidden="true">2</div>
               <div>
                 <h3 class="why-row__title">Verified reliability</h3>
-                <p class="why-row__desc">Every agent clears a quality benchmark before touching a live customer. We call it the eval gate — it's why our deployments don't fail silently.</p>
+                <p class="why-row__desc">Every agent clears a quality benchmark before touching a live customer. We call
+                  it the eval gate — it's why our deployments don't fail silently.</p>
               </div>
             </div>
 
@@ -634,7 +761,8 @@
               <div class="why-row__num" aria-hidden="true">3</div>
               <div>
                 <h3 class="why-row__title">Outcome pricing</h3>
-                <p class="why-row__desc">You pay for results, not software seats. Tickets resolved. Leads followed. Hours saved.</p>
+                <p class="why-row__desc">You pay for results, not software seats. Tickets resolved. Leads followed.
+                  Hours saved.</p>
               </div>
             </div>
 
@@ -642,7 +770,8 @@
               <div class="why-row__num" aria-hidden="true">4</div>
               <div>
                 <h3 class="why-row__title">Bangla and English, natively</h3>
-                <p class="why-row__desc">Built for South and Southeast Asian businesses. The first AI workforce company that works in your language and understands your market.</p>
+                <p class="why-row__desc">Built for South and Southeast Asian businesses. The first AI workforce company
+                  that works in your language and understands your market.</p>
               </div>
             </div>
 
@@ -674,7 +803,10 @@
           </p>
 
           <div class="vision-body">
-            <p>ReWoo started in Dhaka, Bangladesh, ten days ago. A student founder with a first-author research paper and a Kaggle Master rank. The first client was in the United Kingdom. The vision is to build the operating system for AI-run companies — starting where global players can't reach, and earning the right to expand everywhere.</p>
+            <p>ReWoo started in Dhaka, Bangladesh, ten days ago. A student founder with a first-author research paper
+              and a Kaggle Master rank. The first client was in the United Kingdom. The vision is to build the operating
+              system for AI-run companies — starting where global players can't reach, and earning the right to expand
+              everywhere.</p>
             <p>You set the vision. ReWoo runs the company.</p>
           </div>
 
@@ -692,22 +824,16 @@
         <div class="waitlist-inner">
           <h2 class="s-headline s-headline--centered" data-animate><em>Be among the first.</em></h2>
           <p class="s-subhead s-subhead--centered" data-animate style="transition-delay:80ms">
-            We take on a limited number of new engagements each month. Join the waitlist and we'll reach out within 48 hours.
+            We take on a limited number of new engagements each month. Join the waitlist and we'll reach out within 48
+            hours.
           </p>
 
           <div class="waitlist-form" data-animate style="transition-delay:160ms">
-            <form id="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate aria-label="Waitlist signup">
+            <form id="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate
+              aria-label="Waitlist signup">
               <label for="waitlist-email" class="sr-only">Your email address</label>
-              <input
-                type="email"
-                id="waitlist-email"
-                name="email"
-                class="waitlist-input"
-                placeholder="your@email.com"
-                autocomplete="email"
-                required
-                aria-required="true"
-              >
+              <input type="email" id="waitlist-email" name="email" class="waitlist-input" placeholder="your@email.com"
+                autocomplete="email" required aria-required="true">
               <button type="submit" class="waitlist-btn" id="waitlist-submit">Join the Waitlist →</button>
             </form>
 
@@ -754,16 +880,18 @@
       <div>
         <span class="footer__col-label">Connect</span>
         <div class="footer__social">
-          <a href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on LinkedIn" id="social-linkedin">
+          <a href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer"
+            aria-label="ReWoo on LinkedIn" id="social-linkedin">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-              <rect x="2" y="9" width="4" height="12"/>
-              <circle cx="4" cy="4" r="2"/>
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
             </svg>
           </a>
-          <a href="https://x.com/ReWootech8" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on X" id="social-twitter">
+          <a href="https://x.com/ReWootech8" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on X"
+            id="social-twitter">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 4l16 16M4 20L20 4" stroke-width="2"/>
+              <path d="M4 4l16 16M4 20L20 4" stroke-width="2" />
             </svg>
           </a>
         </div>
@@ -775,4 +903,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
