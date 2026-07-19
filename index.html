@@ -94,6 +94,20 @@
     .nav__orbit-link:hover {
       opacity: 0.8;
     }
+
+    .nav__tally-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #22C4A1;
+      transition: opacity 0.2s;
+    }
+
+    .nav__tally-link:hover {
+      opacity: 0.8;
+    }
   </style>
 
   <!-- Structured Data -->
@@ -197,6 +211,13 @@
             &nbsp;Orbit
           </a>
         </li>
+        <li>
+          <a href="tally.html" id="nl-tally" class="nav__tally-link">
+            <span class="nav__tally-dot" aria-hidden="true"
+              style="width:5px;height:5px;border-radius:50%;background:#22C4A1;display:inline-block;animation:pulse 2.6s ease-in-out infinite;"></span>
+            &nbsp;Tally
+          </a>
+        </li>
       </ul>
 
       <div class="nav__right">
@@ -226,6 +247,7 @@
     <a href="#pricing" id="mn-pricing">Pricing</a>
     <a href="forge.html" id="mn-forge" style="color:var(--accent);">✦ Try Forge — Free</a>
     <a href="orbit.html" id="mn-orbit" style="color:#3ECBAB;">◉ Orbit — Live view</a>
+    <a href="tally.html" id="mn-tally" style="color:#22C4A1;">◈ Tally — AI Bookkeeper</a>
     <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo"
       class="nav__cta" id="mn-cta">Book a Call</a>
   </div>
