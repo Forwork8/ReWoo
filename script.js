@@ -25,10 +25,6 @@
   'use strict';
 
   var root = document.documentElement;
-  var btn  = document.getElementById('theme-toggle');
-  var icon = document.getElementById('theme-icon');
-
-  if (!btn || !icon) return;
 
   var sunPath  = '<circle cx="12" cy="12" r="4"></circle>'
                + '<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4'
@@ -36,22 +32,59 @@
 
   var moonPath = '<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"></path>';
 
-  function syncTheme() {
-    var isDark = root.getAttribute('data-theme') === 'dark';
-    icon.innerHTML = isDark ? sunPath : moonPath;
-    btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-  }
-
-  syncTheme();
-
-  btn.addEventListener('click', function () {
+  function toggleTheme() {
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('rewoo-theme', next); } catch (e) {}
     syncTheme();
-  });
+  }
+
+  function syncTheme() {
+    var isDark = root.getAttribute('data-theme') === 'dark';
+    
+    // Header toggle
+    var icon = document.getElementById('theme-icon');
+    var btn = document.getElementById('theme-toggle');
+    if (icon) icon.innerHTML = isDark ? sunPath : moonPath;
+    if (btn) btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+
+    // Mobile drawer toggle
+    var mIcon = document.getElementById('mobile-theme-icon');
+    var mText = document.getElementById('mobile-theme-text');
+    var mBtn  = document.getElementById('mobile-theme-toggle');
+    if (mIcon) mIcon.innerHTML = isDark ? sunPath : moonPath;
+    if (mText) mText.textContent = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+    if (mBtn) mBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+
+  syncTheme();
+
+  var btn = document.getElementById('theme-toggle');
+  if (btn) btn.addEventListener('click', toggleTheme);
+
+  var mBtn = document.getElementById('mobile-theme-toggle');
+  if (mBtn) mBtn.addEventListener('click', toggleTheme);
 })();
 
+
+/* Dropdown Menu Toggle */
+(function() {
+  'use strict';
+  var wrap = document.querySelector('.nav__dropdown-wrap');
+  var btn = document.querySelector('.nav__dropdown-btn');
+  if (!wrap || !btn) return;
+
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    wrap.classList.toggle('is-open');
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!wrap.contains(e.target)) {
+      wrap.classList.remove('is-open');
+    }
+  });
+})();
 
 /* =============================================================================
    2. MOBILE MENU
@@ -63,28 +96,28 @@
   var mobileMenu = document.getElementById('mobile-menu');
   var overlay    = document.getElementById('nav-overlay');
 
-  if (!hamburger || !mobileMenu || !overlay) return;
+  if (!hamburger || !mobileMenu) return;
 
   function openMenu() {
     mobileMenu.classList.add('is-open');
-    overlay.classList.add('is-active');
+    if (overlay) overlay.classList.add('is-active');
     hamburger.setAttribute('aria-expanded', 'true');
     hamburger.setAttribute('aria-label', 'Close menu');
     document.body.style.overflow = 'hidden';
-    // Focus first link for accessibility
     var firstLink = mobileMenu.querySelector('a');
     if (firstLink) firstLink.focus();
   }
 
   function closeMenu() {
     mobileMenu.classList.remove('is-open');
-    overlay.classList.remove('is-active');
+    if (overlay) overlay.classList.remove('is-active');
     hamburger.setAttribute('aria-expanded', 'false');
     hamburger.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
   }
 
-  hamburger.addEventListener('click', function () {
+  hamburger.addEventListener('click', function (e) {
+    e.stopPropagation();
     if (hamburger.getAttribute('aria-expanded') === 'true') {
       closeMenu();
     } else {
@@ -92,7 +125,9 @@
     }
   });
 
-  overlay.addEventListener('click', closeMenu);
+  if (overlay) {
+    overlay.addEventListener('click', closeMenu);
+  }
 
   // Close on any link click inside the mobile menu
   var links = mobileMenu.querySelectorAll('a');

@@ -1155,6 +1155,13 @@
         timestamp: new Date().toISOString()
       };
 
+      // Store in localStorage for offline persistence and traction verification
+      try {
+        var existingSignups = JSON.parse(localStorage.getItem('forge_pilot_signups') || '[]');
+        existingSignups.push(payload);
+        localStorage.setItem('forge_pilot_signups', JSON.stringify(existingSignups));
+      } catch(e) {}
+
       // Submit to backend or fallback
       var endpoint = USE_MOCK ? null : (API_BASE + '/pilot-signup');
       if (USE_MOCK || !endpoint) {
@@ -1209,6 +1216,13 @@
       body: JSON.stringify({ idea: idea, market: market, language: lang })
     })
     .then(function(response) {
+      if (response.status === 429) {
+        // Spend cap / rate limit hit on server
+        showStep('step1');
+        var rateLimitMsg = document.getElementById('rate-limit-msg');
+        if (rateLimitMsg) rateLimitMsg.classList.add('is-visible');
+        return;
+      }
       if (!response.ok) throw new Error('API error: ' + response.status);
 
       // Read the streamed response
@@ -1243,7 +1257,7 @@
           read();
         }).catch(function(err) {
           console.error('[Forge] Stream error:', err);
-          // Fall back to mock if API fails
+          // Fall back to mock if API stream drops unexpectedly
           runMockGeneration(idea, market, lang);
         });
       }

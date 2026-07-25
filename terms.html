@@ -39,7 +39,43 @@
 
       <ul class="nav__links" aria-label="Site sections">
         <li><a href="index.html#how-it-works">How it works</a></li>
-        <li><a href="index.html#team">Our Team</a></li>
+        <li class="nav__dropdown-wrap">
+          <button class="nav__dropdown-btn" aria-expanded="false">
+            Products
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav__dropdown-menu" role="menu">
+            <a href="collections.html" class="dropdown-item">
+              <span class="dropdown-icon dropdown-icon--collections">⚡</span>
+              <div>
+                <span class="dropdown-title">Collections AI</span>
+                <span class="dropdown-desc">Recover overdue invoices via WhatsApp & Email</span>
+              </div>
+            </a>
+            <a href="tally.html" class="dropdown-item">
+              <span class="dropdown-icon dropdown-icon--tally">◈</span>
+              <div>
+                <span class="dropdown-title">Tally Bookkeeper</span>
+                <span class="dropdown-desc">Multi-rail ledger for bKash, Nagad, Cash & Bank</span>
+              </div>
+            </a>
+            <a href="forge.html" class="dropdown-item">
+              <span class="dropdown-icon dropdown-icon--forge">✦</span>
+              <div>
+                <span class="dropdown-title">Forge Builder</span>
+                <span class="dropdown-desc">Type an idea, watch a mobile business appear</span>
+              </div>
+            </a>
+            <a href="orbit.html" class="dropdown-item">
+              <span class="dropdown-icon dropdown-icon--orbit">◉</span>
+              <div>
+                <span class="dropdown-title">Orbit Operations</span>
+                <span class="dropdown-desc">Real-time L1–L4 execution & human safety</span>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li><a href="index.html#proof">Proof & Eval</a></li>
         <li><a href="index.html#pricing">Pricing</a></li>
       </ul>
 
@@ -61,10 +97,58 @@
 
   <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
   <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
-    <a href="index.html#how-it-works">How it works</a>
-    <a href="index.html#team">Our Team</a>
-    <a href="index.html#pricing">Pricing</a>
-    <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="nav__cta">Book a Discovery Call</a>
+    <div class="mobile-nav-inner">
+      <span class="mobile-section-label">AI Employees & Products</span>
+      <div class="mobile-card-list">
+        <a href="collections.html" class="mobile-card-item">
+          <span class="dropdown-icon dropdown-icon--collections">⚡</span>
+          <div>
+            <span class="mobile-card-title" style="color:#F59E0B;">Collections AI</span>
+            <span class="mobile-card-sub">Invoice Chasing ($300 Setup + $99/mo)</span>
+          </div>
+        </a>
+        <a href="tally.html" class="mobile-card-item">
+          <span class="dropdown-icon dropdown-icon--tally">◈</span>
+          <div>
+            <span class="mobile-card-title" style="color:#22C4A1;">Tally AI Bookkeeper</span>
+            <span class="mobile-card-sub">Multi-Rail Ledger & Cash Runway</span>
+          </div>
+        </a>
+        <a href="forge.html" class="mobile-card-item">
+          <span class="dropdown-icon dropdown-icon--forge">✦</span>
+          <div>
+            <span class="mobile-card-title" style="color:var(--accent);">Forge Builder</span>
+            <span class="mobile-card-sub">Free Mobile Storefront Demo</span>
+          </div>
+        </a>
+        <a href="orbit.html" class="mobile-card-item">
+          <span class="dropdown-icon dropdown-icon--orbit">◉</span>
+          <div>
+            <span class="mobile-card-title" style="color:#3ECBAB;">Orbit Operations</span>
+            <span class="mobile-card-sub">Real-Time Task Execution Logs</span>
+          </div>
+        </a>
+      </div>
+
+      <span class="mobile-section-label">Company</span>
+      <div class="mobile-link-list">
+        <a href="index.html" class="mobile-link-item">Home</a>
+        <a href="index.html#proof" class="mobile-link-item">Proof & Eval Ledger</a>
+        <a href="index.html#pricing" class="mobile-link-item">Pricing</a>
+      </div>
+
+      <div class="mobile-theme-row">
+        <button class="mobile-theme-btn" id="mobile-theme-toggle" aria-label="Toggle theme">
+          <svg class="mobile-theme-icon" id="mobile-theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
+          <span id="mobile-theme-text">Switch to Light Mode</span>
+        </button>
+      </div>
+
+      <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="nav__cta" id="mn-cta">Book a Discovery Call →</a>
+    </div>
   </div>
 
   <main id="main-content">
