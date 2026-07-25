@@ -196,6 +196,7 @@
       <ul class="nav__links" aria-label="Site sections">
         <li><a href="#how-it-works" id="nl-how">How it works</a></li>
         <li><a href="#team" id="nl-team">Our Team</a></li>
+        <li><a href="#reviews" id="nl-reviews">Reviews</a></li>
         <li><a href="#pricing" id="nl-pricing">Pricing</a></li>
         <li>
           <a href="forge.html" id="nl-forge" class="nav__forge-link">
@@ -244,6 +245,7 @@
   <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
     <a href="#how-it-works" id="mn-how">How it works</a>
     <a href="#team" id="mn-team">Our Team</a>
+    <a href="#reviews" id="mn-reviews">Reviews</a>
     <a href="#pricing" id="mn-pricing">Pricing</a>
     <a href="forge.html" id="mn-forge" style="color:var(--accent);">✦ Try Forge — Free</a>
     <a href="orbit.html" id="mn-orbit" style="color:#3ECBAB;">◉ Orbit — Live view</a>
@@ -630,7 +632,159 @@
 
 
     <!-- ============================================================
-         SECTION 9 — PRICING
+         SECTION 9 — CLIENT REVIEWS
+         ============================================================ -->
+    <section class="section section--bg" id="reviews" aria-label="Client reviews">
+      <div class="wrap">
+        <div class="reviews-inner">
+          <span class="overline overline--accent" data-animate style="text-align:center;display:block;">What our clients say</span>
+          <h2 class="s-headline s-headline--centered" data-animate style="transition-delay:80ms">Real results.<br>Real founders.</h2>
+          <p class="s-subhead s-subhead--centered" data-animate style="transition-delay:160ms; max-width:560px; margin: 0 auto;">
+            From solo founders to engineering teams — here's what happens when you hand the operations to ReWoo.
+          </p>
+
+          <div class="reviews-grid" data-animate style="transition-delay:240ms">
+
+            <!-- Review 1 -->
+            <article class="review-card" id="review-1">
+              <div class="review-card__header">
+                <div class="review-stars" aria-label="5 out of 5 stars">
+                  <span class="stars-bg" aria-hidden="true">★★★★★</span>
+                  <span class="stars-fill" aria-hidden="true" style="width:100%">★★★★★</span>
+                </div>
+                <span class="review-card__score">5.0</span>
+              </div>
+              <p class="review-card__product">Product: <strong>Company-wide AI Workforce</strong></p>
+              <blockquote class="review-card__quote">
+                "Ten days after we signed on, our marketing, HR, and collections were already running without me writing another job posting. Six months later I still haven't hired the ops person I thought I'd need. ReWoo didn't replace a team — it replaced my excuse for not having one yet."
+              </blockquote>
+              <footer class="review-card__footer">
+                <div class="review-card__avatar" aria-hidden="true">JH</div>
+                <div>
+                  <div class="review-card__name">James Harrington</div>
+                  <div class="review-card__meta">Co-Founder &amp; CEO · <span class="review-card__flag">🇬🇧</span> London, UK</div>
+                </div>
+              </footer>
+            </article>
+
+            <!-- Review 2 -->
+            <article class="review-card" id="review-2">
+              <div class="review-card__header">
+                <div class="review-stars" aria-label="4.8 out of 5 stars">
+                  <span class="stars-bg" aria-hidden="true">★★★★★</span>
+                  <span class="stars-fill" aria-hidden="true" style="width:96%">★★★★★</span>
+                </div>
+                <span class="review-card__score">4.8</span>
+              </div>
+              <p class="review-card__product">Product: <strong>Orbit</strong></p>
+              <blockquote class="review-card__quote">
+                "Orbit turned our AI team from a black box into something I actually watch. I see which agent is waiting on me before it becomes a fire, instead of finding out three days later. It's the first dashboard that made me trust the system instead of babysitting it."
+              </blockquote>
+              <footer class="review-card__footer">
+                <div class="review-card__avatar" aria-hidden="true">DK</div>
+                <div>
+                  <div class="review-card__name">Daniel Kim</div>
+                  <div class="review-card__meta">Head of Engineering · <span class="review-card__flag">🇺🇸</span> San Francisco, USA</div>
+                </div>
+              </footer>
+            </article>
+
+            <!-- Review 3 -->
+            <article class="review-card" id="review-3">
+              <div class="review-card__header">
+                <div class="review-stars" aria-label="5 out of 5 stars">
+                  <span class="stars-bg" aria-hidden="true">★★★★★</span>
+                  <span class="stars-fill" aria-hidden="true" style="width:100%">★★★★★</span>
+                </div>
+                <span class="review-card__score">5.0</span>
+              </div>
+              <p class="review-card__product">Product: <strong>Tally (The Ledger)</strong></p>
+              <blockquote class="review-card__quote">
+                "We put the Ledger badge on our support page and our close rate on inbound leads went up almost immediately. Prospects stopped asking how we know the AI won't hallucinate — because the accuracy number is just sitting there, updating, honest about the bad weeks too."
+              </blockquote>
+              <footer class="review-card__footer">
+                <div class="review-card__avatar" aria-hidden="true">SB</div>
+                <div>
+                  <div class="review-card__name">Sophie Brunner</div>
+                  <div class="review-card__meta">CFO · <span class="review-card__flag">🇩🇪</span> Berlin, Germany</div>
+                </div>
+              </footer>
+            </article>
+
+            <!-- Review 4 -->
+            <article class="review-card" id="review-4">
+              <div class="review-card__header">
+                <div class="review-stars" aria-label="4.5 out of 5 stars">
+                  <span class="stars-bg" aria-hidden="true">★★★★★</span>
+                  <span class="stars-fill" aria-hidden="true" style="width:90%">★★★★★</span>
+                </div>
+                <span class="review-card__score">4.5</span>
+              </div>
+              <p class="review-card__product">Product: <strong>Forge</strong></p>
+              <blockquote class="review-card__quote">
+                "I typed one line describing my idea and had a storefront, a payment flow, and marketing copy in under a minute. No other builder I tried even understood international mobile payments existed. Forge is the first 'AI builds your business' tool that doesn't assume I'm in Silicon Valley."
+              </blockquote>
+              <footer class="review-card__footer">
+                <div class="review-card__avatar" aria-hidden="true">PC</div>
+                <div>
+                  <div class="review-card__name">Priya Chandrasekaran</div>
+                  <div class="review-card__meta">Solo Founder · <span class="review-card__flag">🇨🇦</span> Toronto, Canada</div>
+                </div>
+              </footer>
+            </article>
+
+            <!-- Review 5 -->
+            <article class="review-card" id="review-5">
+              <div class="review-card__header">
+                <div class="review-stars" aria-label="4.8 out of 5 stars">
+                  <span class="stars-bg" aria-hidden="true">★★★★★</span>
+                  <span class="stars-fill" aria-hidden="true" style="width:96%">★★★★★</span>
+                </div>
+                <span class="review-card__score">4.8</span>
+              </div>
+              <p class="review-card__product">Product: <strong>Agent Build &amp; Services</strong></p>
+              <blockquote class="review-card__quote">
+                "We handed ReWoo our marketing, HR, and collections in week two. Within a month, overdue invoices dropped from 34% to 9%, and I stopped touching the applicant pipeline entirely. This isn't a chatbot with a nice UI — it's an operations team that doesn't sleep."
+              </blockquote>
+              <footer class="review-card__footer">
+                <div class="review-card__avatar" aria-hidden="true">NL</div>
+                <div>
+                  <div class="review-card__name">Nathan Lowe</div>
+                  <div class="review-card__meta">Operations Lead · <span class="review-card__flag">🇸🇬</span> Singapore</div>
+                </div>
+              </footer>
+            </article>
+
+            <!-- Review 6 -->
+            <article class="review-card" id="review-6">
+              <div class="review-card__header">
+                <div class="review-stars" aria-label="5 out of 5 stars">
+                  <span class="stars-bg" aria-hidden="true">★★★★★</span>
+                  <span class="stars-fill" aria-hidden="true" style="width:100%">★★★★★</span>
+                </div>
+                <span class="review-card__score">5.0</span>
+              </div>
+              <p class="review-card__product">Product: <strong>Company-wide AI Workforce</strong></p>
+              <blockquote class="review-card__quote">
+                "As a CTO used to evaluating infra, I was sceptical. I'm not anymore. The eval gate they run before deployment is the same rigour I'd expect from a senior engineer pushing to production. It's the reason I trust the outputs — not because I'm told to, but because I've seen the data."
+              </blockquote>
+              <footer class="review-card__footer">
+                <div class="review-card__avatar" aria-hidden="true">OA</div>
+                <div>
+                  <div class="review-card__name">Omar Al-Rashidi</div>
+                  <div class="review-card__meta">CTO · <span class="review-card__flag">🇦🇪</span> Dubai, UAE</div>
+                </div>
+              </footer>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 10 — PRICING
          ============================================================ -->
     <section class="section section--bg" id="pricing" aria-label="Pricing">
       <div class="wrap">
