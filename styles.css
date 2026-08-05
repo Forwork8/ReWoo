@@ -381,6 +381,12 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   border: 1px solid rgba(62, 203, 171, 0.3);
 }
 
+.dropdown-icon--research {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
 .dropdown-title {
   font-size: 0.88rem;
   font-weight: 600;

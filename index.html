@@ -108,6 +108,22 @@
     .nav__tally-link:hover {
       opacity: 0.8;
     }
+
+    .nav__research-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #10B981;
+      transition: opacity 0.2s;
+    }
+
+    .nav__research-link:hover {
+      opacity: 0.8;
+    }
+
+    .dropdown-icon--research { color: #10B981; }
   </style>
 
   <!-- Structured Data -->
@@ -229,6 +245,13 @@
                 <span class="dropdown-desc">Real-time L1–L4 execution & human approval safety</span>
               </div>
             </a>
+            <a href="research-officer.html" class="dropdown-item">
+              <span class="dropdown-icon dropdown-icon--research">◎</span>
+              <div>
+                <span class="dropdown-title">Research Officer <span style="font-size:0.65rem;padding:1px 5px;background:rgba(16,185,129,0.2);color:#10B981;border-radius:4px;font-weight:700;">NEW</span></span>
+                <span class="dropdown-desc">Turn your Jupyter Notebook into a citation-grounded paper</span>
+              </div>
+            </a>
           </div>
         </li>
         <li><a href="#proof" id="nl-proof">Proof & Eval</a></li>
@@ -286,6 +309,13 @@
           <div>
             <span class="mobile-card-title" style="color:#3ECBAB;">Orbit Operations</span>
             <span class="mobile-card-sub">Real-Time Task Execution Logs</span>
+          </div>
+        </a>
+        <a href="research-officer.html" class="mobile-card-item">
+          <span class="dropdown-icon dropdown-icon--research">◎</span>
+          <div>
+            <span class="mobile-card-title" style="color:#10B981;">Research Officer</span>
+            <span class="mobile-card-sub">Notebook → Citation-Grounded Paper</span>
           </div>
         </a>
       </div>
