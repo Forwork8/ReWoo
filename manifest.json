@@ -1,10 +1,10 @@
 {
-  "name": "ReWoo — Build the billion-dollar company. Alone.",
+  "name": "ReWoo — AI Workforce & Compliance Systems",
   "short_name": "ReWoo",
-  "description": "A complete autonomous AI executive team. One founder. An entire company, run by agents.",
+  "description": "Custom AI systems, agentic workflows, and the compliance operating system for modern business.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0A0A0B",
+  "background_color": "#000000",
   "theme_color": "#6E97FF",
   "icons": [
     {

@@ -21,7 +21,7 @@
   --dim-2:     #6E6E73;
   --accent:    #6E97FF;
   --accent-2:  #A8C4FF;
-  --glow:      var(--glow);
+  --glow:      rgba(110, 151, 255, 0.15);
   --line:      rgba(255,255,255,0.08);
   --line-2:    rgba(255,255,255,0.05);
 

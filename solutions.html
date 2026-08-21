@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Systems for Business — ReWoo</title>
+  <meta name="description" content="Custom AI agents and agentic workflows built around your business knowledge, processes, and goals. Real AI systems for real business problems.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rewoo.tech/solutions">
+  <meta property="og:title" content="AI Systems for Business — ReWoo">
+  <meta property="og:description" content="Custom AI agents and workflows built around your company knowledge and goals.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rewoo.tech/solutions">
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  <link rel="apple-touch-icon" href="assets/logo.jpg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,200..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="solutions.css">
+  <script>
+    (function(){
+      try{
+        var t = localStorage.getItem('rewoo-theme');
+        if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch(e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- ============================================================ NAV -->
+  <nav class="nav" id="site-nav" aria-label="Primary navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="ReWoo Home" id="nav-logo">
+        <img src="assets/logo.jpg" alt="ReWoo" class="nav__logo-img" width="28" height="28">
+        <span class="nav__wordmark">ReWoo</span>
+      </a>
+      <ul class="nav__links" aria-label="Site sections">
+        <li><a href="index.html#how-it-works" id="nl-how">How it works</a></li>
+        <li><a href="solutions.html" id="nl-solutions" style="color:var(--text);">AI Systems</a></li>
+        <li><a href="index.html#proof" id="nl-proof">Proof &amp; Eval</a></li>
+        <li><a href="index.html#pricing" id="nl-pricing">Pricing</a></li>
+      </ul>
+      <div class="nav__right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
+          <svg id="theme-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
+        </button>
+        <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="nav__cta" id="nav-cta">Book a Call</a>
+      </div>
+      <button class="nav__hamburger" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
+  <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+    <div class="mobile-nav-inner">
+      <span class="mobile-section-label">Navigation</span>
+      <div class="mobile-link-list">
+        <a href="index.html#how-it-works" class="mobile-link-item">How it works</a>
+        <a href="solutions.html" class="mobile-link-item">AI Systems</a>
+        <a href="index.html#proof" class="mobile-link-item">Proof &amp; Eval</a>
+        <a href="index.html#pricing" class="mobile-link-item">Pricing</a>
+      </div>
+      <div class="mobile-theme-row">
+        <button class="mobile-theme-btn" id="mobile-theme-toggle" aria-label="Toggle theme">
+          <svg class="mobile-theme-icon" id="mobile-theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
+          <span id="mobile-theme-text">Switch to Light Mode</span>
+        </button>
+      </div>
+      <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="nav__cta" id="mn-cta">Book a Discovery Call</a>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ============================================================ HERO -->
+    <section class="sys-hero" id="top" aria-label="AI Systems hero">
+      <div class="sys-hero__bg" aria-hidden="true"></div>
+      <div class="wrap sys-hero__inner">
+        <span class="hero__eyebrow">
+          <span class="hero__eyebrow-dot"></span>
+          Custom AI Systems
+        </span>
+        <h1 class="sys-hero__h1">
+          AI built around<br>
+          <em>your business.</em>
+        </h1>
+        <p class="sys-hero__sub">
+          We design and build custom AI agents and agentic workflows that understand your company,
+          your knowledge, your processes, and your goals. Not generic tools. Real AI systems for
+          real business problems.
+        </p>
+        <div class="hero__cta-row">
+          <a href="#ai-systems" class="btn btn--primary" id="hero-explore">Explore AI Systems &darr;</a>
+          <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="btn btn--ghost" id="hero-call">Book a Discovery Call &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ PHILOSOPHY STRIP -->
+    <div class="sys-strip" role="region" aria-label="How our AI works">
+      <div class="wrap sys-strip__inner">
+        <div class="sys-strip__block">
+          <span class="sys-strip__icon" aria-hidden="true">&#9672;</span>
+          <div>
+            <div class="sys-strip__title">Your Company Knowledge</div>
+            <div class="sys-strip__sub">Docs, processes, products, data</div>
+          </div>
+        </div>
+        <div class="sys-strip__arrow" aria-hidden="true">&rarr;</div>
+        <div class="sys-strip__block">
+          <span class="sys-strip__icon" aria-hidden="true">&#9678;</span>
+          <div>
+            <div class="sys-strip__title">Custom AI Agents</div>
+            <div class="sys-strip__sub">Connected to your systems &amp; knowledge</div>
+          </div>
+        </div>
+        <div class="sys-strip__arrow" aria-hidden="true">&rarr;</div>
+        <div class="sys-strip__block">
+          <span class="sys-strip__icon" aria-hidden="true">&#9889;</span>
+          <div>
+            <div class="sys-strip__title">Real Business Outcomes</div>
+            <div class="sys-strip__sub">Less manual work. Faster decisions.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ AI SYSTEMS SECTION -->
+    <section class="section section--bg sys-section" id="ai-systems" aria-label="AI Systems we build">
+      <div class="wrap">
+        <div class="sys-section__head">
+          <div>
+            <span class="overline overline--accent" data-animate>What we build</span>
+            <h2 class="s-headline" data-animate style="transition-delay:80ms">
+              Eight AI systems.<br>
+              <em>Built for real business problems.</em>
+            </h2>
+          </div>
+          <p class="s-subhead" data-animate style="transition-delay:160ms;max-width:380px">
+            Each system is custom-built around your business, trained on your knowledge, and connected to your tools.
+          </p>
+        </div>
+
+        <!-- Product Navigator — rendered by JS -->
+        <div class="sys-nav" id="sys-nav" data-animate style="transition-delay:260ms">
+          <div class="sys-nav__tabs" id="sys-nav-tabs" role="tablist" aria-label="AI Systems"></div>
+          <div class="sys-nav__panel" id="sys-nav-panel" role="tabpanel" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ KNOWLEDGE BASE SECTION -->
+    <section class="section section--surface sys-kb" id="knowledge-base" aria-label="Company Knowledge Base">
+      <div class="wrap sys-kb__inner">
+        <div class="sys-kb__text">
+          <span class="overline" data-animate>The foundation of every AI system</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">
+            Your knowledge<br>
+            <em>powers every agent.</em>
+          </h2>
+          <p class="s-body" data-animate style="transition-delay:160ms">
+            Every AI system we build is connected to your company&rsquo;s knowledge base.
+            Your agents understand your business deeply &mdash; not just a generic prompt.
+            The more knowledge you share, the smarter and more accurate your AI becomes.
+          </p>
+          <div class="sys-kb__sources" data-animate style="transition-delay:240ms">
+            <div class="sys-kb__source">
+              <span class="sys-kb__source-dot"></span>
+              Internal documents &amp; wikis
+            </div>
+            <div class="sys-kb__source">
+              <span class="sys-kb__source-dot"></span>
+              Product &amp; service information
+            </div>
+            <div class="sys-kb__source">
+              <span class="sys-kb__source-dot"></span>
+              Standard operating procedures
+            </div>
+            <div class="sys-kb__source">
+              <span class="sys-kb__source-dot"></span>
+              Customer data &amp; FAQs
+            </div>
+            <div class="sys-kb__source">
+              <span class="sys-kb__source-dot"></span>
+              Brand guidelines &amp; tone of voice
+            </div>
+            <div class="sys-kb__source">
+              <span class="sys-kb__source-dot"></span>
+              Research &amp; competitive intelligence
+            </div>
+          </div>
+        </div>
+        <div class="sys-kb__visual" data-animate style="transition-delay:320ms" aria-hidden="true">
+          <div class="sys-kb__diagram" id="kb-diagram">
+            <!-- JS renders the knowledge diagram -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CTA SECTION -->
+    <section class="section section--bg sys-cta" id="start" aria-label="Get started">
+      <div class="wrap sys-cta__inner">
+        <span class="overline overline--accent" data-animate>Ready to build your AI system?</span>
+        <h2 class="s-headline" data-animate style="transition-delay:80ms;max-width:660px">
+          Start with a<br>
+          <em>Discovery Audit.</em>
+        </h2>
+        <p class="s-body" data-animate style="transition-delay:160ms">
+          We map your workflows, understand your knowledge, and design the right AI system
+          for your specific business. First engagement: $150&ndash;350. Includes a full AI
+          readiness audit and a prioritised implementation roadmap.
+        </p>
+        <div class="sys-cta__steps" data-animate style="transition-delay:240ms">
+          <div class="sys-cta__step">
+            <div class="sys-cta__step-num">01</div>
+            <div class="sys-cta__step-text">Discovery &amp; audit</div>
+          </div>
+          <div class="sys-cta__step-line"></div>
+          <div class="sys-cta__step">
+            <div class="sys-cta__step-num">02</div>
+            <div class="sys-cta__step-text">AI system design</div>
+          </div>
+          <div class="sys-cta__step-line"></div>
+          <div class="sys-cta__step">
+            <div class="sys-cta__step-num">03</div>
+            <div class="sys-cta__step-text">Build &amp; deploy</div>
+          </div>
+          <div class="sys-cta__step-line"></div>
+          <div class="sys-cta__step">
+            <div class="sys-cta__step-num">04</div>
+            <div class="sys-cta__step-text">Ongoing optimisation</div>
+          </div>
+        </div>
+        <div class="hero__cta-row" data-animate style="transition-delay:320ms;justify-content:flex-start">
+          <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="btn btn--primary" id="cta-discovery">Book a Discovery Call &rarr;</a>
+          <a href="index.html#pricing" class="btn btn--ghost" id="cta-pricing">See pricing &darr;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="footer__inner">
+      <div>
+        <a href="index.html" class="footer__logo" aria-label="ReWoo Home">
+          <img src="assets/logo.jpg" alt="ReWoo" class="footer__logo-img" width="22" height="22">
+          <span class="footer__wordmark">ReWoo</span>
+        </a>
+        <p class="footer__copy">&copy; 2026 ReWoo. Dhaka, Bangladesh.</p>
+        <a href="mailto:adilshamim696@gmail.com" class="footer__email">adilshamim696@gmail.com</a>
+      </div>
+      <div>
+        <span class="footer__col-label">AI Systems</span>
+        <ul class="footer__links" id="footer-systems-list"></ul>
+      </div>
+      <div>
+        <span class="footer__col-label">Company</span>
+        <ul class="footer__links">
+          <li><a href="index.html#how-it-works">How it works</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer__col-label">Connect</span>
+        <div class="footer__social">
+          <a href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on LinkedIn" id="social-linkedin">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="https://x.com/ReWootech8" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on X" id="social-twitter">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4l16 16M4 20L20 4" stroke-width="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">Built by ReWoo &middot; Custom AI systems for any business.</div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="solutions.js"></script>
+</body>
+</html>
