@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In — Order Desk Pro</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="icon" type="image/jpeg" href="../assets/logo.jpg"/>
+  <link rel="stylesheet" href="app.css"/>
+  <style>
+    .auth-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .apple-auth-box {
+      width: 100%;
+      max-width: 420px;
+      background: #ffffff;
+      border: 1px solid var(--b-border);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem 2.5rem;
+      box-shadow: var(--shadow-lg);
+    }
+  </style>
+</head>
+<body x-data="authApp()" x-init="init()">
+<div class="page-bg" aria-hidden="true"></div>
+
+<div class="auth-container">
+  <div class="apple-auth-box">
+
+    <!-- Logo & Brand -->
+    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;">
+      <img src="../assets/logo.jpg" alt="ReWoo" style="width:34px;height:34px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.12);"/>
+      <div>
+        <div style="font-weight:800;font-size:1.1rem;letter-spacing:-0.03em;color:var(--text-main);">ReWoo</div>
+        <div style="font-size:0.72rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Order Desk Pro</div>
+      </div>
+    </div>
+
+    <!-- Error Banner -->
+    <div x-show="errorMsg" style="background:var(--status-red-g);color:var(--status-red);border:1px solid rgba(255,59,48,0.2);padding:0.6rem 0.85rem;border-radius:var(--radius-sm);font-size:0.8rem;margin-bottom:1.25rem;" x-text="errorMsg"></div>
+
+    <!-- Sign In View -->
+    <div x-show="view === 'login'">
+      <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.35rem;">Sign In</h2>
+      <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1.75rem;">Access your factory costing models and cloud quotes.</p>
+
+      <form @submit.prevent="login">
+        <div class="form-group">
+          <label class="form-label">Work Email</label>
+          <input class="form-input" type="email" x-model="email" placeholder="you@factory.com" required/>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label class="form-label">Password</label>
+          <input class="form-input" type="password" x-model="password" placeholder="••••••••" required/>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;" :disabled="loading">
+          <span x-show="!loading">Continue with Email →</span>
+          <span x-show="loading">Authenticating...</span>
+        </button>
+      </form>
+
+      <div style="text-align:center;margin-top:1.5rem;font-size:0.82rem;color:var(--text-sub);">
+        New factory team? 
+        <button @click="view='signup';errorMsg=''" style="background:none;border:none;color:var(--accent-apple);font-weight:700;cursor:pointer;">Create workspace</button>
+      </div>
+    </div>
+
+    <!-- Sign Up View -->
+    <div x-show="view === 'signup'">
+      <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.35rem;">Create Workspace</h2>
+      <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1.75rem;">Deploy a dedicated garment costing cloud instance.</p>
+
+      <form @submit.prevent="signup">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input class="form-input" type="text" x-model="fullName" placeholder="Adil Shamim" required/>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Factory / Company Name</label>
+          <input class="form-input" type="text" x-model="companyName" placeholder="e.g. Apex Garments Ltd." required/>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Work Email</label>
+          <input class="form-input" type="email" x-model="email" placeholder="you@factory.com" required/>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label class="form-label">Password (min 8 chars)</label>
+          <input class="form-input" type="password" x-model="password" placeholder="••••••••" minlength="8" required/>
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-lg" style="width:100%;" :disabled="loading">
+          <span x-show="!loading">Create Workspace →</span>
+          <span x-show="loading">Deploying...</span>
+        </button>
+      </form>
+
+      <div style="text-align:center;margin-top:1.5rem;font-size:0.82rem;color:var(--text-sub);">
+        Already registered? 
+        <button @click="view='login';errorMsg=''" style="background:none;border:none;color:var(--accent-apple);font-weight:700;cursor:pointer;">Sign in</button>
+      </div>
+    </div>
+
+    <!-- Back to ReWoo -->
+    <div style="text-align:center;margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--b-border);">
+      <a href="../index.html" style="font-size:0.75rem;color:var(--text-muted);text-decoration:none;">← Back to ReWoo.tech Home</a>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script src="supabase.js"></script>
+
+<script>
+function authApp() {
+  return {
+    view: 'login',
+    email: '',
+    password: '',
+    fullName: '',
+    companyName: '',
+    loading: false,
+    errorMsg: '',
+
+    async init() {
+      const s = await OD.getSession();
+      if (s) window.location.href = 'dashboard.html';
+    },
+
+    async login() {
+      this.loading = true;
+      this.errorMsg = '';
+      try {
+        await OD.Auth.signIn(this.email, this.password);
+        window.location.href = 'dashboard.html';
+      } catch (e) {
+        this.errorMsg = e.message || 'Invalid credentials.';
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    async signup() {
+      this.loading = true;
+      this.errorMsg = '';
+      try {
+        const meta = { full_name: this.fullName, company: this.companyName };
+        const session = await OD.Auth.signUp(this.email, this.password, meta);
+        const uid = session?.user?.id;
+        const slug = (this.companyName||'factory').toLowerCase().replace(/[^a-z0-9]/g, '-') + '-' + uid.slice(-6);
+        await OD.OrgsAPI.create(this.companyName || 'My Factory', slug, uid);
+        window.location.href = 'dashboard.html';
+      } catch (e) {
+        this.errorMsg = e.message || 'Error creating workspace.';
+      } finally {
+        this.loading = false;
+      }
+    }
+  };
+}
+</script>
+</body>
+</html>

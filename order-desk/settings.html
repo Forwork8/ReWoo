@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Workspace Settings — Order Desk</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="icon" type="image/jpeg" href="../assets/logo.jpg"/>
+  <link rel="stylesheet" href="app.css"/>
+</head>
+<body x-data="settingsApp()" x-init="init()">
+<div class="page-bg" aria-hidden="true"></div>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<!-- ══ TOP NAV ══ -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav__logo">
+    <img src="../assets/logo.jpg" alt="ReWoo"/>
+    <span>ReWoo</span>
+    <span class="sep">/</span>
+    <span class="product">Order Desk</span>
+  </a>
+  <div class="top-nav__spacer"></div>
+  <div class="top-nav__user">
+    <a href="dashboard.html" class="btn btn-ghost btn-sm">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Dashboard
+    </a>
+    <div class="user-avatar" x-text="initials" title="Account"></div>
+    <button class="btn btn-ghost btn-sm" @click="signOut" id="signout-btn">Sign out</button>
+  </div>
+</nav>
+
+<!-- ══ LAYOUT ══ -->
+<div class="app-layout">
+  <!-- Sidebar -->
+  <aside class="app-sidebar">
+    <span class="sidebar-label">Navigation</span>
+    <a class="sidebar-link" href="dashboard.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Dashboard
+    </a>
+    <a class="sidebar-link" href="order.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Costing Engine
+    </a>
+    <span class="sidebar-label">Workspace</span>
+    <a class="sidebar-link active" href="settings.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Settings
+    </a>
+  </aside>
+
+  <!-- ══ MAIN ══ -->
+  <main class="app-main" id="main-content">
+    <div class="loading-page" x-show="loading">
+      <div class="spinner spinner-lg"></div>
+      <p>Loading Workspace Preferences...</p>
+    </div>
+
+    <template x-if="!loading">
+      <div class="anim-up">
+        <!-- Page Header -->
+        <div class="page-header">
+          <div class="page-header__title">
+            <h1>Workspace Settings</h1>
+            <p x-text="`${currentOrg?.organisations?.name || 'My Factory'} · Multi-Tenant Cloud Architecture`"></p>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="tab-row">
+          <button class="tab-btn" :class="{active: tab === 'general'}" @click="tab = 'general'">General</button>
+          <button class="tab-btn" :class="{active: tab === 'members'}" @click="tab = 'members'">
+            Team Members
+            <span style="margin-left:0.4rem;background:var(--c-violet-g);color:var(--c-violet-l);padding:0.05rem 0.45rem;border-radius:99px;font-size:0.65rem;" x-text="members.length"></span>
+          </button>
+          <button class="tab-btn" :class="{active: tab === 'database'}" @click="tab = 'database'">Cloud &amp; Database</button>
+          <button class="tab-btn" :class="{active: tab === 'danger'}" @click="tab = 'danger'" style="color:var(--c-rose-l);">Danger Zone</button>
+        </div>
+
+        <!-- ── TAB 1: GENERAL ── -->
+        <div x-show="tab === 'general'" class="anim-up">
+          <div class="card" style="max-width:580px;">
+            <div class="card-section-label">General Organization Identity</div>
+            <form @submit.prevent="saveOrg">
+              <div class="form-group">
+                <label class="form-label" for="org-name">Workspace / Factory Name</label>
+                <input class="form-input" id="org-name" type="text" x-model="editOrg.name" required/>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="org-slug">Unique Workspace Slug</label>
+                <input class="form-input input-mono" id="org-slug" type="text" x-model="editOrg.slug" required/>
+                <span class="form-hint">Used for tenant isolation and team routing.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Subscription Tier</label>
+                <div style="display:flex;align-items:center;gap:0.75rem;margin-top:0.25rem;">
+                  <span class="badge badge-quoted" x-text="currentOrg?.organisations?.plan || 'Enterprise Free'"></span>
+                  <span style="font-size:0.75rem;color:var(--c-muted);">Unlimited costing sheets &amp; AI co-pilot active.</span>
+                </div>
+              </div>
+
+              <div style="margin-top:1.5rem;">
+                <button type="submit" class="btn btn-primary" :disabled="savingOrg">
+                  <span x-show="!savingOrg">Save Workspace</span>
+                  <span x-show="savingOrg">Saving...</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- ── TAB 2: TEAM MEMBERS ── -->
+        <div x-show="tab === 'members'" class="anim-up">
+          <!-- Invite Member Box -->
+          <div class="card" style="max-width:680px;margin-bottom:1.5rem;">
+            <div class="card-section-label">Invite Merchandiser / Costing Officer</div>
+            <form @submit.prevent="inviteMember" style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <div class="form-group" style="flex:2;min-width:240px;margin:0;">
+                <input class="form-input" type="email" x-model="inviteEmail" placeholder="merchandiser@factory.com" required/>
+              </div>
+              <div class="form-group" style="margin:0;">
+                <select class="form-select" x-model="inviteRole">
+                  <option value="member">Merchandiser (Edit)</option>
+                  <option value="viewer">Viewer (Read-only)</option>
+                  <option value="admin">Administrator</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary" :disabled="inviting" style="margin:0;">
+                <span x-show="!inviting">Send Invite</span>
+                <span x-show="inviting">Inviting...</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Members Table -->
+          <div class="table-wrap" style="max-width:680px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Team Member</th>
+                  <th>Role</th>
+                  <th>Access</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <template x-for="m in members" :key="m.id">
+                  <tr>
+                    <td class="td-primary" x-text="m.invited_email || m.user_id || 'Active User'"></td>
+                    <td><span class="badge" :class="`badge-${m.role}`" x-text="m.role"></span></td>
+                    <td style="font-size:0.75rem;color:var(--c-emerald-l);">✓ Authorized</td>
+                    <td>
+                      <template x-if="m.user_id !== userId">
+                        <button class="btn btn-danger btn-sm" @click="removeMember(m.id)">Remove</button>
+                      </template>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── TAB 3: CLOUD DATABASE SETUP ── -->
+        <div x-show="tab === 'database'" class="anim-up">
+          <div class="card" style="max-width:680px;">
+            <div class="card-section-label">Supabase Cloud Sync</div>
+            <p style="margin-bottom:1.25rem;">Order Desk runs seamlessly on <strong>Browser Demo Engine</strong> out-of-the-box or syncs with a dedicated <strong>Supabase Enterprise Cluster</strong>.</p>
+
+            <div style="background:var(--c-card-2);border:1px solid var(--c-border-2);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;">
+              <div style="font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;color:var(--c-text);">Database Schema Ready</div>
+              <p style="font-size:0.78rem;color:var(--c-muted);margin-bottom:1rem;">All relational tables (<code>organisations</code>, <code>org_members</code>, <code>orders</code>) with Row-Level Security (RLS) policies are scripted in <code>schema.sql</code>.</p>
+              <div style="display:flex;gap:0.75rem;">
+                <span class="badge badge-shipped">Schema v2.0 Ready</span>
+                <span class="badge badge-quoted">Row-Level Security (RLS)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB 4: DANGER ZONE ── -->
+        <div x-show="tab === 'danger'" class="anim-up">
+          <div class="card" style="max-width:580px;border-color:rgba(244,63,94,0.3);">
+            <div class="card-section-label" style="color:var(--c-rose-l);">Danger Zone</div>
+            <h4 style="color:var(--c-rose-l);margin-bottom:0.4rem;">Reset Local Workspace Data</h4>
+            <p style="margin-bottom:1.25rem;">Clear all costing sheets and cached tenant memberships from this device.</p>
+            <button class="btn btn-danger" @click="resetWorkspace()">Reset All Data &amp; Re-initialize</button>
+          </div>
+        </div>
+
+      </div>
+    </template>
+  </main>
+</div>
+
+<!-- Toast Container -->
+<div id="toast-container"></div>
+
+<!-- ══ SCRIPTS ══ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script src="supabase.js"></script>
+
+<script>
+function showToast(msg, type = 'info') {
+  const icons = { success:'✅', error:'❌', info:'ℹ️', warning:'⚠️' };
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.innerHTML = `<span>${icons[type]||'ℹ️'}</span><span>${msg}</span>`;
+  document.getElementById('toast-container').appendChild(el);
+  setTimeout(() => el.remove(), 3800);
+}
+
+function settingsApp() {
+  return {
+    loading: true,
+    tab: 'general',
+    user: null,
+    userId: '',
+    initials: 'U',
+    currentOrg: null,
+    editOrg: { name: '', slug: '' },
+    savingOrg: false,
+    members: [],
+    inviteEmail: '',
+    inviteRole: 'member',
+    inviting: false,
+
+    async init() {
+      const session = await OD.requireAuth();
+      if (!session) return;
+      this.user = session.user;
+      this.userId = session.user.id;
+
+      const name = session.user.user_metadata?.full_name || session.user.email || 'U';
+      this.initials = name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2) || 'U';
+
+      const memberships = await OD.OrgsAPI.listMemberships(session.user.id);
+      const savedId = localStorage.getItem('od-current-org');
+      this.currentOrg = memberships.find(m => m.organisation_id === savedId) || memberships[0] || null;
+
+      if (this.currentOrg) {
+        this.editOrg.name = this.currentOrg.organisations?.name || 'My Factory';
+        this.editOrg.slug = this.currentOrg.organisations?.slug || 'my-factory';
+        this.members = await OD.OrgsAPI.listMembers(this.currentOrg.organisation_id);
+      }
+
+      this.loading = false;
+    },
+
+    async saveOrg() {
+      this.savingOrg = true;
+      try {
+        await OD.OrgsAPI.updateOrg(this.currentOrg.organisation_id, this.editOrg.name, this.editOrg.slug);
+        showToast('Workspace settings saved!', 'success');
+      } catch (e) {
+        showToast('Error saving: ' + e.message, 'error');
+      } finally {
+        this.savingOrg = false;
+      }
+    },
+
+    async inviteMember() {
+      this.inviting = true;
+      try {
+        await OD.OrgsAPI.inviteMember(this.currentOrg.organisation_id, this.inviteEmail, this.inviteRole);
+        this.members = await OD.OrgsAPI.listMembers(this.currentOrg.organisation_id);
+        showToast(`Invite sent to ${this.inviteEmail}!`, 'success');
+        this.inviteEmail = '';
+      } catch (e) {
+        showToast('Failed to invite: ' + e.message, 'error');
+      } finally {
+        this.inviting = false;
+      }
+    },
+
+    async removeMember(id) {
+      if (!confirm('Remove this member from workspace?')) return;
+      try {
+        await OD.OrgsAPI.removeMember(id);
+        this.members = this.members.filter(m => m.id !== id);
+        showToast('Member removed', 'info');
+      } catch (e) {
+        showToast('Error: ' + e.message, 'error');
+      }
+    },
+
+    resetWorkspace() {
+      if (!confirm('Are you sure you want to reset all local orders and workspace data?')) return;
+      localStorage.clear();
+      showToast('Workspace reset. Redirecting...', 'info');
+      setTimeout(() => { window.location.href = 'auth.html'; }, 1000);
+    },
+
+    async signOut() {
+      await OD.Auth.signOut();
+      window.location.href = 'auth.html';
+    }
+  };
+}
+</script>
+</body>
+</html>

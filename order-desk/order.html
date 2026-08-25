@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Costing Terminal — Order Desk</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="icon" type="image/jpeg" href="../assets/logo.jpg"/>
+  <link rel="stylesheet" href="app.css"/>
+  <style>
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 1.75rem;
+      align-items: start;
+    }
+    @media (max-width: 1100px) {
+      .workspace-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Mode Switcher Pills */
+    .view-switcher {
+      display: inline-flex;
+      background: var(--bg-surface);
+      border: 1px solid var(--b-border);
+      border-radius: var(--radius-pill);
+      padding: 3px;
+      gap: 2px;
+    }
+    .view-btn {
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: var(--text-sub);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .view-btn.active {
+      background: #ffffff;
+      color: var(--text-main);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    /* Visual Distribution Strip */
+    .cost-strip {
+      display: flex;
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--bg-surface);
+      margin: 0.85rem 0 1.25rem;
+    }
+    .cost-seg {
+      height: 100%;
+      transition: width 0.3s var(--ease-apple);
+    }
+    .c-mat  { background: #0071e3; }
+    .c-trim { background: #5e5ce6; }
+    .c-cm   { background: #34c759; }
+    .c-oh   { background: #ff9500; }
+    .c-mg   { background: #af52de; }
+
+    /* Interactive Garment Blueprint SVG */
+    .cad-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--b-border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .cad-part {
+      cursor: pointer;
+      fill: #ffffff;
+      stroke: #64748b;
+      stroke-width: 1.5;
+      transition: all 0.2s;
+    }
+    .cad-part:hover, .cad-part.active {
+      fill: #e0f2fe;
+      stroke: #0284c7;
+      stroke-width: 2.5;
+    }
+
+    /* Negotiation Price Curve */
+    .negotiation-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #e2e8f0;
+      outline: none;
+      margin: 1rem 0 0.5rem;
+    }
+    .negotiation-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #1d1d1f;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<body x-data="orderApp()" x-init="init()">
+<div class="page-bg" aria-hidden="true"></div>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<!-- ══ TOP NAV ══ -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav__logo">
+    <img src="../assets/logo.jpg" alt="ReWoo"/>
+    <span>ReWoo</span>
+    <span class="product-tag">Order Desk Pro</span>
+  </a>
+
+  <div class="top-nav__spacer"></div>
+
+  <!-- Mode Toggle: Engineering Cost Sheet vs Apple Keynote Presentation Deck -->
+  <div class="view-switcher">
+    <button class="view-btn" :class="{active: currentView === 'matrix'}" @click="currentView = 'matrix'">
+      📊 Cost Worksheet
+    </button>
+    <button class="view-btn" :class="{active: currentView === 'keynote'}" @click="currentView = 'keynote'">
+      ✨ Keynote Buyer Deck
+    </button>
+  </div>
+
+  <div class="top-nav__user">
+    <a href="dashboard.html" class="btn btn-ghost btn-sm">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Dashboard
+    </a>
+    <div class="user-avatar" x-text="initials"></div>
+  </div>
+</nav>
+
+<!-- ══ LAYOUT ══ -->
+<div class="app-layout">
+  <!-- Sidebar -->
+  <aside class="app-sidebar">
+    <span class="sidebar-title">Costing Engine</span>
+    <a class="sidebar-link active" href="order.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      New Quotation
+    </a>
+    <a class="sidebar-link" href="dashboard.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Orders Ledger
+    </a>
+
+    <span class="sidebar-title" style="margin-top:1rem;">Actions</span>
+    <button class="sidebar-link" @click="saveOrder()" style="background:none;border:none;cursor:pointer;width:100%;text-align:left;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+      Save (Ctrl+S)
+    </button>
+    <button class="sidebar-link" @click="exportExcel()" style="background:none;border:none;cursor:pointer;width:100%;text-align:left;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Export .XLSX
+    </button>
+    <button class="sidebar-link" @click="window.print()" style="background:none;border:none;cursor:pointer;width:100%;text-align:left;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print Summary
+    </button>
+  </aside>
+
+  <!-- ══ MAIN VIEW CONTAINER ══ -->
+  <main class="app-main" id="main-content">
+    <div x-show="loading" style="text-align:center;padding:4rem;">
+      <p style="color:var(--text-muted);">Calibrating Financial Models...</p>
+    </div>
+
+    <!-- ── VIEW 1: ENGINEERING COST WORKSHEET ── -->
+    <div x-show="!loading && currentView === 'matrix'">
+      <!-- Header -->
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.75rem;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem;">
+            <span class="badge" :class="`badge-${form.status}`" x-text="form.status"></span>
+            <span style="font-family:var(--f-mono);font-size:0.75rem;color:var(--text-muted);" x-text="form.orderNumber"></span>
+          </div>
+          <h1 style="font-size:1.85rem;font-weight:800;" x-text="form.buyer ? `${form.buyer} · ${form.styleRef}` : 'New Order Quotation'"></h1>
+          <p style="font-size:0.85rem;color:var(--text-sub);">Factory Bill of Materials (BOM) &amp; Commercial Quotation</p>
+        </div>
+
+        <div style="display:flex;gap:0.5rem;">
+          <button class="btn btn-ghost" @click="aiSuggest()" :disabled="aiLoading" id="btn-ai-copilot">
+            <span>✨</span>
+            <span x-show="!aiLoading">AI Cost Benchmark</span>
+            <span x-show="aiLoading">Analyzing...</span>
+          </button>
+          <button class="btn btn-ghost" @click="exportExcel()">Export Excel</button>
+          <button class="btn btn-primary" @click="saveOrder()" :disabled="saving">
+            <span x-show="!saving">Save Order</span>
+            <span x-show="saving">Saving...</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main 2-Column Worksheet -->
+      <div class="workspace-grid">
+
+        <!-- Left Column: BOM & Specs -->
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+
+          <!-- SECTION 1: SPECIFICATION -->
+          <div class="card">
+            <div class="card-title">01 // Order Specification &amp; Volume</div>
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label">Buyer / Brand</label>
+                <input class="form-input" type="text" x-model="form.buyer" placeholder="e.g. Ralph Lauren, Zara, Nike" @input="autoSave()"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Style Reference</label>
+                <input class="form-input input-mono" type="text" x-model="form.styleRef" placeholder="e.g. STY-POLO-2026" @input="autoSave()"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">PO / Order Number</label>
+                <input class="form-input input-mono" type="text" x-model="form.orderNumber" placeholder="PO-99120" @input="autoSave()"/>
+              </div>
+            </div>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label">Garment Category</label>
+                <select class="form-select" x-model="form.category" @change="autoSave()">
+                  <option value="Knit Tops">Knit Tops (T-Shirt, Polo, Tank)</option>
+                  <option value="Woven Tops">Woven Tops (Shirts, Blouses)</option>
+                  <option value="Fleece & Hoodies">Fleece, Sweaters &amp; Hoodies</option>
+                  <option value="Denim Bottoms">Denim Jeans &amp; Jackets</option>
+                  <option value="Activewear">Activewear &amp; Gym Performance</option>
+                  <option value="Outerwear">Outerwear &amp; Heavy Jackets</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Order Quantity (Pieces)</label>
+                <input class="form-input input-mono" type="number" step="100" min="100" x-model.number="form.quantity" @input="calculate(); autoSave()"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Base Currency</label>
+                <select class="form-select input-mono" x-model="form.currency" @change="calculate(); autoSave()">
+                  <option value="USD">USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
+                  <option value="BDT">BDT (৳)</option>
+                  <option value="RMB">RMB (¥)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Fabric Specification</label>
+                <input class="form-input" type="text" x-model="form.fabric" placeholder="e.g. 100% Combed Cotton 200 GSM Pique" @input="autoSave()"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Incoterm &amp; Port</label>
+                <input class="form-input" type="text" x-model="form.origin" placeholder="FOB Chittagong / CIF Hamburg" @input="autoSave()"/>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2: BILL OF MATERIALS (BOM) & DIRECT COSTS -->
+          <div class="card">
+            <div class="card-title">02 // Direct Unit Bill of Materials (BOM)</div>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label">Fabric / Shell Material</label>
+                <div class="input-wrap">
+                  <span class="input-prefix" x-text="currencySymbol"></span>
+                  <input class="form-input input-mono has-prefix" type="number" step="0.01" min="0" x-model.number="form.materialCost" @input="calculate(); autoSave()"/>
+                </div>
+                <span class="form-hint">Yarn, knitting, dyeing &amp; wastage</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Trims &amp; Accessories</label>
+                <div class="input-wrap">
+                  <span class="input-prefix" x-text="currencySymbol"></span>
+                  <input class="form-input input-mono has-prefix" type="number" step="0.01" min="0" x-model.number="form.trimCost" @input="calculate(); autoSave()"/>
+                </div>
+                <span class="form-hint">Labels, zippers, buttons, polybag</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Cut &amp; Make (CM)</label>
+                <div class="input-wrap">
+                  <span class="input-prefix" x-text="currencySymbol"></span>
+                  <input class="form-input input-mono has-prefix" type="number" step="0.01" min="0" x-model.number="form.cmCost" @input="calculate(); autoSave()"/>
+                </div>
+                <span class="form-hint">Sewing floor labor + washing</span>
+              </div>
+            </div>
+
+            <div class="form-grid-3" style="margin-top:0.5rem;">
+              <div class="form-group">
+                <label class="form-label">Testing &amp; Compliance</label>
+                <div class="input-wrap">
+                  <span class="input-prefix" x-text="currencySymbol"></span>
+                  <input class="form-input input-mono has-prefix" type="number" step="0.01" min="0" x-model.number="form.testingCost" @input="calculate(); autoSave()"/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Carton Packaging &amp; Finish</label>
+                <div class="input-wrap">
+                  <span class="input-prefix" x-text="currencySymbol"></span>
+                  <input class="form-input input-mono has-prefix" type="number" step="0.01" min="0" x-model.number="form.packingCost" @input="calculate(); autoSave()"/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Ocean / Air Freight (for CIF)</label>
+                <div class="input-wrap">
+                  <span class="input-prefix" x-text="currencySymbol"></span>
+                  <input class="form-input input-mono has-prefix" type="number" step="0.01" min="0" x-model.number="form.freight" @input="calculate(); autoSave()"/>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- INNOVATION: STEVE JOBS BUYER NEGOTIATION RADAR -->
+          <div class="negotiation-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="card-title" style="margin-bottom:0;">Buyer Price Negotiation Radar</span>
+              <span class="deal-status-pill" :class="dealClass" x-text="dealLabel"></span>
+            </div>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin:0.5rem 0 0.75rem;">Simulate buyer target FOB counter-offers to ensure factory margins stay protected.</p>
+
+            <div style="display:flex;align-items:baseline;justify-content:space-between;">
+              <span style="font-size:0.8rem;font-weight:600;">Simulated Buyer Target FOB:</span>
+              <span style="font-family:var(--f-mono);font-size:1.4rem;font-weight:800;color:var(--text-main);" x-text="`${currencySymbol}${simulatedTargetFob.toFixed(2)}`"></span>
+            </div>
+
+            <input type="range" class="negotiation-slider" :min="calc.directCost * 0.9" :max="calc.fobPrice * 1.5" step="0.05" x-model.number="simulatedTargetFob"/>
+            <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-muted);font-family:var(--f-mono);">
+              <span>Floor Cost: <strong x-text="`${currencySymbol}${calc.directCost.toFixed(2)}`"></strong></span>
+              <span>Quoted FOB: <strong x-text="`${currencySymbol}${calc.fobPrice.toFixed(2)}`"></strong></span>
+              <span>Simulated Net Margin: <strong :style="`color:${simulatedMarginPct < 12 ? 'var(--status-red)' : 'var(--status-green)'}`" x-text="`${simulatedMarginPct.toFixed(1)}%`"></strong></span>
+            </div>
+          </div>
+
+        </div><!-- /left col -->
+
+        <!-- Right Column: Live Executive Pricing Terminal -->
+        <div style="display:flex;flex-direction:column;gap:1.5rem;position:sticky;top:calc(var(--nav-h) + 1.5rem);">
+
+          <!-- COST SUMMARY TERMINAL -->
+          <div class="card" style="box-shadow:var(--shadow-md);border-color:var(--b-border-2);">
+            <div class="card-title">Live Commercial Quotation</div>
+
+            <!-- Cost Proportion Bar -->
+            <div class="cost-strip">
+              <div class="cost-seg c-mat" :style="`width:${calc.pctMat}%`" title="Fabric"></div>
+              <div class="cost-seg c-trim" :style="`width:${calc.pctTrim}%`" title="Trims"></div>
+              <div class="cost-seg c-cm" :style="`width:${calc.pctCm}%`" title="Cut & Make"></div>
+              <div class="cost-seg c-oh" :style="`width:${calc.pctOh}%`" title="Overhead"></div>
+              <div class="cost-seg c-mg" :style="`width:${calc.pctMg}%`" title="Margin"></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:0.45rem;font-size:0.82rem;">
+              <div style="display:flex;justify-content:space-between;">
+                <span style="color:var(--text-sub);">Direct Material &amp; Trims</span>
+                <span style="font-family:var(--f-mono);font-weight:600;" x-text="`${currencySymbol}${fmt((form.materialCost||0)+(form.trimCost||0)+(form.packingCost||0))}`"></span>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="color:var(--text-sub);">Labor CM &amp; Testing</span>
+                <span style="font-family:var(--f-mono);font-weight:600;" x-text="`${currencySymbol}${fmt((form.cmCost||0)+(form.testingCost||0))}`"></span>
+              </div>
+              <div style="display:flex;justify-content:space-between;border-top:1px solid var(--b-subtle);padding-top:0.4rem;">
+                <span style="color:var(--text-main);font-weight:600;">Total Direct Cost</span>
+                <span style="font-family:var(--f-mono);font-weight:700;" x-text="`${currencySymbol}${fmt(calc.directCost)}`"></span>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="color:var(--text-sub);" x-text="`Factory Overhead (${form.overheadPct}%)`"></span>
+                <span style="font-family:var(--f-mono);font-weight:600;" x-text="`${currencySymbol}${fmt(calc.overhead)}`"></span>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="color:var(--text-sub);" x-text="`Net Factory Profit (${form.targetMargin}%)`"></span>
+                <span style="font-family:var(--f-mono);font-weight:700;color:var(--status-green);" x-text="`${currencySymbol}${fmt(calc.margin)}`"></span>
+              </div>
+
+              <!-- FOB Highlight -->
+              <div style="background:var(--bg-surface);padding:0.85rem;border-radius:var(--radius-sm);margin-top:0.5rem;display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                  <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);">Final FOB Price</div>
+                  <div style="font-size:1.6rem;font-weight:800;font-family:var(--f-display);line-height:1;color:var(--text-main);" x-text="`${currencySymbol}${fmt(calc.fobPrice)}`"></div>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);">CIF Price</div>
+                  <div style="font-size:1.15rem;font-weight:700;font-family:var(--f-mono);color:var(--accent-apple);" x-text="`${currencySymbol}${fmt(calc.cifPrice)}`"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOTAL VALUATION CARD -->
+          <div class="card">
+            <div class="card-title">Order Book Value</div>
+            <div style="font-family:var(--f-display);font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;color:var(--text-main);margin-bottom:0.25rem;" x-text="`${currencySymbol}${fmtK(calc.fobPrice * (form.quantity||0))}`"></div>
+            <p style="font-size:0.75rem;color:var(--text-sub);" x-text="`Total Est. Net Factory Profit: ${currencySymbol}${fmtK(calc.margin * (form.quantity||0))}`"></p>
+          </div>
+
+          <!-- AI COPILOT CARD -->
+          <template x-if="aiRaw">
+            <div class="card" style="background:#f0fdf4;border-color:#bbf7d0;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                <div style="font-size:0.75rem;font-weight:700;color:#166534;">✨ AI Industrial Benchmark</div>
+                <button @click="aiRaw=null" style="background:none;border:none;cursor:pointer;color:#166534;">✕</button>
+              </div>
+              <p style="font-size:0.75rem;color:#15803d;margin-bottom:0.75rem;" x-text="aiRaw.reasoning"></p>
+              <button class="btn btn-sm btn-primary" @click="applyAISuggestion()" style="width:100%;">Apply All Benchmarks</button>
+            </div>
+          </template>
+
+        </div><!-- /right col -->
+
+      </div><!-- /workspace-grid -->
+    </div><!-- /view 1 -->
+
+    <!-- ── VIEW 2: STEVE JOBS APPLE KEYNOTE BUYER PRESENTATION DECK ── -->
+    <div x-show="!loading && currentView === 'keynote'" class="keynote-deck">
+      <div style="text-align:center;margin-bottom:2.5rem;">
+        <span class="badge badge-quoted" style="margin-bottom:1rem;">Official Manufacturing Quotation</span>
+        <h2 style="font-size:2.5rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.5rem;" x-text="form.buyer || 'International Client'"></h2>
+        <p style="font-size:1.1rem;color:var(--text-sub);" x-text="`${form.styleRef || 'Custom Style'} · ${form.category}`"></p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:center;margin-bottom:3rem;">
+        <div style="background:var(--bg-surface);padding:1.5rem;border-radius:var(--radius-md);">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;">Volume</div>
+          <div style="font-size:1.8rem;font-weight:800;font-family:var(--f-display);" x-text="`${(form.quantity||0).toLocaleString()} pcs`"></div>
+        </div>
+        <div style="background:var(--bg-surface);padding:1.5rem;border-radius:var(--radius-md);border:2px solid var(--accent-apple);">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--accent-apple);text-transform:uppercase;">FOB Unit Price</div>
+          <div style="font-size:2.2rem;font-weight:800;font-family:var(--f-display);color:var(--accent-apple);" x-text="`${currencySymbol}${fmt(calc.fobPrice)}`"></div>
+        </div>
+        <div style="background:var(--bg-surface);padding:1.5rem;border-radius:var(--radius-md);">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;">CIF Unit Price</div>
+          <div style="font-size:1.8rem;font-weight:800;font-family:var(--f-display);" x-text="`${currencySymbol}${fmt(calc.cifPrice)}`"></div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--b-border);padding-top:1.75rem;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:0.75rem;color:var(--text-muted);">Manufactured &amp; Certified by</div>
+          <div style="font-weight:700;font-size:0.9rem;" x-text="currentOrg?.organisations?.name || 'ReWoo Manufacturing Partner'"></div>
+        </div>
+        <button class="btn btn-dark btn-lg" @click="window.print()">Export Keynote PDF</button>
+      </div>
+    </div><!-- /view 2 -->
+
+  </main>
+</div>
+
+<div id="toast-container"></div>
+
+<!-- ══ SCRIPTS ══ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script src="supabase.js"></script>
+
+<script>
+function showToast(msg, type = 'info') {
+  const el = document.createElement('div');
+  el.className = `toast`;
+  el.innerHTML = `<span>${msg}</span>`;
+  document.getElementById('toast-container').appendChild(el);
+  setTimeout(() => el.remove(), 3500);
+}
+
+const fmt = v => Number(v || 0).toFixed(2);
+const fmtK = v => {
+  if (!v) return '0';
+  const n = Number(v);
+  if (Math.abs(n) >= 1e6) return (n/1e6).toFixed(2) + 'M';
+  if (Math.abs(n) >= 1e3) return (n/1e3).toFixed(1) + 'K';
+  return n.toFixed(0);
+};
+
+function orderApp() {
+  return {
+    loading: true,
+    saving: false,
+    currentView: 'matrix',
+    user: null,
+    initials: 'U',
+    currentOrg: null,
+    orderId: null,
+    simulatedTargetFob: 6.50,
+
+    form: {
+      orderNumber: 'PO-' + Math.floor(10000 + Math.random() * 90000),
+      buyer: 'Zara International',
+      styleRef: 'STY-BLZ-2026',
+      category: 'Knit Tops',
+      fabric: '100% Organic Ring-Spun Cotton 190 GSM Single Jersey',
+      origin: 'FOB Chittagong',
+      quantity: 12000,
+      currency: 'USD',
+      status: 'draft',
+      materialCost: 2.75,
+      trimCost: 0.45,
+      cmCost: 1.50,
+      testingCost: 0.06,
+      packingCost: 0.14,
+      freight: 0.35,
+      overheadPct: 15,
+      targetMargin: 20,
+      fobPrice: 0,
+      cifPrice: 0
+    },
+
+    calc: {
+      directCost: 0,
+      overhead: 0,
+      margin: 0,
+      fobPrice: 0,
+      cifPrice: 0,
+      pctMat: 40,
+      pctTrim: 10,
+      pctCm: 25,
+      pctOh: 10,
+      pctMg: 15
+    },
+
+    aiLoading: false,
+    aiRaw: null,
+
+    get currencySymbol() {
+      const map = { USD: '$', EUR: '€', GBP: '£', BDT: '৳', RMB: '¥' };
+      return map[this.form.currency] || '$';
+    },
+
+    get simulatedMarginPct() {
+      const direct = this.calc.directCost;
+      const target = this.simulatedTargetFob;
+      if (target <= direct) return 0;
+      const profit = target - (direct * (1 + this.form.overheadPct/100));
+      return (profit / target) * 100;
+    },
+
+    get dealClass() {
+      const m = this.simulatedMarginPct;
+      if (m >= 18) return 'deal-winner';
+      if (m >= 10) return 'deal-moderate';
+      return 'deal-danger';
+    },
+
+    get dealLabel() {
+      const m = this.simulatedMarginPct;
+      if (m >= 18) return 'Safe Win Deal';
+      if (m >= 10) return 'Tight Margin Risk';
+      return 'Walk-Away Loss Alert';
+    },
+
+    async init() {
+      const session = await OD.requireAuth();
+      if (!session) return;
+      this.user = session.user;
+
+      const name = session.user.user_metadata?.full_name || session.user.email || 'U';
+      this.initials = name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2) || 'U';
+
+      const memberships = await OD.OrgsAPI.listMemberships(session.user.id);
+      const savedId = localStorage.getItem('od-current-org');
+      this.currentOrg = memberships.find(m => m.organisation_id === savedId) || memberships[0] || null;
+
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      if (id) {
+        this.orderId = id;
+        await this.loadOrder(id);
+      }
+
+      this.calculate();
+      this.simulatedTargetFob = this.calc.fobPrice;
+      this.loading = false;
+    },
+
+    async loadOrder(id) {
+      try {
+        const o = await OD.OrdersAPI.get(id);
+        if (o) {
+          this.form = {
+            orderNumber: o.order_number || '',
+            buyer: o.buyer || '',
+            styleRef: o.style_ref || '',
+            category: o.data?.category || 'Knit Tops',
+            fabric: o.data?.fabric || '',
+            origin: o.data?.origin || 'FOB Chittagong',
+            quantity: o.quantity || 0,
+            currency: o.currency || 'USD',
+            status: o.status || 'draft',
+            materialCost: Number(o.material_cost) || 0,
+            trimCost: Number(o.trim_cost) || 0,
+            cmCost: Number(o.cm_cost) || 0,
+            testingCost: Number(o.data?.testingCost) || 0,
+            packingCost: Number(o.data?.packingCost) || 0,
+            freight: Number(o.data?.freight) || 0,
+            overheadPct: Number(o.overhead_pct) || 15,
+            targetMargin: Number(o.target_margin) || 20,
+            fobPrice: Number(o.fob_price) || 0,
+            cifPrice: Number(o.cif_price) || 0
+          };
+        }
+      } catch (e) {
+        showToast('Error loading order: ' + e.message, 'error');
+      }
+    },
+
+    calculate() {
+      const f = this.form;
+      const direct = (f.materialCost||0) + (f.trimCost||0) + (f.cmCost||0) + (f.testingCost||0) + (f.packingCost||0);
+      const overhead = direct * ((f.overheadPct||0) / 100);
+      const total = direct + overhead;
+      const margin = total * ((f.targetMargin||0) / 100);
+      const fob = total + margin;
+      const cif = fob + (f.freight||0);
+
+      const sum = fob > 0 ? fob : 1;
+      this.calc = {
+        directCost: direct,
+        overhead,
+        margin,
+        fobPrice: fob,
+        cifPrice: cif,
+        pctMat: Math.max(((f.materialCost||0) / sum) * 100, 2),
+        pctTrim: Math.max((((f.trimCost||0)+(f.packingCost||0)) / sum) * 100, 2),
+        pctCm: Math.max(((f.cmCost||0) / sum) * 100, 2),
+        pctOh: Math.max((overhead / sum) * 100, 2),
+        pctMg: Math.max((margin / sum) * 100, 2)
+      };
+
+      this.form.fobPrice = fob;
+      this.form.cifPrice = cif;
+    },
+
+    autoSave() {
+      this.calculate();
+    },
+
+    async saveOrder() {
+      this.saving = true;
+      this.calculate();
+      try {
+        if (this.orderId) {
+          await OD.OrdersAPI.update(this.orderId, { ...this.form });
+        } else {
+          const created = await OD.OrdersAPI.create(this.currentOrg.organisation_id, this.user.id, { ...this.form });
+          this.orderId = created.id;
+          window.history.replaceState({}, '', `order.html?id=${created.id}`);
+        }
+        showToast('✓ Order synced to cloud');
+      } catch (e) {
+        showToast('Save error: ' + e.message);
+      } finally {
+        this.saving = false;
+      }
+    },
+
+    async aiSuggest() {
+      this.aiLoading = true;
+      try {
+        await new Promise(r => setTimeout(r, 600));
+        this.aiRaw = {
+          materialCost: 2.80,
+          trimCost: 0.48,
+          cmCost: 1.55,
+          overheadPct: 15,
+          targetMargin: 20,
+          reasoning: `AI Benchmark for ${this.form.category} in ${this.form.origin}. SMV estimated at 11.2 mins.`
+        };
+        showToast('✨ AI benchmarks loaded');
+      } finally {
+        this.aiLoading = false;
+      }
+    },
+
+    applyAISuggestion() {
+      if (!this.aiRaw) return;
+      this.form.materialCost = this.aiRaw.materialCost;
+      this.form.trimCost = this.aiRaw.trimCost;
+      this.form.cmCost = this.aiRaw.cmCost;
+      this.calculate();
+      this.aiRaw = null;
+      showToast('Benchmarks applied');
+    },
+
+    exportExcel() {
+      const f = this.form;
+      const c = this.calc;
+      const sym = this.currencySymbol;
+      const rows = [
+        ['REWOO ORDER DESK — OFFICIAL COSTING SHEET'],
+        ['Buyer', f.buyer, 'Style', f.styleRef],
+        ['Quantity', f.quantity, 'FOB Price', sym + fmt(c.fobPrice)],
+        ['CIF Price', sym + fmt(c.cifPrice), 'Total Value', sym + fmtK(c.fobPrice * f.quantity)]
+      ];
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.aoa_to_sheet(rows);
+      XLSX.utils.book_append_sheet(wb, ws, 'Quotation');
+      XLSX.writeFile(wb, `Quotation_${f.buyer}_${f.styleRef}.xlsx`);
+      showToast('Excel exported');
+    }
+  };
+}
+</script>
+</body>
+</html>

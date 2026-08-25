@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Desk Pro — Intelligent Garment Factory Costing | ReWoo</title>
+  <meta name="description" content="Order Desk is the precision costing terminal for garment manufacturers. Calculate real-time FOB/CIF prices, benchmark with AI, and manage factory orders in the cloud."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="icon" type="image/jpeg" href="../assets/logo.jpg"/>
+  <link rel="stylesheet" href="app.css"/>
+  <style>
+    .hero-section {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      background: #ffffff;
+      border: 1px solid var(--b-border);
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+    }
+    .hero-headline {
+      font-family: var(--f-display);
+      font-size: clamp(2.7rem, 6vw, 4.75rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--accent-apple);
+    }
+    .hero-subhead {
+      font-size: 1.2rem;
+      color: var(--text-sub);
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1080px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+    @media (max-width: 850px) { .feature-grid { grid-template-columns: 1fr; } }
+    
+    .demo-window {
+      background: #ffffff;
+      border: 1px solid var(--b-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      max-width: 880px;
+      margin: 0 auto 4rem;
+    }
+    .demo-window-bar {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--b-border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: #ff5f57; }
+    .dot-yellow { background: #febc2e; }
+    .dot-green { background: #28c840; }
+  </style>
+</head>
+<body>
+<div class="page-bg" aria-hidden="true"></div>
+
+<!-- ══ TOP NAV ══ -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav__logo">
+    <img src="../assets/logo.jpg" alt="ReWoo"/>
+    <span>ReWoo</span>
+    <span class="product-tag">Order Desk Pro</span>
+  </a>
+  <div class="top-nav__spacer"></div>
+  <div style="display:flex;gap:0.75rem;align-items:center;">
+    <a href="auth.html" class="btn btn-ghost btn-sm">Sign In</a>
+    <a href="dashboard.html" class="btn btn-primary btn-sm">Launch Terminal →</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<header class="hero-section">
+  <div class="hero-eyebrow">
+    <span style="width:6px;height:6px;border-radius:50%;background:var(--status-green);"></span>
+    Designed by ReWoo · For World-Class Garment Manufacturers
+  </div>
+
+  <h1 class="hero-headline">
+    The financial costing terminal<br/>your factory <em>deserves.</em>
+  </h1>
+
+  <p class="hero-subhead">
+    Calculate precision FOB &amp; CIF prices in real-time. Benchmark with AI. Negotiate winning buyer deals without spreadsheet errors.
+  </p>
+
+  <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem;">
+    <a href="dashboard.html" class="btn btn-primary btn-lg">Open Terminal Free →</a>
+    <a href="order.html" class="btn btn-ghost btn-lg">View Live Costing Demo</a>
+  </div>
+
+  <!-- Interactive Terminal Showcase Window -->
+  <div class="demo-window">
+    <div class="demo-window-bar">
+      <span class="dot dot-red"></span>
+      <span class="dot dot-yellow"></span>
+      <span class="dot dot-green"></span>
+      <span style="margin-left:0.5rem;font-size:0.75rem;font-weight:600;color:var(--text-muted);">Order Desk Pro — Costing Terminal &amp; Quotation Engine</span>
+    </div>
+    <div style="padding:2.5rem;text-align:left;display:grid;grid-template-columns:1fr 280px;gap:2rem;">
+      <div>
+        <span class="badge badge-confirmed" style="margin-bottom:0.75rem;">Verified Quote</span>
+        <h3 style="font-size:1.4rem;font-weight:800;margin-bottom:0.25rem;">Zara International — Organic Cotton T-Shirt</h3>
+        <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1.5rem;">12,000 Pcs · 100% Ring-Spun Combed Cotton 190 GSM</p>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+          <div style="background:var(--bg-surface);padding:1rem;border-radius:var(--radius-sm);">
+            <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;">Material Cost</div>
+            <div style="font-size:1.25rem;font-weight:700;font-family:var(--f-mono);">$2.75</div>
+          </div>
+          <div style="background:var(--bg-surface);padding:1rem;border-radius:var(--radius-sm);">
+            <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;">Cut &amp; Make</div>
+            <div style="font-size:1.25rem;font-weight:700;font-family:var(--f-mono);">$1.50</div>
+          </div>
+          <div style="background:var(--bg-surface);padding:1rem;border-radius:var(--radius-sm);">
+            <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;">Net Yield</div>
+            <div style="font-size:1.25rem;font-weight:700;font-family:var(--f-mono);color:var(--status-green);">20.0%</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-surface);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--b-border);display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-size:0.7rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.35rem;">Quoted FOB Unit Price</div>
+        <div style="font-family:var(--f-display);font-size:2.4rem;font-weight:800;line-height:1;color:var(--accent-apple);margin-bottom:0.5rem;">$6.76</div>
+        <div style="font-size:0.75rem;color:var(--text-sub);">Total FOB: <strong>$81,120</strong></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ FEATURES ══ -->
+<section style="background:var(--bg-surface);padding:5rem 1.5rem;border-top:1px solid var(--b-border);border-bottom:1px solid var(--b-border);">
+  <div style="text-align:center;max-width:650px;margin:0 auto 3rem;">
+    <h2 style="font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.75rem;">Engineered for Precision</h2>
+    <p style="color:var(--text-sub);">Everything your merchandisers, costing managers, and factory executives need.</p>
+  </div>
+
+  <div class="feature-grid">
+    <div class="card">
+      <div style="font-size:1.5rem;margin-bottom:0.75rem;">⚡</div>
+      <h4 style="font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;">Real-Time Financial Engine</h4>
+      <p style="font-size:0.85rem;color:var(--text-sub);">Instant reactive calculation of Direct Costs, Factory Overheads, Target Margins, FOB and CIF values as you type.</p>
+    </div>
+
+    <div class="card">
+      <div style="font-size:1.5rem;margin-bottom:0.75rem;">🎛️</div>
+      <h4 style="font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;">Buyer Negotiation Radar</h4>
+      <p style="font-size:0.85rem;color:var(--text-sub);">Interactive deal sensitivity curve that prevents factory loss on aggressive counter-offers from overseas buyers.</p>
+    </div>
+
+    <div class="card">
+      <div style="font-size:1.5rem;margin-bottom:0.75rem;">📽️</div>
+      <h4 style="font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;">Apple Keynote Pitch Deck</h4>
+      <p style="font-size:0.85rem;color:var(--text-sub);">Transform complex cost sheets into executive buyer pitch slides with a single click, ready for boardrooms and meetings.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer style="padding:4rem 1.5rem;text-align:center;color:var(--text-muted);font-size:0.85rem;">
+  <div style="display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem;">
+    <a href="dashboard.html" style="color:var(--text-main);font-weight:600;">Dashboard</a>
+    <a href="order.html" style="color:var(--text-main);font-weight:600;">Costing Engine</a>
+    <a href="auth.html" style="color:var(--text-main);font-weight:600;">Sign In</a>
+    <a href="../index.html" style="color:var(--text-main);font-weight:600;">ReWoo Home</a>
+  </div>
+  <p>© 2026 ReWoo.tech · Built by Adil Shamim · Dhaka, Bangladesh.</p>
+</footer>
+
+</body>
+</html>
