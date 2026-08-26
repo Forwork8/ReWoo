@@ -13,6 +13,19 @@ const DEMO_MODE         = true;   // ← set to false when you add real credenti
 const SUPABASE_URL      = 'https://YOUR_PROJECT_REF.supabase.co';
 const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
 
+// ── DEMO DATA VERSION — increment this to force-reset cached demo data ──
+const DEMO_DATA_VERSION = 'v2.0-anonymized';
+(function migrateDemoData() {
+  const stored = localStorage.getItem('od_demo_version');
+  if (stored !== DEMO_DATA_VERSION) {
+    // Clear old cached orders that may have real brand names
+    const keysToReset = ['od_demo_orders', 'od_demo_users', 'od_demo_orgs', 'od_demo_org_members', 'od_demo_current_session'];
+    keysToReset.forEach(k => localStorage.removeItem(k));
+    localStorage.removeItem('od-current-org');
+    localStorage.setItem('od_demo_version', DEMO_DATA_VERSION);
+  }
+})();
+
 // ── DEMO STORAGE LAYER (localStorage) ──────────────────────
 const DemoStore = {
   _key: k => `od_demo_${k}`,
@@ -73,11 +86,11 @@ const DemoStore = {
 
       orders = [
         {
-          id: 'ord-zara-001',
+          id: 'ord-a-001',
           organisation_id: demoOrg.id,
           created_by: demoUser.id,
-          order_number: 'PO-ZARA-8921',
-          buyer: 'Zara International',
+          order_number: 'PO-88412',
+          buyer: 'Buyer A (Demo)',
           style_ref: 'STY-BLZ-2026',
           description: '100% Organic Ring-Spun Cotton 190 GSM Single Jersey',
           season: 'Spring/Summer 2026',
@@ -114,18 +127,18 @@ const DemoStore = {
           updated_at: new Date().toISOString()
         },
         {
-          id: 'ord-hm-002',
+          id: 'ord-b-002',
           organisation_id: demoOrg.id,
           created_by: demoUser.id,
-          order_number: 'PO-HM-4402',
-          buyer: 'H&M Group',
+          order_number: 'PO-44029',
+          buyer: 'Buyer B (Demo)',
           style_ref: 'STY-POLO-991',
           description: 'Honeycomb Pique Knit with Flat-Knit Collar',
           season: 'Fall 2026',
           delivery_date: '2026-08-20',
           quantity: 25000,
           currency: 'USD',
-          status: 'quoted',
+          status: 'draft',
           material_cost: 3.10,
           trimCost: 0.55,
           trim_cost: 0.55,
@@ -142,7 +155,7 @@ const DemoStore = {
           fobPrice: 7.49,
           cif_price: 7.89,
           cifPrice: 7.89,
-          notes: 'Color approvals for Olive and Navy.',
+          notes: 'Color approvals pending for Olive and Navy.',
           data: {
             category: 'Knit Tops',
             fabric: '100% Cotton 220 GSM Pique Knit',
@@ -155,11 +168,11 @@ const DemoStore = {
           updated_at: new Date().toISOString()
         },
         {
-          id: 'ord-nike-003',
+          id: 'ord-c-003',
           organisation_id: demoOrg.id,
           created_by: demoUser.id,
-          order_number: 'PO-NIKE-7729',
-          buyer: 'Nike Sportswear',
+          order_number: 'PO-77291',
+          buyer: 'Buyer C (Demo)',
           style_ref: 'STY-HOOD-DRY',
           description: '80/20 Cotton-Poly 340 GSM Brushed Heavy Fleece',
           season: 'Winter 2026',
@@ -183,7 +196,7 @@ const DemoStore = {
           fobPrice: 13.56,
           cif_price: 14.21,
           cifPrice: 14.21,
-          notes: 'Completed and shipped on vessel MSC Oscar.',
+          notes: 'Completed and shipped. Variance audit available.',
           data: {
             category: 'Fleece & Hoodies',
             fabric: '80/20 Cotton-Poly 340 GSM Heavy Fleece',

@@ -409,10 +409,16 @@ a:hover {
   font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
 }
 .badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
-.badge-draft    { background: var(--bg-surface); color: var(--text-sub); border: 1px solid var(--b-border); }
-.badge-quoted   { background: var(--accent-apple-g); color: var(--accent-apple); border: 1px solid rgba(0, 113, 227, 0.2); }
-.badge-confirmed{ background: var(--status-green-g); color: #248a3d; border: 1px solid rgba(52, 199, 89, 0.25); }
-.badge-shipped  { background: #e0f2fe; color: #0369a1; border: 1px solid rgba(2, 132, 199, 0.25); }
+.badge-draft        { background: var(--bg-surface); color: var(--text-sub); border: 1px solid var(--b-border); }
+.badge-review       { background: var(--accent-violet-g); color: var(--accent-violet); border: 1px solid rgba(99,102,241,0.2); }
+.badge-approved     { background: rgba(52,199,89,0.1); color: #248a3d; border: 1px solid rgba(52,199,89,0.22); }
+.badge-quoted       { background: var(--accent-apple-g); color: var(--accent-apple); border: 1px solid rgba(0, 113, 227, 0.2); }
+.badge-sent         { background: var(--accent-apple-g); color: var(--accent-apple); border: 1px solid rgba(0, 113, 227, 0.2); }
+.badge-negotiating  { background: var(--status-orange-g); color: #c25e00; border: 1px solid rgba(255,149,0,0.2); }
+.badge-confirmed    { background: var(--status-green-g); color: #248a3d; border: 1px solid rgba(52, 199, 89, 0.25); }
+.badge-production   { background: rgba(99,102,241,0.1); color: var(--accent-violet); border: 1px solid rgba(99,102,241,0.22); }
+.badge-shipped      { background: #e0f2fe; color: #0369a1; border: 1px solid rgba(2, 132, 199, 0.25); }
+.badge-lost         { background: var(--status-red-g); color: var(--status-red); border: 1px solid rgba(255,59,48,0.2); }
 .badge-admin    { background: var(--accent-apple-g); color: var(--accent-apple); border: 1px solid rgba(0, 113, 227, 0.2); }
 .badge-member   { background: var(--status-green-g); color: #248a3d; border: 1px solid rgba(52, 199, 89, 0.25); }
 .badge-viewer   { background: var(--bg-surface); color: var(--text-sub); border: 1px solid var(--b-border); }
