@@ -64,6 +64,10 @@
           <span x-show="!loading">Continue with Email →</span>
           <span x-show="loading">Authenticating...</span>
         </button>
+
+        <button type="button" @click="email='demo@rewoo.tech'; password='password123'; login()" class="btn btn-ghost" style="width:100%;margin-top:0.75rem;border:1px dashed var(--b-border);font-size:0.8rem;">
+          ⚡ Instant Demo Access (demo@rewoo.tech)
+        </button>
       </form>
 
       <div style="text-align:center;margin-top:1.5rem;font-size:0.82rem;color:var(--text-sub);">

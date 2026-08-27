@@ -45,6 +45,40 @@
       color: #d70015;
     }
 
+    /* Mobile responsive table */
+    @media (max-width: 700px) {
+      .table-wrap { border-radius: var(--radius-sm); }
+      table { min-width: 0; }
+      thead { display: none; }
+      tbody tr {
+        display: block;
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid var(--b-border);
+        background: #fff;
+        cursor: pointer;
+      }
+      tbody tr:hover { background: #f8fafc; }
+      tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.2rem 0;
+        border-bottom: none;
+        font-size: 0.82rem;
+      }
+      tbody td::before {
+        content: attr(data-label);
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+        flex-shrink: 0;
+        margin-right: 0.5rem;
+      }
+      tbody td:empty { display: none; }
+    }
+
     /* Variance Audit Modal */
     .variance-modal {
       max-width: 580px;
@@ -58,6 +92,9 @@
       font-size: 0.82rem;
     }
     .variance-row:last-child { border-bottom: none; }
+    @media (max-width: 600px) {
+      .copilot-nav-btn { display: none !important; }
+    }
   </style>
 </head>
 <body x-data="dashApp()" x-init="init()">
@@ -66,13 +103,16 @@
 
 <!-- ══ TOP NAV ══ -->
 <nav class="top-nav">
+  <button class="hamburger-btn" onclick="toggleMobileNav()" aria-label="Open menu" aria-expanded="false" id="hamburger-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
   <a href="../index.html" class="top-nav__logo">
     <img src="../assets/logo.jpg" alt="ReWoo"/>
     <span>ReWoo</span>
     <span class="product-tag">Order Desk Pro</span>
   </a>
   <div class="top-nav__spacer"></div>
-  <button class="btn btn-ghost btn-sm" onclick="window.ReWooAgent && window.ReWooAgent.open()" style="color:var(--accent-apple);font-weight:600;">
+  <button class="btn btn-ghost btn-sm copilot-nav-btn" onclick="window.ReWooAgent && window.ReWooAgent.open()" style="color:var(--accent-apple);font-weight:600;">
     <span>✨</span> AI Copilot
   </button>
   <div class="workspace-badge" x-text="currentOrg?.organisations?.name || 'Dhaka Export Factory'"></div>
@@ -81,6 +121,27 @@
     <button class="btn btn-ghost btn-sm" @click="signOut">Sign out</button>
   </div>
 </nav>
+
+<!-- ══ MOBILE SIDEBAR OVERLAY ══ -->
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-sidebar" id="mobile-sidebar">
+  <span class="sidebar-title">Dashboard</span>
+  <a class="sidebar-link active" href="dashboard.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    Orders Portfolio
+  </a>
+  <a class="sidebar-link" href="order.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    New Quotation
+  </a>
+  <a class="sidebar-link" href="settings.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    Settings
+  </a>
+  <span class="sidebar-title" style="margin-top:1.5rem;">Approval Workflow</span>
+  <a class="sidebar-link" href="dashboard.html" onclick="closeMobileNav()">All Orders</a>
+  <a class="sidebar-link" href="order.html" onclick="closeMobileNav()">New Order</a>
+</div>
 
 <!-- ══ LAYOUT ══ -->
 <div class="app-layout">
@@ -135,10 +196,10 @@
             <h1 style="font-size:2rem;font-weight:800;letter-spacing:-0.03em;">Orders Portfolio</h1>
             <p style="color:var(--text-sub);font-size:0.85rem;" x-text="`${currentOrg?.organisations?.name || 'Workspace'} · ${filteredOrders.length} orders tracked`"></p>
           </div>
-          <div style="display:flex;gap:0.5rem;">
-            <button class="btn btn-ghost" @click="openVarianceModal()">Variance Audit Report</button>
-            <button class="btn btn-ghost" @click="exportExcel()">Export Portfolio</button>
-            <a href="order.html" class="btn btn-primary">+ New Quotation</a>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <button class="btn btn-ghost" @click="openVarianceModal()" style="white-space:nowrap;">Variance Audit</button>
+            <button class="btn btn-ghost" @click="exportExcel()" style="white-space:nowrap;">Export</button>
+            <a href="order.html" class="btn btn-primary" style="white-space:nowrap;">+ New Quotation</a>
           </div>
         </div>
 
@@ -192,9 +253,9 @@
         </div>
 
         <!-- Search and Filters -->
-        <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem;">
-          <input class="form-input" style="max-width:320px;" type="text" x-model="searchQuery" @input="applyFilters()" placeholder="Search by buyer, style code, PO#..."/>
-          <select class="form-select" style="max-width:180px;" x-model="sortBy" @change="applyFilters()">
+        <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem;flex-wrap:wrap;">
+          <input class="form-input" style="flex:1;min-width:200px;" type="text" x-model="searchQuery" @input="applyFilters()" placeholder="Search by buyer, style code, PO#..."/>
+          <select class="form-select" style="min-width:160px;" x-model="sortBy" @change="applyFilters()">
             <option value="newest">Newest First</option>
             <option value="fob_desc">Highest Valuation</option>
             <option value="qty_desc">Highest Volume</option>
@@ -220,16 +281,16 @@
             <tbody>
               <template x-for="o in filteredOrders" :key="o.id">
                 <tr @click="goOrder(o.id)">
-                  <td style="font-family:var(--f-mono);font-weight:600;" x-text="o.order_number || 'PO-DRAFT'"></td>
-                  <td style="font-weight:600;" x-text="o.buyer || 'Buyer A (Demo)'"></td>
-                  <td style="font-family:var(--f-mono);color:var(--text-sub);" x-text="o.style_ref || '—'"></td>
-                  <td x-text="`${(o.quantity||0).toLocaleString()} pcs`"></td>
-                  <td style="font-family:var(--f-mono);font-weight:600;" x-text="`$${Number(o.fob_price||0).toFixed(2)}`"></td>
-                  <td style="font-family:var(--f-mono);font-weight:700;" x-text="fmtK((o.fob_price||0)*(o.quantity||0))"></td>
-                  <td>
+                  <td data-label="Order #" style="font-family:var(--f-mono);font-weight:600;" x-text="o.order_number || 'PO-DRAFT'"></td>
+                  <td data-label="Buyer" style="font-weight:600;" x-text="o.buyer || 'Buyer A (Demo)'"></td>
+                  <td data-label="Style" style="font-family:var(--f-mono);color:var(--text-sub);" x-text="o.style_ref || '—'"></td>
+                  <td data-label="Quantity" x-text="`${(o.quantity||0).toLocaleString()} pcs`"></td>
+                  <td data-label="FOB Price" style="font-family:var(--f-mono);font-weight:600;" x-text="`$${Number(o.fob_price||0).toFixed(2)}`"></td>
+                  <td data-label="Total Value" style="font-family:var(--f-mono);font-weight:700;" x-text="fmtK((o.fob_price||0)*(o.quantity||0))"></td>
+                  <td data-label="Yield">
                     <span style="font-family:var(--f-mono);color:var(--status-green);font-weight:600;" x-text="`${o.target_margin || 20}%`"></span>
                   </td>
-                  <td>
+                  <td data-label="Stage">
                     <span class="badge" :class="`badge-${o.status||'draft'}`" x-text="o.status||'draft'"></span>
                   </td>
                   <td>
@@ -313,6 +374,26 @@
 
 <div id="toast-container"></div>
 
+<!-- ══ MOBILE BOTTOM NAV ══ -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="dashboard.html" class="mobile-nav-item active" aria-label="Dashboard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    <span>Dashboard</span>
+  </a>
+  <a href="order.html" class="mobile-nav-item" aria-label="New Order">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    <span>New Order</span>
+  </a>
+  <button class="mobile-nav-item" onclick="window.ReWooAgent && window.ReWooAgent.open()" aria-label="AI Copilot">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/></svg>
+    <span>Copilot</span>
+  </button>
+  <a href="settings.html" class="mobile-nav-item" aria-label="Settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span>Settings</span>
+  </a>
+</nav>
+
 <!-- ══ SCRIPTS ══ -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
@@ -321,6 +402,28 @@
 <script src="agent.js"></script>
 
 <script>
+function toggleMobileNav() {
+  const sidebar = document.getElementById('mobile-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const btn = document.getElementById('hamburger-btn');
+  const isOpen = sidebar.classList.contains('open');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  btn.setAttribute('aria-expanded', !isOpen);
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+function closeMobileNav() {
+  const sidebar = document.getElementById('mobile-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const btn = document.getElementById('hamburger-btn');
+  if (sidebar) { sidebar.classList.remove('open'); }
+  if (overlay) { overlay.classList.remove('open'); }
+  if (btn) { btn.setAttribute('aria-expanded', 'false'); }
+  document.body.style.overflow = '';
+}
+// Close sidebar on Escape key
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobileNav(); });
+
 function showToast(msg) {
   const el = document.createElement('div');
   el.className = `toast`;

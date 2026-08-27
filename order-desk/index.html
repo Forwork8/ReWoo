@@ -63,6 +63,12 @@
     .landing-nav-links button:hover {
       background: var(--bg-surface); color: var(--text-main);
     }
+    @media (max-width: 768px) {
+      .landing-nav-links { display: none; }
+      #nav-signin { display: none; }
+      .top-nav { top: 0; position: sticky; }
+      .sample-ribbon { position: relative; top: auto; }
+    }
 
     /* Hero */
     .hero-section {
@@ -753,7 +759,7 @@
       <div class="how-step-card">
         <div class="how-step-num">3</div>
         <h4>Model LDC Tariff &amp; AI Benchmark</h4>
-        <p>Show the buyer their landed cost under current EBA duty-free rules vs post-Nov 2026 graduation. Benchmark cost components against peer factories.</p>
+        <p>Show the buyer their landed cost under current EBA duty-free rules (transition window through 2029) vs post-transition MFN tariff. Benchmark cost components against peer factories.</p>
       </div>
 
       <div class="how-step-card">
@@ -872,7 +878,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>
         </div>
         <h3>Duty/LDC Landed-Cost Simulator</h3>
-        <p>Every quote shows the buyer's landed cost — FOB + freight + duty — under current rules and after Bangladesh's LDC graduation (Nov 2026). Your duty-free window is worth $0.71/pc to the EU buyer.</p>
+        <p>Every quote shows the buyer's landed cost — FOB + freight + duty — under current rules and after Bangladesh's expected EBA graduation (retaining EBA preferences to end of 2029 under EC guidance). Your duty-free window is worth $0.85/pc to the EU buyer.</p>
         <span class="try-link">
           Try in Terminal
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>

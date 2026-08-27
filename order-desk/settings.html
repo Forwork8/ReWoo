@@ -14,11 +14,13 @@
 
 <!-- ══ TOP NAV ══ -->
 <nav class="top-nav">
+  <button class="hamburger-btn" onclick="toggleMobileNav()" aria-label="Open menu" aria-expanded="false" id="hamburger-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
   <a href="../index.html" class="top-nav__logo">
     <img src="../assets/logo.jpg" alt="ReWoo"/>
     <span>ReWoo</span>
-    <span class="sep">/</span>
-    <span class="product">Order Desk</span>
+    <span class="product-tag">Order Desk</span>
   </a>
   <div class="top-nav__spacer"></div>
   <div class="top-nav__user">
@@ -30,6 +32,24 @@
     <button class="btn btn-ghost btn-sm" @click="signOut" id="signout-btn">Sign out</button>
   </div>
 </nav>
+
+<!-- ══ MOBILE SIDEBAR OVERLAY ══ -->
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-sidebar" id="mobile-sidebar">
+  <span class="sidebar-title">Navigation</span>
+  <a class="sidebar-link" href="dashboard.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    Dashboard
+  </a>
+  <a class="sidebar-link" href="order.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    Costing Engine
+  </a>
+  <a class="sidebar-link active" href="settings.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    Settings
+  </a>
+</div>
 
 <!-- ══ LAYOUT ══ -->
 <div class="app-layout">
@@ -76,7 +96,7 @@
             <span style="margin-left:0.4rem;background:var(--c-violet-g);color:var(--c-violet-l);padding:0.05rem 0.45rem;border-radius:99px;font-size:0.65rem;" x-text="members.length"></span>
           </button>
           <button class="tab-btn" :class="{active: tab === 'database'}" @click="tab = 'database'">Cloud &amp; Database</button>
-          <button class="tab-btn" :class="{active: tab === 'danger'}" @click="tab = 'danger'" style="color:var(--c-rose-l);">Danger Zone</button>
+        <button class="tab-btn" :class="{active: tab === 'danger'}" @click="tab = 'danger'" style="color:var(--status-red);">Danger Zone</button>
         </div>
 
         <!-- ── TAB 1: GENERAL ── -->
@@ -99,7 +119,7 @@
                 <label class="form-label">Subscription Tier</label>
                 <div style="display:flex;align-items:center;gap:0.75rem;margin-top:0.25rem;">
                   <span class="badge badge-quoted" x-text="currentOrg?.organisations?.plan || 'Enterprise Free'"></span>
-                  <span style="font-size:0.75rem;color:var(--c-muted);">Unlimited costing sheets &amp; AI co-pilot active.</span>
+                  <span style="font-size:0.75rem;color:var(--text-muted);">Unlimited costing sheets &amp; AI co-pilot active.</span>
                 </div>
               </div>
 
@@ -152,7 +172,7 @@
                   <tr>
                     <td class="td-primary" x-text="m.invited_email || m.user_id || 'Active User'"></td>
                     <td><span class="badge" :class="`badge-${m.role}`" x-text="m.role"></span></td>
-                    <td style="font-size:0.75rem;color:var(--c-emerald-l);">✓ Authorized</td>
+                    <td style="font-size:0.75rem;color:var(--status-green);">✓ Authorized</td>
                     <td>
                       <template x-if="m.user_id !== userId">
                         <button class="btn btn-danger btn-sm" @click="removeMember(m.id)">Remove</button>
@@ -185,8 +205,8 @@
         <!-- ── TAB 4: DANGER ZONE ── -->
         <div x-show="tab === 'danger'" class="anim-up">
           <div class="card" style="max-width:580px;border-color:rgba(244,63,94,0.3);">
-            <div class="card-section-label" style="color:var(--c-rose-l);">Danger Zone</div>
-            <h4 style="color:var(--c-rose-l);margin-bottom:0.4rem;">Reset Local Workspace Data</h4>
+          <div class="card-section-label" style="color:var(--status-red);">Danger Zone</div>
+          <h4 style="color:var(--status-red);margin-bottom:0.4rem;">Reset Local Workspace Data</h4>
             <p style="margin-bottom:1.25rem;">Clear all costing sheets and cached tenant memberships from this device.</p>
             <button class="btn btn-danger" @click="resetWorkspace()">Reset All Data &amp; Re-initialize</button>
           </div>
@@ -200,12 +220,49 @@
 <!-- Toast Container -->
 <div id="toast-container"></div>
 
+<!-- ══ MOBILE BOTTOM NAV ══ -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="dashboard.html" class="mobile-nav-item" aria-label="Dashboard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    <span>Dashboard</span>
+  </a>
+  <a href="order.html" class="mobile-nav-item" aria-label="New Order">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    <span>New Order</span>
+  </a>
+  <a href="settings.html" class="mobile-nav-item active" aria-label="Settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span>Settings</span>
+  </a>
+</nav>
+
 <!-- ══ SCRIPTS ══ -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 <script src="supabase.js"></script>
 
 <script>
+function toggleMobileNav() {
+  const sidebar = document.getElementById('mobile-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const btn = document.getElementById('hamburger-btn');
+  const isOpen = sidebar.classList.contains('open');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  btn.setAttribute('aria-expanded', !isOpen);
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+function closeMobileNav() {
+  const sidebar = document.getElementById('mobile-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const btn = document.getElementById('hamburger-btn');
+  if (sidebar) { sidebar.classList.remove('open'); }
+  if (overlay) { overlay.classList.remove('open'); }
+  if (btn) { btn.setAttribute('aria-expanded', 'false'); }
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobileNav(); });
+
 function showToast(msg, type = 'info') {
   const icons = { success:'✅', error:'❌', info:'ℹ️', warning:'⚠️' };
   const el = document.createElement('div');

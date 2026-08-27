@@ -459,11 +459,21 @@
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 480px) {
-  .rewoo-agent-panel {
-    bottom: 84px;
+@media (max-width: 900px) {
+  .rewoo-agent-fab {
+    bottom: 76px; /* sits comfortably above mobile bottom nav */
     right: 16px;
-    width: calc(100vw - 32px);
-    height: calc(100vh - 110px);
+    width: 50px;
+    height: 50px;
+  }
+  .rewoo-agent-panel {
+    bottom: 72px; /* sits right above mobile bottom nav */
+    right: 12px;
+    left: 12px;
+    width: auto;
+    max-width: none;
+    height: calc(100vh - 150px);
+    max-height: calc(100vh - 150px);
+    border-radius: 16px;
   }
 }

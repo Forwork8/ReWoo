@@ -18,6 +18,10 @@
     @media (max-width: 1100px) {
       .workspace-grid { grid-template-columns: 1fr; }
     }
+    @media (max-width: 900px) {
+      /* Right column (pricing terminal) stacks below on mobile, remove sticky */
+      .workspace-grid > div:last-child { position: static !important; }
+    }
 
     /* Mode Switcher Pills */
     .view-switcher {
@@ -100,6 +104,37 @@
       background: var(--status-green-g); padding: 0.2rem 0.6rem;
       border-radius: 999px; border: 1px solid rgba(52,199,89,0.25);
     }
+
+    .ldc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      background: #ffffff;
+      padding: 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--b-border);
+    }
+    .keynote-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 600px) {
+      .ldc-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+      }
+      .keynote-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .keynote-deck {
+        padding: 1.75rem 1.25rem;
+      }
+    }
   </style>
 </head>
 <body x-data="orderApp()" x-init="init()">
@@ -108,6 +143,9 @@
 
 <!-- ══ TOP NAV ══ -->
 <nav class="top-nav">
+  <button class="hamburger-btn" onclick="toggleMobileNav()" aria-label="Open menu" aria-expanded="false" id="hamburger-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
   <a href="../index.html" class="top-nav__logo">
     <img src="../assets/logo.jpg" alt="ReWoo"/>
     <span>ReWoo</span>
@@ -132,8 +170,36 @@
       Dashboard
     </a>
     <div class="user-avatar" x-text="initials"></div>
+    <button class="btn btn-ghost btn-sm" @click="signOut">Sign out</button>
   </div>
 </nav>
+
+<!-- ══ MOBILE SIDEBAR OVERLAY ══ -->
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-sidebar" id="mobile-sidebar">
+  <span class="sidebar-title">Costing Engine</span>
+  <a class="sidebar-link" href="order.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    New Quotation
+  </a>
+  <a class="sidebar-link" href="dashboard.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    Orders Ledger
+  </a>
+  <a class="sidebar-link" href="settings.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    Settings
+  </a>
+  <span class="sidebar-title" style="margin-top:1rem;">Actions</span>
+  <button class="sidebar-link" onclick="closeMobileNav();" style="background:none;border:none;cursor:pointer;width:100%;text-align:left;" @click="saveOrder()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+    Save Order
+  </button>
+  <button class="sidebar-link" onclick="closeMobileNav();" style="background:none;border:none;cursor:pointer;width:100%;text-align:left;" @click="exportExcel()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Export .XLSX
+  </button>
+</div>
 
 <!-- ══ LAYOUT ══ -->
 <div class="app-layout">
@@ -155,25 +221,52 @@
       ReWoo AI Copilot ✨
     </button>
 
-    <span class="sidebar-title" style="margin-top:1rem;">Actions</span>
-    <button class="sidebar-link" @click="saveOrder()" style="background:none;border:none;cursor:pointer;width:100%;text-align:left;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
-      Save (Ctrl+S)
-    </button>
-    <button class="sidebar-link" @click="exportExcel()" style="background:none;border:none;cursor:pointer;width:100%;text-align:left;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Export .XLSX
-    </button>
-    <button class="sidebar-link" @click="window.print()" style="background:none;border:none;cursor:pointer;width:100%;text-align:left;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-      Print Summary
-    </button>
+    <span class="sidebar-title" style="margin-top:1rem;">Workspace</span>
+    <a class="sidebar-link" href="settings.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Settings
+    </a>
   </aside>
 
   <!-- ══ MAIN VIEW CONTAINER ══ -->
   <main class="app-main" id="main-content">
     <div x-show="loading" style="text-align:center;padding:4rem;">
       <p style="color:var(--text-muted);">Calibrating Financial Models...</p>
+    </div>
+
+    <!-- ══ PERSISTENT VIEW MODE BAR (Always visible in all modes & screen sizes) ══ -->
+    <div x-show="!loading" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.75rem;padding-bottom:1rem;border-bottom:1px solid var(--b-border);">
+      <div class="view-switcher" style="display:inline-flex;">
+        <button class="view-btn" :class="{active: currentView === 'matrix'}" @click="currentView = 'matrix'" id="btn-view-matrix">
+          📊 Cost Worksheet
+        </button>
+        <button class="view-btn" :class="{active: currentView === 'keynote'}" @click="currentView = 'keynote'" id="btn-view-keynote">
+          ✨ Keynote Buyer Deck
+        </button>
+      </div>
+
+      <div style="display:flex;gap:0.5rem;align-items:center;">
+        <template x-if="currentView === 'keynote'">
+          <div style="display:flex;gap:0.5rem;">
+            <button class="btn btn-ghost btn-sm" @click="currentView = 'matrix'">
+              ← Back to Cost Worksheet
+            </button>
+            <button class="btn btn-dark btn-sm" @click="window.print()">
+              Export Keynote PDF
+            </button>
+          </div>
+        </template>
+        <template x-if="currentView === 'matrix'">
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <button class="btn btn-ghost btn-sm" @click="openCopilot()" id="btn-ai-copilot">✨ Copilot</button>
+            <button class="btn btn-ghost btn-sm" @click="exportExcel()">Export .XLSX</button>
+            <button class="btn btn-primary btn-sm" @click="saveOrder()" :disabled="saving">
+              <span x-show="!saving">Save Order</span>
+              <span x-show="saving">Saving...</span>
+            </button>
+          </div>
+        </template>
+      </div>
     </div>
 
     <!-- ── VIEW 1: ENGINEERING COST WORKSHEET ── -->
@@ -354,22 +447,22 @@
               <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:var(--text-main);letter-spacing:0.06em;">
                 Duty / LDC Landed-Cost Simulator
               </div>
-              <span class="ldc-badge">Nov 2026 Window</span>
+            <span class="ldc-badge">EBA Window to 2029</span>
             </div>
             <p style="font-size:0.76rem;color:var(--text-sub);margin-bottom:0.85rem;">
-              Every quote shows the buyer's landed cost under current EBA duty-free rules vs after Bangladesh's LDC graduation.
+              Every quote shows the buyer's landed cost under current EBA duty-free rules vs after Bangladesh's expected EBA graduation. Per EC guidance, Bangladesh retains EBA preferences for a 3-year transition at least until end of 2029.
             </p>
 
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;background:#ffffff;padding:0.9rem;border-radius:var(--radius-sm);border:1px solid var(--b-border);">
+            <div class="ldc-grid">
               <div>
                 <div style="font-size:0.65rem;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Current Landed (0% Duty)</div>
                 <div style="font-size:1.15rem;font-weight:800;font-family:var(--f-mono);color:var(--text-main);" x-text="`${currencySymbol}${fmt(calc.cifPrice)}`"></div>
                 <div style="font-size:0.65rem;color:var(--status-green);">GSP / EBA Duty-Free</div>
               </div>
-              <div>
-                <div style="font-size:0.65rem;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Post-Nov 2026 (12% MFN)</div>
+          <div>
+                <div style="font-size:0.65rem;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Post-2029 Est. (12% MFN)</div>
                 <div style="font-size:1.15rem;font-weight:800;font-family:var(--f-mono);color:var(--text-sub);" x-text="`${currencySymbol}${fmt(calc.cifPrice * 1.12)}`"></div>
-                <div style="font-size:0.65rem;color:var(--status-orange);">Post-Graduation Tariff</div>
+                <div style="font-size:0.65rem;color:var(--status-orange);">Post-EBA Transition Tariff</div>
               </div>
               <div>
                 <div style="font-size:0.65rem;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Duty-Free Window Value</div>
@@ -447,7 +540,7 @@
               <span style="font-size:0.68rem;background:#dcfce7;color:#15803d;padding:1px 6px;border-radius:999px;font-weight:600;">Engine v1.0.0</span>
             </div>
             <p style="font-size:0.75rem;color:#15803d;margin-bottom:0.5rem;">
-              Ask copilot to test what-if scenarios, benchmark SMV labor against 427 factories, or calculate walk-away floor.
+              Ask copilot to test what-if scenarios, benchmark SMV labor against peer distribution (v1.0.0 synthetic benchmarks), or calculate walk-away floor.
             </p>
             <button class="btn btn-sm btn-primary" style="width:100%;">Open Copilot Assistant</button>
           </div>
@@ -459,13 +552,20 @@
 
     <!-- ── VIEW 2: STEVE JOBS APPLE KEYNOTE BUYER PRESENTATION DECK ── -->
     <div x-show="!loading && currentView === 'keynote'" class="keynote-deck">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--b-subtle);flex-wrap:wrap;gap:0.75rem;">
+        <button class="btn btn-ghost btn-sm" @click="currentView = 'matrix'" style="font-weight:600;">
+          ← Back to Cost Worksheet
+        </button>
+        <span class="badge badge-quoted">Keynote Presentation Mode</span>
+      </div>
+
       <div style="text-align:center;margin-bottom:2.5rem;">
         <span class="badge badge-quoted" style="margin-bottom:1rem;">Official Manufacturing Quotation</span>
         <h2 style="font-size:2.5rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.5rem;" x-text="form.buyer || 'Buyer A (Demo)'"></h2>
         <p style="font-size:1.1rem;color:var(--text-sub);" x-text="`${form.styleRef || 'Custom Style'} · ${form.category}`"></p>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:center;margin-bottom:3rem;">
+      <div class="keynote-grid">
         <div style="background:var(--bg-surface);padding:1.5rem;border-radius:var(--radius-md);">
           <div style="font-size:0.7rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;">Volume</div>
           <div style="font-size:1.8rem;font-weight:800;font-family:var(--f-display);" x-text="`${(form.quantity||0).toLocaleString()} pcs`"></div>
@@ -494,6 +594,26 @@
 
 <div id="toast-container"></div>
 
+<!-- ══ MOBILE BOTTOM NAV ══ -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="dashboard.html" class="mobile-nav-item" aria-label="Dashboard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    <span>Dashboard</span>
+  </a>
+  <a href="order.html" class="mobile-nav-item active" aria-label="New Order">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    <span>New Order</span>
+  </a>
+  <button class="mobile-nav-item" onclick="window.ReWooAgent && window.ReWooAgent.open()" aria-label="AI Copilot">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/></svg>
+    <span>Copilot</span>
+  </button>
+  <a href="settings.html" class="mobile-nav-item" aria-label="Settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span>Settings</span>
+  </a>
+</nav>
+
 <!-- ══ SCRIPTS ══ -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
@@ -502,6 +622,27 @@
 <script src="agent.js"></script>
 
 <script>
+function toggleMobileNav() {
+  const sidebar = document.getElementById('mobile-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const btn = document.getElementById('hamburger-btn');
+  const isOpen = sidebar.classList.contains('open');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  btn.setAttribute('aria-expanded', !isOpen);
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+function closeMobileNav() {
+  const sidebar = document.getElementById('mobile-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const btn = document.getElementById('hamburger-btn');
+  if (sidebar) { sidebar.classList.remove('open'); }
+  if (overlay) { overlay.classList.remove('open'); }
+  if (btn) { btn.setAttribute('aria-expanded', 'false'); }
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobileNav(); });
+
 function showToast(msg, type = 'info') {
   const el = document.createElement('div');
   el.className = `toast`;
@@ -692,7 +833,9 @@ function orderApp() {
         if (this.orderId) {
           await OD.OrdersAPI.update(this.orderId, { ...this.form });
         } else {
-          const created = await OD.OrdersAPI.create(this.currentOrg.organisation_id, this.user.id, { ...this.form });
+          const orgId = this.currentOrg?.organisation_id || 'org-rewoo-primary';
+          const userId = this.user?.id || 'usr-rewoo-founder';
+          const created = await OD.OrdersAPI.create(orgId, userId, { ...this.form });
           this.orderId = created.id;
           window.history.replaceState({}, '', `order.html?id=${created.id}`);
         }
@@ -702,6 +845,11 @@ function orderApp() {
       } finally {
         this.saving = false;
       }
+    },
+
+    async signOut() {
+      await OD.Auth.signOut();
+      window.location.href = 'auth.html';
     },
 
     exportExcel() {

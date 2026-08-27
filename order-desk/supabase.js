@@ -228,6 +228,7 @@ const DemoStore = {
 
   async signIn(email, password) {
     this._ensureSeed();
+    localStorage.removeItem(this._key('signed_out'));
     const users = this.get('users', {});
     const u = users[email];
     if (!u || u.password !== btoa(password)) throw new Error('Invalid email or password.');
@@ -239,6 +240,7 @@ const DemoStore = {
 
   async signUp(email, password, meta) {
     this._ensureSeed();
+    localStorage.removeItem(this._key('signed_out'));
     const users = this.get('users', {});
     if (users[email]) throw new Error('An account with this email already exists.');
     const id = 'demo-' + Math.random().toString(36).slice(2, 10);
@@ -252,10 +254,13 @@ const DemoStore = {
 
   async getSession() {
     this._ensureSeed();
+    if (localStorage.getItem(this._key('signed_out')) === 'true') {
+      return null;
+    }
     if (this._session) return this._session;
     const saved = this.get('current_session');
     if (saved) { this._session = saved; return saved; }
-    // In demo mode, provide auto-session
+    // In demo mode, provide auto-session if not explicitly signed out
     const users = this.get('users', {});
     const firstUser = Object.values(users)[0];
     if (firstUser) {
@@ -270,6 +275,7 @@ const DemoStore = {
   async signOut() {
     this._session = null;
     localStorage.removeItem(this._key('current_session'));
+    localStorage.setItem(this._key('signed_out'), 'true');
   },
 
   async updatePassword(newPassword) {

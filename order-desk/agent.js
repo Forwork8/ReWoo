@@ -106,7 +106,7 @@
         cifPrice: cif,
         currentDutyPct: '0.0% (LDC/EBA Duty-Free)',
         currentLandedCostToBuyer: Number(currentLanded.toFixed(2)),
-        postLdcGraduationDate: 'November 2026',
+        postLdcGraduationDate: 'End of 2029 (EC 3-Year EBA Transition Window)',
         postLdcDutyPct: '12.0% (MFN Tariff)',
         postLdcLandedCostToBuyer: Number(postLdcLanded.toFixed(2)),
         factoryDutyFreeAdvantagePerPc: Number(dutyDifferencePerPc.toFixed(2))
@@ -125,7 +125,7 @@
           median_cm_smv: '$1.48 (SMV 11.2 min)',
           median_net_margin: '16.4%'
         },
-        confidence: 'High (427 comparable tenant & synthetic audit points)',
+        confidence: 'High (Audited tenant & synthetic peer distribution v1.0.0)',
         provenance: 'Audited deterministic peer distribution v1.0.0. No fabricated metrics.'
       };
     },
@@ -223,7 +223,7 @@
           <button class="suggestion-chip" data-query="What is my margin-at-risk across open orders?">Margin at risk?</button>
           <button class="suggestion-chip" data-query="Buyer counters at $6.40 — what is my walk-away floor?">Buyer counter $6.40?</button>
           <button class="suggestion-chip" data-query="Simulate what FOB price if fabric drops to $2.40/kg?">Fabric $2.40 what-if?</button>
-          <button class="suggestion-chip" data-query="Show me duty savings before Bangladesh LDC graduation Nov 2026">LDC duty simulator?</button>
+          <button class="suggestion-chip" data-query="Show me duty savings under Bangladesh EBA window to 2029">EBA duty simulator?</button>
           <button class="suggestion-chip" data-query="Run quoted vs actual variance audit on latest shipped order">Variance leakage report?</button>
         </div>
 
@@ -399,9 +399,9 @@
           responseHTML: `
             <strong>Duty & Landed-Cost Analysis (Bangladesh → EU):</strong><br><br>
             • <strong>Current Landed Cost to Buyer (Duty-Free GSP/EBA):</strong> $${result.currentLandedCostToBuyer.toFixed(2)}/pc<br>
-            • <strong>Post-Graduation (Nov 2026 @ 12% MFN):</strong> $${result.postLdcLandedCostToBuyer.toFixed(2)}/pc<br>
+            • <strong>Post-EBA Transition (Est. 2029 @ 12% MFN):</strong> $${result.postLdcLandedCostToBuyer.toFixed(2)}/pc<br>
             • <strong>Your Current Duty-Free Advantage:</strong> <strong style="color:#248a3d;">$${result.factoryDutyFreeAdvantagePerPc.toFixed(2)}/pc</strong> savings for European importers.<br><br>
-            <em>Pro-tip: Pitch your duty-free window to lock 2-year buyer commitments prior to November 2026.</em>
+            <em>Trade Rule Note: Per European Commission guidance, Bangladesh retains EBA preferences through a 3-year transition period until end of 2029. Pitch your duty-free window to lock long-term buyer commitments.</em>
           `
         });
       }
