@@ -91,9 +91,6 @@
 
   <style>
     /* Hero entrance animation */
-    .hero__eyebrow {
-      animation: heroUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
-    }
 
     .hero__headline {
       animation: heroUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
@@ -125,76 +122,135 @@
 
 
 
-    /* Offer Get Your Personalized AI Assistant Free 😮😮😮😮😮😮😮😮😮😮😮😮😮😮😮 */
+    /* Hero Backdrop with assets/background.png */
+    .hero__bg-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero__bg-img {
+      width: 100%;
+      height: 100%;
+      max-width: 1700px;
+      object-fit: cover;
+      object-position: center;
+      mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 80%);
+      transition: opacity 0.4s ease, filter 0.4s ease;
+      will-change: opacity, transform;
+    }
+
+    /* Light mode: crisp, elegant multi-founder collage blend */
+    [data-theme="light"] .hero__bg-img {
+      opacity: 0.14;
+      filter: grayscale(100%) contrast(1.1);
+      mix-blend-mode: multiply;
+    }
+
+    /* Dark mode: sleek, atmospheric founder collage */
+    [data-theme="dark"] .hero__bg-img {
+      opacity: 0.12;
+      filter: grayscale(100%) contrast(1.15) brightness(0.72);
+      mix-blend-mode: luminosity;
+    }
+
+    /* Soft center vignette to maintain text readability */
+    .hero__bg-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle 420px at 50% 45%, var(--bg) 0%, transparent 100%);
+      opacity: 0.85;
+      transition: background 0.3s ease;
+    }
+
+    /* Pill cluster for announcement and eyebrow */
+    .hero__pill-cluster {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      animation: heroUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    }
+
+    /* Offer Get Your Personalized AI Assistant Free */
     .hero__announcement {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 6px 14px 6px 6px;
-      margin-bottom: 24px;
+      gap: 8px;
+      padding: 5px 14px 5px 5px;
       border-radius: 100px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: var(--text, #fff);
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       font-weight: 500;
       text-decoration: none;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      animation: heroUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+      box-shadow: 0 2px 14px rgba(0, 0, 0, 0.15);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     [data-theme="light"] .hero__announcement {
-      background: rgba(0, 0, 0, 0.03);
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-      color: #000;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      color: #111;
     }
 
     .hero__announcement:hover {
       transform: translateY(-2px) scale(1.02);
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     }
 
     [data-theme="light"] .hero__announcement:hover {
-      background: rgba(0, 0, 0, 0.06);
-      border-color: rgba(0, 0, 0, 0.1);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.16);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
 
     .hero__announcement-new {
-      background: #fff;
-      color: #000;
-      padding: 2px 10px;
+      background: #ffffff;
+      color: #000000;
+      padding: 2px 9px;
       border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
     }
     
     [data-theme="light"] .hero__announcement-new {
-      background: #000;
-      color: #fff;
+      background: #000000;
+      color: #ffffff;
     }
 
     .hero__announcement-icon {
-      width: 16px;
-      height: 16px;
-      opacity: 0.5;
-      transition: transform 0.3s ease;
+      width: 14px;
+      height: 14px;
+      opacity: 0.6;
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
     .hero__announcement:hover .hero__announcement-icon {
       transform: translateX(3px);
       opacity: 1;
     }
-  
-  
-  /* 😮😮😮😮😮😮😮😮😮😮😮😮😮😮😮 */
+
+    .hero__pill-cluster .hero__eyebrow {
+      margin-bottom: 0;
+      animation: none;
+    }
   
   
   
@@ -218,8 +274,7 @@
 
       <ul class="nav__links" aria-label="Site sections">
         <li><a href="#how-it-works" id="nl-how">How it works</a></li>
-        <li><a href="solutions.html" id="nl-solutions">AI Systems</a></li>
-        <li><a href="order-desk/index.html" id="nl-orderdesk" style="color:var(--accent);">Order Desk ✨</a></li>
+        <li><a href="solutions.html" id="nl-solutions">AI Agency &amp; Systems</a></li>
         <li><a href="#proof" id="nl-proof">Proof &amp; Eval</a></li>
         <li><a href="#pricing" id="nl-pricing">Pricing</a></li>
       </ul>
@@ -249,8 +304,7 @@
     <div class="mobile-nav-inner">
       <span class="mobile-section-label">Explore</span>
       <div class="mobile-link-list">
-        <a href="solutions.html" class="mobile-link-item">AI Systems</a>
-        <a href="order-desk/index.html" class="mobile-link-item" style="color:var(--accent);font-weight:600;">Order Desk ✨</a>
+        <a href="solutions.html" class="mobile-link-item">AI Agency &amp; Systems</a>
       </div>
 
       <span class="mobile-section-label">Company</span>
@@ -281,23 +335,29 @@
          SECTION 1 — HERO
          ============================================================ -->
     <section class="hero" id="top" aria-label="Hero">
+      <!-- Background Collage -->
+      <div class="hero__bg-backdrop" aria-hidden="true">
+        <img src="assets/background.png" alt="" class="hero__bg-img" width="1897" height="879" loading="eager" decoding="async">
+        <div class="hero__bg-glow"></div>
+      </div>
+
       <div class="hero__inner">
 
-        <!-- /* Offer Get Your Personalized AI Assistant Free 😮😮😮😮😮😮😮😮😮😮😮😮😮😮😮 */ -->
+        <!-- Offer & Eyebrow Row -->
+        <div class="hero__pill-cluster">
+          <a href="https://forms.gle/vYRgKqZRUTEjhZQT7" target="_blank" rel="noopener noreferrer" class="hero__announcement">
+            <span class="hero__announcement-new">Offer</span>
+            Get Your Personalized AI Assistant Free
+            <svg viewBox="0 0 20 20" fill="currentColor" class="hero__announcement-icon">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
 
-        <a href="https://forms.gle/vYRgKqZRUTEjhZQT7" target="_blank" rel="noopener noreferrer" class="hero__announcement">
-          <span class="hero__announcement-new">Offer</span>
-          Get Your Personalized AI Assistant Free
-          <svg viewBox="0 0 20 20" fill="currentColor" class="hero__announcement-icon">
-            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-          </svg>
-        </a>
-        <!-- /* 😮😮😮😮😮😮😮😮😮😮😮😮😮😮😮 */ -->
-
-        <span class="hero__eyebrow" aria-hidden="true">
-          <span class="hero__eyebrow-dot"></span>
-          AI Workforce · Built for Founders
-        </span>
+          <span class="hero__eyebrow" aria-hidden="true">
+            <span class="hero__eyebrow-dot"></span>
+            AI Workforce · Built for Founders
+          </span>
+        </div>
 
         <h1 class="hero__headline">
           <span class="sr-only">ReWoo AI Workforce: </span>
@@ -1025,71 +1085,7 @@
     </section>
 
 
-    <!-- ============================================================
-         SECTION 11.5 — ORDER DESK PRODUCT SHOWCASE
-         ============================================================ -->
-    <!-- ============================================================
-         SECTION 11.5 — ORDER DESK PRODUCT SHOWCASE
-         ============================================================ -->
-    <section class="section section--bg" id="order-desk-product" aria-label="Order Desk product">
-      <div class="wrap">
-        <div style="max-width:860px;">
-          <span class="overline overline--accent" data-animate>Flagship Product · Built by ReWoo</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms;">
-            Introducing <em>Order Desk Pro</em> —<br/>the apparel margin intelligence platform.
-          </h2>
-          <p class="s-body" data-animate style="transition-delay:160ms;">
-            Garment factories don't lose margin on the sewing floor — they lose it when the order is priced.
-            Order Desk Pro turns every quotation into an auditable financial decision. Know your minimum safe
-            price. See margin at risk before you accept. Compare quoted cost to actual — so the next quote is better.
-          </p>
 
-          <!-- Sample data notice -->
-          <div style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.25rem;padding:0.4rem 0.9rem;background:rgba(254,188,46,0.12);border:1px solid rgba(254,188,46,0.3);border-radius:999px;font-size:0.75rem;font-weight:600;color:#92400e;" data-animate style="transition-delay:200ms;">
-            <span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;"></span>
-            Demo workspace — Buyer A/B/C are anonymized · No real customer data
-          </div>
-
-          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;" data-animate>
-            <a href="order-desk/index.html" class="btn btn--primary" id="od-learn-more">Explore Order Desk Pro →</a>
-            <a href="order-desk/dashboard.html" class="btn btn--ghost" id="od-terminal">Open Demo Terminal</a>
-          </div>
-
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;" data-animate>
-            <div style="padding:1.25rem;background:var(--surface-2);border:1px solid rgba(255,255,255,0.08);border-radius:14px;">
-              <div style="font-size:1.4rem;margin-bottom:0.5rem;">⚡</div>
-              <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">Live Cost Engine</div>
-              <div style="font-size:0.8rem;color:var(--dim);">FOB &amp; CIF prices update as you type — material, trim, CM, overhead, margin. Engine v1.0.0 — 32 unit tests.</div>
-            </div>
-            <div style="padding:1.25rem;background:var(--surface-2);border:1px solid rgba(255,255,255,0.08);border-radius:14px;">
-              <div style="font-size:1.4rem;margin-bottom:0.5rem;">🎯</div>
-              <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">Negotiation Radar</div>
-              <div style="font-size:0.8rem;color:var(--dim);">Buyer counters? Know your floor, recommended counter, and the exact dollar cost of accepting low — in 5 seconds.</div>
-            </div>
-            <div style="padding:1.25rem;background:var(--surface-2);border:1px solid rgba(255,255,255,0.08);border-radius:14px;">
-              <div style="font-size:1.4rem;margin-bottom:0.5rem;">🌍</div>
-              <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">LDC Landed-Cost</div>
-              <div style="font-size:0.8rem;color:var(--dim);">Your duty-free window is worth $0.85/pc to EU buyers. Model landed cost under the EBA transition window through 2029.</div>
-            </div>
-            <div style="padding:1.25rem;background:var(--surface-2);border:1px solid rgba(255,255,255,0.08);border-radius:14px;">
-              <div style="font-size:1.4rem;margin-bottom:0.5rem;">✨</div>
-              <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">AI Benchmark</div>
-              <div style="font-size:0.8rem;color:var(--dim);">Comparable-order matching — median, P25, P75, confidence level, and why. No black-box outputs.</div>
-            </div>
-            <div style="padding:1.25rem;background:var(--surface-2);border:1px solid rgba(255,255,255,0.08);border-radius:14px;">
-              <div style="font-size:1.4rem;margin-bottom:0.5rem;">📊</div>
-              <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">Quoted vs Actual</div>
-              <div style="font-size:0.8rem;color:var(--dim);">After production, import actuals and get root-cause margin leakage ranking — per order and per quarter.</div>
-            </div>
-            <div style="padding:1.25rem;background:var(--surface-2);border:1px solid rgba(255,255,255,0.08);border-radius:14px;">
-              <div style="font-size:1.4rem;margin-bottom:0.5rem;">👥</div>
-              <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">Approval Workflow</div>
-              <div style="font-size:0.8rem;color:var(--dim);">Draft → Review → Approved → Confirmed. Four-eye approval, margin-threshold escalation, immutable audit log.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ============================================================
          SECTION 12 — WAITLIST
@@ -1153,11 +1149,9 @@
       </div>
 
       <div>
-        <span class="footer__col-label">Products</span>
+        <span class="footer__col-label">Solutions</span>
         <ul class="footer__links">
-          <li><a href="order-desk/index.html" style="color:var(--accent);">Order Desk ✨</a></li>
-          <li><a href="order-desk/auth.html">Sign In to Order Desk</a></li>
-          <li><a href="solutions.html">AI Systems</a></li>
+          <li><a href="solutions.html">AI Agency &amp; Systems</a></li>
         </ul>
       </div>
 
