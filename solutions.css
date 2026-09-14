@@ -1,16 +1,20 @@
 /* =============================================================================
-   solutions.css — ReWoo AI Execution Agency & Systems
-   Human-Crafted, Apple/Vercel Tier Aesthetics & Editorial Precision
+   solutions.css — ReWoo: Get Help With The Work You Need To Get Done
+   Human-Crafted Editorial Experience · Apple / Linear Tier Craft
+   Compatible with ReWoo v3.0 Design Tokens (Seamless Light & Dark Modes)
    ============================================================================= */
 
-/* Local glow & surface tokens */
+/* Local Tokens */
 :root {
   --sol-glow: rgba(110, 151, 255, 0.12);
-  --sol-accent-glow: rgba(110, 151, 255, 0.2);
+  --sol-accent-glow: rgba(110, 151, 255, 0.22);
   --sol-card-bg: #0A0A0A;
   --sol-card-border: rgba(255, 255, 255, 0.08);
   --sol-card-hover: rgba(255, 255, 255, 0.14);
-  --sol-console-bg: #050505;
+  --sol-pill-bg: rgba(255, 255, 255, 0.04);
+  --sol-pill-border: rgba(255, 255, 255, 0.1);
+  --sol-highlight: rgba(110, 151, 255, 0.12);
+  --sol-border-subtle: rgba(255, 255, 255, 0.06);
 }
 
 [data-theme="light"] {
@@ -19,18 +23,25 @@
   --sol-card-bg: #FFFFFF;
   --sol-card-border: rgba(0, 0, 0, 0.08);
   --sol-card-hover: rgba(0, 0, 0, 0.15);
-  --sol-console-bg: #111111;
+  --sol-pill-bg: rgba(0, 0, 0, 0.03);
+  --sol-pill-border: rgba(0, 0, 0, 0.09);
+  --sol-highlight: rgba(0, 102, 204, 0.08);
+  --sol-border-subtle: rgba(0, 0, 0, 0.06);
 }
 
-/* Base Headings & Section Wrapper */
+/* =============================================================================
+   SECTION HEADINGS & EDITORIAL TYPOGRAPHY
+   ============================================================================= */
 .sol-section-head {
   text-align: center;
-  max-width: 760px;
-  margin: 0 auto 48px;
+  max-width: 820px;
+  margin: 0 auto 52px;
 }
 
 .sol-section-head .s-subhead {
-  margin-top: 14px;
+  margin-top: 16px;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  line-height: 1.65;
 }
 
 /* =============================================================================
@@ -44,7 +55,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: calc(var(--nav-h) + 48px) var(--sp-6) 56px;
+  padding: calc(var(--nav-h) + 64px) var(--sp-6) 64px;
   overflow: hidden;
   isolation: isolate;
   border-bottom: 1px solid var(--line);
@@ -69,13 +80,12 @@
   object-position: center;
   mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 80%);
-  transition: opacity 0.4s ease, filter 0.4s ease;
+  transition: opacity 0.4s ease;
 }
 
 [data-theme="dark"] .sol-hero__backdrop-img {
   opacity: 0.12;
-  filter: grayscale(100%) contrast(1.15) brightness(0.72);
-  mix-blend-mode: luminosity;
+  filter: grayscale(100%) contrast(1.15) brightness(0.75);
 }
 
 [data-theme="light"] .sol-hero__backdrop-img {
@@ -88,8 +98,8 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle 460px at 50% 45%, var(--bg) 0%, transparent 100%);
-  opacity: 0.85;
+  background: radial-gradient(circle 500px at 50% 45%, var(--bg) 0%, transparent 100%);
+  opacity: 0.88;
 }
 
 .sol-hero__inner {
@@ -102,7 +112,7 @@
 .sol-hero__h1 {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(2.4rem, 1.8rem + 3.8vw, 4.4rem);
+  font-size: clamp(2.5rem, 1.8rem + 4.2vw, 4.8rem);
   line-height: 1.08;
   letter-spacing: -0.04em;
   color: var(--text);
@@ -118,281 +128,1379 @@
   background-clip: text;
 }
 
-[data-theme="light"] .sol-hero__h1 em {
-  background: linear-gradient(135deg, var(--accent) 0%, #004FA3 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
 .sol-hero__sub {
-  max-width: 680px;
-  margin: var(--sp-5) auto 0;
-  font-size: var(--size-base);
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.25rem);
+  line-height: 1.68;
   color: var(--dim);
-  line-height: 1.75;
+  max-width: 680px;
+  margin: var(--sp-6) auto 0;
 }
 
-/* Trust & SLA Strip */
-.sol-hero__trust-strip {
-  display: inline-flex;
+.sol-hero-trust-row {
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-top: 40px;
-  padding: 10px 24px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 100px;
-  font-size: 0.84rem;
-  color: var(--dim);
+  gap: 20px;
+  margin-top: 28px;
   flex-wrap: wrap;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.sol-trust-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.sol-trust-item strong {
-  color: var(--text);
-}
-
-.sol-trust-icon {
-  width: 15px;
-  height: 15px;
-  color: var(--accent);
-  flex-shrink: 0;
-}
-
-.sol-trust-dot {
+  font-size: 0.82rem;
   color: var(--dim-2);
 }
 
 /* =============================================================================
-   2. INTERACTIVE AGENT SYSTEMS EXPLORER
+   2. TASK-FIRST INPUT SECTION
    ============================================================================= */
-.sol-explorer-sec {
-  position: relative;
+.sol-task-sec {
+  border-bottom: 1px solid var(--line);
+  padding: var(--sp-20) 0;
 }
 
-.sol-tab-nav {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  margin-bottom: 24px;
-}
-
-.sol-tab-btn {
+.sol-task-card {
+  max-width: 880px;
+  margin: 0 auto;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--r);
-  padding: 14px 16px;
-  text-align: left;
+  border-radius: var(--r-xl);
+  padding: var(--sp-8);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16);
+  transition: border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+}
+
+.sol-task-card:focus-within {
+  border-color: rgba(110, 151, 255, 0.35);
+  box-shadow: 0 20px 60px var(--sol-glow);
+}
+
+.sol-prompt-pills-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--dim);
+  margin-bottom: var(--sp-3);
+}
+
+.sol-prompt-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--sp-5);
+}
+
+.sol-pill {
+  appearance: none;
+  border: 1px solid var(--sol-pill-border);
+  background: var(--sol-pill-bg);
+  color: var(--text-2);
+  padding: 8px 14px;
+  border-radius: 980px;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-apple);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.sol-pill:hover {
+  background: rgba(110, 151, 255, 0.12);
+  border-color: var(--accent);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.sol-pill.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px var(--sol-accent-glow);
+}
+
+.sol-input-wrap {
+  position: relative;
+  margin-bottom: var(--sp-6);
+}
+
+.sol-task-textarea {
+  width: 100%;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: var(--sp-4) var(--sp-5);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 90px;
+  transition: border-color var(--dur-fast) ease, background var(--dur-fast) ease;
+}
+
+.sol-task-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface-3);
+}
+
+.sol-input-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.sol-input-hint {
+  font-size: 0.78rem;
+  color: var(--dim-2);
+}
+
+.sol-btn-clear {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--dim-2);
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color var(--dur-fast) ease;
+}
+
+.sol-btn-clear:hover {
+  color: var(--text);
+}
+
+/* Dynamic Live Response Card */
+.sol-blueprint-preview {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: var(--sp-6);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease;
+}
+
+.sol-blueprint-preview::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, #3ECBAB 100%);
+}
+
+.sol-bp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: var(--sp-4);
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--line-2);
+}
+
+.sol-bp-tag-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sol-bp-layer-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 980px;
+  background: rgba(110, 151, 255, 0.15);
+  color: var(--accent);
+  border: 1px solid rgba(110, 151, 255, 0.3);
+}
+
+.sol-bp-way-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 980px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.sol-bp-turnaround {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--dim);
+}
+
+.sol-bp-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.sol-bp-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-2);
+  margin-bottom: var(--sp-5);
+}
+
+.sol-bp-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 18px;
+  margin-bottom: var(--sp-5);
+}
+
+.sol-bp-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sol-bp-label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dim-2);
+}
+
+.sol-bp-val {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* Founder Note Box */
+.sol-bp-founder-note {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  transition: all var(--dur-fast) ease;
-  color: var(--dim);
-  font-family: var(--font-body);
+  background: rgba(110, 151, 255, 0.06);
+  border: 1px solid rgba(110, 151, 255, 0.18);
+  border-radius: var(--r-sm);
+  padding: 12px 16px;
+  margin-bottom: var(--sp-5);
 }
 
-.sol-tab-btn:hover {
-  background: var(--surface-2);
-  border-color: var(--line-2);
-  color: var(--text);
-  transform: translateY(-2px);
-}
-
-.sol-tab-btn.is-active {
-  background: var(--surface-2);
-  border-color: var(--accent);
-  color: var(--text);
-  box-shadow: 0 0 20px var(--sol-glow);
-}
-
-.sol-tab-icon-wrap {
-  width: 32px;
-  height: 32px;
-  background: var(--surface-3);
-  border: 1px solid var(--line);
-  border-radius: 8px;
+.sol-bp-founder-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--dim);
-  transition: color var(--dur-fast) ease, border-color var(--dur-fast) ease;
 }
 
-.sol-tab-btn.is-active .sol-tab-icon-wrap {
-  color: var(--accent);
-  border-color: rgba(110, 151, 255, 0.3);
-  background: rgba(110, 151, 255, 0.08);
+.sol-bp-founder-text {
+  font-size: 0.84rem;
+  color: var(--text-2);
+  line-height: 1.5;
 }
 
-.sol-tab-svg {
-  width: 16px;
-  height: 16px;
-}
-
-.sol-tab-text strong {
-  display: block;
-  font-size: 0.88rem;
-  font-weight: 600;
+.sol-bp-founder-text strong {
   color: var(--text);
-  line-height: 1.3;
 }
 
-.sol-tab-text small {
-  display: block;
-  font-size: 0.74rem;
-  color: var(--dim);
-  margin-top: 2px;
+.sol-bp-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
-/* Interactive System Card Display */
-.sol-system-card {
+/* =============================================================================
+   03. SERVICE DISCOVERY (3 Connected Layers)
+   ============================================================================= */
+.sol-discovery-sec {
+  border-bottom: 1px solid var(--line);
+  padding: var(--sp-20) 0;
+}
+
+.sol-layers-nav {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.sol-layer-card-anchor {
+  display: flex;
+  flex-direction: column;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--r-xl);
-  padding: 36px;
-  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25);
+  border-radius: var(--r-lg);
+  padding: var(--sp-8);
+  text-decoration: none;
+  transition: all var(--dur-fast) var(--ease-apple);
   position: relative;
   overflow: hidden;
 }
 
-.sol-system-specs {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.sol-layer-card-anchor:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 40px var(--sol-glow);
 }
 
-.sol-live-tag {
+.sol-layer-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sol-layer-num {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.sol-layer-for {
+  font-size: 0.72rem;
+  color: var(--dim-2);
+}
+
+.sol-layer-card-h {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.sol-layer-card-p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--dim);
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.sol-layer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.sol-layer-tags span {
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--text-2);
+}
+
+.sol-layer-arrow {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  transition: transform var(--dur-fast) ease;
+}
+
+.sol-layer-card-anchor:hover .sol-layer-arrow {
+  transform: translateY(2px);
+}
+
+/* =============================================================================
+   04. FOUR WAYS WE HELP (Editorial Timeline Rail)
+   ============================================================================= */
+.sol-four-ways-sec {
+  border-bottom: 1px solid var(--line);
+  padding: var(--sp-20) 0;
+}
+
+.sol-four-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+}
+
+.sol-four-node {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--dur-fast) ease;
+  position: relative;
+}
+
+.sol-four-node:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px var(--sol-glow);
+}
+
+.sol-four-node-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.sol-four-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--dim-2);
+  line-height: 1;
+}
+
+.sol-four-pill {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 9px;
+  border-radius: 980px;
+  background: rgba(110, 151, 255, 0.12);
+  color: var(--accent);
+}
+
+.sol-four-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--text);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.sol-four-desc {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--dim);
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.sol-four-quote {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--text-2);
+  border-left: 2px solid var(--accent);
+  padding-left: 10px;
+  line-height: 1.5;
+}
+
+/* =============================================================================
+   05. LAYER 1 — EVERYDAY SERVICES (Editorial Bento Grid)
+   ============================================================================= */
+.sol-layer-sec {
+  border-bottom: 1px solid var(--line);
+  padding: var(--sp-20) 0;
+}
+
+.sol-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.sol-bento-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--dur-fast) ease;
+}
+
+.sol-bento-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 12px 30px var(--sol-glow);
+  transform: translateY(-2px);
+}
+
+/* Featured 2-column card */
+.sol-bento-card--featured {
+  grid-column: span 2;
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(110, 151, 255, 0.05) 100%);
+}
+
+.sol-bento-card--featured .sol-bento-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sol-bento-badge {
+  display: inline-block;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #34D399;
-  margin-bottom: 14px;
-}
-
-.sol-live-dot {
-  width: 7px;
-  height: 7px;
-  background: #34D399;
-  border-radius: 50%;
-  animation: solPulse 2s infinite;
-}
-
-@keyframes solPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.3); }
-}
-
-.sol-system-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.85rem);
-  font-weight: 400;
-  line-height: 1.2;
-  color: var(--text);
-  margin-bottom: 14px;
-}
-
-.sol-system-desc {
-  font-size: 0.95rem;
-  color: var(--dim);
-  line-height: 1.65;
-  margin-bottom: 24px;
-}
-
-.sol-spec-group {
-  margin-bottom: 24px;
-}
-
-.sol-spec-label {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--dim-2);
+  text-transform: uppercase;
+  color: var(--accent);
   margin-bottom: 10px;
 }
 
-.sol-tool-badges {
+.sol-bento-demo-box {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 0 20px;
+}
+
+.sol-bento-demo-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sol-demo-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--dim-2);
+}
+
+.sol-demo-text {
+  font-size: 0.84rem;
+  color: var(--text-2);
+  line-height: 1.45;
+  font-style: italic;
+}
+
+.sol-bento-demo-col--result .sol-demo-text {
+  color: var(--text);
+  font-style: normal;
+}
+
+.sol-bento-demo-arrow {
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+
+/* Full Width Card */
+.sol-bento-card--full {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(16, 185, 129, 0.06) 100%);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+.sol-bento-card-full-inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Card Basics */
+.sol-card-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.sol-card-icon-wrap svg {
+  width: 22px;
+  height: 22px;
+}
+
+.sol-bento-card-full-inner .sol-card-icon-wrap {
+  margin-bottom: 0;
+}
+
+.sol-card-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.sol-card-text {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--dim);
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.sol-card-bullets {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.sol-card-bullets li {
+  font-size: 0.82rem;
+  color: var(--text-2);
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 6px;
+}
+
+.sol-card-bullets li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.sol-card-cta-link {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: transform var(--dur-fast) ease;
+}
+
+.sol-card-cta-link:hover {
+  transform: translateX(3px);
+}
+
+/* =============================================================================
+   06. LAYER 2 — WORK & BUSINESS (Asymmetrical Split)
+   ============================================================================= */
+.sol-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.sol-split-narrative {
+  position: sticky;
+  top: calc(var(--nav-h) + 32px);
+}
+
+.sol-split-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--dim);
+  margin: 20px 0 28px;
+}
+
+.sol-split-body p + p {
+  margin-top: 14px;
+}
+
+.sol-split-body strong {
+  color: var(--text);
+}
+
+.sol-split-stat-box {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 20px 24px;
+}
+
+.sol-stat-highlight {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.sol-stat-desc {
+  font-size: 0.85rem;
+  color: var(--dim);
+  line-height: 1.5;
+}
+
+.sol-split-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sol-biz-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: var(--sp-6);
+  transition: all var(--dur-fast) ease;
+}
+
+.sol-biz-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+
+.sol-biz-item--highlight {
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(110, 151, 255, 0.06) 100%);
+  border-color: rgba(110, 151, 255, 0.3);
+}
+
+.sol-biz-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sol-biz-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.sol-biz-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--dim-2);
+  background: var(--surface-2);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.sol-biz-tag--accent {
+  color: var(--accent);
+  background: rgba(110, 151, 255, 0.12);
+}
+
+.sol-biz-text {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+
+/* =============================================================================
+   07. TECHNOLOGY & PLATFORM GUIDANCE
+   ============================================================================= */
+.sol-tech-guidance-sec {
+  border-bottom: 1px solid var(--line);
+  padding: var(--sp-20) 0;
+}
+
+.sol-guidance-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.sol-guide-pillar {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: var(--sp-6);
+  transition: all var(--dur-fast) ease;
+}
+
+.sol-guide-pillar:hover {
+  border-color: var(--line-2);
+  transform: translateY(-2px);
+}
+
+.sol-guide-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.sol-guide-h {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.sol-guide-p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--dim);
+}
+
+.sol-guidance-callout {
+  max-width: 820px;
+  margin: 36px auto 0;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sol-callout-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sol-callout-text {
+  font-size: 0.88rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+/* =============================================================================
+   08. REAL-WORLD EXAMPLES
+   ============================================================================= */
+.sol-examples-sec {
+  border-bottom: 1px solid var(--line);
+  padding: var(--sp-20) 0;
+}
+
+.sol-examples-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.sol-example-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--dur-fast) ease;
+}
+
+.sol-example-card:hover {
+  border-color: var(--line-2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.sol-ex-top {
+  margin-bottom: 14px;
+}
+
+.sol-ex-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--dim-2);
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.sol-ex-tag--accent {
+  color: var(--accent);
+}
+
+.sol-ex-quote {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--text);
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.sol-ex-solution {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--dim);
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.sol-ex-solution strong {
+  display: block;
+  color: var(--text-2);
+  margin-bottom: 4px;
+}
+
+.sol-ex-action {
+  width: 100%;
+  text-align: center;
+}
+
+.sol-example-card--featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(110, 151, 255, 0.08) 100%);
+  border-color: rgba(110, 151, 255, 0.3);
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  align-items: center;
+  gap: 24px;
+}
+
+.sol-example-card--featured .sol-ex-solution {
+  margin-bottom: 0;
+}
+
+.sol-example-card--featured .sol-ex-action {
+  width: auto;
+}
+
+/* =============================================================================
+   09. PRODUCT STRATEGY & ROI CALCULATOR
+   ============================================================================= */
+.sol-ladder-sec {
+  border-bottom: 1px solid var(--line);
+  padding: var(--sp-20) 0;
+}
+
+.sol-ladder-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto 56px;
+  max-width: 1000px;
+  flex-wrap: wrap;
+}
+
+.sol-ladder-step {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 16px 20px;
+  text-align: center;
+  min-width: 160px;
+  flex: 1;
+  transition: all var(--dur-fast) ease;
+}
+
+.sol-ladder-step--highlight {
+  border-color: var(--accent);
+  background: var(--surface-2);
+  box-shadow: 0 8px 24px var(--sol-glow);
+}
+
+.sol-ladder-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sol-ladder-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sol-ladder-step small {
+  font-size: 0.74rem;
+  color: var(--dim);
+  display: block;
+}
+
+.sol-ladder-connector {
+  font-size: 1.2rem;
+  color: var(--dim-2);
+}
+
+/* Calculator Box */
+.sol-calc-box {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: var(--sp-8);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sol-calc-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.sol-calc-h {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--text);
+  margin: 8px 0 10px;
+}
+
+.sol-calc-p {
+  font-size: 0.9rem;
+  color: var(--dim);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.sol-slider-group {
+  margin-bottom: 20px;
+}
+
+.sol-slider-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.sol-slider-label {
+  font-size: 0.82rem;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.sol-slider-val {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.sol-range-input {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--surface-3);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.sol-range-input::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--sol-glow);
+  transition: transform var(--dur-micro) ease;
+}
+
+.sol-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* Results Box */
+.sol-calc-results {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: var(--sp-6);
+  text-align: center;
+}
+
+.sol-results-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  background: rgba(110, 151, 255, 0.12);
+  padding: 4px 10px;
+  border-radius: 980px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.sol-metric-large {
+  margin-bottom: 20px;
+}
+
+.sol-metric-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 2rem + 2vw, 3.5rem);
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1;
+  display: block;
+}
+
+.sol-metric-sub {
+  font-size: 0.85rem;
+  color: var(--dim);
+  margin-top: 4px;
+  display: block;
+}
+
+.sol-metric-row {
+  display: flex;
+  justify-content: space-around;
+  padding: 16px 0;
+  border-top: 1px solid var(--line-2);
+  border-bottom: 1px solid var(--line-2);
+  margin-bottom: 24px;
+}
+
+.sol-metric-label {
+  font-size: 0.72rem;
+  color: var(--dim-2);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sol-metric-val {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.sol-calc-cta {
+  width: 100%;
+}
+
+/* =============================================================================
+   10. LAYER 3 — ADVANCED AI SERVICES & CONSOLE (HIGH-CONTRAST TERMINAL)
+   ============================================================================= */
+.sol-advanced-sec {
+  border-bottom: 1px solid var(--line);
+  padding: var(--sp-20) 0;
+}
+
+.sol-adv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.sol-adv-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: var(--sp-6);
+  transition: all var(--dur-fast) ease;
+}
+
+.sol-adv-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.sol-adv-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.sol-adv-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.sol-adv-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--dim);
+}
+
+/* Inspector Terminal & Specs Box */
+.sol-inspector-wrap {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+}
+
+.sol-inspector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--sp-6) var(--sp-8);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.sol-inspector-h {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-top: 4px;
+}
+
+.sol-inspector-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
+}
+
+.sol-insp-tab {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--dim);
+  padding: 6px 14px;
+  border-radius: 980px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--dur-fast) ease;
+}
+
+.sol-insp-tab:hover {
+  color: var(--text);
+  border-color: var(--line-2);
+}
+
+.sol-insp-tab.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px var(--sol-accent-glow);
+}
+
+.sol-inspector-body {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  padding: var(--sp-8);
+  gap: 36px;
+  align-items: start;
+}
+
+.sol-spec-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #10B981;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.sol-spec-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.sol-spec-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--dim);
+  margin-bottom: 20px;
+}
+
+.sol-spec-meta {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line-2);
+  border-bottom: 1px solid var(--line-2);
+}
+
+.sol-meta-lbl {
+  font-size: 0.72rem;
+  color: var(--dim-2);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sol-meta-val {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.sol-spec-tools-box {
+  margin-bottom: 24px;
+}
+
+.sol-spec-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
 }
 
 .sol-tool-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
   background: var(--surface-2);
   border: 1px solid var(--line);
-  padding: 5px 12px;
-  border-radius: 100px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text);
+  border-radius: 4px;
+  color: var(--text-2);
 }
 
-.sol-spec-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 18px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 28px;
-}
-
-.sol-spec-metric__num {
-  display: block;
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: -0.02em;
-}
-
-.sol-spec-metric__label {
-  display: block;
-  font-size: 0.78rem;
-  color: var(--dim);
-  margin-top: 2px;
-}
-
-.sol-system-actions {
+.sol-spec-actions {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
 }
 
-/* Right Simulated Execution Console Column */
-.sol-system-console {
-  background: var(--sol-console-bg);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--r-lg);
+/* =============================================================================
+   HIGH-CONTRAST PRODUCTION TERMINAL (FLAWLESS IN BOTH LIGHT & DARK MODES)
+   ============================================================================= */
+.sol-console-container {
+  background: #0B0D13 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: var(--r);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
 }
 
-.sol-console-header {
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 12px 18px;
+.sol-console-bar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sol-console-dots {
@@ -401,1158 +1509,277 @@
 }
 
 .sol-console-dots span {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
 }
 
-.sol-console-dots span:nth-child(1) { background: #FF5F56; }
-.sol-console-dots span:nth-child(2) { background: #FFBD2E; }
-.sol-console-dots span:nth-child(3) { background: #27C93F; }
-
 .sol-console-title {
-  font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
-  color: var(--dim);
+  color: #94A3B8 !important;
 }
 
-.sol-console-status {
+.sol-console-replay {
+  appearance: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #CBD5E1 !important;
   font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: 0.05em;
+  padding: 2px 9px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--dur-micro) ease;
 }
 
-.sol-console-body {
-  padding: 20px;
-  flex: 1;
+.sol-console-replay:hover {
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.sol-console-content {
+  padding: 16px;
+}
+
+.sol-console-input-row {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8125rem;
-}
-
-.sol-console-trigger {
-  background: rgba(255, 255, 255, 0.02);
-  border-left: 3px solid var(--accent);
-  padding: 10px 14px;
-  border-radius: 0 8px 8px 0;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #E2E8F0 !important;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sol-console-prompt {
-  display: block;
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  margin-bottom: 4px;
+  color: #38BDF8 !important;
 }
 
-.sol-console-input-text {
-  color: #E2E8F0;
-  line-height: 1.5;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-}
-
-.sol-console-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.06);
+.sol-console-input {
+  color: #E2E8F0 !important;
 }
 
 .sol-console-logs {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 0.78rem;
+  min-height: 140px;
 }
 
 .sol-log-entry {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   line-height: 1.45;
 }
 
 .sol-log-time {
-  color: #64748B;
+  color: #64748B !important;
   font-size: 0.72rem;
   flex-shrink: 0;
-  margin-top: 1px;
 }
 
 .sol-log-tag {
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-size: 0.68rem;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: 600;
   flex-shrink: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
-.sol-log-tag--auth { background: rgba(59, 130, 246, 0.15); color: #60A5FA; }
-.sol-log-tag--tool { background: rgba(234, 179, 8, 0.15); color: #FACC15; }
-.sol-log-tag--guard { background: rgba(168, 85, 247, 0.15); color: #C084FC; }
-.sol-log-tag--exec { background: rgba(34, 197, 94, 0.15); color: #4ADE80; }
+.sol-log-tag--auth { background: rgba(56, 189, 248, 0.2); color: #38BDF8 !important; }
+.sol-log-tag--tool { background: rgba(245, 158, 11, 0.2); color: #FBBF24 !important; }
+.sol-log-tag--guard { background: rgba(16, 185, 129, 0.2); color: #34D399 !important; }
+.sol-log-tag--exec { background: rgba(168, 85, 247, 0.2); color: #C084FC !important; }
 
 .sol-log-msg {
-  color: #CBD5E1;
-  font-size: 0.78rem;
-  word-break: break-word;
+  color: #F8FAFC !important;
 }
 
-.sol-console-output {
-  background: rgba(34, 197, 94, 0.05);
-  border: 1px solid rgba(34, 197, 94, 0.2);
-  border-radius: 8px;
-  padding: 14px;
-  margin-top: auto;
+.sol-console-output-box {
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 2px solid #34D399;
+  padding: 10px 14px;
+  border-radius: 0 6px 6px 0;
 }
 
-.sol-output-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.sol-console-speed {
   font-size: 0.7rem;
-  font-weight: 700;
-  color: #4ADE80;
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
-}
-
-.sol-output-speed {
-  font-weight: 400;
-  color: #94A3B8;
-  font-size: 0.68rem;
-}
-
-.sol-output-content {
-  color: #F8FAFC;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  line-height: 1.5;
-}
-
-.sol-console-footer {
-  background: rgba(255, 255, 255, 0.02);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 10px 18px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.sol-replay-btn {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: var(--dim);
-  border-radius: 6px;
-  padding: 5px 10px;
-  font-size: 0.75rem;
-  font-family: var(--font-body);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  transition: all var(--dur-fast) ease;
-}
-
-.sol-replay-btn svg {
-  width: 12px;
-  height: 12px;
-}
-
-.sol-replay-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
-}
-
-/* =============================================================================
-   3. ROI & SAVINGS CALCULATOR
-   ============================================================================= */
-.sol-calc-sec {
-  position: relative;
-}
-
-.sol-calc-box {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 32px;
-  max-width: 980px;
-  margin: 0 auto;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-xl);
-  padding: 40px;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.25);
-}
-
-.sol-calc-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.sol-slider-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.sol-slider-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-}
-
-.sol-slider-label {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text);
-  line-height: 1.4;
-}
-
-.sol-slider-val {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--accent);
-  flex-shrink: 0;
-}
-
-.sol-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 6px;
-  border-radius: 4px;
-  background: var(--surface-2);
-  outline: none;
-  cursor: pointer;
-  transition: background var(--dur-fast) ease;
-}
-
-.sol-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--accent);
-  cursor: pointer;
-  box-shadow: 0 0 10px var(--sol-glow);
-  transition: transform var(--dur-micro) ease;
-}
-
-.sol-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
-}
-
-.sol-slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--accent);
-  cursor: pointer;
-  box-shadow: 0 0 10px var(--sol-glow);
-  border: none;
-}
-
-.sol-calc-results {
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  padding: 32px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.sol-calc-pill {
-  display: inline-block;
-  align-self: flex-start;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  background: rgba(110, 151, 255, 0.1);
-  border: 1px solid rgba(110, 151, 255, 0.2);
-  padding: 4px 10px;
-  border-radius: 100px;
-}
-
-.sol-calc-stat {
-  display: flex;
-  flex-direction: column;
-}
-
-.sol-calc-stat__num {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  font-weight: 400;
-  color: var(--text);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-}
-
-.sol-calc-stat__num--accent {
-  color: #34D399;
-}
-
-.sol-calc-stat__label {
-  font-size: 0.8rem;
-  color: var(--dim);
-  margin-top: 4px;
-}
-
-/* =============================================================================
-   4. TECH ECOSYSTEM WE CONNECT
-   ============================================================================= */
-.sol-ecosystem-sec {
-  position: relative;
-}
-
-.sol-ecosystem-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-}
-
-.sol-eco-col {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-}
-
-.sol-eco-title {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.sol-eco-svg {
-  width: 16px;
-  height: 16px;
-  color: var(--accent);
-  flex-shrink: 0;
-}
-
-.sol-eco-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.sol-eco-tags span {
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-2);
-  transition: all var(--dur-fast) ease;
-}
-
-.sol-eco-tags span:hover {
-  border-color: var(--accent);
-  color: var(--text);
-  transform: translateY(-1px);
-}
-
-/* =============================================================================
-   5. PRODUCTION ARCHITECTURE (4 LAYERS)
-   ============================================================================= */
-.sol-arch-sec {
-  position: relative;
-}
-
-.sol-arch-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-}
-
-.sol-arch-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  padding: 32px 24px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: all var(--dur) ease;
-}
-
-.sol-arch-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--sol-card-hover);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-}
-
-.sol-arch-card__num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  margin-bottom: 16px;
-}
-
-.sol-arch-card__icon-wrap {
-  width: 44px;
-  height: 44px;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  margin-bottom: 20px;
-}
-
-.sol-arch-card__icon-wrap svg {
-  width: 22px;
-  height: 22px;
-}
-
-.sol-arch-card__title {
-  font-family: var(--font-body);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.35;
-  margin-bottom: 12px;
-}
-
-.sol-arch-card__desc {
-  font-size: 0.88rem;
-  color: var(--dim);
-  line-height: 1.65;
-  margin-bottom: 20px;
-  flex: 1;
-}
-
-.sol-arch-card__badge {
-  display: inline-block;
-  align-self: flex-start;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  padding: 4px 10px;
-  border-radius: 100px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--accent-2);
-}
-
-/* =============================================================================
-   6. INSTANT TASK SCOPER (SANDBOX & BLUEPRINT)
-   ============================================================================= */
-.sol-intake {
-  position: relative;
-}
-
-.sol-sandbox {
-  max-width: 900px;
-  margin: 0 auto;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-xl);
-  padding: 32px;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.25);
-  position: relative;
-  transition: border-color var(--dur) ease;
-}
-
-.sol-sandbox:focus-within {
-  border-color: rgba(110, 151, 255, 0.4);
-}
-
-.sol-sandbox__presets {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.sol-sandbox__presets-label {
-  font-size: var(--size-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--dim);
-  margin-right: 4px;
-}
-
-.sol-chip {
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  color: var(--dim);
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  padding: 6px 14px;
-  border-radius: 100px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all var(--dur-fast) ease;
-  white-space: nowrap;
-}
-
-.sol-chip-icon {
-  width: 14px;
-  height: 14px;
-  opacity: 0.75;
-}
-
-.sol-chip:hover {
-  background: var(--surface-3);
-  color: var(--text);
-  border-color: var(--line-2);
-  transform: translateY(-1px);
-}
-
-.sol-chip.is-active {
-  background: rgba(110, 151, 255, 0.14);
-  border-color: var(--accent);
-  color: var(--text);
-  font-weight: 600;
-}
-
-.sol-chip.is-active .sol-chip-icon {
-  color: var(--accent);
-  opacity: 1;
-}
-
-.sol-sandbox__input-wrap {
-  position: relative;
-  margin-bottom: 24px;
-}
-
-.sol-sandbox__textarea {
-  width: 100%;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: var(--r);
-  padding: 16px 20px;
-  font-family: var(--font-body);
-  font-size: var(--size-base);
-  color: var(--text);
-  line-height: 1.6;
-  resize: vertical;
-  min-height: 90px;
-  transition: border-color var(--dur-fast) ease, background var(--dur-fast) ease;
-}
-
-.sol-sandbox__textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: var(--surface-3);
-}
-
-.sol-sandbox__input-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 8px;
-  padding: 0 4px;
-}
-
-.sol-sandbox__hint {
-  font-size: 0.8rem;
-  color: var(--dim-2);
-}
-
-.sol-sandbox__clear-btn {
-  background: transparent;
-  border: none;
-  color: var(--dim);
-  font-size: 0.8rem;
-  cursor: pointer;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-.sol-sandbox__clear-btn:hover {
-  color: var(--text);
-  text-decoration: underline;
-}
-
-/* Blueprint Panel */
-.sol-blueprint {
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: var(--r);
-  padding: 24px;
-  position: relative;
-}
-
-.sol-blueprint__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--line);
-}
-
-.sol-blueprint__tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.sol-blueprint__dot {
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--accent);
-}
-
-.sol-blueprint__eta {
-  font-size: 0.84rem;
-  color: var(--dim);
-}
-
-.sol-blueprint__eta strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
-.sol-blueprint__body {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-  padding: 20px 0;
-}
-
-.sol-blueprint__label {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--dim-2);
-  margin-bottom: 6px;
-}
-
-.sol-blueprint__val {
-  font-size: 0.88rem;
-  color: var(--text);
-  line-height: 1.5;
-}
-
-/* Execution Pipeline */
-.sol-pipeline {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  padding: 16px 20px;
-  margin-top: 6px;
-}
-
-.sol-pipeline__label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
-
-.sol-pipeline__steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 12px;
-}
-
-.sol-pipeline__step {
-  padding: 10px 12px;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-}
-
-.sol-pipeline__step--active {
-  border-color: rgba(110, 151, 255, 0.4);
-  background: rgba(110, 151, 255, 0.08);
-}
-
-.sol-pipeline__step-num {
-  display: block;
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--dim-2);
+  color: #34D399 !important;
   margin-bottom: 4px;
 }
 
-.sol-pipeline__step--active .sol-pipeline__step-num {
-  color: var(--accent);
-}
-
-.sol-pipeline__step-title {
-  display: block;
+.sol-console-output {
   font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text);
-  line-height: 1.35;
-}
-
-.sol-blueprint__actions {
-  display: flex;
-  gap: 14px;
-  margin-top: 22px;
-  flex-wrap: wrap;
+  color: #E2E8F0 !important;
+  line-height: 1.45;
 }
 
 /* =============================================================================
-   7. EXECUTION ROADMAP (DAYS 1 TO 5)
+   11. HOW IT WORKS
    ============================================================================= */
 .sol-steps-sec {
-  position: relative;
+  border-bottom: 1px solid var(--line);
+  padding: var(--sp-20) 0;
 }
 
-.sol-steps-grid {
+.sol-process-ladder {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
 }
 
-.sol-step-card {
+.sol-process-step {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  padding: 36px 28px;
+  border-radius: var(--r);
+  padding: var(--sp-6);
   position: relative;
-  display: flex;
-  flex-direction: column;
-  transition: transform var(--dur) ease, border-color var(--dur) ease;
+  transition: all var(--dur-fast) ease;
 }
 
-.sol-step-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--sol-card-hover);
-}
-
-.sol-step-card__num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  margin-bottom: 16px;
-}
-
-.sol-step-card__title {
-  font-family: var(--font-body);
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 14px;
-  line-height: 1.3;
-}
-
-.sol-step-card__text {
-  font-size: 0.92rem;
-  color: var(--dim);
-  line-height: 1.7;
-  margin-bottom: 24px;
-  flex: 1;
-}
-
-.sol-step-card__eta {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-2);
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  padding: 6px 12px;
-  border-radius: 6px;
-  display: inline-block;
-  align-self: flex-start;
-}
-
-/* =============================================================================
-   8. TRANSPARENT ENGAGEMENT & PRICING
-   ============================================================================= */
-.sol-engagement-sec {
-  position: relative;
-}
-
-.sol-pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  max-width: 1060px;
-  margin: 0 auto;
-}
-
-.sol-pricing-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-xl);
-  padding: 36px 28px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: all var(--dur) ease;
-}
-
-.sol-pricing-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--sol-card-hover);
-}
-
-.sol-pricing-card--featured {
+.sol-process-step:hover {
   border-color: var(--accent);
-  background: var(--surface-2);
-  box-shadow: 0 12px 40px var(--sol-glow);
+  transform: translateY(-2px);
 }
 
-.sol-pricing-card__pill {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--accent);
-  color: #000;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 4px 14px;
-  border-radius: 100px;
+.sol-step-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
 }
 
-.sol-pricing-card__header {
-  margin-bottom: 24px;
-}
-
-.sol-pricing-card__badge {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.sol-step-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(110, 151, 255, 0.12);
   color: var(--accent);
-  margin-bottom: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.sol-pricing-card__title {
-  font-family: var(--font-body);
-  font-size: 1.35rem;
+.sol-step-time {
+  font-size: 0.72rem;
   font-weight: 600;
+  color: var(--dim-2);
+}
+
+.sol-step-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
   color: var(--text);
   margin-bottom: 8px;
 }
 
-.sol-pricing-card__desc {
-  font-size: 0.85rem;
-  color: var(--dim);
-  line-height: 1.5;
-  margin-bottom: 18px;
-  min-height: 40px;
-}
-
-.sol-pricing-card__price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-
-.sol-pricing-card__price {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 400;
-  color: var(--text);
-  letter-spacing: -0.03em;
-}
-
-.sol-pricing-card__per {
-  font-size: 0.85rem;
+.sol-step-desc {
+  font-size: 0.84rem;
+  line-height: 1.6;
   color: var(--dim);
 }
 
-.sol-pricing-card__features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 32px;
-  flex: 1;
+/* =============================================================================
+   12. FINAL BRAND MESSAGE & CTA
+   ============================================================================= */
+.sol-final-section {
+  padding: var(--sp-24) 0;
 }
 
-.sol-pricing-card__features li {
-  font-size: 0.88rem;
-  color: var(--text-2);
-  line-height: 1.45;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.sol-item-check {
-  width: 18px;
-  height: 18px;
-  background: rgba(52, 211, 153, 0.15);
-  color: #34D399;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.sol-item-check svg {
-  width: 11px;
-  height: 11px;
-}
-
-.sol-item-cross {
-  width: 18px;
-  height: 18px;
-  background: rgba(239, 68, 68, 0.15);
-  color: #F87171;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.sol-item-cross svg {
-  width: 11px;
-  height: 11px;
-}
-
-.btn--full {
-  width: 100%;
+.sol-manifesto-box {
+  max-width: 820px;
+  margin: 0 auto 64px;
   text-align: center;
-  justify-content: center;
+  padding: var(--sp-8) var(--sp-6);
+  border-bottom: 1px solid var(--line-2);
 }
 
-/* =============================================================================
-   9. COMPARISON SECTION
-   ============================================================================= */
-.sol-compare {
-  position: relative;
-}
-
-.sol-compare-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.sol-compare-box {
-  border-radius: var(--r-xl);
-  padding: 36px 30px;
-}
-
-.sol-compare-box--bad {
-  background: var(--surface);
-  border: 1px solid var(--line);
-}
-
-.sol-compare-box--good {
-  background: var(--surface-2);
-  border: 1px solid var(--accent);
-  box-shadow: 0 8px 30px var(--sol-glow);
-}
-
-.sol-compare-box__header {
-  margin-bottom: 24px;
-}
-
-.sol-compare-box__badge {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 4px 10px;
-  border-radius: 6px;
-  margin-bottom: 12px;
-}
-
-.sol-compare-box__badge--bad {
-  background: rgba(239, 68, 68, 0.12);
-  color: #F87171;
-}
-
-.sol-compare-box__badge--good {
-  background: rgba(110, 151, 255, 0.16);
-  color: var(--accent);
-}
-
-.sol-compare-box h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
+.sol-manifesto-h {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 1.8rem + 2.5vw, 3.8rem);
+  line-height: 1.1;
   color: var(--text);
+  margin: 16px 0 20px;
 }
 
-.sol-compare-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.sol-manifesto-h em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-2);
 }
 
-.sol-compare-list li {
-  font-size: 0.92rem;
-  line-height: 1.55;
-  color: var(--dim);
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.sol-compare-box--good .sol-compare-list li {
-  color: var(--text);
-}
-
-/* =============================================================================
-   10. FAQ ACCORDION
-   ============================================================================= */
-.sol-faq-sec {
-  position: relative;
-}
-
-.sol-faq-list {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.sol-faq-item {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r);
-  overflow: hidden;
-  transition: border-color var(--dur-fast) ease;
-}
-
-.sol-faq-item[open] {
-  border-color: var(--line-2);
-  background: var(--surface-2);
-}
-
-.sol-faq-question {
-  padding: 20px 24px;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--text);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-  user-select: none;
-}
-
-.sol-faq-question::-webkit-details-marker {
-  display: none;
-}
-
-.sol-faq-chevron {
-  width: 18px;
-  height: 18px;
-  color: var(--dim);
-  transition: transform var(--dur-fast) ease;
-  flex-shrink: 0;
-}
-
-.sol-faq-item[open] .sol-faq-chevron {
-  transform: rotate(180deg);
-  color: var(--accent);
-}
-
-.sol-faq-answer {
-  padding: 0 24px 22px;
-  font-size: 0.92rem;
-  color: var(--dim);
+.sol-manifesto-p {
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.25rem);
   line-height: 1.7;
+  color: var(--dim);
 }
 
-.sol-faq-answer strong {
+.sol-manifesto-p strong {
   color: var(--text);
 }
 
-/* =============================================================================
-   11. FINAL CTA BOX
-   ============================================================================= */
-.sol-final-cta {
-  padding: var(--sp-20) 0;
+.sol-manifesto-sign {
+  margin-top: 24px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.sol-sign-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.sol-sign-title {
+  font-size: 0.75rem;
+  color: var(--dim-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .sol-cta-box {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-xl);
-  padding: 64px 48px;
+  padding: var(--sp-12);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 .sol-cta-box::before {
   content: '';
   position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 350px;
-  height: 350px;
+  top: 0; right: 0;
+  width: 380px; height: 380px;
   background: radial-gradient(circle, var(--sol-accent-glow) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.sol-cta-box__inner {
-  max-width: 680px;
-  position: relative;
-  z-index: 2;
-}
-
 /* =============================================================================
-   MODAL
+   MODAL: PROJECT PROPOSAL
    ============================================================================= */
 .sol-modal {
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: var(--sp-4);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--dur) ease;
+  transition: opacity var(--dur-fast) ease;
 }
 
 .sol-modal.is-open {
@@ -1563,8 +1790,9 @@
 .sol-modal__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .sol-modal__card {
@@ -1572,78 +1800,77 @@
   z-index: 2;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--r-xl);
-  padding: 36px;
-  max-width: 520px;
+  border-radius: var(--r-lg);
+  padding: var(--sp-8);
+  max-width: 540px;
   width: 100%;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
-  transform: scale(0.95);
-  transition: transform var(--dur) var(--ease-spring);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+  transform: translateY(16px);
+  transition: transform var(--dur-fast) var(--ease-spring);
 }
 
 .sol-modal.is-open .sol-modal__card {
-  transform: scale(1);
+  transform: translateY(0);
 }
 
 .sol-modal__close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
+  top: 18px;
+  right: 18px;
+  appearance: none;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
   color: var(--dim);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  transition: all var(--dur-fast) ease;
+  transition: color var(--dur-micro) ease;
 }
 
 .sol-modal__close:hover {
-  background: var(--surface-3);
   color: var(--text);
 }
 
 .sol-modal__title {
   font-family: var(--font-display);
   font-size: 1.6rem;
-  font-weight: 400;
   color: var(--text);
-  margin: 6px 0 8px;
+  margin: 8px 0;
 }
 
 .sol-modal__sub {
   font-size: 0.88rem;
+  line-height: 1.55;
   color: var(--dim);
-  line-height: 1.5;
   margin-bottom: 24px;
 }
 
+.sol-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .sol-modal__field {
-  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .sol-modal__label {
-  display: block;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--text);
-  margin-bottom: 6px;
+  color: var(--text-2);
 }
 
 .sol-modal__input,
 .sol-modal__textarea {
-  width: 100%;
   background: var(--surface-2);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   padding: 10px 14px;
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text);
   transition: border-color var(--dur-fast) ease;
 }
@@ -1655,25 +1882,24 @@
 }
 
 .sol-modal__submit {
+  margin-top: 8px;
   width: 100%;
-  margin-top: 10px;
 }
 
 .sol-modal__success {
   text-align: center;
-  padding: 24px 0;
+  padding: 32px 0;
 }
 
 .sol-success-badge {
-  width: 52px;
-  height: 52px;
-  background: rgba(34, 197, 94, 0.15);
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #4ADE80;
   margin: 0 auto 16px;
 }
 
@@ -1682,58 +1908,126 @@
   height: 24px;
 }
 
-.sol-modal__success h4 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 8px;
+.sol-modal-wa-link {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 0.84rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--dur-fast);
 }
 
-.sol-modal__success p {
-  font-size: 0.9rem;
-  color: var(--dim);
-  line-height: 1.5;
+.sol-modal-wa-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.sol-modal-wa-link::after {
+  display: none !important;
 }
 
 /* =============================================================================
-   RESPONSIVE ADJUSTMENTS
+   RESPONSIVE BREAKPOINTS
    ============================================================================= */
-@media (max-width: 960px) {
-  .sol-system-card {
-    grid-template-columns: 1fr;
-    padding: 24px;
+@media (max-width: 1024px) {
+  .sol-layers-nav,
+  .sol-bento-grid,
+  .sol-examples-grid,
+  .sol-adv-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .sol-calc-box {
-    grid-template-columns: 1fr;
-    padding: 28px;
+
+  .sol-bento-card--featured {
+    grid-column: span 2;
   }
-  .sol-compare-cards {
+
+  .sol-guidance-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sol-four-timeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sol-split-layout {
     grid-template-columns: 1fr;
   }
-  .sol-cta-box {
-    padding: 40px 24px;
+
+  .sol-split-narrative {
+    position: static;
+  }
+
+  .sol-process-ladder {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sol-inspector-body {
+    grid-template-columns: 1fr;
+  }
+
+  .sol-calc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sol-example-card--featured {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
-  .sol-hero__trust-strip {
-    flex-direction: column;
-    gap: 8px;
-    border-radius: var(--r);
-    padding: 14px;
-  }
-  .sol-trust-dot {
-    display: none;
-  }
-  .sol-spec-grid {
+@media (max-width: 768px) {
+  .sol-layers-nav,
+  .sol-bento-grid,
+  .sol-four-timeline,
+  .sol-guidance-cards,
+  .sol-examples-grid,
+  .sol-adv-grid,
+  .sol-process-ladder {
     grid-template-columns: 1fr;
   }
-  .sol-blueprint__actions {
+
+  .sol-bento-card--featured,
+  .sol-bento-card--full {
+    grid-column: 1 / -1;
+  }
+
+  .sol-bento-card-full-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .sol-bento-demo-box {
+    grid-template-columns: 1fr;
+  }
+
+  .sol-bento-demo-arrow {
+    transform: rotate(90deg);
+    text-align: center;
+  }
+
+  .sol-bp-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sol-ladder-display {
     flex-direction: column;
   }
-  .sol-blueprint__actions .btn {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
+
+  .sol-ladder-connector {
+    transform: rotate(90deg);
   }
+
+  .sol-task-card,
+  .sol-calc-box,
+  .sol-cta-box {
+    padding: var(--sp-5);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }

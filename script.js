@@ -198,63 +198,6 @@
 })();
 
 
-/* =============================================================================
-   4. WAITLIST FORM
-   ============================================================================= */
-(function () {
-  'use strict';
-
-  var form    = document.getElementById('waitlist-form');
-  var input   = document.getElementById('waitlist-email');
-  var success = document.getElementById('waitlist-success');
-
-  if (!form || !input || !success) return;
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    var email = (input.value || '').trim();
-
-    // Basic email validation
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      input.style.borderColor = '#ef4444';
-      input.focus();
-      return;
-    }
-
-    input.style.borderColor = '';
-
-    // Log the email (replace with Formspree / ConvertKit in production)
-    console.log('ReWoo waitlist signup:', email);
-
-    // Submit form to Formspree
-    var data = new FormData(form);
-    fetch(form.action || 'https://formspree.io/f/YOUR_FORM_ID', {
-      method: 'POST',
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    }).then(function(response) {
-      if (response.ok) {
-        // Hide form, show success
-        form.style.display = 'none';
-        success.style.display = 'block';
-      } else {
-        alert('Oops! There was a problem submitting your form');
-      }
-    }).catch(function(error) {
-      alert('Oops! There was a problem submitting your form');
-    });
-  });
-
-  // Reset border color on input
-  if (input) {
-    input.addEventListener('input', function () {
-      input.style.borderColor = '';
-    });
-  }
-})();
 
 
 /* =============================================================================

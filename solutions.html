@@ -3,30 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Execution Agency &amp; Autonomous Agent Systems — ReWoo</title>
-  <meta name="description" content="Turn manual business bottlenecks into autonomous AI systems. We engineer Voice AI receptionists, autonomous SDRs, n8n data pipelines, and private RAG systems deployed in 2 to 5 days.">
+
+  <!-- SEO -->
+  <title>ReWoo — Get Help With The Work You Need To Get Done</title>
+  <meta name="description" content="From everyday tasks and technology guidance to business automation and custom AI systems, ReWoo helps you get things done without requiring you to figure out the technology first.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://rewoo.tech/solutions.html">
-  <meta property="og:title" content="AI Execution Agency &amp; Autonomous Agent Systems — ReWoo">
-  <meta property="og:description" content="Turn manual business bottlenecks into autonomous AI systems. Voice AI, autonomous SDRs, n8n pipelines, and private document extractors deployed in 2 to 5 days.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ReWoo — Get Help With The Work You Need To Get Done">
+  <meta property="og:description" content="Tell us what you're trying to do. ReWoo can help you understand it, learn how to do it, do it for you, or automate it.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rewoo.tech/solutions.html">
   <meta property="og:image" content="https://rewoo.tech/assets/og-image.png">
   <meta property="og:site_name" content="ReWoo">
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI Execution Agency &amp; Autonomous Agent Systems — ReWoo">
-  <meta name="twitter:description" content="Turn manual business bottlenecks into autonomous AI systems. Deployed in 2 to 5 days with zero tech skills required.">
+  <meta name="twitter:title" content="ReWoo — Get Help With The Work You Need To Get Done">
+  <meta name="twitter:description" content="Start with the task. No technical knowledge required. We help you understand, do, or automate your work.">
   <meta name="twitter:image" content="https://rewoo.tech/assets/og-image.png">
+
+  <!-- Icons -->
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
   <link rel="apple-touch-icon" href="assets/logo.jpg">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,200..500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="solutions.css">
+  <link rel="stylesheet" href="solutions.css?v=20260914v9">
+
+  <!-- Prevent FOUC -->
   <script>
     (function(){
       try{
@@ -42,7 +56,7 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- ============================================================ NAV -->
+  <!-- ============================================================ NAVIGATION -->
   <nav class="nav" id="site-nav" aria-label="Primary navigation">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="ReWoo Home" id="nav-logo">
@@ -51,7 +65,7 @@
       </a>
       <ul class="nav__links" aria-label="Site sections">
         <li><a href="index.html" id="nl-home">Home</a></li>
-        <li><a href="solutions.html" id="nl-solutions" class="active" style="color:var(--text);font-weight:600;">AI Agency &amp; Systems</a></li>
+        <li><a href="solutions.html" id="nl-solutions" class="active" style="color:var(--text);font-weight:600;">How We Help</a></li>
       </ul>
       <div class="nav__right">
         <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
@@ -60,7 +74,7 @@
             <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
           </svg>
         </button>
-        <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20discuss%20an%20AI%20task%20with%20ReWoo" class="nav__cta" id="nav-cta">Talk to an Architect</a>
+        <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20discuss%20a%20task%20with%20ReWoo" class="nav__cta" id="nav-cta" target="_blank" rel="noopener noreferrer">Talk to Adil</a>
       </div>
       <button class="nav__hamburger" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
@@ -68,13 +82,14 @@
     </div>
   </nav>
 
+  <!-- Mobile Drawer -->
   <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
   <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
     <div class="mobile-nav-inner">
       <span class="mobile-section-label">Navigation</span>
       <div class="mobile-link-list">
         <a href="index.html" class="mobile-link-item">Home</a>
-        <a href="solutions.html" class="mobile-link-item">AI Agency &amp; Systems</a>
+        <a href="solutions.html" class="mobile-link-item active">How We Help</a>
       </div>
       <div class="mobile-theme-row">
         <button class="mobile-theme-btn" id="mobile-theme-toggle" aria-label="Toggle theme">
@@ -85,13 +100,13 @@
           <span id="mobile-theme-text">Switch to Light Mode</span>
         </button>
       </div>
-      <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20discuss%20an%20AI%20task%20with%20ReWoo" class="nav__cta" id="mn-cta">Talk to an Architect →</a>
+      <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20discuss%20a%20task%20with%20ReWoo" class="nav__cta" id="mn-cta" target="_blank" rel="noopener noreferrer">Talk to Adil &rarr;</a>
     </div>
   </div>
 
   <main id="main-content">
 
-    <!-- ============================================================ 1. HERO -->
+    <!-- ============================================================ 01. HERO -->
     <section class="sol-hero" id="top" aria-label="Hero Section">
       <div class="sol-hero__backdrop" aria-hidden="true">
         <img src="assets/background.png" alt="" class="sol-hero__backdrop-img" width="1897" height="879" loading="eager">
@@ -102,816 +117,981 @@
         <div class="hero__pill-cluster">
           <span class="hero__eyebrow">
             <span class="hero__eyebrow-dot"></span>
-            Production AI Automation Agency &middot; Enterprise Systems
+            AI Help for Real Work &middot; Direct with Founder Adil
           </span>
         </div>
 
         <h1 class="sol-hero__h1">
-          Stop Doing Manual Work.<br>
-          <em>Deploy Autonomous AI Systems.</em>
+          Tell us what you<br>
+          <em>need help with.</em>
         </h1>
 
         <p class="sol-hero__sub">
-          We eliminate the repetitive operational tasks eating 20+ hours of your week. From 24/7 Voice &amp; WhatsApp receptionists to autonomous SDRs, self-healing n8n data pipelines, and private PDF extraction — ReWoo engineers production-grade AI systems deployed in 2 to 5 days.
+          From everyday tasks and technology guidance to business automation and custom AI systems, ReWoo helps you get things done without requiring you to figure out the technology first.
         </p>
 
         <div class="hero__cta-row">
-          <a href="#systems-explorer" class="btn btn--primary" id="hero-explore-cta">Explore Top AI Systems ↓</a>
-          <a href="#request-task" class="btn btn--ghost" id="hero-task-cta">Describe What You Need Done →</a>
+          <a href="#task-input-section" class="btn btn--primary" id="hero-primary-cta">Tell Us What You Need &rarr;</a>
+          <a href="#service-discovery" class="btn btn--ghost" id="hero-secondary-cta">Explore Our Services &darr;</a>
+        </div>
+
+        <div class="sol-hero-trust-row">
+          <span>✓ No subscriptions required</span>
+          <span>✓ Start with a single task</span>
+          <span>✓ Direct founder execution</span>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================ 2. INTERACTIVE AGENT SYSTEMS EXPLORER -->
-    <section class="section section--surface sol-explorer-sec" id="systems-explorer" aria-label="Agent Systems Explorer">
+    <!-- ============================================================ 02. TASK-FIRST INPUT -->
+    <section class="section section--surface sol-task-sec" id="task-input-section" aria-label="Task-First Input">
       <div class="wrap">
         <div class="sol-section-head">
-          <span class="overline overline--accent" data-animate>Production Capabilities</span>
+          <span class="overline overline--accent" data-animate>Start With The Problem</span>
           <h2 class="s-headline" data-animate style="transition-delay:80ms">
-            Five Autonomous AI Systems.<br>
-            <em>Proven Across Real Businesses.</em>
+            What's on your desk right now?<br>
+            <em>No technical knowledge required.</em>
           </h2>
           <p class="s-subhead" data-animate style="transition-delay:160ms">
-            Select any system below to inspect its production architecture, connected stack, and live simulated execution log.
+            Describe the task or problem in your own words. You don't need to know whether you need an AI tool, software, or an automated workflow.
           </p>
         </div>
 
-        <!-- Vertical Navigation Tabs -->
-        <div class="sol-tab-nav" role="tablist" aria-label="System Categories" data-animate style="transition-delay:200ms">
-          
-          <!-- Tab 1: Voice & WhatsApp -->
-          <button type="button" class="sol-tab-btn is-active" role="tab" id="tab-voice" aria-selected="true" aria-controls="panel-system" data-system="voice">
-            <span class="sol-tab-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-tab-svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </span>
-            <span class="sol-tab-text">
-              <strong>Voice &amp; WhatsApp Receptionist</strong>
-              <small>24/7 Inbound Call &amp; Lead Qualifier</small>
-            </span>
-          </button>
-
-          <!-- Tab 2: Outbound SDR -->
-          <button type="button" class="sol-tab-btn" role="tab" id="tab-sdr" aria-selected="false" aria-controls="panel-system" data-system="sdr">
-            <span class="sol-tab-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-tab-svg"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-            </span>
-            <span class="sol-tab-text">
-              <strong>Autonomous Outbound SDR</strong>
-              <small>Lead Scraping &amp; 1-to-1 Outreach</small>
-            </span>
-          </button>
-
-          <!-- Tab 3: n8n Pipelines -->
-          <button type="button" class="sol-tab-btn" role="tab" id="tab-pipeline" aria-selected="false" aria-controls="panel-system" data-system="pipeline">
-            <span class="sol-tab-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-tab-svg"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
-            </span>
-            <span class="sol-tab-text">
-              <strong>Self-Healing n8n Pipelines</strong>
-              <small>Stripe &rarr; Sheets &rarr; CRM &rarr; Invoicing</small>
-            </span>
-          </button>
-
-          <!-- Tab 4: Document OCR -->
-          <button type="button" class="sol-tab-btn" role="tab" id="tab-documents" aria-selected="false" aria-controls="panel-system" data-system="documents">
-            <span class="sol-tab-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-tab-svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            </span>
-            <span class="sol-tab-text">
-              <strong>Document &amp; Invoice OCR</strong>
-              <small>PDF Invoices, Contracts &amp; ERP Sync</small>
-            </span>
-          </button>
-
-          <!-- Tab 5: Custom Vertical AI -->
-          <button type="button" class="sol-tab-btn" role="tab" id="tab-custom" aria-selected="false" aria-controls="panel-system" data-system="custom">
-            <span class="sol-tab-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-tab-svg"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </span>
-            <span class="sol-tab-text">
-              <strong>Custom Vertical AI</strong>
-              <small>Proprietary Logic &amp; Internal Portals</small>
-            </span>
-          </button>
-        </div>
-
-        <!-- Two-Column Interactive Display Card -->
-        <div class="sol-system-card" id="panel-system" role="tabpanel" data-animate style="transition-delay:260ms">
-          <!-- Left Specs Column -->
-          <div class="sol-system-specs">
-            <div class="sol-live-tag">
-              <span class="sol-live-dot"></span>
-              <span id="sys-badge">ACTIVE PRODUCTION ARCHITECTURE</span>
-            </div>
-
-            <h3 class="sol-system-title" id="sys-title">24/7 AI Voice &amp; WhatsApp Receptionist</h3>
-            <p class="sol-system-desc" id="sys-desc">
-              Answers inbound phone calls and WhatsApp inquiries in under 1 second. Answers company FAQs, qualifies buyer budget and timeline, books meetings on Google Calendar, and alerts human sales reps on Slack for hot leads.
-            </p>
-
-            <div class="sol-spec-group">
-              <span class="sol-spec-label">Connected Ecosystem</span>
-              <div class="sol-tool-badges" id="sys-tools">
-                <span class="sol-tool-badge">Vapi / Retell AI</span>
-                <span class="sol-tool-badge">WhatsApp Cloud API</span>
-                <span class="sol-tool-badge">Twilio Voice</span>
-                <span class="sol-tool-badge">GoHighLevel / HubSpot</span>
-                <span class="sol-tool-badge">Google Calendar</span>
-                <span class="sol-tool-badge">Slack Alerts</span>
-              </div>
-            </div>
-
-            <div class="sol-spec-grid">
-              <div class="sol-spec-metric">
-                <span class="sol-spec-metric__num" id="sys-turnaround">2–4 Days</span>
-                <span class="sol-spec-metric__label">Deployment Turnaround</span>
-              </div>
-              <div class="sol-spec-metric">
-                <span class="sol-spec-metric__num" id="sys-sla">Recovers 35%+ Leads</span>
-                <span class="sol-spec-metric__label">Measured Business Impact</span>
-              </div>
-            </div>
-
-            <div class="sol-system-actions">
-              <button type="button" class="btn btn--primary btn--sm" id="sys-deploy-btn">Deploy This System &rarr;</button>
-              <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27m%20interested%20in%20deploying%20the%20Voice%20%26%20WhatsApp%20Receptionist%20System" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm" id="sys-wa-btn">Discuss with Founder Adil</a>
-            </div>
-          </div>
-
-          <!-- Right Simulated Execution Console Column -->
-          <div class="sol-system-console">
-            <div class="sol-console-header">
-              <div class="sol-console-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <span class="sol-console-title" id="console-title">rewoo-voice-engine — inbound-voice.v3</span>
-              <span class="sol-console-status">&bull; LIVE SIMULATION</span>
-            </div>
-
-            <div class="sol-console-body">
-              <div class="sol-console-trigger">
-                <span class="sol-console-prompt">INBOUND CALL TRIGGER:</span>
-                <span class="sol-console-input-text" id="console-input">"Caller (+1 415-892-0192): 'Hi, I need a commercial cleaning quote for our 12,000 sq ft office in Austin this Friday.'"</span>
-              </div>
-
-              <div class="sol-console-divider"></div>
-
-              <div class="sol-console-logs" id="console-logs">
-                <div class="sol-log-entry">
-                  <span class="sol-log-time">00:00.04</span>
-                  <span class="sol-log-tag sol-log-tag--auth">VOICE_INGEST</span>
-                  <span class="sol-log-msg">Twilio SIP trunk connected. Ultra-low latency stream (620ms speech-to-speech).</span>
-                </div>
-                <div class="sol-log-entry">
-                  <span class="sol-log-time">00:00.18</span>
-                  <span class="sol-log-tag sol-log-tag--tool">QUALIFY</span>
-                  <span class="sol-log-msg">Identified Intent: 'Commercial Estimate', SqFt: 12,000, Loc: Austin. Budget qualified (&gt; $1,500).</span>
-                </div>
-                <div class="sol-log-entry">
-                  <span class="sol-log-time">00:00.35</span>
-                  <span class="sol-log-tag sol-log-tag--guard">CALENDAR_CHECK</span>
-                  <span class="sol-log-msg">gcal.getAvailableSlots(date="Friday", duration="30m") &rarr; Slot: 2:00 PM CST confirmed.</span>
-                </div>
-                <div class="sol-log-entry">
-                  <span class="sol-log-time">00:00.52</span>
-                  <span class="sol-log-tag sol-log-tag--exec">CRM_SYNC</span>
-                  <span class="sol-log-msg">Created deal in HubSpot &amp; booked site walk on calendar. Slack alert sent to field team.</span>
-                </div>
-              </div>
-
-              <div class="sol-console-output">
-                <div class="sol-output-header">
-                  <span>FINAL AGENT ACTION</span>
-                  <span class="sol-output-speed" id="console-speed">Call completed in 45s &middot; 0 Human Labor</span>
-                </div>
-                <div class="sol-output-content" id="console-output">
-                  "Perfect! I've booked your on-site walkthrough for Friday at 2:00 PM CST with our Austin team. A calendar invite and SMS confirmation have been sent to your phone."
-                </div>
-              </div>
-            </div>
-
-            <div class="sol-console-footer">
-              <button type="button" class="sol-replay-btn" id="console-replay-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
-                Replay Execution Simulation
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ 3. INTERACTIVE ROI & HOURS SAVED CALCULATOR -->
-    <section class="section section--bg sol-calc-sec" id="calculator" aria-label="ROI Calculator">
-      <div class="wrap">
-        <div class="sol-section-head">
-          <span class="overline overline--accent" data-animate>The ROI of Automation</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">
-            Calculate Your Time &amp; Cost Savings.<br>
-            <em>Quantify the Cost of NOT Automating.</em>
-          </h2>
-          <p class="s-subhead" data-animate style="transition-delay:160ms">
-            Adjust the parameters below to compute your estimated monthly operational recovery.
-          </p>
-        </div>
-
-        <div class="sol-calc-box" data-animate style="transition-delay:220ms">
-          <div class="sol-calc-controls">
-            <!-- Slider 1 -->
-            <div class="sol-slider-group">
-              <div class="sol-slider-header">
-                <label for="slider-hours" class="sol-slider-label">Weekly Hours Spent on Repetitive Tasks per Employee</label>
-                <span class="sol-slider-val" id="val-hours">15 hrs/wk</span>
-              </div>
-              <input type="range" id="slider-hours" min="5" max="40" step="1" value="15" class="sol-slider">
-            </div>
-
-            <!-- Slider 2 -->
-            <div class="sol-slider-group">
-              <div class="sol-slider-header">
-                <label for="slider-team" class="sol-slider-label">Number of Employees Doing Manual Admin / Ops Work</label>
-                <span class="sol-slider-val" id="val-team">4 people</span>
-              </div>
-              <input type="range" id="slider-team" min="1" max="50" step="1" value="4" class="sol-slider">
-            </div>
-
-            <!-- Slider 3 -->
-            <div class="sol-slider-group">
-              <div class="sol-slider-header">
-                <label for="slider-rate" class="sol-slider-label">Average Hourly Employee Cost / Value</label>
-                <span class="sol-slider-val" id="val-rate">$35/hr</span>
-              </div>
-              <input type="range" id="slider-rate" min="15" max="150" step="5" value="35" class="sol-slider">
-            </div>
-          </div>
-
-          <!-- Calculated Output Card -->
-          <div class="sol-calc-results">
-            <span class="sol-calc-pill">Estimated Monthly Impact</span>
-            
-            <div class="sol-calc-stat">
-              <div class="sol-calc-stat__num" id="res-hours">240 hrs</div>
-              <div class="sol-calc-stat__label">Hours Recovered Every Month</div>
-            </div>
-
-            <div class="sol-calc-stat">
-              <div class="sol-calc-stat__num sol-calc-stat__num--accent" id="res-money">$8,400</div>
-              <div class="sol-calc-stat__label">Monthly Operational Value Saved</div>
-            </div>
-
-            <div class="sol-calc-stat">
-              <div class="sol-calc-stat__num" id="res-roi">7.2x ROI</div>
-              <div class="sol-calc-stat__label">Average First-Month ReWoo ROI</div>
-            </div>
-
-            <a href="#request-task" class="btn btn--primary btn--full" id="calc-cta-btn">Automate This Bottleneck Now &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ 4. TECH ECOSYSTEM WE CONNECT -->
-    <section class="section section--surface sol-ecosystem-sec" id="ecosystem" aria-label="Connected Stack">
-      <div class="wrap">
-        <div class="sol-section-head">
-          <span class="overline overline--accent" data-animate>Enterprise Compatibility</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">
-            We Connect With Your Existing Stack.<br>
-            <em>Zero Platform Lock-In.</em>
-          </h2>
-          <p class="s-subhead" data-animate style="transition-delay:160ms">
-            ReWoo agents integrate directly into the tools your team already uses daily.
-          </p>
-        </div>
-
-        <div class="sol-ecosystem-grid" data-animate style="transition-delay:200ms">
-          <div class="sol-eco-col">
-            <h4 class="sol-eco-title">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-eco-svg"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-              Automation &amp; Orchestration
-            </h4>
-            <div class="sol-eco-tags">
-              <span>n8n (Self-Hosted)</span>
-              <span>Make.com</span>
-              <span>LangGraph</span>
-              <span>ReWoo Protocols</span>
-              <span>Model Context Protocol (MCP)</span>
-              <span>Custom Webhooks</span>
-            </div>
-          </div>
-
-          <div class="sol-eco-col">
-            <h4 class="sol-eco-title">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-eco-svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Voice &amp; Messaging
-            </h4>
-            <div class="sol-eco-tags">
-              <span>Vapi.ai</span>
-              <span>Retell AI</span>
-              <span>Twilio Voice / SMS</span>
-              <span>WhatsApp Cloud API</span>
-              <span>Slack Bot</span>
-              <span>Gmail / Outlook 365</span>
-            </div>
-          </div>
-
-          <div class="sol-eco-col">
-            <h4 class="sol-eco-title">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-eco-svg"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-              CRM, Data &amp; Accounting
-            </h4>
-            <div class="sol-eco-tags">
-              <span>HubSpot CRM</span>
-              <span>GoHighLevel</span>
-              <span>Salesforce</span>
-              <span>Stripe API</span>
-              <span>QuickBooks / Xero</span>
-              <span>Google Sheets / Excel</span>
-              <span>Airtable &amp; Notion</span>
-              <span>PostgreSQL / Supabase</span>
-            </div>
-          </div>
-
-          <div class="sol-eco-col">
-            <h4 class="sol-eco-title">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-eco-svg"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              Private Intelligence &amp; Models
-            </h4>
-            <div class="sol-eco-tags">
-              <span>Claude 3.7 / 3.5 Sonnet</span>
-              <span>OpenAI GPT-4o</span>
-              <span>DeepSeek V3</span>
-              <span>Private Local LLMs</span>
-              <span>Vector RAG Databases</span>
-              <span>Enterprise Zero-Retention VPC</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ 5. PRODUCTION ARCHITECTURE (4 LAYERS) -->
-    <section class="section section--bg sol-arch-sec" id="architecture" aria-label="Enterprise Architecture">
-      <div class="wrap">
-        <div class="sol-section-head">
-          <span class="overline overline--accent" data-animate>Engineering Standard</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">
-            How We Build Production Systems.<br>
-            <em>Not Brittle Prompts.</em>
-          </h2>
-          <p class="s-subhead" data-animate style="transition-delay:160ms">
-            The four-layer engineering standard ReWoo applies to every agent build to ensure zero hallucinations, total privacy, and unbreakable reliability.
-          </p>
-        </div>
-
-        <div class="sol-arch-grid" data-animate style="transition-delay:220ms">
-          <!-- Layer 1 -->
-          <article class="sol-arch-card">
-            <div class="sol-arch-card__num">LAYER 01</div>
-            <div class="sol-arch-card__icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
-            </div>
-            <h3 class="sol-arch-card__title">Deterministic Safety Guardrails</h3>
-            <p class="sol-arch-card__desc">
-              We never let raw LLM outputs reach your customers or databases unchecked. Every agent pipeline executes programmatic schema validations, regex mathematical checks, and policy gates that eliminate hallucinations before action execution.
-            </p>
-            <span class="sol-arch-card__badge">Zero Hallucination Moat</span>
-          </article>
-
-          <!-- Layer 2 -->
-          <article class="sol-arch-card">
-            <div class="sol-arch-card__num">LAYER 02</div>
-            <div class="sol-arch-card__icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            </div>
-            <h3 class="sol-arch-card__title">Private VPC &amp; Zero Data Retention</h3>
-            <p class="sol-arch-card__desc">
-              Your company data, customer details, and financials are isolated inside dedicated encrypted VPC environments. We enforce strict enterprise zero-data retention agreements: your private data is never used to train public foundation models.
-            </p>
-            <span class="sol-arch-card__badge">100% Data Isolation</span>
-          </article>
-
-          <!-- Layer 3 -->
-          <article class="sol-arch-card">
-            <div class="sol-arch-card__num">LAYER 03</div>
-            <div class="sol-arch-card__icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-            </div>
-            <h3 class="sol-arch-card__title">Stateful Orchestration &amp; MCP</h3>
-            <p class="sol-arch-card__desc">
-              Built on advanced ReWoo multi-agent graphs and Model Context Protocol (MCP). Agents plan sub-tasks, execute tools in parallel, handle API retries gracefully, and remember context across long multi-turn sessions.
-            </p>
-            <span class="sol-arch-card__badge">Multi-Step Agent Graphs</span>
-          </article>
-
-          <!-- Layer 4 -->
-          <article class="sol-arch-card">
-            <div class="sol-arch-card__num">LAYER 04</div>
-            <div class="sol-arch-card__icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
-            <h3 class="sol-arch-card__title">Human-in-the-Loop Safeguards</h3>
-            <p class="sol-arch-card__desc">
-              High-stakes operations (e.g. refunds above a threshold, sensitive contract edits, mass email campaigns) automatically route to designated team members on Slack or email for 1-click approval before irreversible actions are taken.
-            </p>
-            <span class="sol-arch-card__badge">Graceful Escalations</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ 6. INSTANT TASK & SCOPE GENERATOR -->
-    <section class="section section--surface sol-intake" id="request-task" aria-label="Describe Your Task">
-      <div class="wrap">
-        <div class="sol-section-head">
-          <span class="overline overline--accent" data-animate>Instant System Scoper</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">
-            “Here is my operational bottleneck.<br>
-            <em>How does ReWoo solve it?”</em>
-          </h2>
-          <p class="s-subhead" data-animate style="transition-delay:160ms">
-            Select a common workflow below or describe your task in plain English. We'll generate an architectural blueprint in real time.
-          </p>
-        </div>
-
-        <div class="sol-sandbox" data-animate style="transition-delay:220ms">
-          <!-- Plain English Presets -->
-          <div class="sol-sandbox__presets" role="group" aria-label="Task Examples">
-            <span class="sol-sandbox__presets-label">Popular Scopes:</span>
-            <button type="button" class="sol-chip is-active" data-preset="voice">
-              <svg class="sol-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              24/7 Voice AI &amp; WhatsApp Receptionist
-            </button>
-            <button type="button" class="sol-chip" data-preset="sdr">
-              <svg class="sol-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-              Autonomous Outbound SDR Outreach
-            </button>
-            <button type="button" class="sol-chip" data-preset="excel">
-              <svg class="sol-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
-              Stripe &rarr; Sheets &rarr; CRM Auto-Sync
-            </button>
-            <button type="button" class="sol-chip" data-preset="extraction">
-              <svg class="sol-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-              PDF Invoices &amp; Contract OCR Extraction
-            </button>
-            <button type="button" class="sol-chip" data-preset="custom">
-              <svg class="sol-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-              Custom Business Logic / Internal Portal
-            </button>
+        <div class="sol-task-card" data-animate style="transition-delay:200ms">
+          <!-- Preset Prompt Pills -->
+          <div class="sol-prompt-pills-label">Click a common starting point, or type your own:</div>
+          <div class="sol-prompt-pills" role="toolbar" aria-label="Example prompt shortcuts">
+            <button type="button" class="sol-pill is-active" data-prompt="research">Research something</button>
+            <button type="button" class="sol-pill" data-prompt="document">Understand a document</button>
+            <button type="button" class="sol-pill" data-prompt="tool">Learn a tool</button>
+            <button type="button" class="sol-pill" data-prompt="organize">Organize my work</button>
+            <button type="button" class="sol-pill" data-prompt="automate">Automate something</button>
+            <button type="button" class="sol-pill" data-prompt="build">Build an AI solution</button>
           </div>
 
           <!-- Input Area -->
-          <div class="sol-sandbox__input-wrap">
-            <label for="task-input" class="sr-only">Describe what you need done</label>
-            <textarea id="task-input" class="sol-sandbox__textarea" rows="3" placeholder="Describe the operational task or workflow you want to automate in plain English..."></textarea>
-            <div class="sol-sandbox__input-footer">
-              <span class="sol-sandbox__hint" id="sandbox-hint">Mention the apps your team uses (e.g. Vapi, WhatsApp, Gmail, Slack, HubSpot, Stripe, QuickBooks) for an exact integration plan.</span>
-              <button type="button" class="sol-sandbox__clear-btn" id="task-clear-btn" title="Clear input">Clear</button>
+          <div class="sol-input-wrap">
+            <label for="task-input-field" class="sr-only">Describe your task</label>
+            <textarea id="task-input-field" class="sol-task-textarea" rows="3" placeholder="Describe the task or problem in your own words..."></textarea>
+            <div class="sol-input-footer">
+              <span class="sol-input-hint">Type naturally — ReWoo's engine diagnoses the approach in real time</span>
+              <button type="button" class="sol-btn-clear" id="task-clear-btn">Clear input</button>
             </div>
           </div>
 
-          <!-- Dynamic Architectural Blueprint Output -->
-          <div class="sol-blueprint" id="blueprint-panel">
-            <div class="sol-blueprint__header">
-              <div class="sol-blueprint__tag">
-                <span class="sol-blueprint__dot"></span>
-                <span id="bp-category">24/7 AI Voice &amp; WhatsApp Receptionist</span>
+          <!-- Dynamic Live Response Blueprint -->
+          <div class="sol-blueprint-preview" id="task-blueprint-box">
+            <div class="sol-bp-header">
+              <div class="sol-bp-tag-group">
+                <span class="sol-bp-layer-badge" id="bp-layer-tag">Everyday Help</span>
+                <span class="sol-bp-way-badge" id="bp-way-tag">Explain</span>
               </div>
-              <div class="sol-blueprint__eta">
-                <span>Guaranteed Turnaround:</span>
-                <strong id="bp-timeline">2–4 Business Days</strong>
+              <span class="sol-bp-turnaround" id="bp-turnaround-tag">Estimated: 3–5 Hours</span>
+            </div>
+
+            <div class="sol-bp-body">
+              <h3 class="sol-bp-title" id="bp-title">Synthesized Research &amp; Comparison Brief</h3>
+              <p class="sol-bp-desc" id="bp-desc">
+                We cut through vendor marketing fluff to conduct structured, objective comparisons and distill hundreds of pages into a crisp executive briefing.
+              </p>
+
+              <div class="sol-bp-details-grid">
+                <div class="sol-bp-item">
+                  <span class="sol-bp-label">Recommended Approach</span>
+                  <strong class="sol-bp-val" id="bp-approach">Multi-source research synthesis + structured side-by-side matrix</strong>
+                </div>
+                <div class="sol-bp-item">
+                  <span class="sol-bp-label">What You Provide</span>
+                  <strong class="sol-bp-val" id="bp-input">Your specific criteria, budget constraints, and current tools</strong>
+                </div>
+                <div class="sol-bp-item">
+                  <span class="sol-bp-label">What You Receive</span>
+                  <strong class="sol-bp-val" id="bp-deliverable">1-page comparison matrix + clear recommendation</strong>
+                </div>
+                <div class="sol-bp-item">
+                  <span class="sol-bp-label">If This Repeats</span>
+                  <strong class="sol-bp-val" id="bp-growth">Can evolve into a recurring monthly market or competitor scan</strong>
+                </div>
+              </div>
+
+              <!-- Human Founder Note -->
+              <div class="sol-bp-founder-note">
+                <span class="sol-bp-founder-avatar">A</span>
+                <div class="sol-bp-founder-text">
+                  <strong>Adil's note:</strong> We don't over-engineer simple tasks. If you need an objective vendor or market comparison, we deliver a concise, actionable matrix without trying to sell you custom software.
+                </div>
+              </div>
+
+              <div class="sol-bp-actions">
+                <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%20need%20help%20with%3A%20Research%20something" class="btn btn--primary" id="bp-wa-btn" target="_blank" rel="noopener noreferrer">
+                  Get Help On WhatsApp (Fastest) &rarr;
+                </a>
+                <button type="button" class="btn btn--outline" id="bp-modal-btn">
+                  Request Step-by-Step Blueprint
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 03. SERVICE DISCOVERY -->
+    <section class="section section--bg sol-discovery-sec" id="service-discovery" aria-label="What ReWoo Helps With">
+      <div class="wrap">
+        <div class="sol-section-head">
+          <span class="overline overline--accent" data-animate>Unified Capability</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">
+            What can we help you with?<br>
+            <em>Start with the task. We choose the right level of help.</em>
+          </h2>
+          <p class="s-subhead" data-animate style="transition-delay:160ms">
+            ReWoo isn't three separate businesses. We are a single partner that solves simple daily bottlenecks today and engineers intelligent business automation when you scale.
+          </p>
+        </div>
+
+        <div class="sol-layers-nav" data-animate style="transition-delay:200ms">
+          <!-- Layer 1 -->
+          <a href="#everyday-help" class="sol-layer-card-anchor sol-layer-card-anchor--1">
+            <div class="sol-layer-card-top">
+              <span class="sol-layer-num">Layer 01</span>
+              <span class="sol-layer-for">Personal &middot; Immediate</span>
+            </div>
+            <h3 class="sol-layer-card-h">Everyday Help</h3>
+            <p class="sol-layer-card-p">Help with planning, organizing, writing, research, documents, and learning everyday software tools without tech stress.</p>
+            <div class="sol-layer-tags">
+              <span>Writing</span><span>Research</span><span>PDFs</span><span>Spreadsheets</span><span>AI Tools</span>
+            </div>
+            <span class="sol-layer-arrow">View 7 everyday capabilities &darr;</span>
+          </a>
+
+          <!-- Layer 2 -->
+          <a href="#work-business" class="sol-layer-card-anchor sol-layer-card-anchor--2">
+            <div class="sol-layer-card-top">
+              <span class="sol-layer-num">Layer 02</span>
+              <span class="sol-layer-for">Business &middot; Operational</span>
+            </div>
+            <h3 class="sol-layer-card-h">Work &amp; Business</h3>
+            <p class="sol-layer-card-p">Streamline operations, handle customer communications, analyze markets, and eliminate repetitive administrative churn.</p>
+            <div class="sol-layer-tags">
+              <span>Productivity</span><span>Operations</span><span>Customer Support</span><span>Automation</span>
+            </div>
+            <span class="sol-layer-arrow">View 5 business workflows &darr;</span>
+          </a>
+
+          <!-- Layer 3 -->
+          <a href="#advanced-ai" class="sol-layer-card-anchor sol-layer-card-anchor--3">
+            <div class="sol-layer-card-top">
+              <span class="sol-layer-num">Layer 03</span>
+              <span class="sol-layer-for">Engineering &middot; Architecture</span>
+            </div>
+            <h3 class="sol-layer-card-h">Build With AI</h3>
+            <p class="sol-layer-card-p">Custom agentic systems, intelligent automation pipelines, AI applications, SaaS, and strategic technical consulting.</p>
+            <div class="sol-layer-tags">
+              <span>Agentic Systems</span><span>n8n Pipelines</span><span>AI SaaS</span><span>Custom Apps</span>
+            </div>
+            <span class="sol-layer-arrow">Inspect 6 advanced AI engines &darr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 04. FOUR WAYS WE HELP -->
+    <section class="section section--surface sol-four-ways-sec" id="four-ways" aria-label="Four Ways We Help">
+      <div class="wrap">
+        <div class="sol-section-head">
+          <span class="overline overline--accent" data-animate>The ReWoo Method</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">
+            Four ways we help you get work done.<br>
+            <em>The bridge between everyday help and automation.</em>
+          </h2>
+          <p class="s-subhead" data-animate style="transition-delay:160ms">
+            You don't have to automate everything, and you don't have to do it alone. Depending on what you need, we match the right mode of support.
+          </p>
+        </div>
+
+        <div class="sol-four-timeline">
+          <!-- 1. Explain -->
+          <div class="sol-four-node" data-animate style="transition-delay:100ms">
+            <div class="sol-four-node-header">
+              <span class="sol-four-num">01</span>
+              <span class="sol-four-pill">Explain</span>
+            </div>
+            <h3 class="sol-four-title">Understand something clearly.</h3>
+            <p class="sol-four-desc">
+              Get plain-English explanations of dense contracts, confusing software error messages, complex industry jargon, or technical briefs. No buzzwords, no condescension.
+            </p>
+            <div class="sol-four-quote">
+              &ldquo;Explain what this 40-page software agreement actually means for my business in 5 bullet points.&rdquo;
+            </div>
+          </div>
+
+          <!-- 2. Guide -->
+          <div class="sol-four-node" data-animate style="transition-delay:180ms">
+            <div class="sol-four-node-header">
+              <span class="sol-four-num">02</span>
+              <span class="sol-four-pill">Guide</span>
+            </div>
+            <h3 class="sol-four-title">Learn how to do it yourself.</h3>
+            <p class="sol-four-desc">
+              We teach you how to use modern AI and digital tools step-by-step so you gain independence. We set up the workspace, provide video or written walkthroughs, and mentor you through execution.
+            </p>
+            <div class="sol-four-quote">
+              &ldquo;Show me how to prompt AI to draft my weekly client updates without sounding robotic.&rdquo;
+            </div>
+          </div>
+
+          <!-- 3. Do -->
+          <div class="sol-four-node" data-animate style="transition-delay:260ms">
+            <div class="sol-four-node-header">
+              <span class="sol-four-num">03</span>
+              <span class="sol-four-pill">Do</span>
+            </div>
+            <h3 class="sol-four-title">Let us handle the task.</h3>
+            <p class="sol-four-desc">
+              When you simply don't have the time or energy, hand the work to ReWoo. AI carries the heavy lifting, while our team validates, polishes, and delivers high-grade finished output.
+            </p>
+            <div class="sol-four-quote">
+              &ldquo;Take these 20 customer review notes and synthesize them into a board-ready deck by tomorrow.&rdquo;
+            </div>
+          </div>
+
+          <!-- 4. Automate -->
+          <div class="sol-four-node" data-animate style="transition-delay:340ms">
+            <div class="sol-four-node-header">
+              <span class="sol-four-num">04</span>
+              <span class="sol-four-pill">Automate</span>
+            </div>
+            <h3 class="sol-four-title">Turn repeated work into a system.</h3>
+            <p class="sol-four-desc">
+              If you find yourself doing the same manual steps every week or month, we connect your applications and engineer an intelligent system that runs automatically in the background.
+            </p>
+            <div class="sol-four-quote">
+              &ldquo;Every Friday I copy Stripe revenue into Google Sheets and email my accountant. Automate it.&rdquo;
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 05. LAYER 1 — EVERYDAY SERVICES (Bento Layout) -->
+    <section class="section section--bg sol-layer-sec" id="everyday-help" aria-label="Everyday Help Services">
+      <div class="wrap">
+        <div class="sol-section-head">
+          <span class="overline overline--accent" data-animate>Layer 01 &middot; Personal &amp; Everyday</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">
+            Everyday Help.<br>
+            <em>Practical assistance for real-world tasks.</em>
+          </h2>
+          <p class="s-subhead" data-animate style="transition-delay:160ms">
+            Designed for individuals, students, creators, and non-technical professionals who want to reclaim hours from their week without technical frustration.
+          </p>
+        </div>
+
+        <!-- Human Bento Grid (Replaces repetitive 3x3 layout) -->
+        <div class="sol-bento-grid">
+          
+          <!-- Bento 1: Featured (2 columns) -->
+          <div class="sol-bento-card sol-bento-card--featured" data-animate style="transition-delay:80ms">
+            <div class="sol-bento-card-inner">
+              <div class="sol-card-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+              </div>
+              <span class="sol-bento-badge">Most Popular Everyday Service</span>
+              <h3 class="sol-card-title">Writing &amp; Communication</h3>
+              <p class="sol-card-text">
+                Drafting, rewriting, and perfecting high-stakes emails, reports, proposals, applications, messages, and presentations. Never send an awkward or unpersuasive draft again.
+              </p>
+              
+              <!-- Realistic comparison box -->
+              <div class="sol-bento-demo-box">
+                <div class="sol-bento-demo-col">
+                  <span class="sol-demo-label">Your input:</span>
+                  <p class="sol-demo-text">&ldquo;Need to tell client our design will be 3 days late because supplier delayed parts, but keep them happy.&rdquo;</p>
+                </div>
+                <div class="sol-bento-demo-arrow">&rarr;</div>
+                <div class="sol-bento-demo-col sol-bento-demo-col--result">
+                  <span class="sol-demo-label">ReWoo output:</span>
+                  <p class="sol-demo-text">&ldquo;Polished, empathetic email with updated timeline milestones, protective client guarantees, and clear next steps ready to send.&rdquo;</p>
+                </div>
+              </div>
+
+              <button type="button" class="sol-card-cta-link" data-preset-select="organize">Get writing &amp; communication help &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Bento 2: Documents & Data -->
+          <div class="sol-bento-card" data-animate style="transition-delay:140ms">
+            <div class="sol-card-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </div>
+            <h3 class="sol-card-title">Documents &amp; Data</h3>
+            <p class="sol-card-text">
+              Making sense of dense PDFs, messy spreadsheets, forms, and invoices.
+            </p>
+            <ul class="sol-card-bullets">
+              <li>PDF key clauses &amp; liability risks extracted</li>
+              <li>Spreadsheet formula fixes &amp; cleanups</li>
+              <li>Converting paper/scan receipts into tables</li>
+            </ul>
+            <button type="button" class="sol-card-cta-link" data-preset-select="document">Get document or data help &rarr;</button>
+          </div>
+
+          <!-- Bento 3: Research & Information -->
+          <div class="sol-bento-card" data-animate style="transition-delay:200ms">
+            <div class="sol-card-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3 class="sol-card-title">Research &amp; Information</h3>
+            <p class="sol-card-text">
+              Objective product comparisons, factual summaries, and market scans.
+            </p>
+            <ul class="sol-card-bullets">
+              <li>Vendor &amp; software side-by-side matrices</li>
+              <li>Pricing breakdowns without sales bias</li>
+              <li>Digest of 50-page reports into 1-page briefs</li>
+            </ul>
+            <button type="button" class="sol-card-cta-link" data-preset-select="research">Request a research brief &rarr;</button>
+          </div>
+
+          <!-- Bento 4: Everyday Tasks -->
+          <div class="sol-bento-card" data-animate style="transition-delay:260ms">
+            <div class="sol-card-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3 class="sol-card-title">Everyday Tasks</h3>
+            <p class="sol-card-text">
+              Hands-on help with scheduling, planning, formatting, and administrative backlog.
+            </p>
+            <ul class="sol-card-bullets">
+              <li>To-do list triage &amp; weekly calendar design</li>
+              <li>Formatting notes into clean action plans</li>
+              <li>Tackling overdue administrative chores</li>
+            </ul>
+            <button type="button" class="sol-card-cta-link" data-preset-select="organize">Triage my everyday tasks &rarr;</button>
+          </div>
+
+          <!-- Bento 5: Personal Organization -->
+          <div class="sol-bento-card" data-animate style="transition-delay:320ms">
+            <div class="sol-card-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3 class="sol-card-title">Personal Organization</h3>
+            <p class="sol-card-text">
+              Bring clarity to messy notes, bookmarks, folders, and fragmented obligations.
+            </p>
+            <ul class="sol-card-bullets">
+              <li>Low-maintenance Notion / workspace setups</li>
+              <li>Information filing structures that stick</li>
+              <li>Weekly operational rhythm routines</li>
+            </ul>
+            <button type="button" class="sol-card-cta-link" data-preset-select="organize">Organize my systems &rarr;</button>
+          </div>
+
+          <!-- Bento 6: Full Width Guided Learning -->
+          <div class="sol-bento-card sol-bento-card--full" data-animate style="transition-delay:380ms">
+            <div class="sol-bento-card-full-inner">
+              <div class="sol-card-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <div>
+                <span class="sol-bento-badge">Hands-On Mentorship</span>
+                <h3 class="sol-card-title">Technology Setup, Learning &amp; Guided Mentorship</h3>
+                <p class="sol-card-text">
+                  Don't struggle alone through cryptic AI guides or YouTube tutorials. Work 1-on-1 with founder Adil to configure your tools, master prompt workflows for your exact job, and build practical digital leverage.
+                </p>
+              </div>
+              <button type="button" class="btn btn--primary" data-preset-select="tool">Book 1-on-1 Guided Session &rarr;</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 06. LAYER 2 — WORK & BUSINESS (Asymmetrical Split) -->
+    <section class="section section--surface sol-layer-sec" id="work-business" aria-label="Work and Business Services">
+      <div class="wrap">
+        <div class="sol-split-layout">
+          
+          <!-- Left: Editorial Narrative -->
+          <div class="sol-split-narrative" data-animate>
+            <span class="overline overline--accent">Layer 02 &middot; Operational Leverage</span>
+            <h2 class="s-headline">
+              You don't need to hire 5 more people to run your operations.
+            </h2>
+            <div class="sol-split-body">
+              <p>
+                Most founders, freelancers, and small business leaders lose 20+ hours each week to repetitive administration — answering repetitive client inquiries, updating spreadsheets, and tracking down unpaid invoices.
+              </p>
+              <p>
+                <strong>ReWoo takes over these operational functions.</strong> We engineer lean workflows and semi-automated backbones that run quietly in the background, giving you enterprise leverage on a founder budget.
+              </p>
+            </div>
+            <div class="sol-split-stat-box">
+              <div class="sol-stat-highlight">20+ hrs</div>
+              <div class="sol-stat-desc">average manual admin time recovered per founder every week</div>
+            </div>
+          </div>
+
+          <!-- Right: Concrete Business Cards -->
+          <div class="sol-split-cards" data-animate style="transition-delay:120ms">
+            <!-- Biz 1 -->
+            <div class="sol-biz-item">
+              <div class="sol-biz-item-head">
+                <h3 class="sol-biz-title">Productivity &amp; Workflow Optimization</h3>
+                <span class="sol-biz-tag">Operations</span>
+              </div>
+              <p class="sol-biz-text">We audit where your team loses time, eliminate redundant software handoffs, and write Standard Operating Procedures (SOPs).</p>
+              <button type="button" class="sol-card-cta-link" data-preset-select="organize">Streamline our workflow &rarr;</button>
+            </div>
+
+            <!-- Biz 2 -->
+            <div class="sol-biz-item">
+              <div class="sol-biz-item-head">
+                <h3 class="sol-biz-title">Customer &amp; Communication Support</h3>
+                <span class="sol-biz-tag">Inbound Triage</span>
+              </div>
+              <p class="sol-biz-text">Centralize customer FAQs, set up automated WhatsApp / email routing, and ensure prospective leads are qualified within seconds.</p>
+              <button type="button" class="sol-card-cta-link" data-preset-select="automate">Upgrade customer communications &rarr;</button>
+            </div>
+
+            <!-- Biz 3 -->
+            <div class="sol-biz-item">
+              <div class="sol-biz-item-head">
+                <h3 class="sol-biz-title">Business Operations &amp; Back-Office</h3>
+                <span class="sol-biz-tag">Administration</span>
+              </div>
+              <p class="sol-biz-text">Recurring financial reports, invoice reconciliation between Stripe and accounting software, and clean client database upkeep.</p>
+              <button type="button" class="sol-card-cta-link" data-preset-select="document">Organize business operations &rarr;</button>
+            </div>
+
+            <!-- Biz 4 -->
+            <div class="sol-biz-item sol-biz-item--highlight">
+              <div class="sol-biz-item-head">
+                <h3 class="sol-biz-title">Process Automation</h3>
+                <span class="sol-biz-tag sol-biz-tag--accent">High ROI</span>
+              </div>
+              <p class="sol-biz-text">Turn repeated manual steps into event-driven automations. Connect Stripe, Google Sheets, HubSpot, and Slack with self-healing retry logic.</p>
+              <button type="button" class="sol-card-cta-link" data-preset-select="automate">Scope process automation &rarr;</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 07. TECHNOLOGY & PLATFORM GUIDANCE -->
+    <section class="section section--bg sol-tech-guidance-sec" id="platform-guidance" aria-label="Technology and Platform Guidance">
+      <div class="wrap">
+        <div class="sol-section-head">
+          <span class="overline overline--accent" data-animate>Empathetic Guidance</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">
+            Tired of 20 different AI tool subscriptions?<br>
+            <em>So are we.</em>
+          </h2>
+          <p class="s-subhead" data-animate style="transition-delay:160ms">
+            Most people are paying for 4 AI apps they barely touch. Tell us what you are actually trying to accomplish, and we will help you choose the one or two tools that deliver real leverage.
+          </p>
+        </div>
+
+        <div class="sol-guidance-cards">
+          <div class="sol-guide-pillar" data-animate style="transition-delay:100ms">
+            <span class="sol-guide-badge">01</span>
+            <h3 class="sol-guide-h">Zero-Hype Tool Selection</h3>
+            <p class="sol-guide-p">We ignore viral marketing and recommend the leanest, most reliable tools suited for your specific task and budget.</p>
+          </div>
+
+          <div class="sol-guide-pillar" data-animate style="transition-delay:180ms">
+            <span class="sol-guide-badge">02</span>
+            <h3 class="sol-guide-h">Setup &amp; Configuration</h3>
+            <p class="sol-guide-p">We handle API keys, custom system instructions, security permissions, and team accounts so everything runs day one.</p>
+          </div>
+
+          <div class="sol-guide-pillar" data-animate style="transition-delay:260ms">
+            <span class="sol-guide-badge">03</span>
+            <h3 class="sol-guide-h">Step-by-Step Coaching</h3>
+            <p class="sol-guide-p">We teach you how to prompt and operate the tools in plain language, building lasting personal and team capability.</p>
+          </div>
+
+          <div class="sol-guide-pillar" data-animate style="transition-delay:340ms">
+            <span class="sol-guide-badge">04</span>
+            <h3 class="sol-guide-h">Workflow Integration</h3>
+            <p class="sol-guide-p">We tie your chosen AI tools directly into your existing Gmail, Google Drive, spreadsheets, and calendar.</p>
+          </div>
+        </div>
+
+        <div class="sol-guidance-callout" data-animate style="transition-delay:400ms">
+          <div class="sol-callout-icon">&check;</div>
+          <div class="sol-callout-text">
+            <strong>Zero Affiliate Bias:</strong> We don't take kickbacks from software vendors. If a free tool or a simple spreadsheet solves your problem better than a $50/mo subscription, that's exactly what we'll recommend.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 08. REAL-WORLD EXAMPLES -->
+    <section class="section section--surface sol-examples-sec" id="real-examples" aria-label="Real-World Examples">
+      <div class="wrap">
+        <div class="sol-section-head">
+          <span class="overline overline--accent" data-animate>Real Scenarios</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">
+            Start with the problem.<br>
+            <em>Here is how ReWoo handles real-life bottlenecks.</em>
+          </h2>
+          <p class="s-subhead" data-animate style="transition-delay:160ms">
+            You bring us the situation as it exists in your day. We translate it into the right combination of guidance, execution, or automation.
+          </p>
+        </div>
+
+        <div class="sol-examples-grid">
+          <!-- Ex 1 -->
+          <div class="sol-example-card" data-animate style="transition-delay:80ms">
+            <div class="sol-ex-top">
+              <span class="sol-ex-tag">Email Overload</span>
+              <div class="sol-ex-quote">&ldquo;I have 40 unread emails and no time to reply thoughtfully.&rdquo;</div>
+            </div>
+            <div class="sol-ex-solution">
+              <strong>How ReWoo solves it:</strong>
+              <p>We triage your inbox, draft context-aware replies for your review, and build 5 reusable email templates for repetitive queries.</p>
+            </div>
+            <button type="button" class="btn btn--outline sol-ex-action" data-preset-select="organize">Get help with inbox &amp; communication &rarr;</button>
+          </div>
+
+          <!-- Ex 2 -->
+          <div class="sol-example-card" data-animate style="transition-delay:140ms">
+            <div class="sol-ex-top">
+              <span class="sol-ex-tag">Dense Documents</span>
+              <div class="sol-ex-quote">&ldquo;I don't understand this 35-page PDF agreement.&rdquo;</div>
+            </div>
+            <div class="sol-ex-solution">
+              <strong>How ReWoo solves it:</strong>
+              <p>We extract critical liability clauses, translate legal terms into plain English, and give you a 1-page action summary.</p>
+            </div>
+            <button type="button" class="btn btn--outline sol-ex-action" data-preset-select="document">Get PDF explained &rarr;</button>
+          </div>
+
+          <!-- Ex 3 -->
+          <div class="sol-example-card" data-animate style="transition-delay:200ms">
+            <div class="sol-ex-top">
+              <span class="sol-ex-tag">Manual Spreadsheets</span>
+              <div class="sol-ex-quote">&ldquo;I do the same spreadsheet updates every Friday.&rdquo;</div>
+            </div>
+            <div class="sol-ex-solution">
+              <strong>How ReWoo solves it:</strong>
+              <p>We simplify the sheet architecture, add self-calculating formulas, and set up an automated data sync from Stripe or your bank.</p>
+            </div>
+            <button type="button" class="btn btn--outline sol-ex-action" data-preset-select="automate">Simplify spreadsheets &rarr;</button>
+          </div>
+
+          <!-- Ex 4 -->
+          <div class="sol-example-card" data-animate style="transition-delay:260ms">
+            <div class="sol-ex-top">
+              <span class="sol-ex-tag">Tool Paralysis</span>
+              <div class="sol-ex-quote">&ldquo;I don't know whether to use ChatGPT, Claude, or Notion.&rdquo;</div>
+            </div>
+            <div class="sol-ex-solution">
+              <strong>How ReWoo solves it:</strong>
+              <p>We evaluate your actual daily tasks, test your workflows against current models, and configure the right platform in under an hour.</p>
+            </div>
+            <button type="button" class="btn btn--outline sol-ex-action" data-preset-select="tool">Compare AI tools &rarr;</button>
+          </div>
+
+          <!-- Ex 5 -->
+          <div class="sol-example-card" data-animate style="transition-delay:320ms">
+            <div class="sol-ex-top">
+              <span class="sol-ex-tag">AI Upskilling</span>
+              <div class="sol-ex-quote">&ldquo;I want to learn how to use AI for my specific job.&rdquo;</div>
+            </div>
+            <div class="sol-ex-solution">
+              <strong>How ReWoo solves it:</strong>
+              <p>1-on-1 practical coaching session with founder Adil. We build real workflows tailored to your deliverables so you gain immediate speed.</p>
+            </div>
+            <button type="button" class="btn btn--outline sol-ex-action" data-preset-select="tool">Start practical coaching &rarr;</button>
+          </div>
+
+          <!-- Ex 6 -->
+          <div class="sol-example-card" data-animate style="transition-delay:380ms">
+            <div class="sol-ex-top">
+              <span class="sol-ex-tag">Repetitive Business Churn</span>
+              <div class="sol-ex-quote">&ldquo;Our business has a repetitive manual workflow.&rdquo;</div>
+            </div>
+            <div class="sol-ex-solution">
+              <strong>How ReWoo solves it:</strong>
+              <p>We map each operational step, identify human handoff errors, and build an automated background sync that saves 15+ hours weekly.</p>
+            </div>
+            <button type="button" class="btn btn--outline sol-ex-action" data-preset-select="automate">Map &amp; automate process &rarr;</button>
+          </div>
+
+          <!-- Ex 7: Full Width Featured -->
+          <div class="sol-example-card sol-example-card--featured" data-animate style="transition-delay:440ms">
+            <div>
+              <span class="sol-ex-tag sol-ex-tag--accent">Advanced Development</span>
+              <div class="sol-ex-quote">&ldquo;I need a custom AI application with proprietary business logic.&rdquo;</div>
+            </div>
+            <div class="sol-ex-solution">
+              <strong>How ReWoo solves it:</strong>
+              <p>We transition directly into ReWoo's advanced AI engineering: multi-agent reasoning, private VPC hosting, custom RAG vector knowledge, and bespoke web apps with 100% IP ownership.</p>
+            </div>
+            <button type="button" class="btn btn--primary sol-ex-action" data-preset-select="build">Explore Custom AI &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 09. PRODUCT STRATEGY & ROI -->
+    <section class="section section--bg sol-ladder-sec" id="product-ladder" aria-label="Product Strategy and Automation">
+      <div class="wrap">
+        <div class="sol-section-head">
+          <span class="overline overline--accent" data-animate>Scalable Partnership</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">
+            The Product Ladder.<br>
+            <em>Grow naturally from one task to a full system.</em>
+          </h2>
+          <p class="s-subhead" data-animate style="transition-delay:160ms">
+            You never have to commit to an expensive, complex project upfront. ReWoo lets you start small and scale into deeper automation as value is proven.
+          </p>
+        </div>
+
+        <!-- Visual Product Ladder -->
+        <div class="sol-ladder-display" data-animate style="transition-delay:180ms">
+          <div class="sol-ladder-step">
+            <span class="sol-ladder-num">01</span>
+            <span class="sol-ladder-name">One Task</span>
+            <small>&ldquo;Help me organize my invoices.&rdquo;</small>
+          </div>
+          <div class="sol-ladder-connector">&rarr;</div>
+
+          <div class="sol-ladder-step">
+            <span class="sol-ladder-num">02</span>
+            <span class="sol-ladder-name">Recurring Help</span>
+            <small>&ldquo;I do this every month.&rdquo;</small>
+          </div>
+          <div class="sol-ladder-connector">&rarr;</div>
+
+          <div class="sol-ladder-step sol-ladder-step--highlight">
+            <span class="sol-ladder-num">03</span>
+            <span class="sol-ladder-name">Automation</span>
+            <small>&ldquo;Can this run automatically?&rdquo;</small>
+          </div>
+          <div class="sol-ladder-connector">&rarr;</div>
+
+          <div class="sol-ladder-step">
+            <span class="sol-ladder-num">04</span>
+            <span class="sol-ladder-name">AI System</span>
+            <small>&ldquo;Can this handle the whole process?&rdquo;</small>
+          </div>
+        </div>
+
+        <!-- Embedded Interactive ROI Calculator -->
+        <div class="sol-calc-box" data-animate style="transition-delay:240ms">
+          <div class="sol-calc-grid">
+            <div class="sol-calc-controls">
+              <span class="overline overline--accent">Interactive ROI Estimator</span>
+              <h3 class="sol-calc-h">Calculate your team's automation leverage</h3>
+              <p class="sol-calc-p">Drag the sliders below to see how much payroll and focused time your team reclaims every month by automating repetitive admin.</p>
+
+              <!-- Slider 1 -->
+              <div class="sol-slider-group">
+                <div class="sol-slider-header">
+                  <label for="slider-hours" class="sol-slider-label">Repetitive Hours Per Person / Week</label>
+                  <span class="sol-slider-val" id="val-hours">15 hrs/wk</span>
+                </div>
+                <input type="range" min="5" max="35" value="15" step="1" class="sol-range-input" id="slider-hours">
+              </div>
+
+              <!-- Slider 2 -->
+              <div class="sol-slider-group">
+                <div class="sol-slider-header">
+                  <label for="slider-team" class="sol-slider-label">Team Members Doing Repetitive Tasks</label>
+                  <span class="sol-slider-val" id="val-team">4 people</span>
+                </div>
+                <input type="range" min="1" max="25" value="4" step="1" class="sol-range-input" id="slider-team">
+              </div>
+
+              <!-- Slider 3 -->
+              <div class="sol-slider-group">
+                <div class="sol-slider-header">
+                  <label for="slider-rate" class="sol-slider-label">Average Fully-Loaded Hourly Cost</label>
+                  <span class="sol-slider-val" id="val-rate">$35/hr</span>
+                </div>
+                <input type="range" min="20" max="150" value="35" step="5" class="sol-range-input" id="slider-rate">
               </div>
             </div>
 
-            <div class="sol-blueprint__body">
-              <div class="sol-blueprint__col">
-                <span class="sol-blueprint__label">What ReWoo Engineers</span>
-                <div class="sol-blueprint__val" id="bp-arch">An ultra-low latency voice &amp; WhatsApp receptionist that answers calls instantly, answers customer questions from your company docs, qualifies budget/timing, and books calendar appointments.</div>
+            <div class="sol-calc-results">
+              <span class="sol-results-badge">Estimated Monthly Recovery</span>
+              <div class="sol-metric-large">
+                <span class="sol-metric-num" id="res-hours">240 hrs</span>
+                <span class="sol-metric-sub">reclaimed every month</span>
               </div>
-              <div class="sol-blueprint__col">
-                <span class="sol-blueprint__label">Tools &amp; APIs Integrated</span>
-                <div class="sol-blueprint__val" id="bp-tools">Vapi / Retell, Twilio, WhatsApp Cloud API, GoHighLevel / HubSpot, Google Calendar, Slack</div>
-              </div>
-              <div class="sol-blueprint__col">
-                <span class="sol-blueprint__label">Your Effort Required</span>
-                <div class="sol-blueprint__val" id="bp-guardrails">A 20-minute kickoff call. We build, test, and hand you a fully working system with zero maintenance overhead.</div>
-              </div>
-            </div>
 
-            <!-- Execution Pipeline Visualizer -->
-            <div class="sol-pipeline" aria-label="Execution steps">
-              <div class="sol-pipeline__label">Agentic Pipeline Flow</div>
-              <div class="sol-pipeline__steps">
-                <div class="sol-pipeline__step">
-                  <span class="sol-pipeline__step-num">01 Inbound Call</span>
-                  <span class="sol-pipeline__step-title" id="pipe-s1">Customer calls or sends WhatsApp message</span>
+              <div class="sol-metric-row">
+                <div>
+                  <span class="sol-metric-label">Monthly Payroll Saved</span>
+                  <div class="sol-metric-val" id="res-money">$8,400</div>
                 </div>
-                <div class="sol-pipeline__step">
-                  <span class="sol-pipeline__step-num">02 Voice Reasoning</span>
-                  <span class="sol-pipeline__step-title" id="pipe-s2">Understands intent &amp; queries company knowledge base</span>
-                </div>
-                <div class="sol-pipeline__step">
-                  <span class="sol-pipeline__step-num">03 Qualification Gate</span>
-                  <span class="sol-pipeline__step-title" id="pipe-s3">Validates lead budget &amp; checks calendar availability</span>
-                </div>
-                <div class="sol-pipeline__step sol-pipeline__step--active">
-                  <span class="sol-pipeline__step-num">04 CRM &amp; Booking</span>
-                  <span class="sol-pipeline__step-title" id="pipe-s4">Books appointment in calendar &amp; notifies sales rep</span>
+                <div>
+                  <span class="sol-metric-label">Estimated Payback</span>
+                  <div class="sol-metric-val" id="res-roi">7.0x ROI</div>
                 </div>
               </div>
-            </div>
 
-            <div class="sol-blueprint__actions">
-              <a href="#" id="bp-whatsapp-btn" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-                Send Scope to Founder on WhatsApp &rarr;
+              <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%20used%20the%20ReWoo%20calculator%20and%20want%20to%20automate%20our%20repetitive%20tasks." class="btn btn--primary sol-calc-cta" target="_blank" rel="noopener noreferrer">
+                Explore Automation With Adil &rarr;
               </a>
-              <button type="button" class="btn btn--ghost" id="bp-modal-btn">
-                Request Fixed 4-Hour Proposal
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 10. LAYER 3 — ADVANCED AI SERVICES -->
+    <section class="section section--surface sol-advanced-sec" id="advanced-ai" aria-label="Advanced AI Services">
+      <div class="wrap">
+        <div class="sol-section-head">
+          <span class="overline overline--accent" data-animate>Layer 03 &middot; Engineering &amp; Architecture</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">
+            Advanced AI Services.<br>
+            <em>What we build when the problem requires a deeper solution.</em>
+          </h2>
+          <p class="s-subhead" data-animate style="transition-delay:160ms">
+            When off-the-shelf tools reach their limit, ReWoo engineers custom agentic systems, private cloud automations, and intelligent software built around your exact business logic.
+          </p>
+        </div>
+
+        <!-- 6 Core Advanced Services -->
+        <div class="sol-adv-grid" data-animate style="transition-delay:180ms">
+          <div class="sol-adv-card">
+            <span class="sol-adv-tag">01 &middot; Architecture</span>
+            <h3 class="sol-adv-title">Agentic Systems</h3>
+            <p class="sol-adv-desc">AI systems that can reason through multi-step workflows, call external tools, verify intermediate outputs, and execute end-to-end tasks reliably.</p>
+          </div>
+
+          <div class="sol-adv-card">
+            <span class="sol-adv-tag">02 &middot; Pipelines</span>
+            <h3 class="sol-adv-title">Intelligent Automation</h3>
+            <p class="sol-adv-desc">Self-healing event-driven workflows that connect your CRM, accounting, databases, and communication channels without human bottlenecks.</p>
+          </div>
+
+          <div class="sol-adv-card">
+            <span class="sol-adv-tag">03 &middot; Products</span>
+            <h3 class="sol-adv-title">AI SaaS</h3>
+            <p class="sol-adv-desc">Cloud-based AI products engineered for specific vertical use cases, complete with authentication, billing, vector search, and scalable APIs.</p>
+          </div>
+
+          <div class="sol-adv-card">
+            <span class="sol-adv-tag">04 &middot; Applications</span>
+            <h3 class="sol-adv-title">AI Apps</h3>
+            <p class="sol-adv-desc">Custom AI-powered web and mobile applications with intuitive interfaces, low-latency streaming responses, and responsive design.</p>
+          </div>
+
+          <div class="sol-adv-card">
+            <span class="sol-adv-tag">05 &middot; Strategy</span>
+            <h3 class="sol-adv-title">AI Consulting</h3>
+            <p class="sol-adv-desc">AI technology audits, vendor selection, feasibility roadmaps, security isolation protocols, and hands-on team enablement.</p>
+          </div>
+
+          <div class="sol-adv-card">
+            <span class="sol-adv-tag">06 &middot; Bespoke</span>
+            <h3 class="sol-adv-title">Custom AI Systems</h3>
+            <p class="sol-adv-desc">Bespoke neural architectures with private RAG vector search, local model deployment, strict data privacy, and 100% proprietary code ownership.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Production Architecture Inspector -->
+        <div class="sol-inspector-wrap" data-animate style="transition-delay:240ms">
+          <div class="sol-inspector-header">
+            <div>
+              <span class="overline overline--accent">Live System Architecture Inspector</span>
+              <h3 class="sol-inspector-h">Inspect Production-Grade Execution</h3>
+            </div>
+            <div class="sol-inspector-tabs" role="tablist" aria-label="Production Systems">
+              <button type="button" class="sol-insp-tab is-active" data-system="voice" role="tab" aria-selected="true">Voice &amp; WhatsApp</button>
+              <button type="button" class="sol-insp-tab" data-system="sdr" role="tab" aria-selected="false">Autonomous SDR</button>
+              <button type="button" class="sol-insp-tab" data-system="pipeline" role="tab" aria-selected="false">n8n Data Pipeline</button>
+              <button type="button" class="sol-insp-tab" data-system="documents" role="tab" aria-selected="false">Document OCR</button>
+              <button type="button" class="sol-insp-tab" data-system="custom" role="tab" aria-selected="false">Custom RAG</button>
+            </div>
+          </div>
+
+          <div class="sol-inspector-body">
+            <!-- Left: Specs -->
+            <div class="sol-inspector-specs">
+              <span class="sol-spec-badge" id="sys-badge">ACTIVE PRODUCTION ARCHITECTURE</span>
+              <h4 class="sol-spec-title" id="sys-title">24/7 AI Voice &amp; WhatsApp Receptionist</h4>
+              <p class="sol-spec-desc" id="sys-desc">
+                Answers inbound phone calls and WhatsApp inquiries in under 1 second. Answers company FAQs, qualifies buyer budget and timeline, books meetings on Google Calendar, and alerts human sales reps on Slack for hot leads.
+              </p>
+
+              <div class="sol-spec-meta">
+                <div>
+                  <span class="sol-meta-lbl">Turnaround</span>
+                  <strong class="sol-meta-val" id="sys-turnaround">2–4 Days</strong>
+                </div>
+                <div>
+                  <span class="sol-meta-lbl">Reliability SLA</span>
+                  <strong class="sol-meta-val" id="sys-sla">Recovers 35%+ Leads</strong>
+                </div>
+              </div>
+
+              <div class="sol-spec-tools-box">
+                <span class="sol-meta-lbl">Connected Stack</span>
+                <div class="sol-spec-tools" id="sys-tools">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <div class="sol-spec-actions">
+                <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%20want%20to%20discuss%20deploying%20an%20AI%20system." class="btn btn--primary" id="sys-wa-btn" target="_blank" rel="noopener noreferrer">
+                  Discuss This Architecture &rarr;
+                </a>
+                <button type="button" class="btn btn--outline" id="sys-deploy-btn">Request Blueprint</button>
+              </div>
+            </div>
+
+            <!-- Right: Terminal Simulator (Engineered for flawless contrast in light & dark mode) -->
+            <div class="sol-console-container">
+              <div class="sol-console-bar">
+                <div class="sol-console-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <span class="sol-console-title" id="console-title">rewoo-voice-engine &mdash; inbound-voice.v3</span>
+                <button type="button" class="sol-console-replay" id="console-replay-btn" title="Replay execution log">Replay</button>
+              </div>
+
+              <div class="sol-console-content">
+                <div class="sol-console-input-row">
+                  <span class="sol-console-prompt">&gt;</span>
+                  <span class="sol-console-input" id="console-input">&quot;Caller (+1 415-892-0192): 'Hi, I need a commercial cleaning quote for our 12,000 sq ft office in Austin this Friday.'&quot;</span>
+                </div>
+
+                <div class="sol-console-logs" id="console-logs">
+                  <!-- Log entries injected by JS -->
+                </div>
+
+                <div class="sol-console-output-box">
+                  <div class="sol-console-speed" id="console-speed">Call completed in 45s &middot; 0 Human Labor</div>
+                  <div class="sol-console-output" id="console-output">&quot;Perfect! I've booked your on-site walkthrough for Friday at 2:00 PM CST with our Austin team. A calendar invite and SMS confirmation have been sent to your phone.&quot;</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 11. HOW IT WORKS -->
+    <section class="section section--bg sol-steps-sec" id="how-it-works" aria-label="How It Works">
+      <div class="wrap">
+        <div class="sol-section-head">
+          <span class="overline overline--accent" data-animate>Transparent Process</span>
+          <h2 class="s-headline" data-animate style="transition-delay:80ms">
+            How it works.<br>
+            <em>Five simple steps from task to result.</em>
+          </h2>
+          <p class="s-subhead" data-animate style="transition-delay:160ms">
+            No endless scoping meetings or incomprehensible technical jargon. We focus purely on the practical result you want.
+          </p>
+        </div>
+
+        <div class="sol-process-ladder">
+          <!-- Step 1 -->
+          <div class="sol-process-step" data-animate style="transition-delay:80ms">
+            <div class="sol-step-top">
+              <span class="sol-step-badge">01</span>
+              <span class="sol-step-time">5 Minutes</span>
+            </div>
+            <h3 class="sol-step-title">Tell us</h3>
+            <p class="sol-step-desc">Describe what you are trying to do in plain English. Share your rough notes, files, or current friction points.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="sol-process-step" data-animate style="transition-delay:160ms">
+            <div class="sol-step-top">
+              <span class="sol-step-badge">02</span>
+              <span class="sol-step-time">Under 4 Hours</span>
+            </div>
+            <h3 class="sol-step-title">We understand</h3>
+            <p class="sol-step-desc">We identify the root problem, clarify edge cases, and define the exact desired outcome.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="sol-process-step" data-animate style="transition-delay:240ms">
+            <div class="sol-step-top">
+              <span class="sol-step-badge">03</span>
+              <span class="sol-step-time">Same Day</span>
+            </div>
+            <h3 class="sol-step-title">We choose the approach</h3>
+            <p class="sol-step-desc">We select the most pragmatic path: explain it, guide you through it, do it for you, or automate it.</p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="sol-process-step" data-animate style="transition-delay:320ms">
+            <div class="sol-step-top">
+              <span class="sol-step-badge">04</span>
+              <span class="sol-step-time">1–3 Days</span>
+            </div>
+            <h3 class="sol-step-title">We help</h3>
+            <p class="sol-step-desc">You get a fast, verified result: a polished document, a configured tool, or a live running system.</p>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="sol-process-step" data-animate style="transition-delay:400ms">
+            <div class="sol-step-top">
+              <span class="sol-step-badge">05</span>
+              <span class="sol-step-time">Ongoing</span>
+            </div>
+            <h3 class="sol-step-title">We improve</h3>
+            <p class="sol-step-desc">When the work repeats, we look for a simpler, automatic system so you never have to repeat manual effort.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 12. FINAL BRAND MESSAGE & CTA -->
+    <section class="section section--surface sol-final-section" id="contact-cta" aria-label="Final Brand Message and Consultation">
+      <div class="wrap">
+        <!-- Brand Manifesto -->
+        <div class="sol-manifesto-box" data-animate>
+          <span class="overline overline--accent">The Core Philosophy</span>
+          <h2 class="sol-manifesto-h">
+            Start with the problem,<br>
+            <em>not the technology.</em>
+          </h2>
+          <p class="sol-manifesto-p">
+            You don't need to know whether you need an AI tool, automation, software, or a custom system.<br><br>
+            <strong>Tell us what you're trying to accomplish.</strong><br>
+            We'll help you figure out the rest.
+          </p>
+          <div class="sol-manifesto-sign">
+            <span class="sol-sign-name">Adil Shamim</span>
+            <span class="sol-sign-title">Founder &middot; ReWoo</span>
+          </div>
+        </div>
+
+        <!-- Conversion Action Box -->
+        <div class="sol-cta-box" data-animate style="transition-delay:160ms">
+          <div class="sol-cta-box__inner">
+            <span class="overline overline--accent">Direct Founder Consultation</span>
+            <h2 class="s-headline" style="max-width:720px;margin-top:12px;">
+              What do you need help with?<br>
+              <em>Start with the task. No technical knowledge required.</em>
+            </h2>
+            <p class="s-body" style="max-width:560px;margin-top:16px;">
+              Chat directly with founder Adil on WhatsApp for real-time guidance, or submit your task for a fixed-price proposal within 4 hours.
+            </p>
+            <div class="hero__cta-row" style="justify-content:flex-start;margin-top:32px;">
+              <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%20have%20a%20task%20I%20need%20help%20with." target="_blank" rel="noopener noreferrer" class="btn btn--primary" id="final-cta-wa">
+                Tell ReWoo What You Need &rarr;
+              </a>
+              <button type="button" class="btn btn--outline" id="final-cta-modal-btn">
+                Request Fixed Proposal
               </button>
+              <a href="#advanced-ai" class="btn btn--ghost" id="final-cta-adv">
+                Explore Advanced AI Services &uarr;
+              </a>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ 7. AGENCY EXECUTION PROCESS (DAYS 1 TO 5) -->
-    <section class="section section--bg sol-steps-sec" id="process" aria-label="How Agency Execution Works">
-      <div class="wrap">
-        <div class="sol-section-head">
-          <span class="overline overline--accent" data-animate>Agency Execution Roadmap</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">
-            From Request to Working System.<br>
-            <em>Five Days. Zero Friction.</em>
-          </h2>
-          <p class="s-subhead" data-animate style="transition-delay:160ms">
-            You don't need technical skills or weeks of onboarding. You define the business outcome; we deliver the running system.
-          </p>
-        </div>
-
-        <div class="sol-steps-grid" data-animate style="transition-delay:200ms">
-          <div class="sol-step-card">
-            <div class="sol-step-card__num">DAY 01</div>
-            <h3 class="sol-step-card__title">Kickoff &amp; Fixed Scope</h3>
-            <p class="sol-step-card__text">
-              A 20-minute kickoff call with our founder Adil. We map your current manual process, identify APIs and tools, and deliver a fixed-price quote and timeline within 4 hours.
-            </p>
-            <div class="sol-step-card__eta">Deliverable: Architectural Blueprint &amp; Milestone Agreement</div>
-          </div>
-
-          <div class="sol-step-card">
-            <div class="sol-step-card__num">DAYS 02–04</div>
-            <h3 class="sol-step-card__title">Engineering &amp; Stress Testing</h3>
-            <p class="sol-step-card__text">
-              We build your custom agent graph, connect your tools in private VPCs, and stress-test the pipeline against 100+ synthetic edge cases to ensure 99.8%+ accuracy and zero hallucinations.
-            </p>
-            <div class="sol-step-card__eta">Deliverable: Working Staging Environment &amp; Benchmark Report</div>
-          </div>
-
-          <div class="sol-step-card">
-            <div class="sol-step-card__num">DAY 05</div>
-            <h3 class="sol-step-card__title">Turnkey Handover &amp; Live Ops</h3>
-            <p class="sol-step-card__text">
-              We deploy the agent live into your stack, provide an executive walkthrough, hand over all code and IP, and initiate 24/7 automated drift monitoring.
-            </p>
-            <div class="sol-step-card__eta">Deliverable: 100% Autonomous Live System &amp; Full Code Ownership</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ 8. TRANSPARENT ENGAGEMENT MODELS -->
-    <section class="section section--surface sol-engagement-sec" id="engagement" aria-label="Transparent Engagement Models">
-      <div class="wrap">
-        <div class="sol-section-head">
-          <span class="overline overline--accent" data-animate>Transparent Pricing &amp; Engagement</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">
-            Clear Engagement Models.<br>
-            <em>No Hidden Gates.</em>
-          </h2>
-          <p class="s-subhead" data-animate style="transition-delay:160ms">
-            Whether you want a low-risk workflow audit, a turnkey agent build, or ongoing operational management — we deliver transparent terms.
-          </p>
-        </div>
-
-        <div class="sol-pricing-grid" data-animate style="transition-delay:200ms">
-
-          <!-- Tier 1 -->
-          <article class="sol-pricing-card">
-            <div class="sol-pricing-card__header">
-              <span class="sol-pricing-card__badge">Low Risk First Step</span>
-              <h3 class="sol-pricing-card__title">AI Discovery Audit</h3>
-              <p class="sol-pricing-card__desc">Ideal for teams wanting to map bottlenecks and calculate exact automation ROI before building.</p>
-              <div class="sol-pricing-card__price-row">
-                <span class="sol-pricing-card__price">$150–$350</span>
-                <span class="sol-pricing-card__per">/ one-time</span>
-              </div>
-            </div>
-            <ul class="sol-pricing-card__features">
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Comprehensive process &amp; bottleneck audit</li>
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> ROI quantification (hours &amp; dollars saved)</li>
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Technical architecture &amp; API feasibility plan</li>
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Fixed-milestone project roadmap</li>
-            </ul>
-            <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20an%20AI%20Discovery%20Audit" class="btn btn--outline btn--full">Book Discovery Audit &rarr;</a>
-          </article>
-
-          <!-- Tier 2: Featured -->
-          <article class="sol-pricing-card sol-pricing-card--featured">
-            <div class="sol-pricing-card__pill">Most Popular</div>
-            <div class="sol-pricing-card__header">
-              <span class="sol-pricing-card__badge">Turnkey Execution</span>
-              <h3 class="sol-pricing-card__title">Custom Agent Build</h3>
-              <p class="sol-pricing-card__desc">Production-grade AI agent or workflow pipeline engineered, tested, and deployed live in your stack.</p>
-              <div class="sol-pricing-card__price-row">
-                <span class="sol-pricing-card__price">$600–$1,800</span>
-                <span class="sol-pricing-card__per">/ project</span>
-              </div>
-            </div>
-            <ul class="sol-pricing-card__features">
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Full custom agent engineering &amp; tool integration</li>
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Multi-layer safety guardrails (zero hallucinations)</li>
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Private VPC deployment &amp; zero data retention</li>
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 100% ownership of all code, prompts, and IP</li>
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 2 to 5 business day delivery guarantee</li>
-            </ul>
-            <a href="#request-task" class="btn btn--primary btn--full" data-preset-select="voice">Scope Your Agent Build &rarr;</a>
-          </article>
-
-          <!-- Tier 3 -->
-          <article class="sol-pricing-card">
-            <div class="sol-pricing-card__header">
-              <span class="sol-pricing-card__badge">Ongoing Autopilot</span>
-              <h3 class="sol-pricing-card__title">Autonomous Retainer</h3>
-              <p class="sol-pricing-card__desc">Continuous monitoring, drift protection, and monthly feature expansions for mission-critical systems.</p>
-              <div class="sol-pricing-card__price-row">
-                <span class="sol-pricing-card__price">$120–$600</span>
-                <span class="sol-pricing-card__per">/ month</span>
-              </div>
-            </div>
-            <ul class="sol-pricing-card__features">
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 24/7 uptime &amp; model drift monitoring</li>
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Tool API updates &amp; breaking change patches</li>
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Monthly agent capability expansions</li>
-              <li><span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Priority founder Slack/WhatsApp access</li>
-            </ul>
-            <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20discuss%20an%20Ongoing%20Retainer%20with%20ReWoo" class="btn btn--outline btn--full">Discuss Retainer &rarr;</a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ 9. WHY REWOO VS FREELANCERS -->
-    <section class="section section--bg sol-compare" id="advantage" aria-label="Why ReWoo is Better">
-      <div class="wrap">
-        <div class="sol-section-head">
-          <span class="overline overline--accent" data-animate>The Agency Difference</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">
-            Why Operators Choose ReWoo<br>
-            <em>Over Freelancers &amp; DIY Prompts.</em>
-          </h2>
-        </div>
-
-        <div class="sol-compare-cards" data-animate style="transition-delay:200ms">
-          <!-- The Freelancer Way -->
-          <div class="sol-compare-box sol-compare-box--bad">
-            <div class="sol-compare-box__header">
-              <span class="sol-compare-box__badge sol-compare-box__badge--bad">The Fragile Route</span>
-              <h3>Freelancers &amp; In-House DIY</h3>
-            </div>
-            <ul class="sol-compare-list">
-              <li>
-                <span class="sol-item-cross"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                <div><strong>Endless Briefing</strong>: Weeks spent writing specifications and managing hourly freelancers.</div>
-              </li>
-              <li>
-                <span class="sol-item-cross"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                <div><strong>Brittle Prompts</strong>: Surface-level ChatGPT wrappers that break when edge cases arise.</div>
-              </li>
-              <li>
-                <span class="sol-item-cross"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                <div><strong>Zero Security Isolation</strong>: Unchecked API keys and sensitive customer data exposed to third parties.</div>
-              </li>
-              <li>
-                <span class="sol-item-cross"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                <div><strong>Maintenance Burden</strong>: Freelancers disappear, leaving your internal team to debug broken code.</div>
-              </li>
-            </ul>
-          </div>
-
-          <!-- The ReWoo Way -->
-          <div class="sol-compare-box sol-compare-box--good">
-            <div class="sol-compare-box__header">
-              <span class="sol-compare-box__badge sol-compare-box__badge--good">The ReWoo Standard</span>
-              <h3>Dedicated AI Execution Agency</h3>
-            </div>
-            <ul class="sol-compare-list">
-              <li>
-                <span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
-                <div><strong>20-Minute Kickoff</strong>: You state your business bottleneck; we architect the end-to-end system.</div>
-              </li>
-              <li>
-                <span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
-                <div><strong>Deterministic Engineering</strong>: Multi-layer safety guardrails ensuring 99.8%+ accuracy.</div>
-              </li>
-              <li>
-                <span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
-                <div><strong>Private VPC Security</strong>: Dedicated cloud isolation and strict zero-training compliance.</div>
-              </li>
-              <li>
-                <span class="sol-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
-                <div><strong>Turnkey Delivery &amp; SLA</strong>: Ready in 2 to 5 days with full code ownership and proactive monitoring.</div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ 10. FAQ ACCORDION -->
-    <section class="section section--surface sol-faq-sec" id="faq" aria-label="Frequently Asked Questions">
-      <div class="wrap">
-        <div class="sol-section-head">
-          <span class="overline overline--accent" data-animate>Got Questions?</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">
-            Frequently Asked Questions.<br>
-            <em>Clear Answers for Operators.</em>
-          </h2>
-        </div>
-
-        <div class="sol-faq-list" data-animate style="transition-delay:200ms">
-          <details class="sol-faq-item" open>
-            <summary class="sol-faq-question">
-              <span>Do I or my team need technical or coding skills?</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </summary>
-            <div class="sol-faq-answer">
-              <p>Zero technical effort is required from your side. You explain your workflow, goals, and existing software in plain English. ReWoo engineers the entire system, integrates your APIs, stress-tests against edge cases, and provides a simple 1-click or fully autonomous experience.</p>
-            </div>
-          </details>
-
-          <details class="sol-faq-item">
-            <summary class="sol-faq-question">
-              <span>Who owns the code, prompts, and Intellectual Property?</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </summary>
-            <div class="sol-faq-answer">
-              <p>You own 100% of all code, prompt architectures, database connectors, and IP. There is zero vendor lock-in. Once built, the system is deployed into your accounts or infrastructure and you retain total control.</p>
-            </div>
-          </details>
-
-          <details class="sol-faq-item">
-            <summary class="sol-faq-question">
-              <span>How do you prevent the AI from making mistakes or hallucinating?</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </summary>
-            <div class="sol-faq-answer">
-              <p>We do not rely on standard open-ended prompts. Every system employs deterministic validators, schema checks, retrieval-augmented grounding against verified documents, and human-in-the-loop escalation triggers for low-confidence scenarios.</p>
-            </div>
-          </details>
-
-          <details class="sol-faq-item">
-            <summary class="sol-faq-question">
-              <span>How long does it take from our first call to a live system?</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </summary>
-            <div class="sol-faq-answer">
-              <p>Most standard agent systems (voice receptionists, outbound SDRs, data pipelines, document OCR extraction) are delivered and running in your business within <strong>2 to 5 business days</strong>. Complex enterprise custom systems with multiple internal databases typically take 5 to 8 business days.</p>
-            </div>
-          </details>
-
-          <details class="sol-faq-item">
-            <summary class="sol-faq-question">
-              <span>What happens if one of our connected tools changes or updates its API?</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sol-faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </summary>
-            <div class="sol-faq-answer">
-              <p>Our autonomous retainers include 24/7 uptime monitoring, error alerting, and proactive maintenance for upstream API updates. We handle any breaking changes immediately so your business never experiences operational downtime.</p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ 11. PRIMARY FINAL CTA -->
-    <section class="section section--bg sol-final-cta" id="start" aria-label="Start Your Project">
-      <div class="wrap sol-cta-box" data-animate>
-        <div class="sol-cta-box__inner">
-          <span class="overline overline--accent">Direct Founder Consultation</span>
-          <h2 class="s-headline" style="max-width:720px;margin-top:12px;">
-            Tell us what you need built.<br>
-            <em>We'll deliver the running system.</em>
-          </h2>
-          <p class="s-body" style="max-width:560px;margin-top:16px;">
-            Schedule a 20-minute architecture review with founder Adil directly on WhatsApp or submit your task for a fixed 4-hour quote.
-          </p>
-          <div class="hero__cta-row" style="justify-content:flex-start;margin-top:32px;">
-            <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%20have%20an%20AI%20task%20I%27d%20like%20ReWoo%20to%20solve" target="_blank" rel="noopener noreferrer" class="btn btn--primary" id="final-cta-wa">
-              Chat on WhatsApp with Founder Adil &rarr;
-            </a>
-            <a href="#request-task" class="btn btn--ghost" id="final-cta-sandbox">
-              Use Task Scoper &uarr;
-            </a>
           </div>
         </div>
       </div>
@@ -919,14 +1099,14 @@
 
   </main>
 
-  <!-- ============================================================ MODAL: FORM SUBMISSION -->
+  <!-- ============================================================ MODAL: PROJECT PROPOSAL -->
   <div class="sol-modal" id="task-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
     <div class="sol-modal__backdrop" id="modal-backdrop"></div>
     <div class="sol-modal__card">
       <button type="button" class="sol-modal__close" id="modal-close" aria-label="Close dialog">&times;</button>
-      <span class="overline overline--accent">Direct Project Scoping</span>
-      <h3 class="sol-modal__title" id="modal-title">Request Fixed Proposal</h3>
-      <p class="sol-modal__sub">We'll review your task and deliver an architectural blueprint and fixed price within 4 hours.</p>
+      <span class="overline overline--accent">Personalized Scoping</span>
+      <h3 class="sol-modal__title" id="modal-title">Describe What You Need Done</h3>
+      <p class="sol-modal__sub">Tell us your goal in plain words. Founder Adil will review your request and reply with a practical approach within 4 hours.</p>
 
       <form id="modal-project-form" class="sol-modal__form">
         <div class="sol-modal__field">
@@ -934,21 +1114,35 @@
           <input type="text" id="modal-name" name="name" class="sol-modal__input" placeholder="e.g. Sarah Jenkins" required>
         </div>
         <div class="sol-modal__field">
-          <label for="modal-email" class="sol-modal__label">Work Email / WhatsApp</label>
+          <label for="modal-email" class="sol-modal__label">Email or WhatsApp Number</label>
           <input type="text" id="modal-email" name="contact" class="sol-modal__input" placeholder="e.g. sarah@company.com or +1 555-0192" required>
         </div>
         <div class="sol-modal__field">
-          <label for="modal-task" class="sol-modal__label">What do you want automated or solved?</label>
+          <label for="modal-task" class="sol-modal__label">What task or problem do you want solved?</label>
           <textarea id="modal-task" name="task" class="sol-modal__textarea" rows="4" required></textarea>
         </div>
-        <button type="submit" class="btn btn--primary sol-modal__submit" id="modal-submit-btn">Submit to ReWoo Architect &rarr;</button>
+        <button type="submit" class="btn btn--primary sol-modal__submit" id="modal-submit-btn">Send to adilshamim696@gmail.com &rarr;</button>
       </form>
       <div id="modal-success" class="sol-modal__success" style="display:none;">
         <div class="sol-success-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
         </div>
-        <h4>Task Received!</h4>
-        <p>Our founder Adil will review your request and reply via email or WhatsApp within 4 hours.</p>
+        <h4>Opening Gmail Inbox...</h4>
+        <p>Your full message to <strong>adilshamim696@gmail.com</strong> has been copied to your clipboard. Click below to go directly to your Gmail inbox:</p>
+        <div class="sol-modal-success-actions" style="display:flex; flex-direction:column; gap:8px; margin-top:18px;">
+          <a id="modal-gmail-btn" href="https://mail.google.com/mail/u/0/#inbox" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="font-size:0.86rem; padding:10px 16px; border-radius:980px; text-align:center;">
+            Open Gmail Web &rarr;
+          </a>
+          <button type="button" id="modal-copy-btn" class="btn btn--outline" style="font-size:0.84rem; padding:9px 16px; border-radius:980px; text-align:center;">
+            Copy Email Text Again
+          </button>
+          <a id="modal-mail-app-btn" href="#" class="btn btn--outline" style="font-size:0.84rem; padding:9px 16px; border-radius:980px; text-align:center;">
+            Open in Default Mail App (Apple Mail / Outlook) &rarr;
+          </a>
+          <a id="modal-wa-btn" href="#" target="_blank" rel="noopener noreferrer" class="sol-modal-wa-link">
+            Or Send via WhatsApp &rarr;
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -965,13 +1159,15 @@
         <a href="mailto:adilshamim696@gmail.com" class="footer__email">adilshamim696@gmail.com</a>
         <p style="font-size:0.8rem;color:var(--dim-2);margin-top:6px;">WhatsApp: +880 1321-073452</p>
       </div>
+
       <div>
-        <span class="footer__col-label">AI Agency Solutions</span>
+        <span class="footer__col-label">How We Help</span>
         <ul class="footer__links">
-          <li><a href="#systems-explorer">24/7 Voice &amp; WhatsApp AI</a></li>
-          <li><a href="#systems-explorer">Autonomous Outbound SDR</a></li>
-          <li><a href="#systems-explorer">n8n Pipeline Auto-Sync</a></li>
-          <li><a href="#systems-explorer">PDF Document OCR</a></li>
+          <li><a href="#everyday-help">Everyday Tasks &amp; Writing</a></li>
+          <li><a href="#work-business">Business Operations</a></li>
+          <li><a href="#platform-guidance">AI &amp; Platform Guidance</a></li>
+          <li><a href="#product-ladder">Process Automation</a></li>
+          <li><a href="#advanced-ai">Advanced AI Services</a></li>
         </ul>
       </div>
 
@@ -983,6 +1179,7 @@
           <li><a href="terms.html">Terms of Service</a></li>
         </ul>
       </div>
+
       <div>
         <span class="footer__col-label">Connect</span>
         <div class="footer__social">
@@ -1001,10 +1198,10 @@
         </div>
       </div>
     </div>
-    <div class="footer__bottom">Built by ReWoo &middot; Next-generation AI execution agency for businesses.</div>
+    <div class="footer__bottom">Built by ReWoo &middot; Get help with the work you need to get done.</div>
   </footer>
 
   <script src="script.js"></script>
-  <script src="solutions.js"></script>
+  <script src="solutions.js?v=20260914v9"></script>
 </body>
 </html>
