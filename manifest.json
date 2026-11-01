@@ -1,7 +1,7 @@
 {
-  "name": "ReWoo — AI Execution Agency & Workforce",
+  "name": "ReWoo — AI Systems Studio",
   "short_name": "ReWoo",
-  "description": "Tell us what you need done. We build, automate, and execute your business workflows with AI.",
+  "description": "AI systems, scoped and shipped. ReWoo designs and builds agents, pipelines, and retrieval systems that fit the tools you already run.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",

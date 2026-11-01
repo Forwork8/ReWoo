@@ -1,818 +1,425 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-
 <head>
-  <!-- ============================================================
-       ReWoo v3.0 — The Premium Edition
-       https://rewoo.tech
-       ============================================================ -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReWoo — AI Systems Studio | Agents, Pipelines, Retrieval</title>
+<meta name="description" content="ReWoo is an AI systems studio. We scope, design, and build agents, pipelines, and retrieval systems that fit the tools you already run — and hand you the keys.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://rewoo.tech/index.html">
+<meta property="og:title" content="ReWoo — AI Systems Studio | Agents, Pipelines, Retrieval">
+<meta property="og:description" content="ReWoo is an AI systems studio. We scope, design, and build agents, pipelines, and retrieval systems that fit the tools you already run — and hand you the keys.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rewoo.tech/index.html">
+<meta property="og:image" content="https://rewoo.tech/assets/og-image.png">
+<meta property="og:site_name" content="ReWoo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ReWoo — AI Systems Studio | Agents, Pipelines, Retrieval">
+<meta name="twitter:description" content="ReWoo is an AI systems studio. We scope, design, and build agents, pipelines, and retrieval systems that fit the tools you already run — and hand you the keys.">
+<meta name="twitter:image" content="https://rewoo.tech/assets/og-image.png">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+<link rel="apple-touch-icon" href="assets/logo.jpg">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,200..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="site.css">
+<script>(function () { try { var t = localStorage.getItem('rewoo-theme'); if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', t); } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); } })();</script>
+<noscript><style>[data-animate]{opacity:1 !important;transform:none !important}</style></noscript>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "ReWoo", "url": "https://rewoo.tech", "email": "adilshamim696@gmail.com", "slogan": "AI systems, scoped and shipped.", "description": "ReWoo is an AI systems studio. We scope, design, and build agents, pipelines, and retrieval systems that fit the tools you already run — and hand you the keys.", "address": {"@type": "PostalAddress", "addressLocality": "Dhaka", "addressCountry": "BD"}, "sameAs": ["https://linkedin.com/company/rewoo", "https://x.com/ReWootech8"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "ReWoo", "url": "https://rewoo.tech"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you run ready-made AI products we can subscribe to?", "acceptedAnswer": {"@type": "Answer", "text": "No. ReWoo builds scoped systems to order — this website is our own product work, and everything else is built for a specific client's stack, data rules, and team. If a subscription product fits you better than a build, the audit will say so."}}, {"@type": "Question", "name": "How do you price?", "acceptedAnswer": {"@type": "Answer", "text": "Per engagement, after discovery: a written scope with deliverables, milestones, and a fixed quote. We do not publish prices or make turnaround promises in marketing — anything unverifiable stays out of the copy."}}, {"@type": "Question", "name": "What if the build is not feasible?", "acceptedAnswer": {"@type": "Answer", "text": "You learn it early and in writing. Milestone structure and evaluation reports are designed to surface failure before it becomes expensive — including a stop recommendation when the bar cannot be met."}}, {"@type": "Question", "name": "Who owns the code and data?", "acceptedAnswer": {"@type": "Answer", "text": "You do. Handover transfers the repository, configuration, credentials, and documentation. There is no hostage-taking and no recurring dependency unless you explicitly scope support."}}, {"@type": "Question", "name": "Where is the team based?", "acceptedAnswer": {"@type": "Answer", "text": "Dhaka, Bangladesh — an independent studio working with teams anywhere. The current site you are reading was designed and built in-house."}}, {"@type": "Question", "name": "Can you work with our security and procurement process?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — designs are documented for security review, scopes are written to survive procurement, and phased rollouts with checkpoints are the default shape for larger organizations."}}]}</script>
 
-  <!-- SEO -->
-  <title>ReWoo — AI Workforce Built for Founders</title>
-  <meta name="description"
-    content="ReWoo deploys a complete AI executive team for your business — so one founder can run what once took a hundred people. Ten executives. Zero salaries. Day one.">
-  <meta name="author" content="ReWoo">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="keywords" content="AI workforce, AI executive team, AI employees, business automation, ReWoo">
-  <link rel="canonical" href="https://rewoo.tech/">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="ReWoo — AI Workforce Built for Founders">
-  <meta property="og:description"
-    content="Ten AI executives. Zero salaries. Day one. Build the company you always imagined.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rewoo.tech/">
-  <meta property="og:image" content="https://rewoo.tech/assets/og-image.png">
-  <meta property="og:site_name" content="ReWoo">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ReWoo — AI Workforce Built for Founders">
-  <meta name="twitter:description" content="Ten AI executives. Zero salaries. Day one.">
-  <meta name="twitter:image" content="https://rewoo.tech/assets/og-image.png">
-  <meta name="twitter:site" content="@adil_shamim8">
-  <meta name="twitter:creator" content="@adil_shamim8">
-
-  <!-- Icons -->
-  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
-  <link rel="apple-touch-icon" href="assets/logo.jpg">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,200..500&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css">
-
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://rewoo.tech/#organization",
-        "name": "ReWoo",
-        "url": "https://rewoo.tech",
-        "logo": "https://rewoo.tech/assets/logo.jpg",
-        "description": "ReWoo deploys AI employees for SMEs — a complete AI executive team.",
-        "foundingDate": "2026",
-        "foundingLocation": { "@type": "Place", "name": "Dhaka, Bangladesh" },
-        "contactPoint": { "@type": "ContactPoint", "email": "hello@rewoo.tech" }
-      },
-      {
-        "@type": "Product",
-        "@id": "https://rewoo.tech/#workforce",
-        "name": "ReWoo AI Workforce",
-        "description": "Complete AI executive team for founders — support, sales, marketing, operations, finance, and analytics.",
-        "brand": { "@type": "Brand", "name": "ReWoo" }
-      }
-    ]
-  }
-  </script>
-
-  <!-- Analytics -->
-  <script defer data-domain="rewoo.tech" src="https://plausible.io/js/script.js"></script>
-  <script type="text/javascript">
-    (function (c, l, a, r, i, t, y) {
-      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-    })(window, document, "clarity", "script", "abc123xyz0");
-  </script>
-
-  <!-- No FOUC: apply saved theme before first paint -->
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('rewoo-theme');
-        if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', t);
-      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
-    })();
-  </script>
-
-  <style>
-    /* Hero entrance animation */
-
-    .hero__headline {
-      animation: heroUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
-    }
-
-    .hero__sub {
-      animation: heroUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
-    }
-
-    .hero__cta-row {
-      animation: heroUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
-    }
-
-    @keyframes heroUp {
-      from {
-        opacity: 0;
-        transform: translateY(22px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-
-
-
-
-
-
-    /* Hero Backdrop with assets/background.png */
-    .hero__bg-backdrop {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero__bg-img {
-      width: 100%;
-      height: 100%;
-      max-width: 1700px;
-      object-fit: cover;
-      object-position: center;
-      mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 80%);
-      transition: opacity 0.4s ease, filter 0.4s ease;
-      will-change: opacity, transform;
-    }
-
-    /* Light mode: crisp, elegant multi-founder collage blend */
-    [data-theme="light"] .hero__bg-img {
-      opacity: 0.14;
-      filter: grayscale(100%) contrast(1.1);
-      mix-blend-mode: multiply;
-    }
-
-    /* Dark mode: sleek, atmospheric founder collage */
-    [data-theme="dark"] .hero__bg-img {
-      opacity: 0.12;
-      filter: grayscale(100%) contrast(1.15) brightness(0.72);
-      mix-blend-mode: luminosity;
-    }
-
-    /* Soft center vignette to maintain text readability */
-    .hero__bg-glow {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(circle 420px at 50% 45%, var(--bg) 0%, transparent 100%);
-      opacity: 0.85;
-      transition: background 0.3s ease;
-    }
-
-    /* Pill cluster for announcement and eyebrow */
-    .hero__pill-cluster {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
-      animation: heroUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
-    }
-
-    /* Offer Get Your Personalized AI Assistant Free */
-    .hero__announcement {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 14px 5px 5px;
-      border-radius: 100px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: var(--text, #fff);
-      font-size: 0.8125rem;
-      font-weight: 500;
-      text-decoration: none;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 2px 14px rgba(0, 0, 0, 0.15);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    [data-theme="light"] .hero__announcement {
-      background: rgba(255, 255, 255, 0.75);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-      color: #111;
-    }
-
-    .hero__announcement:hover {
-      transform: translateY(-2px) scale(1.02);
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    [data-theme="light"] .hero__announcement:hover {
-      background: #ffffff;
-      border-color: rgba(0, 0, 0, 0.16);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .hero__announcement-new {
-      background: #ffffff;
-      color: #000000;
-      padding: 2px 9px;
-      border-radius: 100px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-    
-    [data-theme="light"] .hero__announcement-new {
-      background: #000000;
-      color: #ffffff;
-    }
-
-    .hero__announcement-icon {
-      width: 14px;
-      height: 14px;
-      opacity: 0.6;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-    }
-
-    .hero__announcement:hover .hero__announcement-icon {
-      transform: translateX(3px);
-      opacity: 1;
-    }
-
-    .hero__pill-cluster .hero__eyebrow {
-      margin-bottom: 0;
-      animation: none;
-    }
-  
-  
-  
-  </style>
 </head>
-
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<!-- ReWoo — homepage template. Rendered by scripts/build_site.py. Placeholders: @NAV, @FOOTER -->
 
-  <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- ============================================================
-       SECTION 0 — NAVIGATION
-       ============================================================ -->
-  <nav class="nav" id="site-nav" aria-label="Primary navigation">
-    <div class="nav__inner">
-
-      <a href="#top" class="nav__logo" aria-label="ReWoo — Home" id="nav-logo">
-        <img src="assets/logo.jpg" alt="ReWoo" class="nav__logo-img" width="28" height="28">
-        <span class="nav__wordmark">ReWoo</span>
+<nav class="nav" id="site-nav" aria-label="Primary navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="ReWoo — Home">
+      <img src="assets/logo.jpg" alt="ReWoo" class="nav__logo-img" width="28" height="28">
+      <span class="nav__wordmark">ReWoo</span>
+    </a>
+    <ul class="nav__links nav__links--site" aria-label="Site sections">
+      <li class="has-mega"><button type="button" class="nav__link nav__link--btn" aria-expanded="false" aria-controls="panel-systems">Systems<span class="nav__caret" aria-hidden="true">▾</span></button><div class="mega__panel" id="panel-systems"><ul class="mega__grid"><li><a class="mega__item" href="systems/visual-production.html" data-brief-quick="system">Visual Production Systems<span class="mega__sub">Creative infrastructure</span></a></li><li><a class="mega__item" href="systems/voice-intelligence.html" data-brief-quick="system">Voice &amp; Communication Intelligence<span class="mega__sub">Voice</span></a></li><li><a class="mega__item" href="systems/assessment-systems.html" data-brief-quick="system">Assessment &amp; Training Systems<span class="mega__sub">Knowledge</span></a></li><li><a class="mega__item" href="systems/design-visualization.html" data-brief-quick="system">Design Visualization<span class="mega__sub">Design</span></a></li><li><a class="mega__item" href="systems/content-pipelines.html" data-brief-quick="system">Content Generation Pipelines<span class="mega__sub">Content</span></a></li><li><a class="mega__item" href="systems/document-intelligence.html" data-brief-quick="system">Document Intelligence<span class="mega__sub">Documents</span></a></li><li><a class="mega__item" href="systems/knowledge-retrieval.html" data-brief-quick="system">Knowledge Search &amp; Retrieval<span class="mega__sub">Retrieval</span></a></li></ul><div class="mega__foot"><a href="systems.html">All systems →</a></div></div></li><li class="has-mega"><button type="button" class="nav__link nav__link--btn" aria-expanded="false" aria-controls="panel-capabilities">Capabilities<span class="nav__caret" aria-hidden="true">▾</span></button><div class="mega__panel mega__panel--wide" id="panel-capabilities"><ul class="mega__grid mega__grid--groups"><li class="mega__group"><span class="mega__group-label">Agents &amp; interfaces</span><ul class="mega__list"><li><a class="mega__item mega__item--tight" href="capabilities/ai-agent-development.html">AI Agent Development</a></li><li><a class="mega__item mega__item--tight" href="capabilities/ai-chatbot-development.html">AI Chatbot Development</a></li><li><a class="mega__item mega__item--tight" href="capabilities/voice-ai-development.html">Voice AI Development</a></li><li><a class="mega__item mega__item--tight" href="capabilities/agentic-ai-systems.html">Multi-Agent Systems</a></li></ul></li><li class="mega__group"><span class="mega__group-label">Applied AI</span><ul class="mega__list"><li><a class="mega__item mega__item--tight" href="capabilities/generative-ai-development.html">Generative AI Development</a></li><li><a class="mega__item mega__item--tight" href="capabilities/computer-vision-development.html">Computer Vision Development</a></li><li><a class="mega__item mega__item--tight" href="capabilities/ai-content-video-production.html">AI Content &amp; Video Production</a></li></ul></li><li class="mega__group"><span class="mega__group-label">Data &amp; integration</span><ul class="mega__list"><li><a class="mega__item mega__item--tight" href="capabilities/workflow-automation.html">Workflow Automation</a></li><li><a class="mega__item mega__item--tight" href="capabilities/nlp-rag-development.html">NLP &amp; RAG Development</a></li><li><a class="mega__item mega__item--tight" href="capabilities/ai-integration-services.html">AI Integrations</a></li></ul></li><li class="mega__group"><span class="mega__group-label">Strategy &amp; product</span><ul class="mega__list"><li><a class="mega__item mega__item--tight" href="capabilities/ai-consulting-strategy.html">AI Consulting &amp; Strategy</a></li><li><a class="mega__item mega__item--tight" href="capabilities/ai-mvp-development.html">AI MVP Development</a></li></ul></li></ul><div class="mega__foot"><a href="capabilities.html">All capabilities →</a></div></div></li><li class="has-mega"><button type="button" class="nav__link nav__link--btn" aria-expanded="false" aria-controls="panel-industries">Industries<span class="nav__caret" aria-hidden="true">▾</span></button><div class="mega__panel" id="panel-industries"><ul class="mega__grid mega__grid--tight"><li><a class="mega__item" href="industries/ecommerce-retail.html" data-brief-quick="">Commerce &amp; Retail</a></li><li><a class="mega__item" href="industries/education-edtech.html" data-brief-quick="">Education &amp; EdTech</a></li><li><a class="mega__item" href="industries/financial-services.html" data-brief-quick="">Financial Services</a></li><li><a class="mega__item" href="industries/healthcare-life-sciences.html" data-brief-quick="">Healthcare &amp; Life Sciences</a></li><li><a class="mega__item" href="industries/manufacturing-supply-chain.html" data-brief-quick="">Manufacturing &amp; Supply Chain</a></li><li><a class="mega__item" href="industries/media-entertainment.html" data-brief-quick="">Media &amp; Entertainment</a></li><li><a class="mega__item" href="industries/real-estate-proptech.html" data-brief-quick="">Real Estate &amp; PropTech</a></li><li><a class="mega__item" href="industries/software-saas.html" data-brief-quick="">Software &amp; SaaS</a></li><li><a class="mega__item" href="industries/hospitality-travel.html" data-brief-quick="">Hospitality &amp; Travel</a></li><li><a class="mega__item" href="industries/sports-technology.html" data-brief-quick="">Sports Technology</a></li></ul><div class="mega__foot"><a href="industries.html">All industries →</a></div></div></li><li class="has-mega"><button type="button" class="nav__link nav__link--btn" aria-expanded="false" aria-controls="panel-packages">Packages<span class="nav__caret" aria-hidden="true">▾</span></button><div class="mega__panel" id="panel-packages"><ul class="mega__grid"><li><a class="mega__item" href="packages/ai-readiness-audit.html" data-brief-quick="package">AI Readiness Audit<span class="mega__sub">Audit engagement</span></a></li><li><a class="mega__item" href="packages/ai-agent-mvp.html" data-brief-quick="package">AI Agent MVP<span class="mega__sub">Build engagement</span></a></li><li><a class="mega__item" href="packages/ai-integration-sprint.html" data-brief-quick="package">AI Integration Sprint<span class="mega__sub">Build engagement</span></a></li><li><a class="mega__item" href="packages/workflow-automation-audit.html" data-brief-quick="package">Workflow Automation Audit<span class="mega__sub">Audit engagement</span></a></li><li><a class="mega__item" href="packages/ai-strategy-workshop.html" data-brief-quick="package">AI Strategy Workshop<span class="mega__sub">Workshop engagement</span></a></li></ul><div class="mega__foot"><a href="packages.html">Compare engagements →</a></div></div></li><li><a class="nav__link" href="about.html">About</a></li><li class="has-mega"><button type="button" class="nav__link nav__link--btn" aria-expanded="false" aria-controls="panel-more">More<span class="nav__caret" aria-hidden="true">▾</span></button><div class="mega__panel" id="panel-more"><ul class="mega__grid"><li><a class="mega__item" href="who-we-build-for.html" data-brief-quick="">Who we build for<span class="mega__sub">Four engagement profiles</span></a></li><li><a class="mega__item" href="departments.html" data-brief-quick="">Departments<span class="mega__sub">Find work by team</span></a></li><li><a class="mega__item" href="resources.html" data-brief-quick="">Resources<span class="mega__sub">Guides and notes</span></a></li><li><a class="mega__item" href="contact.html" data-brief-quick="">Contact<span class="mega__sub">Book a call or write</span></a></li></ul><div class="mega__foot"><a href="contact.html">Contact →</a></div></div></li>
+    </ul>
+    <div class="nav__right nav__right--site">
+      <a href="contact.html" class="brief-pill" data-brief-pill hidden>
+        Brief <span class="brief-pill__count" data-brief-count>0</span>
       </a>
-
-      <ul class="nav__links" aria-label="Site sections">
-        <li><a href="#top" id="nl-home">Home</a></li>
-        <li><a href="solutions.html" id="nl-solutions">AI Agency &amp; Systems</a></li>
-      </ul>
-
-      <div class="nav__right">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
-          <svg id="theme-icon" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path
-              d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4">
-            </path>
-          </svg>
-        </button>
-        <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo"
-          class="nav__cta" id="nav-cta">Book a Call</a>
-      </div>
-
-      <button class="nav__hamburger" id="menu-toggle" aria-label="Open menu" aria-expanded="false"
-        aria-controls="mobile-menu">
-        <span></span><span></span><span></span>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
+        <svg id="theme-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+      </button>
+      <a href="contact.html" class="nav__cta">Book a Call</a>
+    </div>
+    <button class="nav__hamburger" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
+<div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+  <div class="mobile-nav-inner">
+    <span class="mobile-section-label">Explore</span>
+    <details class="mgroup"><summary>Systems</summary><div class="mgroup__list"><a href="systems/visual-production.html">Visual Production Systems</a><a href="systems/voice-intelligence.html">Voice &amp; Communication Intelligence</a><a href="systems/assessment-systems.html">Assessment &amp; Training Systems</a><a href="systems/design-visualization.html">Design Visualization</a><a href="systems/content-pipelines.html">Content Generation Pipelines</a><a href="systems/document-intelligence.html">Document Intelligence</a><a href="systems/knowledge-retrieval.html">Knowledge Search &amp; Retrieval</a></div></details><details class="mgroup"><summary>Capabilities</summary><div class="mgroup__list"><a href="capabilities/ai-agent-development.html">AI Agent Development</a><a href="capabilities/ai-chatbot-development.html">AI Chatbot Development</a><a href="capabilities/voice-ai-development.html">Voice AI Development</a><a href="capabilities/generative-ai-development.html">Generative AI Development</a><a href="capabilities/agentic-ai-systems.html">Multi-Agent Systems</a><a href="capabilities/ai-consulting-strategy.html">AI Consulting &amp; Strategy</a><a href="capabilities/workflow-automation.html">Workflow Automation</a><a href="capabilities/nlp-rag-development.html">NLP &amp; RAG Development</a><a href="capabilities/computer-vision-development.html">Computer Vision Development</a><a href="capabilities/ai-content-video-production.html">AI Content &amp; Video Production</a><a href="capabilities/ai-integration-services.html">AI Integrations</a><a href="capabilities/ai-mvp-development.html">AI MVP Development</a><a href="capabilities.html">All capabilities</a></div></details><details class="mgroup"><summary>Industries</summary><div class="mgroup__list"><a href="industries/ecommerce-retail.html">Commerce &amp; Retail</a><a href="industries/education-edtech.html">Education &amp; EdTech</a><a href="industries/financial-services.html">Financial Services</a><a href="industries/healthcare-life-sciences.html">Healthcare &amp; Life Sciences</a><a href="industries/manufacturing-supply-chain.html">Manufacturing &amp; Supply Chain</a><a href="industries/media-entertainment.html">Media &amp; Entertainment</a><a href="industries/real-estate-proptech.html">Real Estate &amp; PropTech</a><a href="industries/software-saas.html">Software &amp; SaaS</a><a href="industries/hospitality-travel.html">Hospitality &amp; Travel</a><a href="industries/sports-technology.html">Sports Technology</a><a href="industries.html">All industries</a></div></details><details class="mgroup"><summary>Packages</summary><div class="mgroup__list"><a href="packages/ai-readiness-audit.html">AI Readiness Audit</a><a href="packages/ai-agent-mvp.html">AI Agent MVP</a><a href="packages/ai-integration-sprint.html">AI Integration Sprint</a><a href="packages/workflow-automation-audit.html">Workflow Automation Audit</a><a href="packages/ai-strategy-workshop.html">AI Strategy Workshop</a><a href="packages.html">Compare engagements</a></div></details><details class="mgroup"><summary>More</summary><div class="mgroup__list"><a href="about.html">About</a><a href="who-we-build-for.html">Who we build for</a><a href="departments.html">Departments</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></div></details>
+    <div class="mobile-theme-row">
+      <button class="mobile-theme-btn" id="mobile-theme-toggle" aria-label="Toggle theme">
+        <svg class="mobile-theme-icon" id="mobile-theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <span id="mobile-theme-text">Switch to Light Mode</span>
       </button>
     </div>
-  </nav>
-
-  <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
-  <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
-    <div class="mobile-nav-inner">
-      <span class="mobile-section-label">Explore</span>
-      <div class="mobile-link-list">
-        <a href="solutions.html" class="mobile-link-item">AI Agency &amp; Systems</a>
-      </div>
-
-      <span class="mobile-section-label">Company</span>
-      <div class="mobile-link-list">
-        <a href="#top" class="mobile-link-item">Home</a>
-      </div>
-
-      <div class="mobile-theme-row">
-        <button class="mobile-theme-btn" id="mobile-theme-toggle" aria-label="Toggle theme">
-          <svg class="mobile-theme-icon" id="mobile-theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
-          </svg>
-          <span id="mobile-theme-text">Switch to Light Mode</span>
-        </button>
-      </div>
-
-      <a href="https://wa.me/+8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20ReWoo" class="nav__cta" id="mn-cta">Book a Discovery Call →</a>
-    </div>
+    <a href="contact.html" class="nav__cta" id="mn-cta">Book a Call →</a>
   </div>
+</div>
 
 
-  <main id="main-content" aria-label="Main content">
+<main id="main-content" aria-label="Main content">
 
-    <!-- ============================================================
-         SECTION 1 — HERO
-         ============================================================ -->
-    <section class="hero" id="top" aria-label="Hero">
-      <!-- Background Collage -->
-      <div class="hero__bg-backdrop" aria-hidden="true">
-        <img src="assets/background.png" alt="" class="hero__bg-img" width="1897" height="879" loading="eager" decoding="async">
-        <div class="hero__bg-glow"></div>
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="top" aria-label="Hero">
+    <div class="hero__inner">
+
+      <div class="hero__pill-cluster">
+        <span class="hero__eyebrow" aria-hidden="true">
+          <span class="hero__eyebrow-dot"></span>
+          AI systems studio · Dhaka, built for anywhere
+        </span>
       </div>
 
-      <div class="hero__inner">
-
-        <!-- Offer & Eyebrow Row -->
-        <div class="hero__pill-cluster">
-          <a href="https://forms.gle/vYRgKqZRUTEjhZQT7" target="_blank" rel="noopener noreferrer" class="hero__announcement">
-            <span class="hero__announcement-new">Offer</span>
-            Get Your Personalized AI Assistant Free
-            <svg viewBox="0 0 20 20" fill="currentColor" class="hero__announcement-icon">
-              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-            </svg>
-          </a>
-
-          <span class="hero__eyebrow" aria-hidden="true">
-            <span class="hero__eyebrow-dot"></span>
-            AI Workforce · Built for Founders
-          </span>
-        </div>
-
-        <h1 class="hero__headline">
-          <span class="sr-only">ReWoo AI Workforce: </span>
-          Build the company<br>
-          <em>you always imagined.</em>
-        </h1>
-
-        <p class="hero__sub">
-          ReWoo gives you a complete AI executive team — support, sales, marketing, operations, finance, analytics — so
-          one founder can run what once took a hundred people.
-        </p>
-
-        <div class="hero__cta-row">
-          <a href="solutions.html" class="btn btn--primary" id="hero-cta-primary">Hire Your First AI Employee →</a>
-          <a href="#how-it-works" class="btn btn--ghost" id="hero-cta-secondary">See how it works ↓</a>
-        </div>
-
-      </div>
-
-      <div class="hero__scroll-indicator" aria-hidden="true">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 5v14M5 12l7 7 7-7" />
-        </svg>
-      </div>
-    </section>
-
-
-    <!-- ============================================================
-         SECTION 2 — THE PROBLEM
-         ============================================================ -->
-    <section class="section section--bg" id="problem" aria-label="The problem">
-      <div class="wrap">
-        <div class="problem-inner">
-          <span class="overline" data-animate>The cost you're already paying</span>
-          <p class="problem-pull" data-animate style="transition-delay:80ms">
-            You're doing the work of ten people.<br>And it's still not enough.
-          </p>
-          <div class="problem-body" data-animate style="transition-delay:160ms">
-            <p>Every day, you handle customer queries that should answer themselves. You follow up on invoices that
-              should chase themselves. You write content that should write itself. You compile reports that should
-              compile themselves.</p>
-            <p><strong>You're not building the company. You're maintaining it.</strong></p>
-            <p>The bottleneck isn't your idea. It's the size of your team.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============================================================
-         SECTION 3 — THE REVELATION
-         ============================================================ -->
-    <section class="section section--surface" id="revelation" aria-label="A new kind of company">
-      <div class="wrap">
-        <div class="revelation-inner">
-          <span class="overline" data-animate>A new kind of company</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">
-            <em>What if your company<br>ran itself?</em>
-          </h2>
-          <div class="s-body" data-animate style="transition-delay:160ms">
-            <p>ReWoo doesn't sell you a tool to manage. It gives you a team to deploy. Ten AI executives — each with a
-              defined role, a scope of authority, and a daily operating rhythm — running your company functions from day
-              one.</p>
-            <p>Not a chatbot. Not a dashboard. A complete AI workforce.</p>
-          </div>
-
-          <div class="concept-cards" role="list">
-            <div class="concept-card" role="listitem" data-animate style="transition-delay:240ms">
-              <svg class="concept-card__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
-              </svg>
-              <p class="concept-card__text">Human founders set vision and approve decisions.</p>
-            </div>
-            <div class="concept-card" role="listitem" data-animate style="transition-delay:320ms">
-              <svg class="concept-card__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="3" />
-                <path
-                  d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
-              </svg>
-              <p class="concept-card__text">AI executives run every function, every day, without being asked.</p>
-            </div>
-            <div class="concept-card" role="listitem" data-animate style="transition-delay:400ms">
-              <svg class="concept-card__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <polyline points="9 12 11 14 15 10" />
-              </svg>
-              <p class="concept-card__text">Nothing irreversible happens without your approval.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============================================================
-         SECTION 4 — MEET YOUR TEAM
-         ============================================================ -->
-    <section class="section section--bg" id="team" aria-label="Your AI executive team">
-      <div class="wrap">
-        <div class="team-inner">
-          <span class="overline overline--accent" data-animate>Your AI executive team</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">Ten executives.<br>Zero salaries. Day one.
-          </h2>
-          <p class="s-subhead" data-animate style="transition-delay:160ms">
-            Each agent has a defined mission, a scope of authority, and a daily operating rhythm. They coordinate with
-            each other so you don't have to.
-          </p>
-
-          <div class="team-grid" role="list">
-
-            <article class="team-card" role="listitem" data-animate style="transition-delay:0ms">
-              <div class="team-card__role">CEO</div>
-              <div class="team-card__name">Atlas</div>
-              <p class="team-card__mission">Turns your vision into daily OKRs. Runs the company when you're building it.
-              </p>
-            </article>
-
-            <article class="team-card" role="listitem" data-animate style="transition-delay:60ms">
-              <div class="team-card__role">CFO</div>
-              <div class="team-card__name">Finance</div>
-              <p class="team-card__mission">Owns cash, burn, runway, and margins. Flags financial risk before it becomes
-                a fire.</p>
-            </article>
-
-            <article class="team-card" role="listitem" data-animate style="transition-delay:120ms">
-              <div class="team-card__role">COO</div>
-              <div class="team-card__name">Operations</div>
-              <p class="team-card__mission">Turns plans into systems. Runs the daily workflow and manages delivery.</p>
-            </article>
-
-            <article class="team-card" role="listitem" data-animate style="transition-delay:180ms">
-              <div class="team-card__role">Product Manager</div>
-              <div class="team-card__name">Product</div>
-              <p class="team-card__mission">Shapes the roadmap from real customer signal. Prioritises ruthlessly.</p>
-            </article>
-
-            <article class="team-card" role="listitem" data-animate style="transition-delay:240ms">
-              <div class="team-card__role">Marketing</div>
-              <div class="team-card__name">Marketing</div>
-              <p class="team-card__mission">Builds brand and compounding demand. Owns content, SEO, and referrals.</p>
-            </article>
-
-            <article class="team-card" role="listitem" data-animate style="transition-delay:300ms">
-              <div class="team-card__role">Sales</div>
-              <div class="team-card__name">Sales</div>
-              <p class="team-card__mission">Qualifies leads, drafts proposals, moves the pipeline. Tracks win rate.</p>
-            </article>
-
-            <article class="team-card" role="listitem" data-animate style="transition-delay:360ms">
-              <div class="team-card__role">Customer Success</div>
-              <div class="team-card__name">Success</div>
-              <p class="team-card__mission">Onboards, supports, retains. Turns clients into case studies and referrals.
-              </p>
-            </article>
-
-            <article class="team-card" role="listitem" data-animate style="transition-delay:420ms">
-              <div class="team-card__role">Operations</div>
-              <div class="team-card__name">Ops</div>
-              <p class="team-card__mission">Runs internal systems and automation. Monitors reliability.</p>
-            </article>
-
-            <article class="team-card" role="listitem" data-animate style="transition-delay:480ms">
-              <div class="team-card__role">Analytics</div>
-              <div class="team-card__name">Analytics</div>
-              <p class="team-card__mission">Single source of truth. Automates dashboards and flags anomalies.</p>
-            </article>
-
-            <article class="team-card" role="listitem" data-animate style="transition-delay:540ms">
-              <div class="team-card__role">Strategy</div>
-              <div class="team-card__name">Strategy</div>
-              <p class="team-card__mission">Long-range radar. Runs competitive intelligence and models scenarios.</p>
-            </article>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============================================================
-         SECTION 5 — PRODUCT IN ACTION
-         ============================================================ -->
-    <section class="section section--surface" id="product" aria-label="Product in action">
-      <div class="wrap">
-        <div class="product-inner">
-          <span class="overline" data-animate style="text-align:center;display:block;">What it actually looks
-            like</span>
-          <h2 class="s-headline s-headline--centered" data-animate style="transition-delay:80ms">Your AI team, at work.
-          </h2>
-
-          <div style="margin-top:60px; transition-delay:160ms;" data-animate>
-
-            <ul class="tab-pills" role="tablist" aria-label="Product demos">
-              <li role="presentation">
-                <button class="tab-pill is-active" id="tab-support" role="tab" aria-selected="true"
-                  aria-controls="panel-support">Customer Support</button>
-              </li>
-              <li role="presentation">
-                <button class="tab-pill" id="tab-marketing" role="tab" aria-selected="false"
-                  aria-controls="panel-marketing">Marketing</button>
-              </li>
-            </ul>
-
-            <!-- Panel 1: Customer Support -->
-            <div class="tab-panel is-active" id="panel-support" role="tabpanel" aria-labelledby="tab-support">
-              <div class="tab-panel__bar">
-                ReWoo Support · AI Agent
-                <span class="online-dot" title="Online"></span>
-                <span style="font-size:0.75rem;color:var(--dim);font-weight:400;">Online</span>
-              </div>
-              <div class="tab-panel__body">
-                <div class="chat">
-                  <div class="chat-bubble chat-bubble--customer">My order hasn't arrived — order #BD-4821</div>
-                  <div class="chat-bubble chat-bubble--ai">Hi Nasrin! I've checked order #BD-4821 — it shipped on June
-                    18 and is due June 22. Here's your tracking link: <a href="javascript:void(0)">track →</a>. Can I
-                    help with anything else?</div>
-                  <p class="chat-meta">Replied in 12 seconds</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Panel 2: Marketing -->
-            <div class="tab-panel" id="panel-marketing" role="tabpanel" aria-labelledby="tab-marketing">
-              <div class="tab-panel__bar">Marketing Agent · LinkedIn Draft</div>
-              <div class="tab-panel__body">
-                <div class="marketing-mock">
-                  <p class="mock-label">Scheduled for today · 9:00 AM</p>
-                  <p class="mock-post">"Three weeks ago we had zero clients. Today we have two in two countries. Here's
-                    what happened when we deployed an AI workforce instead of hiring a team — and why it's the only
-                    decision that made sense for a 10-day-old startup."</p>
-                  <span class="mock-tag">Est. reach: 1,200</span>
-                  <div class="mock-status">
-                    <span class="done">✓ Drafted</span>
-                    <span class="done">✓ Scheduled</span>
-                    <span>Awaiting publish</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <p class="tab-caption">Every output is checked against a quality bar before it reaches your customers. If it
-            doesn't pass, it doesn't go.</p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============================================================
-         SECTION 6 — HOW IT WORKS
-         ============================================================ -->
-    <section class="section section--bg" id="how-it-works" aria-label="How it works">
-      <div class="wrap">
-        <div class="steps-inner">
-          <span class="overline overline--accent" data-animate>The engagement</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">From nothing to running<br>in ten days.</h2>
-
-          <div class="steps" role="list">
-
-            <article class="step-card" role="listitem" data-animate style="transition-delay:0ms">
-              <div class="step-card__num" aria-hidden="true">01</div>
-              <h3 class="step-card__title">We map your highest-value process.</h3>
-              <p class="step-card__body">A paid discovery session. We interview your team, document the workflow, and
-                identify exactly where AI delivers the most value. No guesswork.</p>
-              <span class="step-card__tag">~1 week · $150–$350</span>
-            </article>
-
-            <article class="step-card" role="listitem" data-animate style="transition-delay:160ms">
-              <div class="step-card__num" aria-hidden="true">02</div>
-              <h3 class="step-card__title">We build and quality-test the agents.</h3>
-              <p class="step-card__body">We build your AI employees, load them with your real data, and run them against
-                a quality benchmark before they touch a single live customer. If they don't pass, we don't deploy.</p>
-              <span class="step-card__tag">6–8 weeks · $600–$1,800</span>
-            </article>
-
-            <article class="step-card" role="listitem" data-animate style="transition-delay:320ms">
-              <div class="step-card__num" aria-hidden="true">03</div>
-              <h3 class="step-card__title">Your company runs itself.</h3>
-              <p class="step-card__body">Monthly retainer. Your agents handle the workflow. We monitor, catch drift, and
-                expand to the next process. You set the vision. ReWoo runs the company.</p>
-              <span class="step-card__tag">Ongoing · $120–$600/mo</span>
-            </article>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-
-
-
-
-
-    <!-- ============================================================
-         SECTION 9 — WHY REWOO
-         ============================================================ -->
-    <section class="section section--surface" id="why-rewoo" aria-label="Why ReWoo">
-      <div class="wrap">
-        <div class="why-inner">
-          <span class="overline" data-animate>The five-way combination</span>
-          <h2 class="s-headline" data-animate style="transition-delay:80ms">No one else<br>checks all five.</h2>
-
-          <div class="why-rows">
-
-            <div class="why-row" data-animate style="transition-delay:0ms">
-              <div class="why-row__num" aria-hidden="true">1</div>
-              <div>
-                <h3 class="why-row__title">Full AI team</h3>
-                <p class="why-row__desc">Not a single-function tool. A complete executive team across every business
-                  function.</p>
-              </div>
-            </div>
-
-            <div class="why-row" data-animate style="transition-delay:80ms">
-              <div class="why-row__num" aria-hidden="true">2</div>
-              <div>
-                <h3 class="why-row__title">Verified reliability</h3>
-                <p class="why-row__desc">Every agent clears a quality benchmark before touching a live customer. We call
-                  it the eval gate — it's why our deployments don't fail silently.</p>
-              </div>
-            </div>
-
-            <div class="why-row" data-animate style="transition-delay:160ms">
-              <div class="why-row__num" aria-hidden="true">3</div>
-              <div>
-                <h3 class="why-row__title">Outcome pricing</h3>
-                <p class="why-row__desc">You pay for results, not software seats. Tickets resolved. Leads followed.
-                  Hours saved.</p>
-              </div>
-            </div>
-
-            <div class="why-row" data-animate style="transition-delay:240ms">
-              <div class="why-row__num" aria-hidden="true">4</div>
-              <div>
-                <h3 class="why-row__title">Bangla and English, natively</h3>
-                <p class="why-row__desc">Built for South and Southeast Asian businesses. The first AI workforce company
-                  that works in your language and understands your market.</p>
-              </div>
-            </div>
-
-            <div class="why-row" data-animate style="transition-delay:320ms">
-              <div class="why-row__num" aria-hidden="true">5</div>
-              <div>
-                <h3 class="why-row__title">SME-affordable</h3>
-                <p class="why-row__desc">Priced for founders who are building, not enterprises that are maintaining.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============================================================
-         SECTION 10 — THE VISION
-         ============================================================ -->
-    <section class="vision-section section--bg" id="vision" aria-label="The vision">
-      <div class="wrap">
-        <div data-animate>
-          <p class="vision-quote">
-            "For the first time in history,<br>
-            one person can build<br>
-            an entire company alone.<br>
-            <em>Not just manage it.<br>Really run it."</em>
-          </p>
-
-          <div class="vision-body">
-            <p>ReWoo started in Dhaka, Bangladesh, ten days ago. A student founder with a first-author research paper
-              and a Kaggle Master rank. The first client was in the United Kingdom. The vision is to build the operating
-              system for AI-run companies — starting where global players can't reach, and earning the right to expand
-              everywhere.</p>
-            <p>You set the vision. ReWoo runs the company.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-
-
-
-  </main>
-
-
-    <!-- ============================================================
-         SECTION 12 — FOOTER
-         ============================================================ -->
-  <footer class="footer" aria-label="Footer">
-    <div class="footer__inner">
-
-      <div>
-        <a href="#top" class="footer__logo" aria-label="ReWoo — Home">
-          <img src="assets/logo.jpg" alt="ReWoo" class="footer__logo-img" width="22" height="22">
-          <span class="footer__wordmark">ReWoo</span>
-        </a>
-        <p class="footer__copy">© 2026 ReWoo. Dhaka, Bangladesh.</p>
-        <a href="mailto:adilshamim696@gmail.com" class="footer__email">adilshamim696@gmail.com</a>
-      </div>
-
-      <div>
-        <span class="footer__col-label">Company</span>
-        <ul class="footer__links">
-          <li><a href="#how-it-works">How it works</a></li>
-          <li><a href="#team">Our Team</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <span class="footer__col-label">Solutions</span>
-        <ul class="footer__links">
-          <li><a href="solutions.html">AI Agency &amp; Systems</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <span class="footer__col-label">Connect</span>
-        <div class="footer__social">
-          <a href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer"
-            aria-label="ReWoo on LinkedIn" id="social-linkedin">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-              <rect x="2" y="9" width="4" height="12" />
-              <circle cx="4" cy="4" r="2" />
-            </svg>
-          </a>
-          <a href="https://x.com/ReWootech8" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on X"
-            id="social-twitter">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 4l16 16M4 20L20 4" stroke-width="2" />
-            </svg>
-          </a>
-        </div>
+      <h1 class="hero__headline">
+        <span class="sr-only">ReWoo AI systems studio: </span>
+        AI systems that take<br>
+        <em>real work</em> off your team.
+      </h1>
+
+      <p class="hero__sub">
+        ReWoo scopes, designs, and builds AI systems — agents, pipelines, and retrieval that fit the tools
+        you already run. Written scope before anything is charged. Your code, your data, your keys.
+      </p>
+
+      <div class="hero__cta-row">
+        <a href="contact.html" class="btn btn--primary">Book an intro call →</a>
+        <a href="systems.html" class="btn btn--ghost">Explore the systems ↓</a>
       </div>
 
     </div>
-    <div class="footer__bottom">Built by ReWoo · AI employees for any business.</div>
-  </footer>
 
-  <script src="script.js"></script>
+    <div class="hero__scroll-indicator" aria-hidden="true">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M5 12l7 7 7-7" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ======================= HONEST STATS STRIP ======================= -->
+  <section class="stat-band" aria-label="The offering at a glance">
+    <div class="wrap stat-band__inner">
+      <div class="stat"><span class="stat__v">7</span><span class="stat__l">system families</span></div>
+      <div class="stat"><span class="stat__v">12</span><span class="stat__l">capabilities</span></div>
+      <div class="stat"><span class="stat__v">5</span><span class="stat__l">engagement types</span></div>
+      <div class="stat"><span class="stat__v">0</span><span class="stat__l">projects started without a written scope</span></div>
+    </div>
+  </section>
+
+  <!-- ============================ INTRO ============================ -->
+  <section class="section section--bg" id="intro" aria-label="Who we are">
+    <div class="wrap intro-grid">
+      <div data-animate>
+        <p class="overline overline--accent">Who we are</p>
+        <h2 class="s-headline">A small studio with a narrow focus: <em>systems that hold up.</em></h2>
+      </div>
+      <div class="s-body" data-animate>
+        <p>ReWoo is an independent AI systems studio based in Dhaka, Bangladesh, working with teams anywhere.
+          We design and build scoped systems — not decks, not demos, not a platform you rent forever.</p>
+        <p>The studio runs on three commitments you can check: every engagement begins with a written scope;
+          every build hands over code, configuration, and documentation you own; and every claim on this site
+          is either verifiable or clearly marked as an offer, not a history.</p>
+        <p><a class="btn btn--ghost" href="about.html">More about the studio →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= CAPABILITIES ========================= -->
+  <section class="section section--surface" id="capabilities" aria-label="Capabilities overview">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Capabilities</p>
+        <h2 class="s-headline">Twelve ways we build.</h2>
+        <p class="s-subhead s-subhead--centered">Scoped engagements with defined inputs, deliverables, and boundaries —
+          searchable and filterable on the capabilities page.</p>
+      </div>
+      <div class="cap-mini-grid">
+        <a class="cap-mini" href="capabilities/ai-agent-development.html"><span class="cap-mini__num">01</span><span class="cap-mini__t">AI Agent Development</span></a>
+        <a class="cap-mini" href="capabilities/ai-chatbot-development.html"><span class="cap-mini__num">02</span><span class="cap-mini__t">AI Chatbot Development</span></a>
+        <a class="cap-mini" href="capabilities/voice-ai-development.html"><span class="cap-mini__num">03</span><span class="cap-mini__t">Voice AI Development</span></a>
+        <a class="cap-mini" href="capabilities/generative-ai-development.html"><span class="cap-mini__num">04</span><span class="cap-mini__t">Generative AI Development</span></a>
+        <a class="cap-mini" href="capabilities/agentic-ai-systems.html"><span class="cap-mini__num">05</span><span class="cap-mini__t">Multi-Agent Systems</span></a>
+        <a class="cap-mini" href="capabilities/ai-consulting-strategy.html"><span class="cap-mini__num">06</span><span class="cap-mini__t">AI Consulting &amp; Strategy</span></a>
+        <a class="cap-mini" href="capabilities/workflow-automation.html"><span class="cap-mini__num">07</span><span class="cap-mini__t">Workflow Automation</span></a>
+        <a class="cap-mini" href="capabilities/nlp-rag-development.html"><span class="cap-mini__num">08</span><span class="cap-mini__t">NLP &amp; RAG Development</span></a>
+        <a class="cap-mini" href="capabilities/computer-vision-development.html"><span class="cap-mini__num">09</span><span class="cap-mini__t">Computer Vision Development</span></a>
+        <a class="cap-mini" href="capabilities/ai-content-video-production.html"><span class="cap-mini__num">10</span><span class="cap-mini__t">AI Content &amp; Video Production</span></a>
+        <a class="cap-mini" href="capabilities/ai-integration-services.html"><span class="cap-mini__num">11</span><span class="cap-mini__t">AI Integrations</span></a>
+        <a class="cap-mini" href="capabilities/ai-mvp-development.html"><span class="cap-mini__num">12</span><span class="cap-mini__t">AI MVP Development</span></a>
+      </div>
+      <p class="sec-cta-row" data-animate><a class="btn btn--ghost" href="capabilities.html">All capabilities, searchable →</a></p>
+    </div>
+  </section>
+
+  <!-- ============================ SYSTEMS ============================ -->
+  <section class="section section--bg" id="systems" aria-label="System families">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">System families</p>
+        <h2 class="s-headline">Buy a capability. Or adopt <em>a whole system.</em></h2>
+        <p class="s-subhead s-subhead--centered">Seven engineered solution families — each a pipeline with review gates,
+          integrations, and honest limits, built to order around your stack.</p>
+      </div>
+
+      <div class="home-sys-grid">
+        <a class="home-sys home-sys--feature" href="systems/visual-production.html">
+          <span class="home-sys__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg></span>
+          <span class="home-sys__num">01</span>
+          <h3 class="home-sys__t">Visual Production Systems</h3>
+          <p class="home-sys__d">Brand-safe image generation pipelines that turn one brief into a full set of on-brand visuals.</p>
+          <ul class="home-sys__feats">
+            <li>Brand-conditioned generation</li><li>Review queues</li><li>Rights and provenance logs</li>
+          </ul>
+        </a>
+        <a class="home-sys" href="systems/voice-intelligence.html">
+          <span class="home-sys__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1"/><path d="M12 18v4"/></svg></span>
+          <span class="home-sys__num">02</span>
+          <h3 class="home-sys__t">Voice &amp; Communication Intelligence</h3>
+          <p class="home-sys__d">Transcription, summarization, and routing for calls and voice notes — with an optional voice agent.</p>
+        </a>
+        <a class="home-sys" href="systems/assessment-systems.html">
+          <span class="home-sys__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>
+          <span class="home-sys__num">03</span>
+          <h3 class="home-sys__t">Assessment &amp; Training Systems</h3>
+          <p class="home-sys__d">Your own material, turned into scored assessments and onboarding paths that report real comprehension.</p>
+        </a>
+        <a class="home-sys" href="systems/design-visualization.html">
+          <span class="home-sys__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l10 5-10 5L2 7z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg></span>
+          <span class="home-sys__num">04</span>
+          <h3 class="home-sys__t">Design Visualization</h3>
+          <p class="home-sys__d">Sketches, specs, and floor plans turned into realistic visuals your team and clients can react to.</p>
+        </a>
+        <a class="home-sys" href="systems/content-pipelines.html">
+          <span class="home-sys__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3l4 4L8 20l-5 1 1-5z"/><path d="M15 5l4 4"/></svg></span>
+          <span class="home-sys__num">05</span>
+          <h3 class="home-sys__t">Content Generation Pipelines</h3>
+          <p class="home-sys__d">Research, outline, draft, review, publish — multi-stage content workflows with humans approving what ships.</p>
+        </a>
+        <a class="home-sys" href="systems/document-intelligence.html">
+          <span class="home-sys__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg></span>
+          <span class="home-sys__num">06</span>
+          <h3 class="home-sys__t">Document Intelligence</h3>
+          <p class="home-sys__d">Extraction, classification, and cross-checking for document-heavy operations — every field traceable to source.</p>
+        </a>
+        <a class="home-sys" href="systems/knowledge-retrieval.html">
+          <span class="home-sys__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></span>
+          <span class="home-sys__num">07</span>
+          <h3 class="home-sys__t">Knowledge Search &amp; Retrieval</h3>
+          <p class="home-sys__d">Ask your company's documents questions — answers with citations you can click and check.</p>
+        </a>
+      </div>
+
+      <p class="sec-cta-row" data-animate>
+        <a class="btn btn--ghost" href="systems.html">Explore all seven systems →</a>
+        <span class="sec-cta-note">Scoped builds — designed around your stack, not rented from a shelf.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ EVIDENCE ============================ -->
+  <section class="section section--surface" id="evidence" aria-label="Evidence">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Evidence, honestly</p>
+        <h2 class="s-headline">What we can verify, and what we <em>will not claim.</em></h2>
+      </div>
+      <div class="evidence-grid">
+        <div class="evidence-col" data-animate>
+          <h3 class="evidence__t">Checkable today</h3>
+          <ul class="checks">
+            <li><span>This site is the studio's own work — designed and built by ReWoo, static, fast, and accessible in both themes.</span></li>
+            <li><span>Every engagement starts from a written scope you approve — deliverables, milestones, fixed quote.</span></li>
+            <li><span>Handover is complete: code, configuration, credentials, documentation. No lock-in.</span></li>
+            <li><span>Feasibility calls are honest and in writing — including a stop recommendation when the bar cannot be met.</span></li>
+          </ul>
+        </div>
+        <aside class="illustrative" data-animate aria-label="Illustrative example">
+          <p class="illustrative__label">Illustrative example — not a client case</p>
+          <h3 class="illustrative__t">What one build looked like</h3>
+          <ol class="mini-steps">
+            <li><strong>The problem.</strong> A support queue doubling monthly, two humans, policy scattered across four drives.</li>
+            <li><strong>The scope.</strong> One grounded assistant: cited answers from policy, escalation with context, an unanswered-questions dashboard.</li>
+            <li><strong>The build.</strong> Corpus indexed and evaluated against real questions; handoff flows designed; shadow-run beside the humans first.</li>
+            <li><strong>The handover.</strong> Runbook, dashboards, and a working session — the team operates it; corpus gaps get fixed by design.</li>
+          </ol>
+          <p class="illustrative__note">No client names, no invented metrics — real references when the engagement allows it, honest labels until then.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PACKAGES ============================ -->
+  <section class="section section--bg" id="engagements" aria-label="Engagements">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Engagements</p>
+        <h2 class="s-headline">Five ways to start.</h2>
+        <p class="s-subhead s-subhead--centered">Two audits, two builds, one workshop — each with defined outputs and
+          clear exclusions. Terms per engagement.</p>
+      </div>
+      <div class="pkg-mini-grid">
+        <a class="pkg-mini" href="packages/ai-readiness-audit.html">
+          <span class="badge">Audit</span><h3 class="pkg-mini__t">AI Readiness Audit</h3>
+          <p class="pkg-mini__d">Which workflows are worth automating — and which are not.</p>
+        </a>
+        <a class="pkg-mini" href="packages/ai-agent-mvp.html">
+          <span class="badge">Build</span><h3 class="pkg-mini__t">AI Agent MVP</h3>
+          <p class="pkg-mini__d">A working agent for your highest-value workflow, deployed and handed over.</p>
+        </a>
+        <a class="pkg-mini" href="packages/ai-integration-sprint.html">
+          <span class="badge">Build</span><h3 class="pkg-mini__t">AI Integration Sprint</h3>
+          <p class="pkg-mini__d">AI wired into the systems you already run — monitored and documented.</p>
+        </a>
+        <a class="pkg-mini" href="packages/workflow-automation-audit.html">
+          <span class="badge">Audit</span><h3 class="pkg-mini__t">Workflow Automation Audit</h3>
+          <p class="pkg-mini__d">One messy process mapped end-to-end: automate, fix, or keep human.</p>
+        </a>
+        <a class="pkg-mini" href="packages/ai-strategy-workshop.html">
+          <span class="badge">Workshop</span><h3 class="pkg-mini__t">AI Strategy Workshop</h3>
+          <p class="pkg-mini__d">Leadership aligned on what AI means for this business — with a first plan.</p>
+        </a>
+      </div>
+      <p class="sec-cta-row" data-animate><a class="btn btn--ghost" href="packages.html">Compare the five engagements →</a></p>
+    </div>
+  </section>
+
+  <!-- ======================= INDUSTRIES & AUDIENCES ======================= -->
+  <section class="section section--surface" id="where" aria-label="Industries and audiences">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Where this fits</p>
+        <h2 class="s-headline">Industries and teams we build for.</h2>
+        <p class="s-subhead s-subhead--centered">Ten industries with possible workflows mapped — a discovery aid, not a
+          client list. Four engagement profiles from founder to enterprise.</p>
+      </div>
+      <ul class="chips chips--links chips--center" data-animate>
+        <li><a class="chip chip--link" href="industries/ecommerce-retail.html">Commerce &amp; Retail</a></li>
+        <li><a class="chip chip--link" href="industries/education-edtech.html">Education &amp; EdTech</a></li>
+        <li><a class="chip chip--link" href="industries/financial-services.html">Financial Services</a></li>
+        <li><a class="chip chip--link" href="industries/healthcare-life-sciences.html">Healthcare &amp; Life Sciences</a></li>
+        <li><a class="chip chip--link" href="industries/manufacturing-supply-chain.html">Manufacturing &amp; Supply Chain</a></li>
+        <li><a class="chip chip--link" href="industries/media-entertainment.html">Media &amp; Entertainment</a></li>
+        <li><a class="chip chip--link" href="industries/real-estate-proptech.html">Real Estate &amp; PropTech</a></li>
+        <li><a class="chip chip--link" href="industries/software-saas.html">Software &amp; SaaS</a></li>
+        <li><a class="chip chip--link" href="industries/hospitality-travel.html">Hospitality &amp; Travel</a></li>
+        <li><a class="chip chip--link" href="industries/sports-technology.html">Sports Technology</a></li>
+      </ul>
+      <div class="cov-links" data-animate>
+        <a class="cov-link" href="who-we-build-for.html"><strong>Who we build for</strong><span>Four engagement profiles — founder to enterprise.</span></a>
+        <a class="cov-link" href="departments.html"><strong>Browse by department</strong><span>Support, sales, marketing, HR, engineering, finance, ops, legal.</span></a>
+        <a class="cov-link" href="resources.html"><strong>Studio resources</strong><span>Practical guides — brief an AI system, the automation ladder, the stack glossary.</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROCESS ============================ -->
+  <section class="section section--bg" id="how-it-works" aria-label="How an engagement works">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">How an engagement works</p>
+        <h2 class="s-headline">Five steps. <em>No mystery.</em></h2>
+      </div>
+      <ol class="steps steps--wide" data-animate>
+        <li class="step"><span class="step__num" aria-hidden="true">01</span><div class="step__body"><h3 class="step__t">Intro call</h3><p class="step__d">Thirty minutes on your workflow and whether we are the right builder. An honest no is included.</p></div></li>
+        <li class="step"><span class="step__num" aria-hidden="true">02</span><div class="step__body"><h3 class="step__t">Written scope</h3><p class="step__d">Deliverables, boundaries, milestones, and a fixed quote — approved by you before anything is charged.</p></div></li>
+        <li class="step"><span class="step__num" aria-hidden="true">03</span><div class="step__body"><h3 class="step__t">Build in milestones</h3><p class="step__d">Demoable increments; evaluation against your real cases; no big-bang reveal.</p></div></li>
+        <li class="step"><span class="step__num" aria-hidden="true">04</span><div class="step__body"><h3 class="step__t">Integrate and harden</h3><p class="step__d">Wired into your stack with logging, monitoring, and failure behavior designed in.</p></div></li>
+        <li class="step"><span class="step__num" aria-hidden="true">05</span><div class="step__body"><h3 class="step__t">Hand over</h3><p class="step__d">Code, configuration, docs, runbook, and a working session. You own it from day one.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================ WHY REWOO ============================ -->
+  <section class="section section--surface" id="why" aria-label="Why ReWoo">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Why ReWoo</p>
+        <h2 class="s-headline">Reasons you can <em>actually check.</em></h2>
+      </div>
+      <div class="card-grid card-grid--3">
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Written scope first</h3><p class="m-card__d">Every engagement starts with a document, not a vibe. You approve it, or it does not happen.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">You own everything</h3><p class="m-card__d">Repository, configuration, credentials, and documentation — transferred, not rented.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Honest feasibility</h3><p class="m-card__d">Evaluation reports include failures. If the bar cannot be met, you get a stop recommendation.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Built around your stack</h3><p class="m-card__d">Overlays on the tools you already run — no rip-and-replace, no required ecosystem.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Senior hands on the work</h3><p class="m-card__d">An independent studio: the person who scopes your system is the person who builds it.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">This site is the sample</h3><p class="m-card__d">Design, build quality, accessibility, and performance — judge the studio's work directly.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FAQ ============================== -->
+  <section class="section section--bg" id="faq" aria-label="Frequently asked questions">
+    <div class="wrap wrap--narrow">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Questions</p>
+        <h2 class="s-headline">Asked often.</h2>
+      </div>
+      <div class="faq" data-animate>
+        <details class="faq__item"><summary class="faq__q">Do you run ready-made AI products we can subscribe to?</summary><div class="faq__a"><p>No. ReWoo builds scoped systems to order — this website is our own product work, and everything else is built for a specific client's stack, data rules, and team. If a subscription product fits you better than a build, the audit will say so.</p></div></details>
+        <details class="faq__item"><summary class="faq__q">How do you price?</summary><div class="faq__a"><p>Per engagement, after discovery: a written scope with deliverables, milestones, and a fixed quote. We do not publish prices or make turnaround promises in marketing — anything unverifiable stays out of the copy.</p></div></details>
+        <details class="faq__item"><summary class="faq__q">What if the build is not feasible?</summary><div class="faq__a"><p>You learn it early and in writing. Milestone structure and evaluation reports are designed to surface failure before it becomes expensive — including a stop recommendation when the bar cannot be met.</p></div></details>
+        <details class="faq__item"><summary class="faq__q">Who owns the code and data?</summary><div class="faq__a"><p>You do. Handover transfers the repository, configuration, credentials, and documentation. There is no hostage-taking and no recurring dependency unless you explicitly scope support.</p></div></details>
+        <details class="faq__item"><summary class="faq__q">Where is the team based?</summary><div class="faq__a"><p>Dhaka, Bangladesh — an independent studio working with teams anywhere. The current site you are reading was designed and built in-house.</p></div></details>
+        <details class="faq__item"><summary class="faq__q">Can you work with our security and procurement process?</summary><div class="faq__a"><p>Yes — designs are documented for security review, scopes are written to survive procurement, and phased rollouts with checkpoints are the default shape for larger organizations.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CTA ============================== -->
+  <section class="cta-band" aria-label="Start a conversation">
+    <div class="wrap cta-band__inner">
+      <h2 class="cta-band__t">Bring the workflow that hurts.</h2>
+      <p class="cta-band__s">A thirty-minute conversation about your work — with an honest mapping to systems, or a clear no.</p>
+      <div class="cta-band__btns">
+        <a class="btn btn--primary" href="contact.html">Book an intro call →</a>
+        <a class="btn btn--outline" href="packages.html">See the engagements</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<footer class="footer footer--site" aria-label="Footer">
+  <div class="footer__inner footer__inner--site">
+    <div class="footer__brand">
+      <a href="index.html" class="footer__logo" aria-label="ReWoo — Home">
+        <img src="assets/logo.jpg" alt="ReWoo" class="footer__logo-img" width="22" height="22">
+        <span class="footer__wordmark">ReWoo</span>
+      </a>
+      <p class="footer__tagline">AI systems, scoped and shipped. An independent studio in Dhaka, building for teams anywhere.</p>
+      <a href="mailto:adilshamim696@gmail.com" class="footer__email">adilshamim696@gmail.com</a>
+      <div class="footer__social"><a href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 6a2 2 0 1 0 0-.01z"/></svg></a><a href="https://x.com/ReWootech8" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M4 20L20 4"/></svg></a></div>
+    </div>
+    <div class="footer__col"><span class="footer__col-label">Systems</span><ul class="footer__links"><li><a href="systems/visual-production.html">Visual Production Systems</a></li><li><a href="systems/voice-intelligence.html">Voice &amp; Communication Intelligence</a></li><li><a href="systems/assessment-systems.html">Assessment &amp; Training Systems</a></li><li><a href="systems/design-visualization.html">Design Visualization</a></li><li><a href="systems/content-pipelines.html">Content Generation Pipelines</a></li><li><a href="systems/document-intelligence.html">Document Intelligence</a></li><li><a href="systems/knowledge-retrieval.html">Knowledge Search &amp; Retrieval</a></li><li><a href="systems.html">All systems</a></li></ul></div>
+    <div class="footer__col"><span class="footer__col-label">Capabilities</span><ul class="footer__links"><li><a href="capabilities/ai-agent-development.html">AI Agent Development</a></li><li><a href="capabilities/ai-chatbot-development.html">AI Chatbot Development</a></li><li><a href="capabilities/voice-ai-development.html">Voice AI Development</a></li><li><a href="capabilities/generative-ai-development.html">Generative AI Development</a></li><li><a href="capabilities/agentic-ai-systems.html">Multi-Agent Systems</a></li><li><a href="capabilities/ai-consulting-strategy.html">AI Consulting &amp; Strategy</a></li><li><a href="capabilities/workflow-automation.html">Workflow Automation</a></li><li><a href="capabilities/nlp-rag-development.html">NLP &amp; RAG Development</a></li><li><a href="capabilities/computer-vision-development.html">Computer Vision Development</a></li><li><a href="capabilities/ai-content-video-production.html">AI Content &amp; Video Production</a></li><li><a href="capabilities/ai-integration-services.html">AI Integrations</a></li><li><a href="capabilities/ai-mvp-development.html">AI MVP Development</a></li><li><a href="capabilities.html">All capabilities</a></li></ul></div>
+    <div class="footer__col"><span class="footer__col-label">Industries</span><ul class="footer__links"><li><a href="industries/ecommerce-retail.html">Commerce &amp; Retail</a></li><li><a href="industries/education-edtech.html">Education &amp; EdTech</a></li><li><a href="industries/financial-services.html">Financial Services</a></li><li><a href="industries/healthcare-life-sciences.html">Healthcare &amp; Life Sciences</a></li><li><a href="industries/manufacturing-supply-chain.html">Manufacturing &amp; Supply Chain</a></li><li><a href="industries/media-entertainment.html">Media &amp; Entertainment</a></li><li><a href="industries/real-estate-proptech.html">Real Estate &amp; PropTech</a></li><li><a href="industries/software-saas.html">Software &amp; SaaS</a></li><li><a href="industries/hospitality-travel.html">Hospitality &amp; Travel</a></li><li><a href="industries/sports-technology.html">Sports Technology</a></li><li><a href="industries.html">All industries</a></li></ul></div>
+    <div class="footer__col"><span class="footer__col-label">Engagements</span><ul class="footer__links"><li><a href="packages/ai-readiness-audit.html">AI Readiness Audit</a></li><li><a href="packages/ai-agent-mvp.html">AI Agent MVP</a></li><li><a href="packages/ai-integration-sprint.html">AI Integration Sprint</a></li><li><a href="packages/workflow-automation-audit.html">Workflow Automation Audit</a></li><li><a href="packages/ai-strategy-workshop.html">AI Strategy Workshop</a></li><li><a href="packages.html">Compare all</a></li></ul></div>
+    <div class="footer__col"><span class="footer__col-label">Company</span><ul class="footer__links"><li><a href="about.html">About the studio</a></li><li><a href="who-we-build-for.html">Who we build for</a></li><li><a href="departments.html">Departments</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact</a></li><li><a href="solutions.html">Task Scoper (earlier agency page)</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+  </div>
+  <div class="footer__bottom">© 2026 ReWoo · Dhaka, Bangladesh · Systems designed and built to order — this site is the studio's own work.</div>
+</footer>
+<script src="site.js" defer></script>
 </body>
-
 </html>
+

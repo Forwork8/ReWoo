@@ -1,48 +1,82 @@
-# ReWoo — AI Workforce & Execution Agency
+# ReWoo — AI Systems Studio
 
-> **Tell us what you need done. We make it work with AI.**  
+> **AI systems, scoped and shipped.**
 > https://rewoo.tech
 
 ---
 
 ## Overview
 
-ReWoo is a next-generation AI execution company that helps businesses get real work done with autonomous AI agents, workflow automation, and custom systems.
+ReWoo is an independent AI systems studio based in Dhaka, Bangladesh, working with teams anywhere. The website presents seven system families, twelve build capabilities, ten industry maps, and five engagement types — every engagement framed as a scoped build with a written scope and a complete handover.
 
-- **Home Page (`index.html`)**: The complete AI Workforce platform for founders — 10 autonomous executives running company operations on an ongoing basis.
-- **AI Agency & Systems (`solutions.html`)**: The on-demand task execution agency — describe any business workflow, and ReWoo engineers a custom automated solution delivered in 2 to 5 days.
-
----
+- **Home (`index.html`)** — positioning, capabilities overview, system families, honest evidence, engagements, industries, process, FAQ.
+- **Systems (`systems/`)** — seven solution families, each with customers, problems, features, example workflow, integrations, and FAQ.
+- **Capabilities (`capabilities/`)** — twelve build disciplines with search and filter, scope in/out, inputs, deliverables, and process.
+- **Industries (`industries/`)** — ten industry pages with clearly labeled possible workflows (a discovery aid, not a client list).
+- **Engagements (`packages/`)** — AI Readiness Audit, AI Agent MVP, AI Integration Sprint, Workflow Automation Audit, AI Strategy Workshop, plus a comparison table.
+- **Audiences (`who-we-build-for.html`)** — four engagement profiles from early-stage to enterprise.
+- **Departments (`departments.html`)** — eight department lenses onto the same systems.
+- **About / Resources / Contact** — studio story and principles, original guides plus labeled explorations, and the inquiry flow (WhatsApp, email draft composer, project brief).
+- **Preserved routes** — `solutions.html` (earlier agency page), `order-desk/` (untouched demo app), `privacy.html`, `terms.html`.
 
 ## Project Structure
 
 ```
-ReWoo-main/
-├── index.html          # Main landing page (AI Workforce for Founders)
-├── solutions.html      # AI Execution Agency & Instant Task Scoper
-├── solutions.css       # Agency-specific styles, bento grid, dark/light themes
-├── solutions.js        # Interactive sandbox heuristics, WhatsApp generator, modal
-├── styles.css          # Core design tokens, global typography, animations
-├── script.js           # Theme toggle, mobile menu drawer, intersection observer
-├── privacy.html        # Privacy Policy
-├── terms.html          # Terms of Service
-├── sitemap.xml         # Production sitemap
-├── manifest.json       # Web App Manifest
-└── assets/             # Brand logos, hero background collage, OpenGraph assets
+ReWoo/
+├── index.html                  # Homepage (generated from scripts/templates/)
+├── systems/                    # 7 system detail pages (generated)
+├── capabilities/               # 12 capability detail pages (generated)
+├── industries/                 # 10 industry pages (generated)
+├── packages/                   # 5 engagement pages (generated)
+├── systems.html                # Systems hub (generated)
+├── capabilities.html           # Capabilities hub with search/filter (generated)
+├── industries.html             # Industries hub (generated)
+├── packages.html               # Engagements + comparison table (generated)
+├── who-we-build-for.html       # Audience profiles (generated)
+├── departments.html            # Department lenses (generated)
+├── about.html                  # Studio page (generated from template)
+├── resources.html              # Guides + labeled explorations (template)
+├── contact.html                # Call booking, brief, inquiry form (template)
+├── styles.css                  # Brand tokens + base components (unchanged legacy layer)
+├── site.css                    # New component layer for the expanded site
+├── script.js                   # Legacy interactions (solutions + legal pages)
+├── site.js                     # New interactions: nav, mega menus, brief, filters, form
+├── scripts/
+│   ├── build_site.py           # Static site generator — run to regenerate pages
+│   ├── data_systems.py         # System family content
+│   ├── data_capabilities.py    # Capability content
+│   ├── data_industries.py      # Industry content
+│   ├── data_packages.py        # Engagements, audiences, departments
+│   ├── data_site.py            # Site meta, home/about/resources/contact copy
+│   └── templates/              # Hand-written page bodies (index, contact, about, resources)
+├── docs/
+│   ├── coverage-map.md         # Reference-to-ReWoo coverage inventory
+│   └── handoff.md              # Change summary, verification results, owner-input gaps
+├── solutions.html / solutions.css / solutions.js   # Earlier agency page (preserved route)
+├── order-desk/                 # Demo app (preserved, not featured)
+├── privacy.html / terms.html   # Legal pages (nav updated to new structure)
+├── sitemap.xml / robots.txt    # Generated
+└── manifest.json               # Web app manifest
 ```
 
----
+## Editing Content
+
+Catalog pages are **generated**. To change content, edit the data module in `scripts/`, then regenerate:
+
+```bash
+python3 scripts/build_site.py
+```
+
+The homepage, contact, about, and resources bodies live in `scripts/templates/` and are wrapped with the shared head/nav/footer at build time. Brand identity (tokens, fonts, themes) comes from `styles.css` — `site.css` only adds new components on top of those tokens.
 
 ## Key Features
 
-- **Apple-Tier Design & Typography**: Built with *Fraunces* serif display and *Inter* sans-serif for crystal-clear readability.
-- **Dual Theme Engine**: Seamless instant switching between Dark Mode (`#000000`) and Light Mode (`#FFFFFF`) with zero flash of unstyled content (FOUC).
-- **Instant Task Scoper**: Interactive plain-English sandbox that dynamically generates system architecture blueprints and deep-links directly to WhatsApp.
-- **4-Card Bento Showcase**: Visual preview blocks for Support Agents, Spreadsheet/CRM Automation, PDF Extraction, and Custom AI Software.
-- **Mobile First**: Fully responsive layouts across 375px, 768px, 1024px, and 1440px viewports.
-- **Zero External JS Dependencies**: 100% clean vanilla JavaScript for maximum speed and instant page loads.
-
----
+- **Apple-tier design system, unchanged brand**: Fraunces serif display + Inter body, near-black/white dual theme with zero flash of unstyled content, the studio's blue accent (#6E97FF dark / #0066CC light).
+- **44 generated + 4 hand-crafted pages**: one consistent design system, mega-menu navigation, breadcrumbs, and per-page metadata, canonical URLs, Open Graph, and JSON-LD (Organization, WebSite, FAQPage, BreadcrumbList).
+- **Working visitor journey**: capability search and filtering, a persistent project brief (localStorage, device-local), a validated inquiry form that composes an email draft (never auto-sends), WhatsApp call booking, and accessible FAQs.
+- **Honest labels throughout**: industries are discovery aids, explorations are marked as explorations, no invented clients, metrics, or claims.
+- **Accessibility**: skip links, focus-visible outlines, keyboard-operable menus with Escape/outside-click, focus-trapped mobile drawer, native `<details>` accordions, reduced-motion support, and no-JS fallbacks for animated content.
+- **Zero external JS dependencies.** Vanilla JS only.
 
 ## Local Development
 
@@ -50,15 +84,13 @@ Start any local static server:
 
 ```bash
 # Python 3
-python -m http.server 3000
+python3 -m http.server 3000
 
 # or Node npx
 npx serve .
 ```
 
 Visit `http://localhost:3000`.
-
----
 
 ## Deployment
 
