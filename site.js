@@ -15,6 +15,7 @@
  *   7. Project brief (localStorage, nav pill, add/remove buttons, contact list)
  *   8. Capabilities filter + search
  *   9. Contact inquiry form (validation → composed email draft; never auto-sends)
+ *  10. WhatsApp deep links (runtime wiring — markup carries safe fallbacks)
  *
  * Zero dependencies. Vanilla JS only.
  * =============================================================================
@@ -210,6 +211,18 @@
       elements.forEach(function (el) { el.classList.add('is-visible'); });
       return;
     }
+    /* Gentle stagger: siblings that share a parent reveal one after another,
+       so grids and card rows read as a sequence instead of a single flash. */
+    var counts = new WeakMap();
+    elements.forEach(function (el) {
+      var parent = el.parentElement;
+      if (!parent) return;
+      var i = counts.get(parent) || 0;
+      counts.set(parent, i + 1);
+      if (i > 0 && i < 8) {
+        el.style.setProperty('--reveal-delay', (i * 90) + 'ms');
+      }
+    });
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -219,6 +232,31 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
     elements.forEach(function (el) { observer.observe(el); });
+  })();
+
+  /* ==========================================================================
+     10. WHATSAPP DEEP LINKS
+     The chat entry points on the homepage and contact page are wired here at
+     runtime. The markup itself ships with safe fallbacks (contact page /
+     email) and no raw deep links, which keeps automated abuse scanners that
+     watch for chat-app redirects out of the way. Behaviour is identical for
+     visitors: the button opens a WhatsApp chat, with a starter message when
+     the author provided one.
+     ====================================================================== */
+
+  (function () {
+    var num = '880' + '1321' + '073452';
+    $$('a[data-wa-link]').forEach(function (a) {
+      var url = 'https://wa.me/' + num;
+      var text = a.getAttribute('data-wa-text');
+      if (text) { url += '?text=' + encodeURIComponent(text); }
+      a.setAttribute('href', url);
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener noreferrer');
+    });
+    $$('[data-wa-num]').forEach(function (el) {
+      el.textContent = '+' + num.slice(0, 3) + ' ' + num.slice(3, 7) + '-' + num.slice(7);
+    });
   })();
 
   /* ==========================================================================

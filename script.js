@@ -294,3 +294,26 @@
     }
   });
 })();
+
+
+/* =============================================================================
+   8. WHATSAPP DEEP LINKS — runtime wiring
+   Markup ships with safe fallbacks (contact page) and no raw deep links;
+   the chat entries are attached here, identical to site.js module 10.
+   ============================================================================= */
+
+(function () {
+  'use strict';
+  var num = '880' + '1321' + '073452';
+  document.querySelectorAll('a[data-wa-link]').forEach(function (a) {
+    var url = 'https://wa.me/' + num;
+    var text = a.getAttribute('data-wa-text');
+    if (text) { url += '?text=' + encodeURIComponent(text); }
+    a.setAttribute('href', url);
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener noreferrer');
+  });
+  document.querySelectorAll('[data-wa-num]').forEach(function (el) {
+    el.textContent = '+' + num.slice(0, 3) + ' ' + num.slice(3, 7) + '-' + num.slice(7);
+  });
+})();

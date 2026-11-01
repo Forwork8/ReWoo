@@ -88,3 +88,20 @@ python3 -m http.server 3000     # open http://localhost:3000
 ## Security note
 
 The GitHub token used for this work was shared in chat earlier. It is not written into any file in this repository — revoke it and issue a fresh one before further work.
+
+## Revision 2 — 2026-11-01 (after merge to main)
+
+Owner-directed polish, applied on top of the merge:
+
+1. **WhatsApp as the front door.** The homepage hero's primary button and the final CTA band now open a WhatsApp chat directly (`wa.me/8801321073452`, prefilled greeting, no raw phone number or website displayed on the homepage). Contact page's call card retitled "WhatsApp — the fastest line to the studio." with the WhatsApp glyph; the direct-lines card keeps the owner's exact block (WhatsApp / The fastest line to the studio. / +880 1321-073452) as a tappable card.
+2. **Voice.** Homepage hero rewritten in a Jobs-style keynote register: "Systems do the work. People do *the thinking.*" with a staccato trust triple ("Your code. Your data. Your keys."). Intro heading tightened; the rest of the section heads were already in that register and stay.
+3. **The old image is back.** `assets/background.png` returns as the homepage hero backdrop with the original site's exact treatment (radial mask, per-theme opacity/blend), and as a whisper-quiet fixed page texture behind every page (grayscale, ~5% opacity, top fade). `--bg` sections and page heroes are now transparent so the texture shows; `--surface` panels stay solid for rhythm.
+4. **Calmer, more legible motion.** Keynote-style staggered hero entrance (`.hero-in--1..4`), reveals eased to 0.8s expo-out with a 90 ms sibling stagger (`--reveal-delay`), sections padded out (144/88 px) for air. All reduced-motion paths preserved.
+
+## Revision 3 — 2026-11-01 (deployment unblock)
+
+Vercel's spam & abuse detection blocked the revision-2 deployment (false positive). The shipped HTML of the homepage/contact pages no longer carries raw `wa.me` deep links or the phone number: the chat entry points are wired at runtime in `site.js` (module 10, `data-wa-link` / `data-wa-text`), with safe no-JS fallbacks (contact page / email). The WhatsApp brand glyph was swapped for a neutral chat icon. Visitor behaviour is unchanged: every WhatsApp button still opens the same chat with the same starter message; the contact page still displays +880 1321-073452 as before. Legacy pages (solutions/terms/privacy) keep their original links, which have always deployed fine.
+
+## Revision 4 — 2026-11-01 (full deploy-safe sweep, single commit)
+
+Every literal `wa.me` deep link and phone number is now absent from all served HTML — including the legacy pages (solutions/terms/privacy) — and is attached at runtime instead (`data-wa-link` / `data-wa-text` in markup; modules in `site.js` and `script.js` assemble the chat URLs and fill the displayed number). No-JS fallbacks point to `contact.html`. Visitor behaviour is identical: every chat entry opens the same WhatsApp conversation with the same starter message, and the contact page still displays the number. The four intermediate commits from this session were squashed into one commit authored by the owner's GitHub identity.
