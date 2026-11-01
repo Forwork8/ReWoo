@@ -1,0 +1,194 @@
+<!-- ReWoo — contact template. Rendered by scripts/build_site.py. -->
+
+<!--@NAV-->
+
+<main id="main-content" aria-label="Contact">
+
+  <header class="page-hero page-hero--tight">
+    <div class="wrap">
+      <p class="overline overline--accent">Contact</p>
+      <h1 class="page-hero__title">Tell us what you are <em>building.</em></h1>
+      <p class="page-hero__sub">An intro call about your workflow, or a written inquiry — both land directly with
+        the person who would scope and build the system.</p>
+      <div class="page-hero__badges">
+        <span class="badge">Direct line to the builder</span>
+        <span class="badge">No sales floor</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================= BOOK A CALL ========================= -->
+  <section class="section" id="call" aria-label="Book a call">
+    <div class="wrap">
+      <div class="sec-head" data-animate>
+        <p class="overline overline--accent">Book a call</p>
+        <h2 class="s-headline">Thirty minutes. <em>No sales floor.</em></h2>
+      </div>
+      <div class="call-grid">
+        <div class="call-card" data-animate>
+          <h3 class="call-card__t">WhatsApp — the fastest line</h3>
+          <p class="call-card__d">You will talk to the person who architects and builds — about whether AI is the
+            right tool for this workflow at all. If it is not, you will hear that.</p>
+          <a class="btn btn--primary" id="wa-call"
+             href="https://wa.me/8801321073452?text=Hi%20Adil%2C%20I%27d%20like%20to%20book%20an%20intro%20call%20with%20ReWoo%20about%20an%20AI%20system."
+             target="_blank" rel="noopener noreferrer">Message on WhatsApp →</a>
+          <p class="call-card__meta">ReWoo does not run a booking scheduler: reach out directly and we will agree a
+            time. <a href="#written">Prefer writing? Compose an inquiry ↓</a></p>
+        </div>
+        <div class="call-card call-card--alt" data-animate>
+          <h3 class="call-card__t">What to bring</h3>
+          <ul class="inputs">
+            <li>One workflow that hurts — two sentences is enough</li>
+            <li>An example of done-right, if you have one</li>
+            <li>Whatever constraints matter: stack, budget band, deadlines</li>
+          </ul>
+          <p class="call-card__meta">That is genuinely enough for a first conversation. The written scope comes after,
+            and it is yours to take anywhere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== PROJECT BRIEF (selection) ====================== -->
+  <section class="section section--surface" id="brief" aria-label="Project brief">
+    <div class="wrap">
+      <div class="sec-head" data-animate>
+        <p class="overline overline--accent">Project brief</p>
+        <h2 class="s-headline">Your selected items.</h2>
+        <p class="s-subhead">Anything you added while browsing — systems, capabilities, or engagements — collects
+          here and drops into the email draft automatically.</p>
+      </div>
+      <div class="brief-panel" data-animate>
+        <ul class="brief-items" id="brief-items" aria-live="polite" aria-label="Selected brief items"></ul>
+        <p class="brief-empty" id="brief-empty">
+          Nothing selected yet. Browse and use <strong>Add to brief</strong> — selections persist on this device only.
+        </p>
+        <div class="brief-actions" id="brief-actions" hidden>
+          <button type="button" class="btn btn--outline" id="brief-clear">Clear all</button>
+          <a class="btn btn--ghost" href="#written">Use in the inquiry ↓</a>
+        </div>
+        <div class="brief-browse" id="brief-browse">
+          <a href="systems.html">Browse systems</a>
+          <a href="capabilities.html">Browse capabilities</a>
+          <a href="packages.html">Browse engagements</a>
+        </div>
+        <p class="brief-note">Brief selections are stored in your browser's local storage on this device. They never
+          leave it unless you send the composed email yourself.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= WRITTEN INQUIRY ========================= -->
+  <section class="section" id="written" aria-label="Written inquiry">
+    <div class="wrap wrap--form">
+      <div class="sec-head" data-animate>
+        <p class="overline overline--accent">Written inquiry</p>
+        <h2 class="s-headline">Prefer writing? <em>Describe the work.</em></h2>
+        <p class="s-subhead">This form composes a structured email draft — nothing is sent automatically, and nothing
+          is stored on this website.</p>
+      </div>
+
+      <form class="inquiry" id="inquiry-form" novalidate data-animate>
+        <div class="field">
+          <label class="field__label" for="inq-name">Your name <span aria-hidden="true">*</span></label>
+          <input class="field__input" id="inq-name" name="name" type="text" autocomplete="name" required aria-describedby="inq-name-hint">
+          <p class="field__hint" id="inq-name-hint">So we know who we are talking to.</p>
+          <p class="field__err" id="inq-name-err" role="alert" hidden>Please add your name.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="inq-email">Email <span aria-hidden="true">*</span></label>
+          <input class="field__input" id="inq-email" name="email" type="email" autocomplete="email" required aria-describedby="inq-email-hint">
+          <p class="field__hint" id="inq-email-hint">For the reply. Used for nothing else.</p>
+          <p class="field__err" id="inq-email-err" role="alert" hidden>That email does not look complete.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="inq-company">Company or project</label>
+          <input class="field__input" id="inq-company" name="company" type="text" autocomplete="organization" aria-describedby="inq-company-hint">
+          <p class="field__hint" id="inq-company-hint">Optional context.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="inq-interest">What are you working on? <span aria-hidden="true">*</span></label>
+          <textarea class="field__input field__input--area" id="inq-interest" name="interest" rows="5" required
+            aria-describedby="inq-interest-hint" placeholder="The workflow, the pain, and what done looks like. Two or three sentences is plenty."></textarea>
+          <p class="field__hint" id="inq-interest-hint">The workflow, the pain, and what done looks like.</p>
+          <p class="field__err" id="inq-interest-err" role="alert" hidden>A sentence or two about the work helps us answer usefully.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="inq-budget">Budget basis (optional)</label>
+          <select class="field__input" id="inq-budget" name="budget">
+            <option value="">Select…</option>
+            <option>Not sure yet</option>
+            <option>Just exploring</option>
+            <option>Under $1k</option>
+            <option>$1k – $5k</option>
+            <option>$5k – $15k</option>
+            <option>$15k+</option>
+            <option>Prefer to discuss</option>
+          </select>
+        </div>
+
+        <p class="form-note">By sending this email you agree to ReWoo's <a href="privacy.html">privacy policy</a>:
+          your message is used to reply, and for nothing else.</p>
+
+        <button type="submit" class="btn btn--primary" id="inq-submit">Compose email draft →</button>
+      </form>
+
+      <div class="review" id="review" hidden aria-labelledby="review-t">
+        <h3 class="review__t" id="review-t">Your draft</h3>
+        <p class="review__note">Review it below — then open it in your email app or copy it. Nothing sends itself,
+          and nothing is stored on this site.</p>
+        <pre class="review__pre" id="review-pre"></pre>
+        <div class="review__btns">
+          <a class="btn btn--primary" id="review-mailto" href="#">Open in email app →</a>
+          <button type="button" class="btn btn--outline" id="review-copy">Copy draft to clipboard</button>
+        </div>
+        <p class="review__status" id="review-status" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= DIRECT LINES ========================= -->
+  <section class="section section--surface" id="direct" aria-label="Direct lines">
+    <div class="wrap">
+      <div class="sec-head" data-animate>
+        <p class="overline overline--accent">Other ways</p>
+        <h2 class="s-headline">Direct lines.</h2>
+      </div>
+      <div class="card-grid card-grid--3">
+        <a class="m-card m-card--link" href="mailto:adilshamim696@gmail.com" data-animate>
+          <div><h3 class="m-card__t">Email</h3><p class="m-card__d">Write directly — same person, same speed.</p><p class="m-card__meta">adilshamim696@gmail.com</p></div>
+        </a>
+        <a class="m-card m-card--link" href="https://wa.me/8801321073452" target="_blank" rel="noopener noreferrer" data-animate>
+          <div><h3 class="m-card__t">WhatsApp</h3><p class="m-card__d">The fastest line to the studio.</p><p class="m-card__meta">+880 1321-073452</p></div>
+        </a>
+        <a class="m-card m-card--link" href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" data-animate>
+          <div><h3 class="m-card__t">LinkedIn</h3><p class="m-card__d">Studio updates and occasional build notes.</p><p class="m-card__meta">ReWoo on LinkedIn</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FAQ ============================== -->
+  <section class="section" aria-label="Contact FAQ">
+    <div class="wrap wrap--narrow">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Before you write</p>
+        <h2 class="s-headline">Quick answers.</h2>
+      </div>
+      <div class="faq" data-animate>
+        <details class="faq__item"><summary class="faq__q">Will I talk to a salesperson or an engineer?</summary><div class="faq__a"><p>An engineer. ReWoo is a studio, not a sales organization — the person who answers is the person who would scope and build.</p></div></details>
+        <details class="faq__item"><summary class="faq__q">What should I prepare for the call?</summary><div class="faq__a"><p>One workflow that hurts and, if you have it, an example of done-right. That is genuinely enough for a first conversation.</p></div></details>
+        <details class="faq__item"><summary class="faq__q">Do you sign NDAs?</summary><div class="faq__a"><p>Yes, routinely — say the word and we will use yours or provide a standard one before anything sensitive is discussed.</p></div></details>
+        <details class="faq__item"><summary class="faq__q">What happens after the call?</summary><div class="faq__a"><p>If there is a fit, you receive a written scope: deliverables, boundaries, milestones, and a fixed quote. Approving it is entirely your decision, in your time.</p></div></details>
+      </div>
+      <p class="sec-cta-row" data-animate><a class="btn btn--ghost" href="systems.html">Prefer to browse first? Start with the systems →</a></p>
+    </div>
+  </section>
+
+</main>
+
+<!--@FOOTER-->

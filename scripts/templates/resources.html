@@ -1,0 +1,140 @@
+<!-- ReWoo — resources template. Rendered by scripts/build_site.py. -->
+
+<!--@NAV-->
+
+<main id="main-content" aria-label="Resources">
+
+  <header class="page-hero page-hero--tight">
+    <div class="wrap">
+      <p class="overline overline--accent">Resources</p>
+      <h1 class="page-hero__title">Notes from <em>the studio.</em></h1>
+      <p class="page-hero__sub">Short, practical guides written while building client systems. Free to use,
+        no gate, no mailing list.</p>
+    </div>
+  </header>
+
+  <!-- ============================= GUIDES ============================= -->
+  <section class="section" id="guides" aria-label="Guides">
+    <div class="wrap wrap--narrow">
+
+      <article class="guide" id="how-to-brief-an-ai-system" data-animate>
+        <header class="guide__head">
+          <p class="guide__meta">Guide · About a 4 minute read</p>
+          <h2 class="guide__t">How to brief an AI system (and get a real estimate)</h2>
+          <p class="guide__sum">Most bad AI projects start with a vague brief. This is the brief format we wish
+            every client arrived with — steal it.</p>
+        </header>
+        <div class="guide__body">
+          <h3>The one-sentence version</h3>
+          <p>A usable brief names the workflow, the decision it feeds, and what done looks like — in one sentence
+            a stranger could act on. Everything else in this guide is elaboration.</p>
+          <h3>The five questions that matter</h3>
+          <p>First: what work, exactly? Not "automate support" — "answer order-status questions from our policy
+            page, and escalate everything else."</p>
+          <p>Second: who uses the output, and what do they do with it? Third: what does done-right look like —
+            paste three examples, good and bad. Fourth: what systems does this need to touch, read or write?
+            Fifth: what must never happen? That last one defines your guardrails and your review gates.</p>
+          <h3>Red flags in your own brief</h3>
+          <p>If your brief says "like ChatGPT but for our company", it is not a brief yet — it is a genre. If it
+            cannot name a person whose day gets better, the value case is untested. And if every requirement is
+            a must-have, scope discipline has not started.</p>
+          <h3>What a builder should return</h3>
+          <p>A serious response to a good brief is a written scope: deliverables, boundaries, milestones, and a
+            fixed quote — plus the questions the brief could not answer. If you get a one-line price instead,
+            you have learned something about the builder.</p>
+        </div>
+      </article>
+
+      <article class="guide" id="the-automation-ladder" data-animate>
+        <header class="guide__head">
+          <p class="guide__meta">Guide · About a 5 minute read</p>
+          <h2 class="guide__t">The automation ladder: what to hand over, what to keep</h2>
+          <p class="guide__sum">Not everything should be automated, and the decision is a ladder, not a switch.
+            A framework for placing each task correctly.</p>
+        </header>
+        <div class="guide__body">
+          <h3>The ladder</h3>
+          <p>Level one is <strong>assist</strong>: the system drafts, a human decides. Level two is
+            <strong>review-by-exception</strong>: the system acts, humans check the flagged cases. Level three is
+            <strong>supervised autonomy</strong>: the system runs a bounded domain with audit trails. There is no
+            level four on purpose — full autonomy without a human path is not a product anyone should sell you.</p>
+          <h3>How to place a task</h3>
+          <p>Three variables decide the rung: reversibility (can a mistake be undone cheaply?), observability
+            (will you notice a mistake at all?), and volume (is the human cost actually worth the build?).
+            High volume, reversible, visible — automate aggressively. Low volume, irreversible, quiet — keep a
+            human in the loop, always.</p>
+          <h3>The mistake teams make</h3>
+          <p>The expensive error is not automating too little — it is climbing two rungs at once. Pilot at
+            review-by-exception even when you dream of autonomy; the audit trail you build there is the trust
+            you need later.</p>
+        </div>
+      </article>
+
+      <article class="guide" id="plain-english-ai-stack-glossary" data-animate>
+        <header class="guide__head">
+          <p class="guide__meta">Guide · About a 6 minute read</p>
+          <h2 class="guide__t">A plain-English glossary of the AI stack</h2>
+          <p class="guide__sum">Agent, RAG, evaluation, guardrail, grounding — the twelve terms in every AI
+            conversation, defined the way an engineer would explain them to their manager.</p>
+        </header>
+        <div class="guide__body">
+          <h3>The terms that matter</h3>
+          <p><strong>Model:</strong> the engine that predicts text, images, or audio. <strong>Agent:</strong>
+            software that uses a model to take multi-step actions with tools. <strong>Tool:</strong> a specific
+            action the agent is allowed to perform — "check inventory" is a tool; "access the database" is a
+            permission.</p>
+          <p><strong>RAG</strong> (retrieval-augmented generation): looking things up in your documents before
+            answering, so responses are grounded in your content instead of the model's memory.
+            <strong>Grounding:</strong> the practice of tying every claim to a source you can click.
+            <strong>Hallucination:</strong> confident output with no basis — the failure mode grounding exists
+            to prevent.</p>
+          <p><strong>Evaluation:</strong> scoring the system against known-good answers, before and after
+            changes. <strong>Guardrail:</strong> a hard rule the system cannot cross — an approval gate, a
+            banned action, a required human step. <strong>Latency:</strong> how long the system takes to
+            respond, which for voice is the difference between natural and unbearable.</p>
+          <h3>Why the vocabulary matters</h3>
+          <p>Vague terms make vague contracts. When you can say "a review-by-exception agent with two tools and
+            a human approval gate on refunds", you can get a scoped build and a fixed price. When you say
+            "an AI that handles customer service", you get whatever the vendor felt like that morning.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================ EXPLORING ============================ -->
+  <section class="section section--surface" id="exploring" aria-label="Concepts under exploration">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Exploring</p>
+        <h2 class="s-headline">Concepts on the <em>workbench.</em></h2>
+        <p class="s-subhead s-subhead--centered">Clearly labeled as explorations — these are not products, not
+          available, and not promised. They are directions the studio is actively prototyping for client work
+          and may open up if they earn it.</p>
+      </div>
+      <div class="card-grid card-grid--4">
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Agent memory layer</h3><p class="m-card__d">Persistent, inspectable memory that lets long-running agents keep context without ballooning prompts.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Model evaluation harness</h3><p class="m-card__d">A repeatable scoring rig for comparing models and prompts against a team's own test cases.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Privacy-first local retrieval</h3><p class="m-card__d">Knowledge search that runs entirely on hardware you control, for data that cannot travel.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Studio workspace console</h3><p class="m-card__d">A working surface for operating built systems: logs, traces, evaluation runs, and corpus health in one place.</p></div></div>
+      </div>
+      <p class="roadmap-note" data-animate>Owner note: this section is the studio's public roadmap-in-progress.
+        Nothing here is sold, scheduled, or guaranteed — it is where current prototyping effort goes.</p>
+    </div>
+  </section>
+
+  <!-- ============================== CTA ============================== -->
+  <section class="cta-band" aria-label="Next step">
+    <div class="wrap cta-band__inner">
+      <h2 class="cta-band__t">Have a workflow these guides made you think about?</h2>
+      <p class="cta-band__s">Bring it to an intro call — thirty minutes, with the person who would build it.</p>
+      <div class="cta-band__btns">
+        <a class="btn btn--primary" href="contact.html">Book an intro call →</a>
+        <a class="btn btn--outline" href="systems.html">Explore the systems</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!--@FOOTER-->
