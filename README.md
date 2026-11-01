@@ -71,10 +71,3 @@ npx vercel --prod
 Drag and drop this directory into [app.netlify.com/drop](https://app.netlify.com/drop).
 
 ---
-
-## Contact & Founder
-
-- **Founder**: Adil Shamim ([adilshamim696@gmail.com](mailto:adilshamim696@gmail.com))
-- **WhatsApp**: [+880 1321-073452](https://wa.me/+8801321073452)
-- **Website**: [https://rewoo.tech](https://rewoo.tech)
-- **Location**: Dhaka, Bangladesh
