@@ -864,6 +864,166 @@ a.chip--link:hover { border-color: var(--accent); color: var(--accent); }
   line-height: 1.65;
 }
 
+/* Start-here variant — accent edge, reads as the beginner on-ramp */
+.note--start { background: var(--bg); }
+.note--start .note__label { color: var(--accent); }
+.note--start .note__inner p { color: var(--text); }
+
+/* =============================================================================
+   "IN PLAIN WORDS" — beginner layer on every catalog page
+   ============================================================================= */
+
+.plain { padding-top: 64px; padding-bottom: 64px; }
+.plain__card {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--sp-8) var(--sp-8) var(--sp-6);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  background: var(--bg);
+}
+.plain__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+}
+.plain__badge {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+.plain__t {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--size-lg);
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.plain__what {
+  font-family: var(--font-body);
+  font-size: var(--size-base);
+  line-height: 1.7;
+  color: var(--text);
+}
+.plain__like {
+  margin-top: var(--sp-4);
+  font-family: var(--font-body);
+  font-size: var(--size-sm);
+  line-height: 1.65;
+  color: var(--dim);
+}
+.plain__like-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.plain__terms {
+  margin-top: var(--sp-6);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: var(--sp-4) var(--sp-6);
+}
+.plain__term dt {
+  font-family: var(--font-body);
+  font-size: var(--size-sm);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.plain__term dd {
+  font-family: var(--font-body);
+  font-size: var(--size-sm);
+  line-height: 1.6;
+  color: var(--dim);
+}
+.plain__more {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-4);
+  border-top: 1px dashed var(--line);
+  font-family: var(--font-body);
+  font-size: var(--size-sm);
+  color: var(--dim);
+}
+.plain__more a { color: var(--accent); border-bottom: 1px solid var(--accent); }
+.plain__more a:hover { opacity: 0.8; }
+
+@media (max-width: 768px) {
+  .plain { padding-top: 48px; padding-bottom: 48px; }
+  .plain__card { padding: var(--sp-6) var(--sp-5) var(--sp-5); }
+  .plain__head { flex-wrap: wrap; gap: var(--sp-2) var(--sp-3); }
+}
+
+/* =============================================================================
+   "FOR TECHNICAL EVALUATORS" — expert layer on every catalog page
+   ============================================================================= */
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-6);
+  margin-top: var(--sp-8);
+  align-items: start;
+}
+.tech-card {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: var(--sp-6);
+}
+.tech-card__t {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--size-lg);
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: var(--sp-4);
+}
+.tech-card__list { list-style: none; }
+.tech-card__list li {
+  font-family: var(--font-body);
+  font-size: var(--size-sm);
+  line-height: 1.65;
+  color: var(--dim);
+  padding-left: var(--sp-4);
+  position: relative;
+  margin-bottom: var(--sp-3);
+}
+.tech-card__list li:last-child { margin-bottom: 0; }
+.tech-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  transform: rotate(45deg);
+  background: var(--accent);
+}
+.tech-card__list strong { color: var(--text); font-weight: 600; }
+
+@media (max-width: 1024px) {
+  .tech-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .tech-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
+  .tech-card { padding: var(--sp-5); }
+}
+
 /* Buttons in the new layouts may wrap on narrow screens (legacy .btn sets nowrap) */
 .page-hero__ctas .btn,
 .cta-band__btns .btn,

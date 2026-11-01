@@ -25,6 +25,7 @@ from data_capabilities import CAPABILITIES, CAPABILITY_GROUPS      # noqa: E402
 from data_industries import INDUSTRIES                            # noqa: E402
 from data_packages import PACKAGES, AUDIENCES, DEPARTMENTS, PRICING_NOTE  # noqa: E402
 from data_site import SITE, HOME, ABOUT, RESOURCES, CONTACT       # noqa: E402
+from data_depth import PLAIN, TECH                                # noqa: E402
 
 TODAY = date.today().isoformat()
 OUT = ROOT
@@ -203,10 +204,63 @@ def page_hero(eyebrow, title_html, sub, badges=None, ctas=None, breadcrumb=None)
     return "\n".join(parts)
 
 
-def note_band(text, label=None):
+def note_band(text, label=None, variant=""):
     label_html = '<span class="note__label">%s</span>' % esc(label) if label else ""
-    return ('<div class="note"><div class="wrap note__inner">%s<p>%s</p></div></div>'
-            % (label_html, esc(text)))
+    cls = 'note' + (' note--%s' % variant if variant else '')
+    return ('<div class="%s"><div class="wrap note__inner">%s<p>%s</p></div></div>'
+            % (cls, label_html, esc(text)))
+
+
+# ------------------------------------------------------- depth layers -----
+
+def plain_band(slug, path):
+    """Beginner layer: plain-words intro + mini glossary. Renders nothing if
+    the slug has no PLAIN entry (missing entries fail the build earlier)."""
+    d = PLAIN.get(slug)
+    if not d:
+        return ""
+    terms = "".join('<div class="plain__term"><dt>%s</dt><dd>%s</dd></div>'
+                    % (esc(t), esc(defn)) for t, defn in d["terms"])
+    return ('<section class="section section--surface plain" aria-label="Start here — in plain words">'
+            '<div class="wrap"><div class="plain__card" data-animate>'
+            '<div class="plain__head"><span class="plain__badge">%s</span>'
+            '<h2 class="plain__t">In plain words</h2></div>'
+            '<p class="plain__what">%s</p>'
+            '<p class="plain__like"><span class="plain__like-label">An easy way to picture it</span>%s</p>'
+            '<dl class="plain__terms">%s</dl>'
+            '<p class="plain__more">New to AI systems? Every page on this site opens with one of these summaries — '
+            'or start with the <a href="%s">studio guides</a>, written for beginners.</p>'
+            '</div></div></section>'
+            % (esc("Start here"), esc(d["what"]), esc(d["like"]), terms,
+               esc(linkto("resources.html", path))))
+
+
+def tech_section(slug, path, kind="system"):
+    """Expert layer for technical evaluators: architecture/approach, evaluation
+    & acceptance, operations. For packages the labels shift to method framing."""
+    d = TECH.get(slug)
+    if not d:
+        return ""
+    if kind == "package":
+        heads = (("Method", d["stack"]), ("Acceptance criteria", d["eval"]), ("You receive", d["ops"]))
+        overline, title, sub = ("For technical evaluators", "How this engagement actually runs.",
+                                "The method behind the offer — what is measured, what “done” means, and what lands in your hands. Terms are finalized per engagement in the written scope.")
+    else:
+        heads = (("Architecture", d["stack"]), ("Evaluation & acceptance", d["eval"]), ("Operations", d["ops"]))
+        overline, title, sub = ("For technical evaluators", "Under the hood.",
+                                "Architecture, evaluation and operations — the engineering substance behind the offer. Final choices are set per engagement, in the written scope.")
+    cards = []
+    for head, items in heads:
+        lis = "".join('<li><strong>%s.</strong> %s</li>' % (esc(t), esc(x)) for t, x in items)
+        cards.append('<div class="tech-card"><h3 class="tech-card__t">%s</h3><ul class="tech-card__list">%s</ul></div>'
+                     % (esc(head), lis))
+    return ('<section class="section tech" aria-label="For technical evaluators"><div class="wrap">'
+            '<div class="sec-head" data-animate>'
+            '<p class="overline overline--accent">%s</p>'
+            '<h2 class="s-headline">%s</h2>'
+            '<p class="s-subhead">%s</p></div>'
+            '<div class="tech-grid">%s</div></div></section>'
+            % (esc(overline), title, esc(sub), "".join(cards)))
 
 
 def related_section(title, cards, note=None):
@@ -519,6 +573,7 @@ def system_page(s):
                "#" + "related"))
     b.append(page_hero(s["category"], esc(s["name"]), s["lede"], badges=["Scoped build", "Your stack, your data rules"], ctas=ctas, breadcrumb=crumb))
     b.append(note_band(FORMAT_NOTE, "Format"))
+    b.append(plain_band(s["slug"], "systems/%s.html" % s["slug"]))
 
     b.append('<section class="section" aria-label="Who it is for"><div class="wrap">'
              + section_header("Who it is for", "Built for teams that live this problem.", None, center=False)
@@ -534,6 +589,8 @@ def system_page(s):
              + section_header("What it does", "The system, feature by feature.", None, center=False)
              + card_grid([mini_card(f["t"], f["d"]) for f in s["features"]], "card-grid card-grid--3")
              + "</div></section>")
+
+    b.append(tech_section(s["slug"], "systems/%s.html" % s["slug"], kind="system"))
 
     b.append('<section class="section section--surface" aria-label="Example workflow"><div class="wrap">'
              + section_header("Example workflow", esc(s["workflow"]["title"]), None, center=False)
@@ -584,6 +641,7 @@ def capability_page(c):
             % (esc(linkto("contact.html", p)), esc(linkto("capabilities/%s.html" % c["slug"], p))))
     b.append(page_hero("%s · %s of 12" % (group_name, c["num"]), esc(c["name"]), c["lede"],
                        badges=["Scoped engagement", "Fixed quote after discovery"], ctas=ctas, breadcrumb=crumb))
+    b.append(plain_band(c["slug"], p))
 
     b.append('<section class="section" aria-label="The problem"><div class="wrap">'
              + section_header("The problem", "The gap this fills.", None, center=False)
@@ -593,6 +651,8 @@ def capability_page(c):
              + section_header("Example applications", "What teams build with this.", None, center=False)
              + card_grid([mini_card(a["t"], a["d"]) for a in c["applications"]], "card-grid card-grid--3")
              + "</div></section>")
+
+    b.append(tech_section(c["slug"], p, kind="system"))
 
     b.append('<section class="section" aria-label="Scope"><div class="wrap">'
              + section_header("Scope", "What the engagement covers.", None, center=False)
@@ -693,6 +753,7 @@ def package_page(p):
                        badges=[p["chip"], "Written scope", "Fixed quote after discovery"],
                        ctas=ctas, breadcrumb=crumb))
     b.append(note_band(p["summary"] + " " + PRICING_NOTE, "Terms"))
+    b.append(plain_band(p["slug"], path))
 
     b.append('<section class="section" aria-label="Who it is for"><div class="wrap">'
              + section_header("Who it is for", "The buyers this fits.", None, center=False)
@@ -703,6 +764,8 @@ def package_page(p):
              + section_header("What is included", "The engagement, end to end.", None, center=False)
              + '<ol class="includes">' + "".join("<li>%s</li>" % esc(x) for x in p["includes"]) + "</ol>"
              + "</div></section>")
+
+    b.append(tech_section(p["slug"], path, kind="package"))
 
     b.append('<section class="section" aria-label="Outputs"><div class="wrap">'
              + section_header("Outputs", "What you walk away with.", None, center=False)
@@ -747,6 +810,9 @@ def systems_hub():
                        "Every system is engineered around your stack with review gates, integrations, and honest "
                        "limits — designed and built to order, not rented from a shelf."))
     b.append(note_band(FORMAT_NOTE, "Format"))
+    b.append(note_band("New to AI systems? Every family page opens with an “In plain words” summary for beginners, "
+                       "plus a “For technical evaluators” section with the engineering substance — start with the "
+                       "studio guides if you want the ground floor first.", "Start here", variant="start"))
     cards = []
     for n, s in enumerate(SYSTEMS, 1):
         feats = "".join('<li>%s</li>' % esc(f["t"]) for f in s["features"][:3])
@@ -778,6 +844,8 @@ def capabilities_hub():
     b.append(page_hero("Capabilities", "Twelve ways we build.", 
                        "Scoped engagements with defined inputs, deliverables, and boundaries — filter by the kind "
                        "of work, or search for the discipline you have in mind."))
+    b.append(note_band("Every capability page opens with an “In plain words” summary for beginners, followed by a "
+                       "“For technical evaluators” section with architecture, evaluation and operations detail.", "Start here", variant="start"))
     pills = ['<button type="button" class="filter-pill is-active" data-filter="all" aria-pressed="true">All</button>']
     for gkey, gname in CAPABILITY_GROUPS:
         pills.append('<button type="button" class="filter-pill" data-filter="%s" aria-pressed="false">%s</button>'
@@ -846,6 +914,9 @@ def packages_hub():
                        "Two audits, two builds, one workshop — every engagement ends in something you own, "
                        "with terms set per engagement in a written scope."))
     b.append(note_band(PRICING_NOTE, "Terms"))
+    b.append(note_band("Every engagement page opens with an “In plain words” summary for beginners, plus a "
+                       "“How this engagement actually runs” section covering method, acceptance criteria and "
+                       "deliverables for technical evaluators.", "Start here", variant="start"))
     cards = []
     for pk in PACKAGES:
         cards.append('<article class="pkg-card"><div class="pkg-card__head">'
@@ -1008,6 +1079,13 @@ def build_robots():
 
 def main():
     written = []
+
+    # Guard: every catalog page must carry both depth layers — the build fails
+    # loudly instead of shipping a page without them.
+    _all = [x["slug"] for x in SYSTEMS + CAPABILITIES + PACKAGES]
+    _missing = [s for s in _all if s not in PLAIN or s not in TECH]
+    if _missing:
+        sys.exit("data_depth.py incomplete — missing PLAIN/TECH for: %s" % ", ".join(_missing))
 
     for s in SYSTEMS:
         body, title, desc, ld = system_page(s)

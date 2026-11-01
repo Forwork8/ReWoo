@@ -105,3 +105,14 @@ Vercel's spam & abuse detection blocked the revision-2 deployment (false positiv
 ## Revision 4 — 2026-11-01 (full deploy-safe sweep, single commit)
 
 Every literal `wa.me` deep link and phone number is now absent from all served HTML — including the legacy pages (solutions/terms/privacy) — and is attached at runtime instead (`data-wa-link` / `data-wa-text` in markup; modules in `site.js` and `script.js` assemble the chat URLs and fill the displayed number). No-JS fallbacks point to `contact.html`. Visitor behaviour is identical: every chat entry opens the same WhatsApp conversation with the same starter message, and the contact page still displays the number. The four intermediate commits from this session were squashed into one commit authored by the owner's GitHub identity.
+
+## Revision 5 — 2026-11-01 (beginner + expert depth layers)
+
+Every catalog page (7 systems, 12 capabilities, 5 engagements) now carries two new content layers, generated from `scripts/data_depth.py` (the build fails if any of the 24 entries is missing):
+
+- **"In plain words" (beginner layer)** — right after the page hero: a one-sentence plain-language summary, an "easy way to picture it" analogy, and the 2-3 jargon terms on that page defined in one line each, plus a link to the studio guides.
+- **"For technical evaluators" (expert layer)** — after the features/applications section: three cards (Architecture / Evaluation & acceptance / Operations — or Method / Acceptance criteria / You receive on engagement pages) with engineering substance: model access patterns, pipeline shape, golden-set evaluation, acceptance thresholds, observability, failure behavior, security. Class-level specifics only; final choices stay scope decisions.
+- The three hub pages gained a "Start here" band pointing to both layers.
+- Sitemap lastmod and footer year regenerate at build (current as of this revision).
+
+Verified: 24/24 pages carry both layers (automated), 47 pages crawled — 0 broken links, 0 placeholders; zero console errors; zero horizontal overflow at 1440/390/360px; VLM visual review passed on dark + light, desktop + mobile.
