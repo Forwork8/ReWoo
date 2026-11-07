@@ -243,32 +243,52 @@ async function answerFromPassages(question, retrieved) {
     .join("\n\n");
   const system =
     "You answer questions about a fictional company handbook, strictly and only from the numbered passages provided. " +
-    "Rules: answer in at most three sentences; cite every fact with passage numbers in square brackets like [1] or [2,3]; " +
-    "if the passages do not contain the answer, reply with exactly: NOT_IN_DOCUMENTS. " +
+    "Rules: answer in at most three sentences, citing passage numbers in square brackets like [1] or [2,3]. " +
+    "Answer from the passages whenever they contain information about what the question asks — a partial or brief answer with a citation is correct and expected. " +
+    "Reply with exactly NOT_IN_DOCUMENTS only when the passages discuss a related but different topic and genuinely do not answer the question as asked. " +
     "Never use outside knowledge, never guess, never pad.";
   const user = "Passages:\n" + context + "\n\nQuestion: " + question;
-  const reply = await callModel(
+  let reply = await callModel(
     [{ role: "system", content: system }, { role: "user", content: user }],
     300
   );
-  if (!reply) return null;
-  return reply.trim();
+  if (reply) reply = reply.trim();
+
+  // Guard against false refusals: if the model says NOT_IN_DOCUMENTS but one of
+  // the retrieved passages matched the question strongly, ask it to re-read
+  // that passage once. The nudge is neutral — it must not manufacture answers.
+  if (reply && reply.toUpperCase().includes("NOT_IN_DOCUMENTS")) {
+    const recheck =
+      "Passage [1] is reproduced below. Re-read it carefully. If it explicitly answers the question as asked, answer in at most three sentences citing [1]. If it only discusses a related but different topic, reply with exactly NOT_IN_DOCUMENTS.\n\n" +
+      "[1] " + retrieved[0].doc + " — " + retrieved[0].title + "\n" + retrieved[0].text +
+      "\n\nQuestion: " + question;
+    const retry = await callModel(
+      [{ role: "system", content: system }, { role: "user", content: recheck }],
+      300
+    );
+    if (retry) reply = retry.trim();
+  }
+  return reply;
 }
 
 async function closestPassages(question) {
-  // Prefer a semantic pick by the model; fall back to lexical ranking.
+  // Prefer a semantic pick by the model (titles + first words help it judge
+  // topic); fall back to lexical ranking.
   try {
-    const list = ALL_PASSAGES.map((p) => p.id + " · " + p.doc + " — " + p.title).join("\n");
+    const list = ALL_PASSAGES.map(
+      (p) => p.id + " · " + p.doc + " — " + p.title + ": " + p.text.slice(0, 90) + "…"
+    ).join("\n");
     const reply = await callModel(
       [
         {
           role: "system",
           content:
-            "The question is NOT answered by any passage of a company handbook. From the passage list, " +
-            "pick the two or three closest in topic (what a reader probably hoped to find). " +
-            "Reply with only the passage ids, comma-separated, most relevant first.",
+            "A question was asked about a company handbook, and the handbook does NOT answer it. " +
+            "From the section list, pick the two or three sections whose TOPIC is nearest to what the reader wanted to know. " +
+            "Judge by what a person with this question would have looked for, not by shared letters. " +
+            "Reply with only the section ids, comma-separated, most relevant first.",
         },
-        { role: "user", content: "Passages:\n" + list + "\n\nQuestion: " + question },
+        { role: "user", content: "Sections:\n" + list + "\n\nQuestion: " + question },
       ],
       60
     );
