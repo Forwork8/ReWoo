@@ -28,6 +28,7 @@ HREF_RE = re.compile(r'(?:href|src)="([^"#]+)(#[A-Za-z][\w:-]*)?"')
 ANCHOR_RE = re.compile(r'(?:href|src|id)="[^"]*#[A-Za-z][\w:-]*"')
 PURE_ANCHOR_RE = re.compile(r'(?:href|src)="#([A-Za-z][\w:-]*)"')
 ID_RE = re.compile(r'id="([^"]+)"')
+COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
 
 errors = 0
 checked = 0
@@ -36,6 +37,9 @@ for path in sorted(HTML_FILES):
     rel = os.path.relpath(path, ROOT)
     with open(path, encoding="utf-8") as fh:
         content = fh.read()
+
+    # HTML comments (e.g. commented-out TODO blocks) are not shipped markup.
+    content = COMMENT_RE.sub("", content)
 
     ids = set(ID_RE.findall(content))
 

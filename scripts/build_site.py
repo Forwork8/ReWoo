@@ -373,86 +373,29 @@ def linkto(target, path):
     return ("../" * depth) + target
 
 
-def mega_panel(items, panel_id, footer_href, footer_label, path, columns_class="mega__grid"):
-    lis = []
-    for it in items:
-        sub = '<span class="mega__sub">%s</span>' % esc(it["sub"]) if it.get("sub") else ""
-        lis.append('<li><a class="mega__item" href="%s" data-brief-quick="%s">%s</a></li>'
-                   % (esc(linkto(it["href"], path)), esc(it.get("kind", "")), esc(it["label"]) + sub))
-    foot = ('<div class="mega__foot"><a href="%s">%s →</a></div>'
-            % (esc(linkto(footer_href, path)), esc(footer_label)))
-    return ('<div class="mega__panel" id="%s">%s<ul class="%s">%s</ul>%s</div>'
-            % (panel_id, "", columns_class, "".join(lis), foot))
-
-
 def nav(path, active=None):
-    systems_items = [{"label": s["name"], "sub": s["category"], "href": "systems/%s.html" % s["slug"],
-                      "kind": "system"} for s in SYSTEMS]
-    caps_by_group = []
-    for gkey, gname in CAPABILITY_GROUPS:
-        group_caps = [c for c in CAPABILITIES if c["group"] == gkey]
-        caps_by_group.append('<li class="mega__group"><span class="mega__group-label">%s</span>'
-                              '<ul class="mega__list">%s</ul></li>' % (
-                                  esc(gname),
-                                  "".join('<li><a class="mega__item mega__item--tight" href="%s">%s</a></li>'
-                                          % (esc(linkto("capabilities/%s.html" % c["slug"], path)), esc(c["name"]))
-                                          for c in group_caps)))
-    inds_items = [{"label": i["name"], "href": "industries/%s.html" % i["slug"]} for i in INDUSTRIES]
-    pkgs_items = [{"label": p["name"], "sub": p["archetype"] + " engagement",
-                   "href": "packages/%s.html" % p["slug"], "kind": "package"} for p in PACKAGES]
-    more_items = [
-        {"label": "Who we build for", "sub": "Four engagement profiles", "href": "who-we-build-for.html"},
-        {"label": "Departments", "sub": "Find work by team", "href": "departments.html"},
-        {"label": "Resources", "sub": "Guides and notes", "href": "resources.html"},
-        {"label": "Contact", "sub": "Book a call or write", "href": "contact.html"},
-    ]
+    """Focused navigation: Demo, How we work, About, Contact — plus one button.
+    TODO(owner): the Book-30-minutes button points at the contact page until a
+    booking link (Cal.com / Calendly) is supplied."""
 
-    def top(label, key, panel, href=None):
-        if href:
-            return ('<li><a class="nav__link%s" href="%s">%s</a></li>'
-                    % (" is-current" if active == key else "", esc(linkto(href, path)), esc(label)))
-        return ('<li class="has-mega%s"><button type="button" class="nav__link nav__link--btn%s" '
-                'aria-expanded="false" aria-controls="%s">%s<span class="nav__caret" aria-hidden="true">'
-                '▾</span></button>%s</li>'
-                % (" is-current" if active == key else "", " is-current" if active == key else "",
-                   "panel-" + key, esc(label), panel))
+    def top(label, key, href):
+        return ('<li><a class="nav__link%s" href="%s">%s</a></li>'
+                % (" is-current" if active == key else "", esc(linkto(href, path)), esc(label)))
 
     nav_links = "".join([
-        top("Systems", "systems",
-            mega_panel(systems_items, "panel-systems", "systems.html", "All systems", path)),
-        top("Capabilities", "capabilities",
-            '<div class="mega__panel mega__panel--wide" id="panel-capabilities">'
-            '<ul class="mega__grid mega__grid--groups">%s</ul>'
-            '<div class="mega__foot"><a href="%s">All capabilities →</a></div></div>'
-            % ("".join(caps_by_group), esc(linkto("capabilities.html", path)))),
-        top("Industries", "industries",
-            mega_panel(inds_items, "panel-industries", "industries.html", "All industries", path,
-                       columns_class="mega__grid mega__grid--tight")),
-        top("Packages", "packages",
-            mega_panel(pkgs_items, "panel-packages", "packages.html", "Compare engagements", path)),
-        top("About", "about", None, href="about.html"),
-        top("More", "more",
-            mega_panel(more_items, "panel-more", "contact.html", "Contact", path)),
+        top("Demo", "demo", "demo.html"),
+        top("How we work", "how", "how-we-work.html"),
+        top("About", "about", "about.html"),
+        top("Contact", "contact", "contact.html"),
     ])
 
-    # Mobile drawer: grouped native <details> sections (works without JS)
-    def mobile_group(label, items_):
-        return ('<details class="mgroup"><summary>%s</summary><div class="mgroup__list">%s</div></details>'
-                % (esc(label), "".join('<a href="%s">%s</a>' % (esc(linkto(i["href"], path)), esc(i["label"]))
-                                       for i in items_)))
-
-    mobile = [
-        mobile_group("Systems", systems_items),
-        mobile_group("Capabilities", [{"label": c["name"], "href": "capabilities/%s.html" % c["slug"]}
-                                      for c in CAPABILITIES] + [{"label": "All capabilities", "href": "capabilities.html"}]),
-        mobile_group("Industries", inds_items + [{"label": "All industries", "href": "industries.html"}]),
-        mobile_group("Packages", pkgs_items + [{"label": "Compare engagements", "href": "packages.html"}]),
-        mobile_group("More", [{"label": "About", "href": "about.html"},
-                              {"label": "Who we build for", "href": "who-we-build-for.html"},
-                              {"label": "Departments", "href": "departments.html"},
-                              {"label": "Resources", "href": "resources.html"},
-                              {"label": "Contact", "href": "contact.html"}]),
-    ]
+    # Mobile drawer: the same four destinations, plain links (works without JS)
+    mobile_links = "".join('<a href="%s">%s</a>'
+                            % (esc(linkto(h, path)), esc(lbl))
+                            for lbl, h in [("Demo", "demo.html"),
+                                           ("How we work", "how-we-work.html"),
+                                           ("About", "about.html"),
+                                           ("Contact", "contact.html")])
 
     sun = ('<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7'
            'l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>')
@@ -468,13 +411,10 @@ def nav(path, active=None):
       {links}
     </ul>
     <div class="nav__right nav__right--site">
-      <a href="{contact_link}" class="brief-pill" data-brief-pill hidden>
-        Brief <span class="brief-pill__count" data-brief-count>0</span>
-      </a>
       <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
         <svg id="theme-icon" viewBox="0 0 24 24">{sun}</svg>
       </button>
-      <a href="{contact_link}" class="nav__cta">Book a Call</a>
+      <a href="{contact_link}" class="nav__cta">Book 30 minutes</a>
     </div>
     <button class="nav__hamburger" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
@@ -485,44 +425,33 @@ def nav(path, active=None):
 <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
   <div class="mobile-nav-inner">
     <span class="mobile-section-label">Explore</span>
-    {mobile}
+    <nav class="mgroup__list" aria-label="Mobile site sections">{mobile_links}</nav>
     <div class="mobile-theme-row">
       <button class="mobile-theme-btn" id="mobile-theme-toggle" aria-label="Toggle theme">
         <svg class="mobile-theme-icon" id="mobile-theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">{sun}</svg>
         <span id="mobile-theme-text">Switch to Light Mode</span>
       </button>
     </div>
-    <a href="{contact_link}" class="nav__cta" id="mn-cta">Book a Call →</a>
+    <a href="{contact_link}" class="nav__cta" id="mn-cta">Book 30 minutes →</a>
   </div>
 </div>
 """.format(home=esc(linkto("index.html", path)), logo=esc(asset("assets/logo.jpg", path)),
            links=nav_links, contact_link=esc(linkto("contact.html", path)), sun=sun,
-           mobile="".join(mobile))
+           mobile_links=mobile_links)
 
 
 def footer(path):
-    def col(label, items_):
-        lis = "".join('<li><a href="%s">%s</a></li>' % (esc(linkto(href, path)), esc(lbl)) for lbl, href in items_)
-        return ('<div class="footer__col"><span class="footer__col-label">%s</span>'
-                '<ul class="footer__links">%s</ul></div>' % (esc(label), lis))
-
-    systems_col = col("Systems", [(s["name"], "systems/%s.html" % s["slug"]) for s in SYSTEMS]
-                      + [("All systems", "systems.html")])
-    caps_col = col("Capabilities", [(c["name"], "capabilities/%s.html" % c["slug"]) for c in CAPABILITIES]
-                   + [("All capabilities", "capabilities.html")])
-    inds_col = col("Industries", [(i["name"], "industries/%s.html" % i["slug"]) for i in INDUSTRIES]
-                   + [("All industries", "industries.html")])
-    pkg_col = col("Engagements", [(p["name"], "packages/%s.html" % p["slug"]) for p in PACKAGES]
-                  + [("Compare all", "packages.html")])
-    company_col = col("Company", [
-        ("About the studio", "about.html"),
-        ("Who we build for", "who-we-build-for.html"),
-        ("Departments", "departments.html"),
+    """Focused footer: six links plus the brand block."""
+    links = [
+        ("About", "about.html"),
+        ("How we work", "how-we-work.html"),
         ("Resources", "resources.html"),
         ("Contact", "contact.html"),
         ("Privacy Policy", "privacy.html"),
         ("Terms of Service", "terms.html"),
-    ])
+    ]
+    links_html = "".join('<li><a href="%s">%s</a></li>'
+                         % (esc(linkto(href, path)), esc(lbl)) for lbl, href in links)
 
     socials = "".join(
         '<a href="%s" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on %s">'
@@ -534,7 +463,7 @@ def footer(path):
 
     return """
 <footer class="footer footer--site" aria-label="Footer">
-  <div class="footer__inner footer__inner--site">
+  <div class="footer__inner footer__inner--site footer__inner--lean">
     <div class="footer__brand">
       <a href="{home}" class="footer__logo" aria-label="ReWoo — Home">
         <img src="{logo}" alt="ReWoo" class="footer__logo-img" width="22" height="22">
@@ -544,11 +473,10 @@ def footer(path):
       <a href="mailto:{email}" class="footer__email">{email}</a>
       <div class="footer__social">{socials}</div>
     </div>
-    {systems_col}
-    {caps_col}
-    {inds_col}
-    {pkg_col}
-    {company_col}
+    <div class="footer__col">
+      <span class="footer__col-label">Site</span>
+      <ul class="footer__links">{links_html}</ul>
+    </div>
   </div>
   <div class="footer__bottom">© {year} ReWoo · Dhaka, Bangladesh · Systems designed and built to order — this site is the studio's own work.</div>
 </footer>
@@ -556,8 +484,7 @@ def footer(path):
 </body>
 </html>
 """.format(home=esc(linkto("index.html", path)), logo=esc(asset("assets/logo.jpg", path)),
-           email=esc(SITE["email"]), socials=socials, systems_col=systems_col, caps_col=caps_col,
-           inds_col=inds_col, pkg_col=pkg_col, company_col=company_col,
+           email=esc(SITE["email"]), socials=socials, links_html=links_html,
            year=TODAY[:4], sitejs=esc(asset("site.js", path)))
 
 
@@ -822,7 +749,7 @@ def package_page(p):
 def systems_hub():
     p = "systems.html"
     b = []
-    b.append(page_hero("System families", "Seven families. <em>One discipline.</em>",
+    b.append(page_hero("System families", "Seven families. One discipline.",
                        "Every system is engineered around your stack with review gates, integrations, and honest "
                        "limits — designed and built to order, not rented from a shelf."))
     b.append(note_band(FORMAT_NOTE, "Format"))
@@ -905,7 +832,7 @@ def capabilities_hub():
 def industries_hub():
     p = "industries.html"
     b = []
-    b.append(page_hero("Industries", "Where the work <em>actually happens.</em>",
+    b.append(page_hero("Industries", "Where the work actually happens.",
                        "Ten industries, each mapped with possible workflows — a discovery aid for finding the "
                        "system that fits, not a trophy list of past clients."))
     b.append(note_band("Industry pages describe possible workflows — ReWoo claims no verified client history "
@@ -989,7 +916,7 @@ def packages_hub():
 def audiences_page():
     p = "who-we-build-for.html"
     b = []
-    b.append(page_hero("Who we build for", "Four profiles. <em>One honest process.</em>",
+    b.append(page_hero("Who we build for", "Four profiles. One honest process.",
                        "Engagement needs differ by stage — the written scope, the milestones, and the handover "
                        "are the same for everyone."))
     for n, a in enumerate(AUDIENCES):
@@ -1022,7 +949,7 @@ def audiences_page():
 def departments_page():
     p = "departments.html"
     b = []
-    b.append(page_hero("Departments", "Find the work <em>by team.</em>",
+    b.append(page_hero("Departments", "Find the work by team.",
                        "A discovery lens: the same systems and capabilities, indexed by the department "
                        "that feels the pain."))
     b.append(note_band("Departments are an entry point, not an org-chart promise — the workflows below are "
@@ -1152,6 +1079,13 @@ def main():
         "and honest feasibility — founded by a builder with a research publication and a Kaggle Master rank.",
         "about"))
     SITEMAP_PAGES.append(("about.html", "0.8", "monthly"))
+    written.append(render_template(
+        "how-we-work.html", "how-we-work.html",
+        "How We Work — Five Steps, Written Commitments | ReWoo",
+        "How a ReWoo engagement runs: intro call, written scope, milestones, hardening, "
+        "complete handover — plus the commitments and honest limits that shape every build.",
+        "how"))
+    SITEMAP_PAGES.append(("how-we-work.html", "0.8", "monthly"))
     written.append(render_template(
         "resources.html", "resources.html",
         "Resources — Guides and Studio Notes | ReWoo",

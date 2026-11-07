@@ -29,7 +29,7 @@ SITE = {
 HOME = {
     "hero": {
         "eyebrow": "AI systems studio · Dhaka, built for anywhere",
-        "headline": "AI systems that take <em>real work</em> off your team.",
+        "headline": "AI systems that take real work off your team.",
         "sub": (
             "ReWoo scopes, designs, and builds AI systems — agents, pipelines, and retrieval that fit the "
             "tools you already run. Written scope before anything is charged. Your code, your data, your keys."
@@ -45,7 +45,7 @@ HOME = {
     },
     "intro": {
         "overline": "Who we are",
-        "headline": "A small studio with a narrow focus: <em>systems that hold up.</em>",
+        "headline": "A small studio with a narrow focus: systems that hold up.",
         "body": [
             "ReWoo is an independent AI systems studio based in Dhaka, Bangladesh, working with teams anywhere. We design and build scoped systems — not decks, not demos, not a platform you rent forever.",
             "The studio runs on three commitments you can check: every engagement begins with a written scope; every build hands over code, configuration, and documentation you own; and every claim on this site is either verifiable or clearly marked as an offer, not a history.",
@@ -60,7 +60,7 @@ HOME = {
     },
     "systems": {
         "overline": "System families",
-        "headline": "Buy a capability. Or adopt <em>a whole system.</em>",
+        "headline": "Buy a capability. Or adopt a whole system.",
         "sub": "Seven engineered solution families — each a pipeline with review gates, integrations, and honest limits, built to order around your stack.",
         "link": {"label": "All systems", "href": "systems.html"},
     },
@@ -111,7 +111,7 @@ HOME = {
     },
     "why": {
         "overline": "Why ReWoo",
-        "headline": "Reasons you can <em>actually check.</em>",
+        "headline": "Reasons you can actually check.",
         "reasons": [
             {"t": "Written scope first", "d": "Every engagement starts with a document, not a vibe. You approve it or it does not happen."},
             {"t": "You own everything", "d": "Repository, configuration, credentials, and documentation — transferred, not rented."},
@@ -138,7 +138,7 @@ HOME = {
 ABOUT = {
     "hero": {
         "eyebrow": "About",
-        "headline": "An AI systems studio, <em>built like the work it ships.</em>",
+        "headline": "An AI systems studio, built like the work it ships.",
         "sub": "Small, senior, and deliberately narrow: we scope, design, and build AI systems — then hand them over completely.",
     },
     "story": {
@@ -152,7 +152,7 @@ ABOUT = {
     },
     "principles": {
         "overline": "How we work",
-        "headline": "Five commitments, <em>in writing.</em>",
+        "headline": "Five commitments, in writing.",
         "items": [
             {"t": "Scope before build", "d": "No engagement begins without a written scope: deliverables, boundaries, milestones, fixed quote. Approved by you, or it does not happen."},
             {"t": "Own your system", "d": "Code, configuration, credentials, and documentation transfer at handover. Lock-in is a business model we decline."},
