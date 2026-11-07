@@ -86,6 +86,13 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
+def sentence_lower(s):
+    """Lowercase only the first character of a sentence, keeping acronyms
+    such as 'AI' intact (plain .lower() broke 'feeling AI pressure' into
+    'feeling ai pressure' on the packages page)."""
+    return s[:1].lower() + s[1:] if s else s
+
+
 def wa(text):
     return "https://wa.me/%s?text=%s" % (SITE["whatsapp"].lstrip("+"), urllib.parse.quote(text))
 
@@ -297,7 +304,11 @@ ORG_JSONLD = {
 
 
 def head(title, desc, path, jsonld=None, extra_meta=""):
-    canonical = SITE["url"] + "/" + path if path else SITE["url"] + "/"
+    # The home page canonical is the site root, not /index.html.
+    if not path or path == "index.html":
+        canonical = SITE["url"] + "/"
+    else:
+        canonical = SITE["url"] + "/" + path
     blocks = []
     if jsonld:
         for j in jsonld:
@@ -353,7 +364,11 @@ def asset(href, path):
 
 
 def linkto(target, path):
-    """Link from page `path` to a root-relative page target."""
+    """Link from page `path` to a root-relative page target.
+    Internal home links always point at the site root (/ or ../)."""
+    if target == "index.html":
+        depth = path.count("/") if path else 0
+        return "../" * depth if depth else "/"
     depth = 0 if not path else path.count("/")
     return ("../" * depth) + target
 
@@ -505,7 +520,6 @@ def footer(path):
         ("Departments", "departments.html"),
         ("Resources", "resources.html"),
         ("Contact", "contact.html"),
-        ("Task Scoper (earlier agency page)", "solutions.html"),
         ("Privacy Policy", "privacy.html"),
         ("Terms of Service", "terms.html"),
     ])
@@ -548,7 +562,9 @@ def footer(path):
 
 
 def write_page(path, body_html, title, desc, jsonld=None, active=None):
-    doc = head(title, desc, path, jsonld) + nav(path, active) + body_html + footer(path)
+    # <main id="main-content"> is the skip-link target on every page.
+    doc = (head(title, desc, path, jsonld) + nav(path, active)
+           + '<main id="main-content">' + body_html + "</main>" + footer(path))
     full = os.path.join(OUT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as fh:
@@ -928,7 +944,7 @@ def packages_hub():
                      "</article>"
                      % (icon(pk["icon"], "icon"), esc(pk["chip"]),
                         esc(linkto("packages/%s.html" % pk["slug"], p)), esc(pk["name"]), esc(pk["short"]),
-                        esc(pk["buyers"][0].lower()),
+                        esc(pk["buyers"][0][:1].lower() + pk["buyers"][0][1:]),
                         esc(linkto("packages/%s.html" % pk["slug"], p)),
                         brief_btn("package", pk["slug"], pk["name"], compact=True)))
     b.append('<section class="section" aria-label="Engagements"><div class="wrap">'
@@ -1128,7 +1144,7 @@ def main():
         SITE["description"], None,
         [ORG_JSONLD, {"@context": "https://schema.org", "@type": "WebSite",
                       "name": "ReWoo", "url": SITE["url"]}, faq_jsonld(HOME["faq"]["items"])]))
-    SITEMAP_PAGES.append(("index.html", "1.0", "weekly"))
+    SITEMAP_PAGES.append(("", "1.0", "weekly"))
     written.append(render_template(
         "about.html", "about.html",
         "About — An AI Systems Studio from Dhaka | ReWoo",
@@ -1152,7 +1168,6 @@ def main():
     SITEMAP_PAGES.append(("contact.html", "0.8", "weekly"))
 
     # Preserved public routes stay in the sitemap
-    SITEMAP_PAGES.append(("solutions.html", "0.4", "monthly"))
     SITEMAP_PAGES.append(("privacy.html", "0.3", "yearly"))
     SITEMAP_PAGES.append(("terms.html", "0.3", "yearly"))
 

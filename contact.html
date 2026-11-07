@@ -39,7 +39,7 @@
 
 <nav class="nav" id="site-nav" aria-label="Primary navigation">
   <div class="nav__inner">
-    <a href="index.html" class="nav__logo" aria-label="ReWoo — Home">
+    <a href="/" class="nav__logo" aria-label="ReWoo — Home">
       <img src="assets/logo.jpg" alt="ReWoo" class="nav__logo-img" width="28" height="28">
       <span class="nav__wordmark">ReWoo</span>
     </a>
@@ -104,7 +104,7 @@
           <p class="call-card__d">You will talk to the person who architects and builds — about whether AI is the
             right tool for this workflow at all. If it is not, you will hear that.</p>
           <a class="btn btn--primary" id="wa-call"
-             href="mailto:adilshamim696@gmail.com" data-wa-link data-wa-text="Hi Adil, I'd like to book an intro call with ReWoo about an AI system."><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>Message on WhatsApp →</a>
+             href="https://wa.me/8801321073452?text=Hi%2C%20I%27d%20like%20to%20talk%20about%20an%20AI%20workflow." target="_blank" rel="noopener noreferrer"><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>Message on WhatsApp →</a>
           <p class="call-card__meta">ReWoo does not run a booking scheduler: reach out directly and we will agree a
             time. <a href="#written">Prefer writing? Compose an inquiry ↓</a></p>
         </div>
@@ -157,7 +157,7 @@
       <div class="sec-head" data-animate>
         <p class="overline overline--accent">Written inquiry</p>
         <h2 class="s-headline">Prefer writing? <em>Describe the work.</em></h2>
-        <p class="s-subhead">This form composes a structured email draft — nothing is sent automatically, and nothing
+        <p class="s-subhead" id="form-subhead">This form composes a structured email draft — nothing is sent automatically, and nothing
           is stored on this website.</p>
       </div>
 
@@ -204,11 +204,18 @@
           </select>
         </div>
 
-        <p class="form-note">By sending this email you agree to ReWoo's <a href="privacy.html">privacy policy</a>:
+        <p class="form-note" id="form-note">By sending this email you agree to ReWoo's <a href="privacy.html">privacy policy</a>:
           your message is used to reply, and for nothing else.</p>
 
         <button type="submit" class="btn btn--primary" id="inq-submit">Compose email draft →</button>
       </form>
+
+      <div class="review review--sent" id="sent" hidden aria-labelledby="sent-t" role="status">
+        <h3 class="review__t" id="sent-t">Sent — thank you.</h3>
+        <p class="review__note" id="sent-status">Your inquiry was sent.</p>
+        <p class="review__note">We reply by email. If you would rather talk now, the WhatsApp line above is the
+          fastest way to reach the studio.</p>
+      </div>
 
       <div class="review" id="review" hidden aria-labelledby="review-t">
         <h3 class="review__t" id="review-t">Your draft</h3>
@@ -232,10 +239,10 @@
         <h2 class="s-headline">Direct lines.</h2>
       </div>
       <div class="card-grid card-grid--3">
-        <a class="m-card m-card--link" href="mailto:adilshamim696@gmail.com" data-animate>
-          <div><h3 class="m-card__t">Email</h3><p class="m-card__d">Write directly — same person, same speed.</p><p class="m-card__meta">adilshamim696@gmail.com</p></div>
+        <a class="m-card m-card--link" href="mailto:hello@rewoo.tech" data-animate>
+          <div><h3 class="m-card__t">Email</h3><p class="m-card__d">Write directly — same person, same speed.</p><p class="m-card__meta">hello@rewoo.tech</p></div>
         </a>
-        <a class="m-card m-card--link" href="mailto:adilshamim696@gmail.com" data-wa-link data-animate>
+        <a class="m-card m-card--link" href="https://wa.me/8801321073452?text=Hi%2C%20I%27d%20like%20to%20talk%20about%20an%20AI%20workflow." target="_blank" rel="noopener noreferrer" data-animate>
           <div><h3 class="m-card__t">WhatsApp</h3><p class="m-card__d">The fastest line to the studio.</p><p class="m-card__meta"><span data-wa-num></span></p></div>
         </a>
         <a class="m-card m-card--link" href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" data-animate>
@@ -268,19 +275,19 @@
 <footer class="footer footer--site" aria-label="Footer">
   <div class="footer__inner footer__inner--site">
     <div class="footer__brand">
-      <a href="index.html" class="footer__logo" aria-label="ReWoo — Home">
+      <a href="/" class="footer__logo" aria-label="ReWoo — Home">
         <img src="assets/logo.jpg" alt="ReWoo" class="footer__logo-img" width="22" height="22">
         <span class="footer__wordmark">ReWoo</span>
       </a>
       <p class="footer__tagline">AI systems, scoped and shipped. An independent studio in Dhaka, building for teams anywhere.</p>
-      <a href="mailto:adilshamim696@gmail.com" class="footer__email">adilshamim696@gmail.com</a>
+      <a href="mailto:hello@rewoo.tech" class="footer__email">hello@rewoo.tech</a>
       <div class="footer__social"><a href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 6a2 2 0 1 0 0-.01z"/></svg></a><a href="https://x.com/ReWootech8" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M4 20L20 4"/></svg></a></div>
     </div>
     <div class="footer__col"><span class="footer__col-label">Systems</span><ul class="footer__links"><li><a href="systems/visual-production.html">Visual Production Systems</a></li><li><a href="systems/voice-intelligence.html">Voice &amp; Communication Intelligence</a></li><li><a href="systems/assessment-systems.html">Assessment &amp; Training Systems</a></li><li><a href="systems/design-visualization.html">Design Visualization</a></li><li><a href="systems/content-pipelines.html">Content Generation Pipelines</a></li><li><a href="systems/document-intelligence.html">Document Intelligence</a></li><li><a href="systems/knowledge-retrieval.html">Knowledge Search &amp; Retrieval</a></li><li><a href="systems.html">All systems</a></li></ul></div>
     <div class="footer__col"><span class="footer__col-label">Capabilities</span><ul class="footer__links"><li><a href="capabilities/ai-agent-development.html">AI Agent Development</a></li><li><a href="capabilities/ai-chatbot-development.html">AI Chatbot Development</a></li><li><a href="capabilities/voice-ai-development.html">Voice AI Development</a></li><li><a href="capabilities/generative-ai-development.html">Generative AI Development</a></li><li><a href="capabilities/agentic-ai-systems.html">Multi-Agent Systems</a></li><li><a href="capabilities/ai-consulting-strategy.html">AI Consulting &amp; Strategy</a></li><li><a href="capabilities/workflow-automation.html">Workflow Automation</a></li><li><a href="capabilities/nlp-rag-development.html">NLP &amp; RAG Development</a></li><li><a href="capabilities/computer-vision-development.html">Computer Vision Development</a></li><li><a href="capabilities/ai-content-video-production.html">AI Content &amp; Video Production</a></li><li><a href="capabilities/ai-integration-services.html">AI Integrations</a></li><li><a href="capabilities/ai-mvp-development.html">AI MVP Development</a></li><li><a href="capabilities.html">All capabilities</a></li></ul></div>
     <div class="footer__col"><span class="footer__col-label">Industries</span><ul class="footer__links"><li><a href="industries/ecommerce-retail.html">Commerce &amp; Retail</a></li><li><a href="industries/education-edtech.html">Education &amp; EdTech</a></li><li><a href="industries/financial-services.html">Financial Services</a></li><li><a href="industries/healthcare-life-sciences.html">Healthcare &amp; Life Sciences</a></li><li><a href="industries/manufacturing-supply-chain.html">Manufacturing &amp; Supply Chain</a></li><li><a href="industries/media-entertainment.html">Media &amp; Entertainment</a></li><li><a href="industries/real-estate-proptech.html">Real Estate &amp; PropTech</a></li><li><a href="industries/software-saas.html">Software &amp; SaaS</a></li><li><a href="industries/hospitality-travel.html">Hospitality &amp; Travel</a></li><li><a href="industries/sports-technology.html">Sports Technology</a></li><li><a href="industries.html">All industries</a></li></ul></div>
     <div class="footer__col"><span class="footer__col-label">Engagements</span><ul class="footer__links"><li><a href="packages/ai-readiness-audit.html">AI Readiness Audit</a></li><li><a href="packages/ai-agent-mvp.html">AI Agent MVP</a></li><li><a href="packages/ai-integration-sprint.html">AI Integration Sprint</a></li><li><a href="packages/workflow-automation-audit.html">Workflow Automation Audit</a></li><li><a href="packages/ai-strategy-workshop.html">AI Strategy Workshop</a></li><li><a href="packages.html">Compare all</a></li></ul></div>
-    <div class="footer__col"><span class="footer__col-label">Company</span><ul class="footer__links"><li><a href="about.html">About the studio</a></li><li><a href="who-we-build-for.html">Who we build for</a></li><li><a href="departments.html">Departments</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact</a></li><li><a href="solutions.html">Task Scoper (earlier agency page)</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+    <div class="footer__col"><span class="footer__col-label">Company</span><ul class="footer__links"><li><a href="about.html">About the studio</a></li><li><a href="who-we-build-for.html">Who we build for</a></li><li><a href="departments.html">Departments</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
   </div>
   <div class="footer__bottom">© 2026 ReWoo · Dhaka, Bangladesh · Systems designed and built to order — this site is the studio's own work.</div>
 </footer>

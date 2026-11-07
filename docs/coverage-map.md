@@ -132,7 +132,7 @@ Legend — Status: **BUILT** (live page, working), **LABELED** (present, honestl
 
 1. **Commercial terms** — every price, turnaround, and guarantee is intentionally absent ("Request scope"). Provide terms if you want them published.
 2. **Booking scheduler** — no Calendly/cal.com integration exists; contact uses WhatsApp + email. Supply a scheduler link to wire in.
-3. **hello@rewoo.tech vs adilshamim696@gmail.com** — the site currently uses the personal email already public on rewoo.tech (legal pages + footer). Switching to a branded inbox is a one-line change in `scripts/data_site.py` + contact template.
+3. **hello@rewoo.tech** — resolved 2026-11-07: the personal Gmail address that was public on rewoo.tech (legal pages + footer) has been replaced everywhere by the branded inbox (`scripts/data_site.py` + contact template + legal pages).
 4. **Real case studies / testimonials** — the evidence section is built to accept them; none are invented.
 5. **Founder/team page** — About is deliberately name-light. Add names, photos, and history when you want them public.
 6. **Office address / map** — omitted pending a verified address.

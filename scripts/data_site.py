@@ -4,7 +4,7 @@
 Verified facts used: brand from rewoo.tech CSS (Fraunces/Inter, #6E97FF/#0066CC,
 dark default with light theme), Dhaka Bangladesh origin and founder bio details
 as published on the current live site, contacts actually used on the live site
-(adilshamim696@gmail.com, WhatsApp +880 1321-073452), LinkedIn/X socials.
+(hello@rewoo.tech, WhatsApp +880 1321-073452), LinkedIn/X socials.
 No invented metrics, clients, or awards.
 """
 
@@ -17,7 +17,7 @@ SITE = {
         "ReWoo is an AI systems studio. We scope, design, and build agents, pipelines, and retrieval "
         "systems that fit the tools you already run — and hand you the keys."
     ),
-    "email": "adilshamim696@gmail.com",
+    "email": "hello@rewoo.tech",
     "whatsapp": "+8801321073452",
     "location": "Dhaka, Bangladesh",
     "socials": [
@@ -249,7 +249,6 @@ RESOURCES = {
             {"t": "Privacy-first local retrieval", "d": "Knowledge search that runs entirely on hardware you control, for data that cannot travel."},
             {"t": "Studio workspace console", "d": "A working surface for operating built systems: logs, traces, evaluation runs, and corpus health in one place."},
         ],
-        "note": "Owner note: this section is the studio's public roadmap-in-progress. Nothing here is sold, scheduled, or guaranteed — it is where current prototyping effort goes.",
     },
 }
 
@@ -264,7 +263,7 @@ CONTACT = {
         "headline": "Thirty minutes. No sales floor.",
         "sub": "You will talk to the person who architects and builds — about whether AI is the right tool for this workflow at all. If it is not, you will hear that.",
         "note": "ReWoo does not run a booking scheduler: reach out on WhatsApp or email and we will agree a time directly.",
-        "wa_prefill": "Hi Adil, I'd like to book an intro call with ReWoo about an AI system.",
+        "wa_prefill": "Hi, I'd like to talk about an AI workflow.",
     },
     "form": {
         "overline": "Written inquiry",
@@ -304,8 +303,8 @@ CONTACT = {
         "overline": "Other ways",
         "headline": "Direct lines.",
         "items": [
-            {"t": "Email", "d": "Write directly — same person, same speed.", "href": "mailto:adilshamim696@gmail.com", "label": "adilshamim696@gmail.com"},
-            {"t": "WhatsApp", "d": "The fastest line to the studio.", "href": "https://wa.me/+8801321073452", "label": "+880 1321-073452"},
+            {"t": "Email", "d": "Write directly — same person, same speed.", "href": "mailto:hello@rewoo.tech", "label": "hello@rewoo.tech"},
+            {"t": "WhatsApp", "d": "The fastest line to the studio.", "href": "https://wa.me/8801321073452?text=Hi%2C%20I%27d%20like%20to%20talk%20about%20an%20AI%20workflow.", "label": "+880 1321-073452"},
             {"t": "LinkedIn", "d": "Studio updates and occasional build notes.", "href": "https://linkedin.com/company/rewoo", "label": "ReWoo on LinkedIn"},
         ],
     },

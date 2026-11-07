@@ -486,19 +486,50 @@
   })();
 
   /* ==========================================================================
-     9. CONTACT INQUIRY FORM — validate, compose, review (never auto-send)
+     9. CONTACT INQUIRY FORM — really submits when an endpoint is configured
+     --------------------------------------------------------------------------
+     TODO(owner): the form endpoint was not provided yet. Paste it below and the
+     form switches from "compose an email draft" to a real submission with a
+     visible success message. Works with any service that accepts a JSON POST:
+
+       Formspree:  FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
+       Web3Forms:  FORM_ENDPOINT = 'https://api.web3forms.com/submit'
+                   FORM_EXTRA    = { access_key: 'YOUR_ACCESS_KEY' }
+       Basin:      FORM_ENDPOINT = 'https://usebasin.com/YOUR_FORM_ID'
+
+     Until an endpoint is set, the form keeps the honest fallback: it composes
+     a reviewable email draft (mailto to hello@rewoo.tech) — nothing pretends
+     to send.
      ====================================================================== */
 
   (function () {
     var form = $('#inquiry-form');
     if (!form) return;
 
-    var EMAIL_TO = 'adilshamim696@gmail.com';
+    // TODO(owner): paste the form endpoint here to go live.
+    var FORM_ENDPOINT = '';
+    var FORM_EXTRA = {};
+
+    var EMAIL_TO = 'hello@rewoo.tech';
     var review = $('#review');
     var reviewPre = $('#review-pre');
     var reviewMailto = $('#review-mailto');
     var reviewCopy = $('#review-copy');
     var reviewStatus = $('#review-status');
+    var sent = $('#sent');
+    var sentStatus = $('#sent-status');
+
+    /* When an endpoint is configured, the labels tell the truth about it. */
+    if (FORM_ENDPOINT) {
+      var submitBtn = $('#inq-submit');
+      if (submitBtn) submitBtn.textContent = 'Send inquiry →';
+      var subhead = $('#form-subhead');
+      if (subhead) subhead.textContent =
+        'Sends directly to the studio — we reply by email. Nothing is stored on this website.';
+      var note = $('#form-note');
+      if (note) note.textContent =
+        'By sending this inquiry you agree to ReWoo\'s privacy policy: your message is used to reply, and for nothing else.';
+    }
 
     function fieldEl(name) { return $('#inq-' + name); }
     function errEl(name) { return $('#inq-' + name + '-err'); }
@@ -590,6 +621,72 @@
       }
     }
 
+    function collectPayload() {
+      var payload = {
+        name: fieldEl('name').value.trim(),
+        email: fieldEl('email').value.trim(),
+        _replyto: fieldEl('email').value.trim(),
+        company: fieldEl('company') ? fieldEl('company').value.trim() : '',
+        interest: fieldEl('interest').value.trim(),
+        budget: fieldEl('budget') ? fieldEl('budget').value : ''
+      };
+      var brief = Brief.read();
+      if (brief.length) {
+        payload.brief = brief.map(function (item) {
+          return '[' + Brief.kindLabel(item.kind) + '] ' + item.label;
+        }).join('\n');
+      }
+      var key;
+      for (key in FORM_EXTRA) {
+        if (Object.prototype.hasOwnProperty.call(FORM_EXTRA, key)) payload[key] = FORM_EXTRA[key];
+      }
+      return payload;
+    }
+
+    function showSent(ok, message) {
+      if (!sent) return;
+      if (sentStatus) sentStatus.textContent = message || '';
+      sent.hidden = !ok;
+      if (ok && review) review.hidden = true;
+      if (ok) {
+        sent.scrollIntoView({
+          behavior: prefersReduced ? 'auto' : 'smooth',
+          block: 'center'
+        });
+      }
+    }
+
+    function submitToEndpoint() {
+      var submitBtn = $('#inq-submit');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+      }
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(collectPayload())
+      }).then(function (res) {
+        if (!res.ok) throw new Error('Endpoint responded ' + res.status);
+        return res.json().catch(function () { return {}; });
+      }).then(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send inquiry →';
+        }
+        showSent(true, 'Thank you, ' + (fieldEl('name').value.trim().split(' ')[0] || 'there') +
+          ' — your inquiry was sent. We will reply by email.');
+      }).catch(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send inquiry →';
+        }
+        showReview();
+        if (reviewStatus) reviewStatus.textContent =
+          'Sending failed — the network or the form service refused. Use the draft below to email us directly.';
+      });
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!validate()) {
@@ -597,6 +694,7 @@
         if (firstInvalid) firstInvalid.focus();
         return;
       }
+      if (FORM_ENDPOINT) { submitToEndpoint(); return; }
       showReview();
     });
 

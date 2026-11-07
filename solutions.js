@@ -577,7 +577,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.warn('LocalStorage backup:', storageErr);
       }
 
-      // 2. Prepare full email text to adilshamim696@gmail.com
+      // 2. Prepare full email text to hello@rewoo.tech
       var emailSubject = 'New ReWoo Task Request from ' + (nameVal || 'Visitor');
       var emailBody = 'Hi Adil,\n\n' +
         'I would like to discuss a task/project with ReWoo.\n\n' +
@@ -591,7 +591,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'Please let me know the recommended approach and next steps.\n\n' +
         '— Sent via ReWoo Solutions Scoper';
 
-      var fullEmailClipboard = 'To: adilshamim696@gmail.com\n' +
+      var fullEmailClipboard = 'To: hello@rewoo.tech\n' +
         'Subject: ' + emailSubject + '\n\n' +
         emailBody;
 
@@ -601,7 +601,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       var directGmailInboxUrl = 'https://mail.google.com/mail/u/0/#inbox';
-      var mailtoUrl = 'mailto:adilshamim696@gmail.com?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
+      var mailtoUrl = 'mailto:hello@rewoo.tech?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
 
       var waText = 'Hi Adil, my name is ' + nameVal + ' (' + contactVal + '). I need help with this task:\n\n' + taskVal;
       var waUrl = 'https://wa.me/+8801321073452?text=' + encodeURIComponent(waText);

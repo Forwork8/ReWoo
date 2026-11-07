@@ -30,7 +30,7 @@
           <p class="call-card__d">You will talk to the person who architects and builds — about whether AI is the
             right tool for this workflow at all. If it is not, you will hear that.</p>
           <a class="btn btn--primary" id="wa-call"
-             href="mailto:adilshamim696@gmail.com" data-wa-link data-wa-text="Hi Adil, I'd like to book an intro call with ReWoo about an AI system."><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>Message on WhatsApp →</a>
+             href="https://wa.me/8801321073452?text=Hi%2C%20I%27d%20like%20to%20talk%20about%20an%20AI%20workflow." target="_blank" rel="noopener noreferrer"><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>Message on WhatsApp →</a>
           <p class="call-card__meta">ReWoo does not run a booking scheduler: reach out directly and we will agree a
             time. <a href="#written">Prefer writing? Compose an inquiry ↓</a></p>
         </div>
@@ -83,7 +83,7 @@
       <div class="sec-head" data-animate>
         <p class="overline overline--accent">Written inquiry</p>
         <h2 class="s-headline">Prefer writing? <em>Describe the work.</em></h2>
-        <p class="s-subhead">This form composes a structured email draft — nothing is sent automatically, and nothing
+        <p class="s-subhead" id="form-subhead">This form composes a structured email draft — nothing is sent automatically, and nothing
           is stored on this website.</p>
       </div>
 
@@ -130,11 +130,18 @@
           </select>
         </div>
 
-        <p class="form-note">By sending this email you agree to ReWoo's <a href="privacy.html">privacy policy</a>:
+        <p class="form-note" id="form-note">By sending this email you agree to ReWoo's <a href="privacy.html">privacy policy</a>:
           your message is used to reply, and for nothing else.</p>
 
         <button type="submit" class="btn btn--primary" id="inq-submit">Compose email draft →</button>
       </form>
+
+      <div class="review review--sent" id="sent" hidden aria-labelledby="sent-t" role="status">
+        <h3 class="review__t" id="sent-t">Sent — thank you.</h3>
+        <p class="review__note" id="sent-status">Your inquiry was sent.</p>
+        <p class="review__note">We reply by email. If you would rather talk now, the WhatsApp line above is the
+          fastest way to reach the studio.</p>
+      </div>
 
       <div class="review" id="review" hidden aria-labelledby="review-t">
         <h3 class="review__t" id="review-t">Your draft</h3>
@@ -158,10 +165,10 @@
         <h2 class="s-headline">Direct lines.</h2>
       </div>
       <div class="card-grid card-grid--3">
-        <a class="m-card m-card--link" href="mailto:adilshamim696@gmail.com" data-animate>
-          <div><h3 class="m-card__t">Email</h3><p class="m-card__d">Write directly — same person, same speed.</p><p class="m-card__meta">adilshamim696@gmail.com</p></div>
+        <a class="m-card m-card--link" href="mailto:hello@rewoo.tech" data-animate>
+          <div><h3 class="m-card__t">Email</h3><p class="m-card__d">Write directly — same person, same speed.</p><p class="m-card__meta">hello@rewoo.tech</p></div>
         </a>
-        <a class="m-card m-card--link" href="mailto:adilshamim696@gmail.com" data-wa-link data-animate>
+        <a class="m-card m-card--link" href="https://wa.me/8801321073452?text=Hi%2C%20I%27d%20like%20to%20talk%20about%20an%20AI%20workflow." target="_blank" rel="noopener noreferrer" data-animate>
           <div><h3 class="m-card__t">WhatsApp</h3><p class="m-card__d">The fastest line to the studio.</p><p class="m-card__meta"><span data-wa-num></span></p></div>
         </a>
         <a class="m-card m-card--link" href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" data-animate>
