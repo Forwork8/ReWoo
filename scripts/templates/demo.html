@@ -1,0 +1,85 @@
+<!-- ReWoo — demo template. Rendered by scripts/build_site.py.
+     The handbook below is FICTIONAL demo data (Northwind Supplies Ltd.),
+     labelled as such in the hero, the handbook panel, and the answer cards.
+     Interactions live in /demo.js; the answering endpoint is the serverless
+     function /api/demo-answer.js — the API key stays on the server. -->
+
+<!--@NAV-->
+
+<main id="main-content" aria-label="Demo">
+
+  <header class="page-hero page-hero--tight">
+    <div class="wrap">
+      <p class="overline overline--accent">Demo</p>
+      <h1 class="page-hero__title">Ask a handbook. Get the passage.</h1>
+      <p class="page-hero__sub">This is the studio's Knowledge Search &amp; Retrieval system, small
+        enough to run in a page: a question box over one company handbook. Answers cite the exact
+        passage — and when the answer is not in the documents, it says so.</p>
+      <div class="page-hero__badges">
+        <span class="badge">Fictional company — demo data</span>
+        <span class="badge">Citations you can click</span>
+        <span class="badge">Refuses what it cannot source</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================= THE QUESTION BOX ========================= -->
+  <section class="section" id="ask" aria-label="Ask the handbook">
+    <div class="wrap wrap--narrow">
+      <div class="demo-box" data-animate>
+        <p class="demo-fictional-note"><strong>Northwind Supplies Ltd. is a fictional company.</strong>
+          Every document below was written for this demo — none of it is real client data.</p>
+        <form class="demo-form" id="demo-form" novalidate>
+          <label class="field__label" for="demo-input">Your question</label>
+          <div class="demo-form__row">
+            <input class="field__input demo-form__input" id="demo-input" name="question" type="text"
+                   autocomplete="off" placeholder="e.g. Can I work fully remote?">
+            <button type="submit" class="btn btn--primary" id="demo-ask">Ask →</button>
+          </div>
+        </form>
+        <div class="chips chips--links demo-chips" id="demo-chips" aria-label="Suggested questions"></div>
+        <p class="demo-status" id="demo-status" role="status" aria-live="polite"></p>
+        <div class="demo-shelf" id="demo-shelf" aria-live="polite"></div>
+      </div>
+      <p class="demo-privacy-note">How this runs: the language model sits behind a serverless
+        function — the API key never reaches this page. The endpoint is rate-limited (10 questions
+        per minute) and logs nothing about visitors: no IP, no user agent, no questions. The last
+        suggested question is deliberately not in the handbook — try it.</p>
+    </div>
+  </section>
+
+  <!-- ========================= THE HANDBOOK ========================= -->
+  <section class="section section--surface" id="handbook" aria-label="The fictional handbook">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">The documents</p>
+        <h2 class="s-headline">The handbook it answers from.</h2>
+        <p class="s-subhead s-subhead--centered">Three short documents, thirteen passages — fictional
+          demo data. Click any citation in an answer to jump to the passage it quotes.</p>
+      </div>
+      <div class="demo-handbook" id="demo-handbook" data-animate>
+        <noscript><p>The handbook panel needs JavaScript to render. The answering endpoint,
+          its rate limit and its no-logging behaviour are described above.</p></noscript>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CTA ============================== -->
+  <section class="cta-band" aria-label="Next step">
+    <div class="wrap cta-band__inner">
+      <h2 class="cta-band__t">Now imagine it on your documents.</h2>
+      <p class="cta-band__s">Same behaviour on your handbook, policies and drive — scoped in a
+        written plan, evaluated on your real questions, handed over completely.</p>
+      <div class="cta-band__btns">
+        <!-- TODO(owner): paste your booking link (Cal.com / Calendly) below —
+             until then the button points at the contact page. -->
+        <a class="btn btn--primary" href="contact.html">Book 30 minutes</a>
+        <a class="btn btn--outline" href="systems/knowledge-retrieval.html">How the system works</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="demo.js" defer></script>
+</main>
+
+<!--@FOOTER-->

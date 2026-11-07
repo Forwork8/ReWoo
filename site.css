@@ -1662,3 +1662,141 @@ a.chip--link:hover { border-color: var(--accent); color: var(--accent); }
   }
   .step, .step__num { animation: none !important; }
 }
+
+
+/* =============================================================================
+   14. DEMO — question box, answer cards, citations, fictional handbook
+   ============================================================================= */
+
+.demo-box {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  display: flex; flex-direction: column; gap: var(--sp-4);
+}
+
+.demo-fictional-note {
+  font-size: 0.85rem; color: var(--dim);
+  border-left: 3px solid var(--accent);
+  padding-left: var(--sp-3);
+}
+
+.demo-form__row { display: flex; gap: var(--sp-2); margin-top: var(--sp-2); }
+.demo-form__input { flex: 1; }
+@media (max-width: 560px) {
+  .demo-form__row { flex-direction: column; }
+  .demo-form__row .btn { width: 100%; }
+}
+
+.demo-chips { flex-wrap: wrap; gap: 8px; }
+.demo-chip { cursor: pointer; font-family: var(--font-body); font-size: 0.8rem; }
+.demo-chip--trap { border-style: dashed; }
+
+.demo-status { font-size: 0.85rem; color: var(--dim); min-height: 1.2em; margin: 0; }
+
+.demo-shelf { display: flex; flex-direction: column; gap: var(--sp-3); }
+
+.demo-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+}
+.demo-card__q {
+  margin: 0 0 var(--sp-3);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--text);
+}
+.demo-card--miss { border-color: var(--err); }
+.demo-card--err { border-color: var(--err); }
+
+.demo-answer { margin: 0; color: var(--text); line-height: 1.6; }
+.demo-answer--loading { color: var(--dim); }
+
+.demo-miss__flag {
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--err);
+}
+.demo-miss__label { margin: var(--sp-3) 0 var(--sp-2); font-size: 0.85rem; color: var(--dim); }
+
+.demo-cites { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--sp-3); }
+.demo-cite {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-body); font-size: 0.8rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-apple),
+              color var(--dur-fast) var(--ease-apple);
+}
+.demo-cite:hover { border-color: var(--accent); color: var(--accent); }
+.demo-cite__n { color: var(--accent); font-weight: 600; }
+
+.demo-privacy-note {
+  margin-top: var(--sp-4);
+  font-size: 0.8rem;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+/* The handbook panel */
+.demo-handbook { display: flex; flex-direction: column; gap: var(--sp-3); max-width: 860px; margin: 0 auto; }
+
+.demo-doc {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.demo-doc summary {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-3);
+  cursor: pointer; padding: var(--sp-4);
+  font-family: var(--font-display); font-size: 1.05rem; color: var(--text);
+  list-style: none;
+}
+.demo-doc summary::-webkit-details-marker { display: none; }
+.demo-doc summary::before { content: "+"; color: var(--accent); margin-right: var(--sp-2); font-weight: 500; }
+.demo-doc[open] summary::before { content: "–"; }
+.demo-doc__v { font-family: var(--font-body); font-size: 0.75rem; color: var(--dim); }
+.demo-passages { padding: 0 var(--sp-4) var(--sp-4); display: flex; flex-direction: column; gap: var(--sp-2); }
+
+.demo-passage {
+  display: flex; gap: var(--sp-3);
+  padding: var(--sp-3);
+  border-radius: var(--r-sm);
+  border: 1px solid transparent;
+  outline: none;
+}
+.demo-passage:hover { background: var(--surface); }
+.demo-passage__id {
+  font-family: var(--font-body); font-size: 0.7rem; font-weight: 600;
+  color: var(--accent);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 8px;
+  height: fit-content;
+  white-space: nowrap;
+}
+.demo-passage__t { margin: 0 0 4px; font-size: 0.9rem; color: var(--text); }
+.demo-passage__x { margin: 0; font-size: 0.85rem; color: var(--dim); line-height: 1.6; }
+
+/* Citation flash — the "check the answer against the source" moment */
+.demo-passage.is-flash {
+  animation: demo-flash 2s var(--ease-apple);
+  border-color: var(--accent);
+}
+@keyframes demo-flash {
+  0% { background: color-mix(in srgb, var(--accent) 24%, transparent); }
+  100% { background: transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-passage.is-flash { animation: none; background: var(--surface); }
+  .demo-cite, .demo-passage { transition: none !important; }
+}

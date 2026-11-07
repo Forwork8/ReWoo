@@ -1100,6 +1100,14 @@ def main():
         "or send a written inquiry. Composed email drafts; nothing sent or stored automatically.",
         None, [faq_jsonld(CONTACT["faq"])]))
     SITEMAP_PAGES.append(("contact.html", "0.8", "weekly"))
+    written.append(render_template(
+        "demo.html", "demo.html",
+        "Demo — Ask a Fictional Company Handbook | ReWoo",
+        "A question box over a small, clearly labelled fictional company handbook. "
+        "Answers cite the exact passage; if the answer is not in the documents, it says so. "
+        "Server-side model, rate-limited, no visitor logging.",
+        "demo"))
+    SITEMAP_PAGES.append(("demo.html", "0.9", "weekly"))
 
     # Preserved public routes stay in the sitemap
     SITEMAP_PAGES.append(("privacy.html", "0.3", "yearly"))
