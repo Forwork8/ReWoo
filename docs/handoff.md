@@ -116,3 +116,41 @@ Every catalog page (7 systems, 12 capabilities, 5 engagements) now carries two n
 - Sitemap lastmod and footer year regenerate at build (current as of this revision).
 
 Verified: 24/24 pages carry both layers (automated), 47 pages crawled — 0 broken links, 0 placeholders; zero console errors; zero horizontal overflow at 1440/390/360px; VLM visual review passed on dark + light, desktop + mobile.
+
+## Revision 6 — 2026-11-07 (site review fixes, focus pass, demo)
+
+Three commits, following the "ReWoo Site Review & Tester Report" (Nov 7).
+
+**Phase 1 — bug fixes (commit `5db09ab`, branch `main`):**
+WhatsApp buttons are real wa.me links (+880 1321-073452, pre-filled "Hi, I'd
+like to talk about an AI workflow."); "Owner note" deleted from Resources;
+lowercase "ai" fixed at the generator (sentence-case instead of .lower());
+/solutions.html 301-redirects to / (vercel.json + meta-refresh stub) and the
+"Task Scoper" footer link removed; hello@rewoo.tech everywhere; home canonical
+= https://rewoo.tech/ and internal home links point at /; the contact form can
+really submit (endpoint still needed — TODO in site.js) with a success panel.
+Also fixed en route: 41 generated pages lacked the `<main id="main-content">`
+skip-link target; order-desk linked a dead #team anchor. New tool:
+`scripts/check_links.py` (2,298 links, 0 broken).
+
+**Phase 2 — focus pass (commit `31a5a78`, branch `site-focus`):**
+Hero = "Ask your documents. Get answers with proof." (report Option A; TODO
+marker — Option B is a one-line swap) with "Try the demo" + "Book 30 minutes"
+(booking link still a TODO); menu reduced to Demo / How we work / About /
+Contact + one button; footer reduced to 6 links; stats band and all italic
+heading accents removed; About carries a commented-out founder block awaiting
+[NAME]/[FILE]/[PAPER URL]/[KAGGLE URL]; new how-we-work.html assembled from
+existing copy only. Before/after: `docs/phase2-summary.md`. No catalog page
+was deleted — the search-page cut awaits the owner's kept-list.
+
+**Phase 3 — demo (commit `8900ea3`, branch `site-focus`):**
+/demo.html + demo.js + api/demo-answer.js (Vercel function): a question box
+over Northwind Supplies Ltd., a clearly labelled fictional handbook. Answers
+cite exact passages (click → scroll + flash); one suggested question ("What
+is the pension plan?") is deliberately absent and returns "not in the
+documents" with the closest passages. API key server-side only, 10 req/min
+rate limit, no visitor logging. TODO(owner): set DEMO_API_KEY in Vercel.
+
+**Owner TODOs outstanding:** form endpoint (site.js FORM_ENDPOINT), booking
+link, founder name/photo/paper/Kaggle on About, headline choice (A or B),
+kept search-pages list for the 301 cut.
