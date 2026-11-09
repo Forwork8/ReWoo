@@ -796,7 +796,7 @@ def package_page(p):
             '<a class="btn btn--outline" href="%s#compare">Compare engagements</a>'
             % (esc(linkto("contact.html", path)), esc(linkto("packages.html", path))))
     b.append(page_hero("%s engagement" % p["archetype"], esc(p["name"]), p["short"],
-                       badges=[p["chip"], p["duration"], "Written plan first", "You approve before work starts"],
+                       badges=[p["chip"], "Written plan first", "You approve before work starts"],
                        ctas=ctas, breadcrumb=crumb))
     b.append(note_band(p["summary"] + " " + TERMS_NOTE, "How it works"))
     b.append(plain_band(p["slug"], path))
@@ -1011,13 +1011,11 @@ def packages_hub():
                      '<h2 class="pkg-card__t"><a href="%s">%s</a></h2>'
                      '<p class="pkg-card__d">%s</p>'
                      '<p class="pkg-card__buyers"><strong>For:</strong> %s</p>'
-                     '<p class="pkg-card__meta"><span class="pkg-mini__dur">%s</span></p>'
                      '<div class="pkg-card__ctas"><a class="btn btn--outline" href="%s">View engagement</a>%s</div>'
                      "</article>"
                      % (icon(pk["icon"], "icon"), esc(pk["chip"]),
                         esc(linkto("packages/%s.html" % pk["slug"], p)), esc(pk["name"]), esc(pk["short"]),
                         esc(pk["buyers"][0].lower()),
-                        esc(pk["duration"]),
                         esc(linkto("packages/%s.html" % pk["slug"], p)),
                         brief_btn("package", pk["slug"], pk["name"], compact=True)))
     b.append('<section class="section" aria-label="Engagements"><div class="wrap">'
@@ -1026,7 +1024,6 @@ def packages_hub():
     rows = [
         ("Type", [pk["archetype"] for pk in PACKAGES]),
         ("Format", [pk["chip"] for pk in PACKAGES]),
-        ("Time it takes", [pk["duration"] for pk in PACKAGES]),
         ("In one line", [pk["plain"] for pk in PACKAGES]),
         ("Best first when", ["You do not know where to start",
                              "One workflow is clearly worth a build",

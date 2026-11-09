@@ -291,6 +291,52 @@ visitors — see it, understand it, act on it.
 | Functional (browser) | Scope generator end-to-end: draft renders, no $, "DRAFT PLAN" header, "terms agreed in the written plan"; contact form composes "Project size:" line; mega menus show plain outcomes; 0 console errors on all tested pages |
 | CTA consistency | "Plan your project →" (nav+mobile), "Get an instant plan →" (hero), "Start with a call →" (package pages), "Generate draft plan →" (generator) |
 
+## Revision 9 — 2026-11-10 (durations out of the UI; homepage founder section removed)
+
+Owner-directed, superseding Rev 8's "durations stay" decision: **remove the "~1 week"-style time
+estimates everywhere**, and **remove the founder block from the homepage** (the about page keeps its
+founder section — the footer and mobile-drawer "The founder" links still resolve to `about.html#founder`).
+
+### Durations removed (zero engagement-length estimates in served pages)
+
+- **Homepage**: the five engagement mini-cards lose their `~1 week / ~4–6 weeks / …` pills.
+- **Packages hub**: card duration line gone; comparison-table **"Time it takes" row deleted** (rows are now
+  Type / Format / In one line / Best first when / You walk away with / Leads naturally to).
+- **Package pages**: the hero badge "About N weeks" is gone — badges are now engagement type +
+  "Written plan first" + "You approve before work starts".
+- **Data**: `data_packages.py` loses the five `duration` keys (dead data, no consumer left);
+  `build_site.py` no longer reads them. `site.css` drops the `.pkg-mini__meta / .pkg-mini__dur /
+  .pkg-card__meta` ("duration pill") block.
+- **Scope Generator**: no longer computes or emits a duration — section 7 reads
+  "Engagement: <name> · terms agreed in the written plan you approve".
+- **Demo-search corpus**: the five engagement passages no longer state lengths. Kept deliberately:
+  meeting/call lengths ("thirty minutes", "60–90 min discovery session") and client-scenario
+  "weeks" ("spend their week retyping", "publishing weekly") — those describe the visitor's world,
+  not ReWoo's delivery estimates.
+
+### Homepage founder section removed; rhythm preserved
+
+- The `#founder` section (avatar, "The person who scopes it builds it", four credential cards,
+  "Meet the founder →") is deleted from `templates/index.html`. The homepage still carries the proof
+  stat strip (research publication, Kaggle rank) and the "Who we are" section, so studio identity
+  survives without a personal block.
+- Section backgrounds were **re-alternated** after the removal (engagements → `--bg`,
+  who-we-are → `--surface`, FAQ → `--bg`) so the transparent/surface rhythm has no merged pair.
+- Copy harmonized to the "plan" vocabulary: bottom CTA band now says
+  **"Draft your plan in sixty seconds"** / **"Get an instant plan →"** (was "scope").
+
+### Verification
+
+| Check | Result |
+|---|---|
+| Build | 53 pages + sitemap + robots, clean |
+| Duration sweep (grep) | 0 `~N` / `About N weeks` / `Time it takes` / duration-pill classes in served HTML + JS; only contextual "week" uses remain (listed above) |
+| Link integrity / placeholders / deploy safety | 0 / 0 / clean (automated, 53 pages) |
+| Retrieval benchmark | **Identical after corpus edits**: Hit@1 68.4%, Hit@3 84.2%, MRR 0.76, 3 honest misses (in-browser re-run) — no question ranks on duration tokens |
+| Scope Generator (browser) | Draft renders with no duration line; only "week" in output is the visitor's own brief text echoed into OBJECTIVE |
+| Layout (browser) | Homepage sections alternate transparent/surface with no merged pair, no horizontal overflow, 5 equal-height engagement cards; VLM visual review of homepage + packages: pass |
+| Brief flow (regression) | "Add to brief" on packages hub stores to `rewoo-brief-v1` correctly; 0 console errors on all tested pages |
+
 ## Security note (still true)
 
 The GitHub token used for this work was shared in chat. It is not written into any file in this repository —

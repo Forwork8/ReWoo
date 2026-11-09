@@ -81,15 +81,15 @@
       text: 'Content stops being a heroic scramble. Research-grounded drafting flows through an outline-first pipeline with your style guide encoded and your editors in control: source-grounded drafting, outline-first generation, multi-format expansion.' },
     /* --- Engagements ---------------------------------------------------------- */
     { id: 'pkg-audit', doc: 'Engagements', title: 'AI Readiness Audit', href: 'packages/ai-readiness-audit.html',
-      text: 'A structured assessment of your workflows, data, and tooling that ends in a prioritized, reasoned roadmap — including the honest recommendation to do nothing where nothing is warranted. About 1 week. Includes an opportunity matrix scoring every candidate workflow on value, feasibility, and risk.' },
+      text: 'A structured assessment of your workflows, data, and tooling that ends in a prioritized, reasoned roadmap — including the honest recommendation to do nothing where nothing is warranted. Includes an opportunity matrix scoring every candidate workflow on value, feasibility, and risk.' },
     { id: 'pkg-mvp', doc: 'Engagements', title: 'AI Agent MVP', href: 'packages/ai-agent-mvp.html',
-      text: 'A working agent for your highest-value workflow — deployed, connected, evaluated, and handed over. About 4–6 weeks. Milestones you can demo, evaluation against your real cases, and complete handover of code and documentation.' },
+      text: 'A working agent for your highest-value workflow — deployed, connected, evaluated, and handed over. Milestones you can demo, evaluation against your real cases, and complete handover of code and documentation.' },
     { id: 'pkg-sprint', doc: 'Engagements', title: 'AI Integration Sprint', href: 'packages/ai-integration-sprint.html',
-      text: 'AI wired into the systems you already run — with retries, monitoring, and clean failure behavior. About 2–4 weeks. Monitored, documented integrations that survive the boring days, not just the demo.' },
+      text: 'AI wired into the systems you already run — with retries, monitoring, and clean failure behavior. Monitored, documented integrations that survive the boring days, not just the demo.' },
     { id: 'pkg-waa', doc: 'Engagements', title: 'Workflow Automation Audit', href: 'packages/workflow-automation-audit.html',
-      text: 'Map one messy process end-to-end and find out what to automate, what to fix, and what to leave human. About 1–2 weeks. Ends in a scoped process redesign you own.' },
+      text: 'Map one messy process end-to-end and find out what to automate, what to fix, and what to leave human. Ends in a scoped process redesign you own.' },
     { id: 'pkg-workshop', doc: 'Engagements', title: 'AI Strategy Workshop', href: 'packages/ai-strategy-workshop.html',
-      text: 'Get leadership aligned on what AI means for this business — with a shared vocabulary and a first plan. About 1–2 weeks. Ends in a first plan the room built together.' },
+      text: 'Get leadership aligned on what AI means for this business — with a shared vocabulary and a first plan. Ends in a first plan the room built together.' },
     /* --- Honest answers ------------------------------------------------------- */
     { id: 'faq-price', doc: 'Honest answers', title: 'How ReWoo pricing works', href: 'index.html#faq',
       text: 'ReWoo engagements have no published price list — every project is different. A short call about your work, then a written plan with the full terms; the price is fixed inside that plan, and nothing begins until you approve it.' },
@@ -646,13 +646,13 @@
       var readiness = clamp(Math.round((clarity + dataReady + integration) / 3), 10, 95);
 
       /* -- engagement ------------------------------------------------------------ */
-      var engagement, duration, pkgHref;
+      var engagement, pkgHref;
       if (!primary || clarity < 45 || readiness < 45) {
-        engagement = 'AI Readiness Audit'; duration = 'about 1 week'; pkgHref = 'packages/ai-readiness-audit.html';
+        engagement = 'AI Readiness Audit'; pkgHref = 'packages/ai-readiness-audit.html';
       } else if (integration < 45) {
-        engagement = 'AI Integration Sprint'; duration = 'about 2–4 weeks'; pkgHref = 'packages/ai-integration-sprint.html';
+        engagement = 'AI Integration Sprint'; pkgHref = 'packages/ai-integration-sprint.html';
       } else {
-        engagement = 'AI Agent MVP'; duration = 'about 4–6 weeks'; pkgHref = 'packages/ai-agent-mvp.html';
+        engagement = 'AI Agent MVP'; pkgHref = 'packages/ai-agent-mvp.html';
       }
 
       /* -- render ---------------------------------------------------------------- */
@@ -695,7 +695,7 @@
       var draft = el('div', 'sg-draft');
       draft.setAttribute('data-animate-in', '');
       draft.appendChild(el('h3', 'sg-sub-t', 'Draft written plan'));
-      var scopeText = buildScopeText(rawText, primary, secondary, engagement, duration, langs, team, onprem, where, touch, readiness);
+      var scopeText = buildScopeText(rawText, primary, secondary, engagement, langs, team, onprem, where, touch, readiness);
       var pre = el('pre', 'sg-pre');
       pre.id = 'sg-scope-text';
       pre.textContent = scopeText;
@@ -740,7 +740,7 @@
       outPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function buildScopeText(rawText, primary, secondary, engagement, duration, langs, team, onprem, where, touch, readiness) {
+    function buildScopeText(rawText, primary, secondary, engagement, langs, team, onprem, where, touch, readiness) {
       var L = [];
       L.push('DRAFT PLAN — generated with the ReWoo Scope Generator');
       L.push('Draft v0 · a starting point · prepared for human review');
@@ -784,7 +784,7 @@
       L.push('- If the quality bar cannot be met, you get a stop recommendation — not a soft landing.');
       L.push('');
       L.push('7. INDICATIVE SHAPE');
-      L.push('Engagement: ' + engagement + ' · ' + duration + ' · terms agreed in the written plan you approve');
+      L.push('Engagement: ' + engagement + ' · terms agreed in the written plan you approve');
       L.push('Team size: ' + team + ' · systems to touch: ' + touch + ' · languages: ' +
         (langs === 'both' ? 'English + Bangla' : langs === 'bn' ? 'Bangla' : 'English'));
       if (onprem) L.push('Deployment note: data cannot leave your infrastructure — private or on-premise delivery will be planned in the written plan.');

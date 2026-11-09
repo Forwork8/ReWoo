@@ -23,7 +23,6 @@ PACKAGES = [
         "archetype": "Audit",
         "icon": "clipboard",
         "chip": "Assessment engagement",
-        "duration": "About 1 week",
         "plain": "Find your best first step",
         "short": "Find out which of your workflows are worth automating — and which are not — before spending build budget.",
         "buyers": [
@@ -81,7 +80,6 @@ PACKAGES = [
         "archetype": "Build",
         "icon": "rocket",
         "chip": "Build engagement",
-        "duration": "About 4–6 weeks",
         "plain": "Your first working AI assistant",
         "short": "A working agent for your highest-value workflow — deployed, connected, evaluated, and handed over.",
         "buyers": [
@@ -141,7 +139,6 @@ PACKAGES = [
         "archetype": "Build",
         "icon": "plug",
         "chip": "Build engagement",
-        "duration": "About 2–4 weeks",
         "plain": "Connect AI to your daily tools",
         "short": "AI wired into the systems you already run — with retries, monitoring, and clean failure behavior.",
         "buyers": [
@@ -201,7 +198,6 @@ PACKAGES = [
         "archetype": "Audit",
         "icon": "flow",
         "chip": "Assessment engagement",
-        "duration": "About 1–2 weeks",
         "plain": "Untangle one messy process",
         "short": "Map one messy process end-to-end and find out what to automate, what to fix, and what to leave human.",
         "buyers": [
@@ -260,7 +256,6 @@ PACKAGES = [
         "archetype": "Workshop",
         "icon": "users",
         "chip": "Alignment engagement",
-        "duration": "About 1–2 weeks",
         "plain": "Get your team on the same page",
         "short": "Get leadership aligned on what AI means for this business — with a shared vocabulary and a first plan.",
         "buyers": [
