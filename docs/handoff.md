@@ -224,6 +224,23 @@ Implements the competitive roadmap (Riverborn/Nagorik report, 9 Nov 2026) end to
 6. **Walkthrough videos** (report Phase 1 item 4): two short recordings of the demos would complete the
    flagship pages; embed slots can be added to the demo strips.
 
+## Revision 7 — 2026-11-10 (nav declutter: Brief pill removed)
+
+Owner-directed: the "Brief" count pill is gone from the site navigation on every page.
+
+- **Root cause it fixed:** the pill carried `hidden` in markup, but `.brief-pill { display:inline-flex }`
+  overrode the attribute, so every visitor saw a permanent "Brief 0" chip in the nav — clutter, exactly the
+  kind of noise the studio's design discipline argues against.
+- **Removed:** the pill markup from the generator's nav template (`scripts/build_site.py`), its CSS
+  (`.brief-pill` / `.brief-pill__count` in `site.css`), `renderPill()` from `site.js`, and the dead
+  `data-brief-quick` mega-menu attributes (never consumed by any script). All 50 nav pages regenerated.
+- **Kept, fully working:** the project-brief feature itself — "Add to brief" buttons on system/capability/
+  engagement pages, the contact-page list with per-item remove and clear-all, localStorage persistence
+  (`rewoo-brief-v1`), cross-tab sync, and brief items composed into the contact email draft. The nav right
+  cluster is now theme toggle + "Start a scope →" only.
+- **Verified:** 53 pages scanned — 0 broken links, 0 placeholders, deploy-safe scan clean; DOM checks on
+  home / voice-intelligence / contact confirm no pill, add→toggle→contact-list flow intact; 0 console errors.
+
 ## Security note (still true)
 
 The GitHub token used for this work was shared in chat. It is not written into any file in this repository —

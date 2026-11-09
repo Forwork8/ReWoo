@@ -12,7 +12,7 @@
  *   4. Mobile menu (overlay, scroll lock, focus trap, Escape)
  *   5. Scroll reveals ([data-animate], reduced-motion aware)
  *   6. Smooth anchor scroll with nav offset
- *   7. Project brief (localStorage, nav pill, add/remove buttons, contact list)
+ *   7. Project brief (localStorage, add/remove buttons, contact list)
  *   8. Capabilities filter + search
  *   9. Contact inquiry form (validation → composed email draft; never auto-sends)
  *  10. WhatsApp deep links (runtime wiring — markup carries safe fallbacks)
@@ -342,15 +342,6 @@
       });
     }
 
-    function renderPill() {
-      var pill = $('[data-brief-pill]');
-      if (!pill) return;
-      var count = read().length;
-      pill.hidden = count === 0;
-      var c = $('[data-brief-count]', pill);
-      if (c) c.textContent = String(count);
-    }
-
     function renderContact() {
       var list = $('#brief-items');
       if (!list) return;
@@ -389,7 +380,6 @@
     }
 
     function render() {
-      renderPill();
       renderButtons();
       renderContact();
     }

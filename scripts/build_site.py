@@ -391,8 +391,8 @@ def mega_panel(items, panel_id, footer_href, footer_label, path, columns_class="
     lis = []
     for it in items:
         sub = '<span class="mega__sub">%s</span>' % esc(it["sub"]) if it.get("sub") else ""
-        lis.append('<li><a class="mega__item" href="%s" data-brief-quick="%s">%s</a></li>'
-                   % (esc(linkto(it["href"], path)), esc(it.get("kind", "")), esc(it["label"]) + sub))
+        lis.append('<li><a class="mega__item" href="%s">%s</a></li>'
+                   % (esc(linkto(it["href"], path)), esc(it["label"]) + sub))
     foot = ('<div class="mega__foot"><a href="%s">%s →</a></div>'
             % (esc(linkto(footer_href, path)), esc(footer_label)))
     return ('<div class="mega__panel" id="%s">%s<ul class="%s">%s</ul>%s</div>'
@@ -404,10 +404,9 @@ FLAGSHIPS = ("voice-intelligence", "knowledge-retrieval")
 
 def nav(path, active=None):
     systems_items = [{"label": s["name"], "sub": ("★ Live demo" if s["slug"] in FLAGSHIPS else s["category"]),
-                      "href": "systems/%s.html" % s["slug"],
-                      "kind": "system"} for s in SYSTEMS]
+                      "href": "systems/%s.html" % s["slug"]} for s in SYSTEMS]
     pkgs_items = [{"label": p["name"], "sub": "%s · %s (est.)" % (p["duration"], p["range"]),
-                   "href": "packages/%s.html" % p["slug"], "kind": "package"} for p in PACKAGES]
+                   "href": "packages/%s.html" % p["slug"]} for p in PACKAGES]
     proof_items = [
         {"label": "Voice Intelligence demo", "sub": "Live — runs in your browser", "href": "demo-voice.html"},
         {"label": "Knowledge Search demo", "sub": "Live — clickable citations", "href": "demo-search.html"},
@@ -431,8 +430,8 @@ def nav(path, active=None):
     systems_panel = (
         '<div class="mega__panel" id="panel-systems">'
         '<ul class="mega__grid">'
-        + "".join('<li><a class="mega__item" href="%s" data-brief-quick="%s">%s</a></li>'
-                  % (esc(linkto(it["href"], path)), esc(it.get("kind", "")),
+        + "".join('<li><a class="mega__item" href="%s">%s</a></li>'
+                  % (esc(linkto(it["href"], path)),
                      esc(it["label"]) + '<span class="mega__sub">%s</span>' % esc(it["sub"]))
                   for it in systems_items)
         + '</ul>'
@@ -496,9 +495,6 @@ def nav(path, active=None):
       {links}
     </ul>
     <div class="nav__right nav__right--site">
-      <a href="{brief_link}" class="brief-pill" data-brief-pill hidden>
-        Brief <span class="brief-pill__count" data-brief-count>0</span>
-      </a>
       <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
         <svg id="theme-icon" viewBox="0 0 24 24">{sun}</svg>
       </button>
@@ -524,8 +520,7 @@ def nav(path, active=None):
   </div>
 </div>
 """.format(home=esc(linkto("index.html", path)), logo=esc(asset("assets/logo.jpg", path)),
-           links=nav_links, scope_link=esc(linkto("scope-generator.html", path)),
-           brief_link=esc(linkto("contact.html#brief", path)), sun=sun,
+           links=nav_links, scope_link=esc(linkto("scope-generator.html", path)), sun=sun,
            mobile="".join(mobile))
 
 

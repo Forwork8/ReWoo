@@ -141,32 +141,8 @@
 }
 .mega__foot a:hover { opacity: 0.8; }
 
-/* Brief pill in nav */
+/* Nav right cluster */
 .nav__right--site { gap: 10px; }
-.brief-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text);
-  border: 1px solid var(--line);
-  border-radius: 100px;
-  padding: 5px 12px;
-  transition: border-color var(--dur-fast) var(--ease-apple);
-}
-.brief-pill:hover { border-color: var(--accent); }
-.brief-pill__count {
-  min-width: 17px; height: 17px;
-  display: inline-flex; align-items: center; justify-content: center;
-  background: var(--accent);
-  color: #fff;
-  font-size: 0.66rem;
-  font-weight: 600;
-  border-radius: 100px;
-  padding: 0 5px;
-}
 
 /* Mobile drawer groups */
 .mgroup { border-bottom: 1px solid var(--line-2); }
