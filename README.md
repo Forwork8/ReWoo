@@ -7,14 +7,14 @@
 
 ## Overview
 
-ReWoo is an independent AI systems studio based in Dhaka, Bangladesh, working with teams anywhere. The site is built around one positioning — **the AI studio you can audit** — with live demos, a re-runnable retrieval benchmark, published indicative pricing, and honest status labels on everything.
+ReWoo is an independent AI systems studio based in Dhaka, Bangladesh, working with teams anywhere. The site is built around one positioning — **the AI studio you can audit** — with live demos, a re-runnable retrieval benchmark, a written plan before any work starts, and honest status labels on everything.
 
-- **Home (`index.html`)** — proof-first: hero promise, outcome stat strip, two flagship demos, engagement steps, founder, packages with durations and indicative ranges, FAQ.
+- **Home (`index.html`)** — proof-first: hero promise, outcome stat strip, two flagship demos, engagement steps, founder, packages with durations, FAQ.
 - **Proof (`proof.html`)** — the audit hub: live demos, benchmark, research credentials, the UK case study (honestly labeled in preparation), and "audit us with your own AI" links.
 - **Live demos** — `demo-voice.html` (Web Speech API transcription in Bangla/English + scripted pipeline) and `demo-search.html` (BM25 knowledge search with clickable citations + a 19-question retrieval benchmark computed live in the visitor's browser, failures included).
-- **AI Scope Generator (`scope-generator.html`)** — the main conversion path: describe a workflow, get a draft written scope with a readiness read-out and indicative range, generated client-side by a transparent heuristic.
+- **AI Scope Generator (`scope-generator.html`)** — the main conversion path: describe a workflow, get a draft written plan with a readiness read-out, generated client-side by a transparent heuristic.
 - **Systems (`systems/`)** — two flagship families with live demos plus five scoped families, each with plain-words and technical-evaluator layers and a pipeline diagram.
-- **Packages (`packages/`)** — five engagements with typical durations and indicative price ranges (labeled estimates), plus a comparison table.
+- **Packages (`packages/`)** — five engagements with typical durations, plus a comparison table. No published prices: every engagement is a written plan approved by the client first.
 - **Security (`security.html`)** — where data lives, retention, consent design, deployment models.
 - **Roadmap (`roadmap.html`)** — the public roadmap with honest status labels: live now / building next / exploring / horizon.
 - **Catalog** — capabilities (12), industries (10), departments, audiences — generated, reachable from hubs and the footer.
@@ -34,7 +34,7 @@ ReWoo/
 ├── systems/                    # 7 system detail pages (2 flagships, 5 scoped)
 ├── capabilities/               # 12 capability detail pages (generated)
 ├── industries/                 # 10 industry pages (generated)
-├── packages/                   # 5 engagement pages with durations + ranges
+├── packages/                   # 5 engagement pages with durations
 ├── systems.html                # Systems hub (flagship-first)
 ├── capabilities.html           # Capabilities hub with search/filter (generated)
 ├── industries.html             # Industries hub (generated)

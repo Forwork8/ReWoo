@@ -10,11 +10,10 @@ Framing rules:
 - Departments are a discovery lens onto the same systems/capabilities.
 """
 
-PRICING_NOTE = (
-    "Indicative ranges, honest terms. Each engagement carries a typical duration and an indicative price "
-    "range — estimates published so you can filter by budget before any call, not quotes. The final number "
-    "is always a fixed quote inside your written scope, set after discovery, and nothing is charged before "
-    "you approve that document."
+TERMS_NOTE = (
+    "How every engagement runs: a short call about your work, then a written plan — what gets built, the "
+    "timeline, what you receive at each step, and the terms, all in one document. You approve it before "
+    "anything begins, and it is yours to take anywhere."
 )
 
 PACKAGES = [
@@ -25,7 +24,7 @@ PACKAGES = [
         "icon": "clipboard",
         "chip": "Assessment engagement",
         "duration": "About 1 week",
-        "range": "$600 – $1,400",
+        "plain": "Find your best first step",
         "short": "Find out which of your workflows are worth automating — and which are not — before spending build budget.",
         "buyers": [
             "Founders and operators feeling AI pressure without a clear first move",
@@ -49,7 +48,7 @@ PACKAGES = [
             {"t": "Opportunity matrix", "d": "Every candidate workflow scored on value, feasibility, and risk."},
             {"t": "Prioritized roadmap", "d": "Sequenced recommendations with reasoning — including what not to build."},
             {"t": "Build-vs-buy analysis", "d": "Honest make-or-buy calls per capability, no reseller angles."},
-            {"t": "First-build scope", "d": "The priority use case as a written scope ready to execute."},
+            {"t": "First-build plan", "d": "The priority use case as a ready-to-execute written plan."},
             {"t": "Review session", "d": "A working session where your team challenges every recommendation."},
         ],
         "exclusions": [
@@ -73,7 +72,7 @@ PACKAGES = [
             {"q": "Why not just start building?", "a": "Because build budget spent on the wrong workflow is the most expensive AI mistake there is. The audit exists to make your first build the right one."},
             {"q": "What if the answer is we are not ready?", "a": "Then that is the finding, written down with the specific gaps — data quality, access, process stability — and what would change it. That answer saves more money than any roadmap."},
             {"q": "Do you pitch your own services in it?", "a": "Recommendations include build-vs-buy calls that may point at existing tools instead of us. You also get the first-build scope in a form any competent builder can execute."},
-            {"q": "How is this priced?", "a": PRICING_NOTE},
+            {"q": "What happens after I get in touch?", "a": TERMS_NOTE},
         ],
     },
     {
@@ -83,7 +82,7 @@ PACKAGES = [
         "icon": "rocket",
         "chip": "Build engagement",
         "duration": "About 4–6 weeks",
-        "range": "$3,500 – $9,000",
+        "plain": "Your first working AI assistant",
         "short": "A working agent for your highest-value workflow — deployed, connected, evaluated, and handed over.",
         "buyers": [
             "Teams with a known painful workflow and a clear idea of done",
@@ -133,7 +132,7 @@ PACKAGES = [
             {"q": "What if we do not know which workflow first?", "a": "Then the AI Readiness Audit is the right starting point — building the wrong workflow first is the expensive path."},
             {"q": "Do you keep the keys afterward?", "a": "No. Code, configuration, credentials, and docs transfer at handover. If you want ongoing support, that is a separate, optional arrangement."},
             {"q": "What if the agent turns out not to be feasible?", "a": "Evaluation results are delivered honestly — including a stop recommendation if the quality bar cannot be met. The milestone structure means you learn this early, not expensively."},
-            {"q": "How is this priced?", "a": PRICING_NOTE},
+            {"q": "What happens after I get in touch?", "a": TERMS_NOTE},
         ],
     },
     {
@@ -143,7 +142,7 @@ PACKAGES = [
         "icon": "plug",
         "chip": "Build engagement",
         "duration": "About 2–4 weeks",
-        "range": "$2,000 – $6,000",
+        "plain": "Connect AI to your daily tools",
         "short": "AI wired into the systems you already run — with retries, monitoring, and clean failure behavior.",
         "buyers": [
             "Teams with a working model or agent that cannot touch production systems",
@@ -193,7 +192,7 @@ PACKAGES = [
             {"q": "Our system has no API — is this still possible?", "a": "Often, via file drops, database access, email parsing, or adapters. Discovery answers this honestly per system — including when the real answer is fix the system first."},
             {"q": "Do you work with our engineers or instead of them?", "a": "Either, scoped explicitly. The documentation and handover are designed so your team owns the seams afterward."},
             {"q": "What about our security review?", "a": "Scoped service accounts, proper secret storage, and an access trail are defaults — your security team reviews the design as part of handover."},
-            {"q": "How is this priced?", "a": PRICING_NOTE},
+            {"q": "What happens after I get in touch?", "a": TERMS_NOTE},
         ],
     },
     {
@@ -203,7 +202,7 @@ PACKAGES = [
         "icon": "flow",
         "chip": "Assessment engagement",
         "duration": "About 1–2 weeks",
-        "range": "$800 – $1,800",
+        "plain": "Untangle one messy process",
         "short": "Map one messy process end-to-end and find out what to automate, what to fix, and what to leave human.",
         "buyers": [
             "Operations leads with one process everyone complains about",
@@ -252,7 +251,7 @@ PACKAGES = [
             {"q": "How is this different from the AI Readiness Audit?", "a": "Breadth versus depth: the Readiness Audit surveys your whole operation for priorities; this goes deep on one workflow you already know is broken."},
             {"q": "What if the answer is the process, not the AI?", "a": "Then that is the finding — fixing the process first is frequently the cheaper path, and the audit says so in writing."},
             {"q": "Can you implement the redesign?", "a": "Yes, as a follow-on engagement — the scope you receive is written to be executable by us or any competent builder."},
-            {"q": "How is this priced?", "a": PRICING_NOTE},
+            {"q": "What happens after I get in touch?", "a": TERMS_NOTE},
         ],
     },
     {
@@ -262,7 +261,7 @@ PACKAGES = [
         "icon": "users",
         "chip": "Alignment engagement",
         "duration": "About 1–2 weeks",
-        "range": "$500 – $1,000",
+        "plain": "Get your team on the same page",
         "short": "Get leadership aligned on what AI means for this business — with a shared vocabulary and a first plan.",
         "buyers": [
             "Leadership teams split on what to do about AI",
@@ -311,7 +310,7 @@ PACKAGES = [
             {"q": "Is this a demo day?", "a": "No. Demos are cheap theater for decision-making. The briefing is about verifiable capability boundaries — including the embarrassing limits — because those decide your plan."},
             {"q": "Who should attend?", "a": "The people who can commit resources and the people who own the workflows. A room without both produces a plan nobody executes."},
             {"q": "Will we leave with a roadmap?", "a": "You leave with a first plan the room built and a written summary. Turning it into a verified roadmap with data checks is the natural follow-on."},
-            {"q": "How is this priced?", "a": PRICING_NOTE},
+            {"q": "What happens after I get in touch?", "a": TERMS_NOTE},
         ],
     },
 ]
@@ -329,13 +328,13 @@ AUDIENCES = [
         ),
         "needs": [
             "One painful workflow automated, not a platform",
-            "Costs that match a founder budget, scoped in writing",
+            "Small, surgical engagements scoped in writing",
             "Tools that work with free or cheap plans you already use",
             "Honest feasibility calls — you cannot afford a failed build",
         ],
         "engagement": (
-            "Engagements are small and surgical: one workflow, one build, full handover. The written scope "
-            "matters more here than anywhere — it is your protection against paying for vapor. Expect to be "
+            "Engagements are small and surgical: one workflow, one build, full handover. The written plan "
+            "matters more here than anywhere — it is your protection against half-delivered promises. Expect to be "
             "asked hard questions about what is really worth automating first."
         ),
         "packages": ["ai-readiness-audit", "ai-agent-mvp"],
@@ -409,7 +408,7 @@ AUDIENCES = [
             "scenarios for procurement, and phased rollouts with measurable checkpoints. Private deployment "
             "on infrastructure you control is a scoping option, and handover includes the documentation "
             "your platform teams will demand. Commercial structure follows your vendor process — the "
-            "written scope is built to survive it."
+            "written plan is built to survive it."
         ),
         "packages": ["ai-strategy-workshop", "ai-readiness-audit"],
     },

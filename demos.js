@@ -38,7 +38,7 @@
     { id: 'brief-3', doc: 'How to brief an AI system', title: 'Red flags in your own brief', href: 'resources.html#how-to-brief-an-ai-system',
       text: 'If your brief says "like ChatGPT but for our company", it is not a brief yet — it is a genre. If it cannot name a person whose day gets better, the value case is untested. And if every requirement is a must-have, scope discipline has not started.' },
     { id: 'brief-4', doc: 'How to brief an AI system', title: 'What a builder should return', href: 'resources.html#how-to-brief-an-ai-system',
-      text: 'A serious response to a good brief is a written scope: deliverables, boundaries, milestones, and a fixed quote — plus the questions the brief could not answer. If you get a one-line price instead, you have learned something about the builder.' },
+      text: 'A serious response to a good brief is a written plan: deliverables, boundaries, milestones, and terms — plus the questions the brief could not answer. If you get a one-line answer instead, you have learned something about the builder.' },
     /* --- Guide: The automation ladder ---------------------------------------- */
     { id: 'ladder-1', doc: 'The automation ladder', title: 'The ladder', href: 'resources.html#the-automation-ladder',
       text: 'Level one is assist: the system drafts, a human decides. Level two is review-by-exception: the system acts, humans check the flagged cases. Level three is supervised autonomy: the system runs a bounded domain with audit trails. There is no level four on purpose — full autonomy without a human path is not a product anyone should sell you.' },
@@ -56,8 +56,8 @@
     /* --- The engagement process ---------------------------------------------- */
     { id: 'proc-1', doc: 'How an engagement works', title: 'Step 1 — Intro call', href: 'index.html#how-it-works',
       text: 'Thirty minutes on your workflow and whether we are the right builder. An honest no is included: if AI is not the right tool for this workflow, you hear that on the call.' },
-    { id: 'proc-2', doc: 'How an engagement works', title: 'Step 2 — Written scope', href: 'index.html#how-it-works',
-      text: 'Deliverables, boundaries, milestones, and a fixed quote — approved by you before anything is charged. The scope is a document you own and can take anywhere.' },
+    { id: 'proc-2', doc: 'How an engagement works', title: 'Step 2 — Written plan', href: 'index.html#how-it-works',
+      text: 'What gets built, the steps, the timeline, and every term — in one document you approve before anything begins. The plan is yours to keep and can be taken anywhere.' },
     { id: 'proc-3', doc: 'How an engagement works', title: 'Step 3 — Build in milestones', href: 'index.html#how-it-works',
       text: 'Demoable increments; evaluation against your real cases; no big-bang reveal. Each milestone is something you can open and judge.' },
     { id: 'proc-4', doc: 'How an engagement works', title: 'Step 4 — Integrate and harden', href: 'index.html#how-it-works',
@@ -81,18 +81,18 @@
       text: 'Content stops being a heroic scramble. Research-grounded drafting flows through an outline-first pipeline with your style guide encoded and your editors in control: source-grounded drafting, outline-first generation, multi-format expansion.' },
     /* --- Engagements ---------------------------------------------------------- */
     { id: 'pkg-audit', doc: 'Engagements', title: 'AI Readiness Audit', href: 'packages/ai-readiness-audit.html',
-      text: 'A structured assessment of your workflows, data, and tooling that ends in a prioritized, reasoned roadmap — including the honest recommendation to do nothing where nothing is warranted. About 1 week, indicatively $600 – $1,400. Includes an opportunity matrix scoring every candidate workflow on value, feasibility, and risk.' },
+      text: 'A structured assessment of your workflows, data, and tooling that ends in a prioritized, reasoned roadmap — including the honest recommendation to do nothing where nothing is warranted. About 1 week. Includes an opportunity matrix scoring every candidate workflow on value, feasibility, and risk.' },
     { id: 'pkg-mvp', doc: 'Engagements', title: 'AI Agent MVP', href: 'packages/ai-agent-mvp.html',
-      text: 'A working agent for your highest-value workflow — deployed, connected, evaluated, and handed over. About 4–6 weeks, indicatively $3,500 – $9,000. Milestones you can demo, evaluation against your real cases, and complete handover of code and documentation.' },
+      text: 'A working agent for your highest-value workflow — deployed, connected, evaluated, and handed over. About 4–6 weeks. Milestones you can demo, evaluation against your real cases, and complete handover of code and documentation.' },
     { id: 'pkg-sprint', doc: 'Engagements', title: 'AI Integration Sprint', href: 'packages/ai-integration-sprint.html',
-      text: 'AI wired into the systems you already run — with retries, monitoring, and clean failure behavior. About 2–4 weeks, indicatively $2,000 – $6,000. Monitored, documented integrations that survive the boring days, not just the demo.' },
+      text: 'AI wired into the systems you already run — with retries, monitoring, and clean failure behavior. About 2–4 weeks. Monitored, documented integrations that survive the boring days, not just the demo.' },
     { id: 'pkg-waa', doc: 'Engagements', title: 'Workflow Automation Audit', href: 'packages/workflow-automation-audit.html',
-      text: 'Map one messy process end-to-end and find out what to automate, what to fix, and what to leave human. About 1–2 weeks, indicatively $800 – $1,800. Ends in a scoped process redesign you own.' },
+      text: 'Map one messy process end-to-end and find out what to automate, what to fix, and what to leave human. About 1–2 weeks. Ends in a scoped process redesign you own.' },
     { id: 'pkg-workshop', doc: 'Engagements', title: 'AI Strategy Workshop', href: 'packages/ai-strategy-workshop.html',
-      text: 'Get leadership aligned on what AI means for this business — with a shared vocabulary and a first plan. About 1–2 weeks, indicatively $500 – $1,000. Ends in a first plan the room built together.' },
+      text: 'Get leadership aligned on what AI means for this business — with a shared vocabulary and a first plan. About 1–2 weeks. Ends in a first plan the room built together.' },
     /* --- Honest answers ------------------------------------------------------- */
-    { id: 'faq-price', doc: 'Honest answers', title: 'How ReWoo prices', href: 'index.html#faq',
-      text: 'Indicative durations and price ranges are published on the engagements page — labeled estimates, so you can filter by budget before any call. The final number is always a fixed quote inside a written scope, set after discovery, and nothing is charged before you approve that document.' },
+    { id: 'faq-price', doc: 'Honest answers', title: 'How ReWoo pricing works', href: 'index.html#faq',
+      text: 'ReWoo engagements have no published price list — every project is different. A short call about your work, then a written plan with the full terms; the price is fixed inside that plan, and nothing begins until you approve it.' },
     { id: 'faq-feas', doc: 'Honest answers', title: 'If the build is not feasible', href: 'index.html#faq',
       text: 'You learn it early and in writing. Milestone structure and evaluation reports are designed to surface failure before it becomes expensive — including a stop recommendation when the quality bar cannot be met.' },
     { id: 'faq-own', doc: 'Honest answers', title: 'Who owns the code and data', href: 'index.html#faq',
@@ -645,14 +645,14 @@
 
       var readiness = clamp(Math.round((clarity + dataReady + integration) / 3), 10, 95);
 
-      /* -- engagement + range -------------------------------------------------- */
-      var engagement, duration, range, pkgHref;
+      /* -- engagement ------------------------------------------------------------ */
+      var engagement, duration, pkgHref;
       if (!primary || clarity < 45 || readiness < 45) {
-        engagement = 'AI Readiness Audit'; duration = 'about 1 week'; range = '$600 – $1,400'; pkgHref = 'packages/ai-readiness-audit.html';
+        engagement = 'AI Readiness Audit'; duration = 'about 1 week'; pkgHref = 'packages/ai-readiness-audit.html';
       } else if (integration < 45) {
-        engagement = 'AI Integration Sprint'; duration = 'about 2–4 weeks'; range = '$2,000 – $6,000'; pkgHref = 'packages/ai-integration-sprint.html';
+        engagement = 'AI Integration Sprint'; duration = 'about 2–4 weeks'; pkgHref = 'packages/ai-integration-sprint.html';
       } else {
-        engagement = 'AI Agent MVP'; duration = 'about 4–6 weeks'; range = '$3,500 – $9,000'; pkgHref = 'packages/ai-agent-mvp.html';
+        engagement = 'AI Agent MVP'; duration = 'about 4–6 weeks'; pkgHref = 'packages/ai-agent-mvp.html';
       }
 
       /* -- render ---------------------------------------------------------------- */
@@ -694,21 +694,21 @@
       /* scope draft */
       var draft = el('div', 'sg-draft');
       draft.setAttribute('data-animate-in', '');
-      draft.appendChild(el('h3', 'sg-sub-t', 'Draft written scope'));
-      var scopeText = buildScopeText(rawText, primary, secondary, engagement, duration, range, langs, team, onprem, where, touch, readiness);
+      draft.appendChild(el('h3', 'sg-sub-t', 'Draft written plan'));
+      var scopeText = buildScopeText(rawText, primary, secondary, engagement, duration, langs, team, onprem, where, touch, readiness);
       var pre = el('pre', 'sg-pre');
       pre.id = 'sg-scope-text';
       pre.textContent = scopeText;
       draft.appendChild(pre);
 
       var actions = el('div', 'sg-actions');
-      var copyBtn = el('button', 'btn btn--outline', 'Copy this scope');
+      var copyBtn = el('button', 'btn btn--outline', 'Copy this plan');
       copyBtn.type = 'button';
       copyBtn.addEventListener('click', function () {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(scopeText).then(function () {
             copyBtn.textContent = 'Copied ✓';
-            window.setTimeout(function () { copyBtn.textContent = 'Copy this scope'; }, 2000);
+            window.setTimeout(function () { copyBtn.textContent = 'Copy this plan'; }, 2000);
           });
         }
       });
@@ -733,17 +733,17 @@
       draft.appendChild(actions);
 
       var fine = el('p', 'sg-fine',
-        'Generated in your browser by a transparent heuristic — an assistant, not a quote. The real scope is written by a human after a call, and it is yours to take anywhere. Indicative ranges match the published engagements page.');
+        'Generated in your browser by a transparent heuristic — an assistant, not a salesperson. The real plan is written by a human after a call, and it is yours to take anywhere.');
       draft.appendChild(fine);
       outPanel.appendChild(draft);
 
       outPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function buildScopeText(rawText, primary, secondary, engagement, duration, range, langs, team, onprem, where, touch, readiness) {
+    function buildScopeText(rawText, primary, secondary, engagement, duration, langs, team, onprem, where, touch, readiness) {
       var L = [];
-      L.push('DRAFT SCOPE — generated with the ReWoo Scope Generator');
-      L.push('Draft v0 · not a quote · prepared for human review');
+      L.push('DRAFT PLAN — generated with the ReWoo Scope Generator');
+      L.push('Draft v0 · a starting point · prepared for human review');
       L.push('');
       L.push('1. OBJECTIVE');
       L.push(rawText);
@@ -753,7 +753,7 @@
         L.push('Primary: ' + primary.family + ' (rewoo.tech/' + primary.href + ')');
         if (secondary) L.push('Secondary: ' + secondary.family);
       } else {
-        L.push('No strong signal detected. Recommendation: start with an AI Readiness Audit — the first call maps the workflow properly before any build is priced.');
+        L.push('No strong signal detected. Recommendation: start with an AI Readiness Audit — the first call maps the workflow properly before anything is built.');
       }
       L.push('');
       L.push('3. DRAFT IN-SCOPE ITEMS');
@@ -784,10 +784,10 @@
       L.push('- If the quality bar cannot be met, you get a stop recommendation — not a soft landing.');
       L.push('');
       L.push('7. INDICATIVE SHAPE');
-      L.push('Engagement: ' + engagement + ' · ' + duration + ' · indicatively ' + range + ' (estimate; fixed quote comes at scope sign-off)');
+      L.push('Engagement: ' + engagement + ' · ' + duration + ' · terms agreed in the written plan you approve');
       L.push('Team size: ' + team + ' · systems to touch: ' + touch + ' · languages: ' +
         (langs === 'both' ? 'English + Bangla' : langs === 'bn' ? 'Bangla' : 'English'));
-      if (onprem) L.push('Deployment note: data cannot leave your infrastructure — private or on-premise delivery will be planned in the scope.');
+      if (onprem) L.push('Deployment note: data cannot leave your infrastructure — private or on-premise delivery will be planned in the written plan.');
       L.push('');
       L.push('8. OPEN QUESTIONS FOR THE FIRST CALL');
       if (where === 'unsure') L.push('- Where does this work live today (tools, files, people)?');

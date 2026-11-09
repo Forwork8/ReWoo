@@ -292,7 +292,7 @@ TECH = {
             ("Asset spine", "Every asset stores its generation parameters, template ID and approval trail in a queryable store. Provenance is data, not folklore."),
         ],
         "eval": [
-            ("Brand-rule pass rate", "Automated checks measure how much of a batch survives your rules before human review; the acceptance threshold is set in the written scope."),
+            ("Brand-rule pass rate", "Automated checks measure how much of a batch survives your rules before human review; the acceptance threshold is set in the written plan."),
             ("Golden set regression", "A reference set of approved and rejected images is agreed up front and re-scored whenever templates or model versions change."),
         ],
         "ops": [
@@ -406,7 +406,7 @@ TECH = {
             ("Audit state", "Full state and transcript persisted per run, so any action can be reconstructed after the fact."),
         ],
         "eval": [
-            ("Task-level acceptance", "A defined set of real tasks with expected outcomes, scored end to end — agreed in the written scope."),
+            ("Task-level acceptance", "A defined set of real tasks with expected outcomes, scored end to end — agreed in the written plan."),
             ("Escalation correctness", "When the agent must stop and hand to a human is tested as rigorously as what it does."),
         ],
         "ops": [
@@ -599,7 +599,7 @@ TECH = {
     },
     "ai-agent-mvp": {
         "stack": [
-            ("Milestone shape", "Discovery, written scope, build in demoable increments, shadow run, pilot handover — each gate has entry criteria."),
+            ("Milestone shape", "Discovery, written plan, build in demoable increments, shadow run, pilot handover — each gate has entry criteria."),
             ("Evaluation harness", "The task set and escalation paths are tested continuously during the build, not bolted on at the end."),
             ("Pilot instrumentation", "Usage, success rate and cost are measured from the first real task, so the review reads numbers, not vibes."),
         ],

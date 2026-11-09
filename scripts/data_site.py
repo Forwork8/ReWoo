@@ -15,7 +15,7 @@ SITE = {
     "tagline": "AI systems, scoped and shipped.",
     "description": (
         "ReWoo is the AI studio you can audit: live demos you can open, a retrieval benchmark you can re-run, "
-        "a written scope before anything is charged, and complete handover. Agents, pipelines, and retrieval "
+        "a written plan before anything begins, and complete handover. Agents, pipelines, and retrieval "
         "systems that fit the tools you already run — and then the keys are yours."
     ),
     "email": "hello@rewoo.tech",
@@ -34,7 +34,7 @@ HOME = {
         "sub": (
             "ReWoo designs and builds AI systems that take real work off your team — agents, pipelines, and "
             "retrieval, living inside the tools you already run. Every claim here is checkable: two demos you "
-            "can open, a benchmark you can re-run, a written scope before anything is charged. Your code. Your "
+            "can open, a benchmark you can re-run, a written plan before anything begins. Your code. Your "
             "data. Your keys."
         ),
         "cta_primary": {"label": "Message on WhatsApp", "href": "contact.html"},
@@ -43,7 +43,7 @@ HOME = {
             {"v": "2", "l": "live demos on this site — open them, no signup"},
             {"v": "1", "l": "first-author research publication — Bengali speaker diarization"},
             {"v": "Master", "l": "Kaggle rank — competition-verified"},
-            {"v": "100%", "l": "of engagements begin with a written scope"},
+            {"v": "100%", "l": "of engagements begin with a written plan"},
         ],
     },
     "proof": {
@@ -66,7 +66,7 @@ HOME = {
         "headline": "A small studio with a narrow focus: <em>systems that hold up.</em>",
         "body": [
             "ReWoo is an independent AI systems studio based in Dhaka, Bangladesh, working with teams anywhere. We design and build scoped systems — not decks, not demos, not a platform you rent forever.",
-            "The studio runs on three commitments you can check: every engagement begins with a written scope; every build hands over code, configuration, and documentation you own; and every claim on this site is either verifiable or clearly marked as an offer, not a history.",
+            "The studio runs on three commitments you can check: every engagement begins with a written plan; every build hands over code, configuration, and documentation you own; and every claim on this site is either verifiable or clearly marked as an offer, not a history.",
         ],
         "link": {"label": "More about the studio", "href": "about.html"},
     },
@@ -103,7 +103,7 @@ HOME = {
         "headline": "What we can verify, and what we will not claim.",
         "verified": [
             {"t": "This site is the studio's own work", "d": "Designed and built by ReWoo — static, fast, accessible in both themes, with no framework theater."},
-            {"t": "Every scope is written", "d": "No engagement starts without a scope document you approved — deliverables, milestones, and a fixed quote."},
+            {"t": "Every scope is written", "d": "No engagement starts without a written plan you approved — what gets built, the timeline, and the terms in one document."},
             {"t": "You own what gets built", "d": "Code, configuration, credentials, and documentation transfer at handover. No lock-in."},
             {"t": "We say no", "d": "Feasibility calls are honest, in writing, including when the right answer is not to build."},
         ],
@@ -137,7 +137,7 @@ HOME = {
         "headline": "Five steps. No mystery.",
         "steps": [
             {"t": "Intro call", "d": "Thirty minutes on your workflow and whether we are the right builder. Honest no included."},
-            {"t": "Written scope", "d": "Deliverables, boundaries, milestones, and a fixed quote — approved by you before anything is charged."},
+            {"t": "Written plan", "d": "What gets built, the steps, the timeline, and every term — in one document you approve before anything begins."},
             {"t": "Build in milestones", "d": "Demoable increments; evaluation against your real cases; no big-bang reveal."},
             {"t": "Integrate and harden", "d": "Wired into your stack with logging, monitoring, and failure behavior designed in."},
             {"t": "Hand over", "d": "Code, configuration, docs, runbook, and a working session. You own it from day one."},
@@ -160,7 +160,7 @@ HOME = {
         "headline": "Asked often.",
         "items": [
             {"q": "Do you run ready-made AI products we can subscribe to?", "a": "Not yet — and the order of operations is deliberate. ReWoo builds scoped systems to order, and productizes what the work proves out: the AI Scope Generator and the live demos on this site are the studio's own product work, built in public. When an exploration earns it, it ships with the same evaluation and handover discipline as a client build. Products generate evidence — that is the direction."},
-            {"q": "How do you price?", "a": "Indicative durations and price ranges are published on the engagements page — labeled estimates, so you can filter by budget before any call. The final number is always a fixed quote inside a written scope, set after discovery, and nothing is charged before you approve that document."},
+            {"q": "How does pricing work?", "a": "There is no price list on this site, because no two projects are the same. Instead: a short call about your work, then a written plan — what gets built, the timeline, and the full terms in one document. You approve it before anything begins, and it is yours to take anywhere."},
             {"q": "What if the build is not feasible?", "a": "You learn it early and in writing. Milestone structure and evaluation reports are designed to surface failure before it becomes expensive — including a stop recommendation when the bar cannot be met."},
             {"q": "Who owns the code and data?", "a": "You do. Handover transfers the repository, configuration, credentials, and documentation. There is no hostage-taking and no recurring dependency unless you explicitly scope support."},
             {"q": "Where is the team based?", "a": "Dhaka, Bangladesh — an independent studio working with teams anywhere. The current site you are reading, including its live demos and the retrieval benchmark, was designed and built in-house."},
@@ -182,7 +182,7 @@ ABOUT = {
         "headline": "The person who scopes it <em>is the person who builds it.</em>",
         "paras": [
             "ReWoo is run by Adil, an AI systems engineer from Dhaka, Bangladesh. Before the studio there was research: a first-author publication on Bengali speaker diarization — the problem of deciding who spoke when in audio — and a Kaggle Master rank earned in open competition. Both taught the same lesson the studio now sells: claims should be measured, evaluated, and falsifiable.",
-            "The studio's first client engagement was delivered for a team in the United Kingdom, and the shape of that work set the template every engagement still follows: a written scope before anything was charged, a system built around the client's own stack, and a complete handover.",
+            "The studio's first client engagement was delivered for a team in the United Kingdom, and the shape of that work set the template every engagement still follows: a written plan before anything began, a system built around the client's own stack, and a complete handover.",
             "Staying deliberately small is the design, not a stage. One mind carries your system from first call to handover — no account managers, no hand-offs, no telephone game between the person who promised and the person who builds. The constraint keeps every claim on this site checkable, because the person making it signs the work.",
         ],
         "facts": [
@@ -202,7 +202,7 @@ ABOUT = {
         "headline": "Started in Dhaka. Built for anywhere.",
         "paras": [
             "ReWoo started in Dhaka, Bangladesh — founded by a builder with a first-author research paper, a Kaggle Master rank, and a first client in the United Kingdom. The studio's origin is its method: work that survives scrutiny, delivered from a place global players do not reach.",
-            "Today ReWoo designs and builds AI systems for teams at every stage — from a founder automating their first workflow to enterprises with governance requirements. What has not changed is the shape of the work: a written scope, a system built around the client's own stack, and a complete handover.",
+            "Today ReWoo designs and builds AI systems for teams at every stage — from a founder automating their first workflow to enterprises with governance requirements. What has not changed is the shape of the work: a written plan, a system built around the client's own stack, and a complete handover.",
             "The studio stays deliberately small. The person who scopes your system is the person who builds it, evaluates it, and hands it over. That constraint is a feature: it keeps every claim on this site checkable, because the person making it signs the work.",
         ],
     },
@@ -210,7 +210,7 @@ ABOUT = {
         "overline": "How we work",
         "headline": "Five commitments, <em>in writing.</em>",
         "items": [
-            {"t": "Scope before build", "d": "No engagement begins without a written scope: deliverables, boundaries, milestones, fixed quote. Approved by you, or it does not happen."},
+            {"t": "Plan before build", "d": "No engagement begins without a written plan: what gets built, the steps, the timeline, and every term. Approved by you, or it does not happen."},
             {"t": "Own your system", "d": "Code, configuration, credentials, and documentation transfer at handover. Lock-in is a business model we decline."},
             {"t": "Evaluate, then say it straight", "d": "Systems are scored against your real cases, failures included. If the bar cannot be met, you get a stop recommendation, not a soft landing."},
             {"t": "Design for the boring days", "d": "Retries, idempotency, logs, alerts, runbooks, and human exception queues — the unglamorous engineering that keeps systems alive after the demo."},
@@ -257,7 +257,7 @@ RESOURCES = {
                     "If your brief says 'like ChatGPT but for our company', it is not a brief yet — it is a genre. If it cannot name a person whose day gets better, the value case is untested. And if every requirement is a must-have, scope discipline has not started.",
                 ]},
                 {"h": "What a builder should return", "paras": [
-                    "A serious response to a good brief is a written scope: deliverables, boundaries, milestones, and a fixed quote — plus the questions the brief could not answer. If you get a one-line price instead, you have learned something about the builder.",
+                    "A serious response to a good brief is a written plan: deliverables, boundaries, milestones, and terms — plus the questions the brief could not answer. If you get a one-line answer instead, you have learned something about the builder.",
                 ]},
             ],
         },
@@ -290,7 +290,7 @@ RESOURCES = {
                     "Evaluation: scoring the system against known-good answers, before and after changes. Guardrail: a hard rule the system cannot cross — an approval gate, a banned action, a required human step. Latency: how long the system takes to respond, which for voice is the difference between natural and unbearable.",
                 ]},
                 {"h": "Why the vocabulary matters", "paras": [
-                    "Vague terms make vague contracts. When you can say 'a review-by-exception agent with two tools and a human approval gate on refunds', you can get a scoped build and a fixed price. When you say 'an AI that handles customer service', you get whatever the vendor felt like that morning.",
+                    "Vague terms make vague contracts. When you can say 'a review-by-exception agent with two tools and a human approval gate on refunds', you can get a scoped build with clear terms. When you say 'an AI that handles customer service', you get whatever the vendor felt like that morning.",
                 ]},
             ],
         },
@@ -342,10 +342,10 @@ CONTACT = {
             "label": "Send an NDA before we discuss details",
             "hint": "Tick this and the draft asks for your standard NDA first — or ours. Nothing sensitive is discussed before it is signed.",
         },
-        "budget": {
-            "id": "budget",
-            "label": "Budget basis (optional)",
-            "options": ["Not sure yet", "Just exploring", "Under $1k", "$1k – $5k", "$5k – $15k", "$15k+", "Prefer to discuss"],
+        "size": {
+            "id": "size",
+            "label": "Project size (optional)",
+            "options": ["Not sure yet", "A small first step", "A focused project", "A larger build", "Prefer to discuss"],
         },
         "submit": "Compose email draft",
         "review_note": "Review the draft below — then open it in your email app or copy it. Nothing sends itself, and nothing is stored on this site.",
@@ -379,6 +379,6 @@ CONTACT = {
         {"q": "Will I talk to a salesperson or an engineer?", "a": "An engineer. ReWoo is a studio, not a sales organization — the person who answers is the person who would scope and build."},
         {"q": "What should I prepare for the call?", "a": "One workflow that hurts and, if you have it, an example of done-right. That is genuinely enough for a first conversation."},
         {"q": "Do you sign NDAs?", "a": "Yes, routinely — say the word and we will use yours or provide a standard one before anything sensitive is discussed."},
-        {"q": "What happens after the call?", "a": "If there is a fit, you receive a written scope: deliverables, boundaries, milestones, and a fixed quote. Approving it is entirely your decision, in your time."},
+        {"q": "What happens after the call?", "a": "If there is a fit, you receive a written plan: what gets built, the steps, the timeline, and every term — in one document. Approving it is entirely your decision, in your time."},
     ],
 }

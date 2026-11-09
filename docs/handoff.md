@@ -241,6 +241,56 @@ Owner-directed: the "Brief" count pill is gone from the site navigation on every
 - **Verified:** 53 pages scanned — 0 broken links, 0 placeholders, deploy-safe scan clean; DOM checks on
   home / voice-intelligence / contact confirm no pill, add→toggle→contact-list flow intact; 0 console errors.
 
+## Revision 8 — 2026-11-10 (prices out of the UI; plain-language pass for non-technical readers)
+
+Owner-directed: **no prices anywhere in the UI**, and the site must read and work for non-technical
+visitors — see it, understand it, act on it.
+
+### Prices removed (zero dollar figures / price language in served pages)
+
+- **Everywhere**: the five engagement price ranges ($600–$9,000 bands) are gone from the nav mega menus,
+  the homepage engagements strip, the packages hub cards, the comparison table ("Indicative range" row
+  deleted), and the package-page hero badges. Durations stay ("About 1 week") — helpful, not a price.
+- **Scope Generator**: no longer emits an "indicative budget range" in the draft's section 7; the page copy
+  and FAQs no longer mention price ranges. Output says "terms agreed in the written plan you approve".
+- **Contact form**: the "Budget basis" dropdown ($1k–$15k+ bands) is replaced by **"Project size"** with
+  plain options ("A small first step / A focused project / A larger build"); the email draft line follows.
+- **Copy sweep**: "fixed quote", "one-line price", "budget band", "(est.)", "before anything is charged",
+  "Request scope", "Start a scope", and the old pricing FAQ answers are rewritten across all templates,
+  data modules, JSON-LD, and README. The pricing FAQ is now: "How does pricing work? — There is no price
+  list on this site… you approve the written plan before anything begins."
+- **Legacy `solutions.html`**: the "~$1,200 ReWoo implementation cost baseline" and the "x ROI payback"
+  metric are removed from the savings calculator (replaced with "Yearly Hours Back"). The remaining $35/hr
+  and $-saved figures are the **visitor's own** payroll numbers, not ReWoo prices — flagged here so the
+  owner can decide if even those should go.
+- **`order-desk/`** demo garment prices are untouched domain data of that internal demo app.
+
+### Plain-language pass (non-technical readers)
+
+- **Nav**: package subs are now human outcomes — "Find your best first step", "Your first working AI
+  assistant", "Connect AI to your daily tools", "Untangle one messy process", "Get your team on the same
+  page". Nav CTA is **"Plan your project →"** (was "Start a scope →").
+- **Vocabulary unified on "written plan"** (was "written scope"/"fixed quote"): homepage steps, stat band,
+  hero sub, about/proof/security/resources/roadmap, package pages, capability CTAs, audience pages,
+  JSON-LD, and the demo corpus. The Scope Generator keeps its product name but everything around it says
+  "plan": H1 "Describe the work. Get a draft plan.", button "Generate draft plan →", output "DRAFT PLAN".
+- **Packages hub**: hero says "Not sure where to begin? That is normal…"; comparison table rows renamed to
+  "Type / Format / Time it takes / In one line / Best first when / You walk away with / Leads naturally
+  to"; package badges now "Written plan first" + "You approve before work starts"; CTAs "Start with a
+  call".
+- Also fixed while there: roadmap said "16-question benchmark" (it is 19) — corrected.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| Build | 50 pages + sitemap + robots, clean |
+| Price sweep | 0 pricing phrases in served HTML; only $ figures left are the visitor's own savings calculator inputs on legacy `solutions.html` (noted above) |
+| Link integrity / placeholders / deploy safety | 0 / 0 / clean (automated) |
+| Retrieval benchmark | **Identical after corpus edits**: Hit@1 68.4%, Hit@3 84.2%, MRR 0.76, 3 honest misses (Node re-run) — the faq-price passage keeps "price" vocabulary but no figures, so the published numbers remain true |
+| Functional (browser) | Scope generator end-to-end: draft renders, no $, "DRAFT PLAN" header, "terms agreed in the written plan"; contact form composes "Project size:" line; mega menus show plain outcomes; 0 console errors on all tested pages |
+| CTA consistency | "Plan your project →" (nav+mobile), "Get an instant plan →" (hero), "Start with a call →" (package pages), "Generate draft plan →" (generator) |
+
 ## Security note (still true)
 
 The GitHub token used for this work was shared in chat. It is not written into any file in this repository —

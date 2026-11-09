@@ -1867,15 +1867,13 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 24px); }
 .flag-card__ctas { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-2); align-items: center; }
 .sys-grid--five { grid-template-columns: repeat(3, 1fr); }
 
-/* ---- Package meta (duration + range) ------------------------------------------------------ */
+/* ---- Package meta (duration pill) ------------------------------------------------------ */
 
 .pkg-mini__meta { display: flex; align-items: center; gap: var(--sp-3); margin-top: var(--sp-4); flex-wrap: wrap; }
-.pkg-mini__dur, .pkg-mini__range {
+.pkg-mini__dur {
   font-family: var(--font-body); font-size: 0.78rem; font-weight: 600;
   padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--dim);
 }
-.pkg-mini__range { color: var(--accent); border-color: rgba(110, 151, 255, 0.35); background: rgba(110, 151, 255, 0.06); }
-.pkg-mini__range em { font-style: normal; font-weight: 400; opacity: 0.75; }
 .pkg-card__meta { display: flex; gap: var(--sp-3); margin: var(--sp-3) 0; flex-wrap: wrap; }
 
 /* ---- Mobile drawer direct links -------------------------------------------------------------- */

@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var resHours = document.getElementById('res-hours');
   var resMoney = document.getElementById('res-money');
-  var resRoi = document.getElementById('res-roi');
+  var resYear = document.getElementById('res-year');
 
   function calculateROI() {
     if (!sliderHours || !sliderTeam || !sliderRate) return;
@@ -243,13 +243,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var monthlyHoursSaved = Math.round(hours * 4 * team);
     var monthlyCostSaved = Math.round(monthlyHoursSaved * rate);
 
-    // Typical ReWoo implementation cost baseline (~$1,200)
-    var estimatedBuildCost = 1200;
-    var roiMultiplier = (monthlyCostSaved / estimatedBuildCost).toFixed(1);
-
     if (resHours) resHours.textContent = monthlyHoursSaved.toLocaleString() + ' hrs';
     if (resMoney) resMoney.textContent = '$' + monthlyCostSaved.toLocaleString();
-    if (resRoi) resRoi.textContent = roiMultiplier + 'x ROI';
+    if (resYear) resYear.textContent = (monthlyHoursSaved * 12).toLocaleString() + ' hrs';
   }
 
   if (sliderHours) sliderHours.addEventListener('input', calculateROI);

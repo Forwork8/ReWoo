@@ -9,7 +9,7 @@ not an off-the-shelf SaaS subscription. No invented metrics, clients, or claims.
 FORMAT_NOTE = (
     "Scoped build. This is a solution family ReWoo designs and builds to order — not an "
     "off-the-shelf subscription. Every deployment is shaped around your stack, your data "
-    "rules, and your team, and the scope is written down before anything is charged."
+    "rules, and your team, and the plan is written down before anything begins."
 )
 
 SYSTEMS = [
@@ -198,7 +198,7 @@ SYSTEMS = [
         "faqs": [
             {"q": "Does this replace our 3D artists?", "a": "No — it front-loads direction-finding. Final, deliverable-grade visualization stays with your production process; this is for the decisions that happen before that budget is spent."},
             {"q": "Can it stay faithful to an actual plan?", "a": "Within limits we test together during scoping. Geometry fidelity has real constraints; we will tell you honestly what your inputs can support before you commit."},
-            {"q": "Who owns the visuals?", "a": "You do — outputs and the pipeline configuration, per the written scope."},
+            {"q": "Who owns the visuals?", "a": "You do — outputs and the pipeline configuration, per the written plan."},
         ],
     },
     {

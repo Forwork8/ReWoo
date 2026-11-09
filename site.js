@@ -530,7 +530,7 @@
       var email = fieldEl('email').value.trim();
       var company = fieldEl('company') ? fieldEl('company').value.trim() : '';
       var interest = fieldEl('interest').value.trim();
-      var budget = fieldEl('budget') ? fieldEl('budget').value : '';
+      var size = fieldEl('size') ? fieldEl('size').value : '';
       var nda = fieldEl('nda');
       var files = fieldEl('files');
 
@@ -546,9 +546,9 @@
       lines.push('');
       lines.push("What we're working on:");
       lines.push(interest);
-      if (budget) {
+      if (size) {
         lines.push('');
-        lines.push('Budget basis: ' + budget);
+        lines.push('Project size: ' + size);
       }
       if (nda && nda.checked) {
         lines.push('');

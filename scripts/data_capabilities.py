@@ -799,7 +799,7 @@ CAPABILITIES = [
             "The hypothesis you are testing",
             "Access to real or representative users",
             "Design references or brand assets if they exist",
-            "Constraints: budget band, timeline needs, compliance",
+            "Constraints: the tools you use, timeline needs, compliance",
         ],
         "deliverables": [
             "Deployed MVP on production infrastructure",

@@ -23,7 +23,7 @@ sys.path.insert(0, HERE)
 from data_systems import SYSTEMS, FORMAT_NOTE                      # noqa: E402
 from data_capabilities import CAPABILITIES, CAPABILITY_GROUPS      # noqa: E402
 from data_industries import INDUSTRIES                            # noqa: E402
-from data_packages import PACKAGES, AUDIENCES, DEPARTMENTS, PRICING_NOTE  # noqa: E402
+from data_packages import PACKAGES, AUDIENCES, DEPARTMENTS, TERMS_NOTE  # noqa: E402
 from data_site import SITE, HOME, ABOUT, RESOURCES, CONTACT       # noqa: E402
 from data_depth import PLAIN, TECH                                # noqa: E402
 
@@ -244,11 +244,11 @@ def tech_section(slug, path, kind="system"):
     if kind == "package":
         heads = (("Method", d["stack"]), ("Acceptance criteria", d["eval"]), ("You receive", d["ops"]))
         overline, title, sub = ("For technical evaluators", "How this engagement actually runs.",
-                                "The method behind the offer — what is measured, what “done” means, and what lands in your hands. Terms are finalized per engagement in the written scope.")
+                                "The method behind the offer — what is measured, what “done” means, and what lands in your hands. Terms are finalized per engagement in the written plan.")
     else:
         heads = (("Architecture", d["stack"]), ("Evaluation & acceptance", d["eval"]), ("Operations", d["ops"]))
         overline, title, sub = ("For technical evaluators", "Under the hood.",
-                                "Architecture, evaluation and operations — the engineering substance behind the offer. Final choices are set per engagement, in the written scope.")
+                                "Architecture, evaluation and operations — the engineering substance behind the offer. Final choices are set per engagement, in the written plan.")
     cards = []
     for head, items in heads:
         lis = "".join('<li><strong>%s.</strong> %s</li>' % (esc(t), esc(x)) for t, x in items)
@@ -405,13 +405,13 @@ FLAGSHIPS = ("voice-intelligence", "knowledge-retrieval")
 def nav(path, active=None):
     systems_items = [{"label": s["name"], "sub": ("★ Live demo" if s["slug"] in FLAGSHIPS else s["category"]),
                       "href": "systems/%s.html" % s["slug"]} for s in SYSTEMS]
-    pkgs_items = [{"label": p["name"], "sub": "%s · %s (est.)" % (p["duration"], p["range"]),
+    pkgs_items = [{"label": p["name"], "sub": p["plain"],
                    "href": "packages/%s.html" % p["slug"]} for p in PACKAGES]
     proof_items = [
         {"label": "Voice Intelligence demo", "sub": "Live — runs in your browser", "href": "demo-voice.html"},
         {"label": "Knowledge Search demo", "sub": "Live — clickable citations", "href": "demo-search.html"},
         {"label": "Retrieval benchmark", "sub": "19 questions — re-run it yourself", "href": "demo-search.html#benchmark"},
-        {"label": "AI Scope Generator", "sub": "Draft a written scope in 60 seconds", "href": "scope-generator.html"},
+        {"label": "AI Scope Generator", "sub": "Draft your project plan in 60 seconds", "href": "scope-generator.html"},
         {"label": "Case study — UK first client", "sub": "In preparation, pending sign-off", "href": "proof.html#case-study"},
         {"label": "Security & data handling", "sub": "Where your data lives, in writing", "href": "security.html"},
         {"label": "Public roadmap", "sub": "What ships next, in the open", "href": "roadmap.html"},
@@ -498,7 +498,7 @@ def nav(path, active=None):
       <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
         <svg id="theme-icon" viewBox="0 0 24 24">{sun}</svg>
       </button>
-      <a href="{scope_link}" class="nav__cta">Start a scope →</a>
+      <a href="{scope_link}" class="nav__cta">Plan your project →</a>
     </div>
     <button class="nav__hamburger" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
@@ -516,7 +516,7 @@ def nav(path, active=None):
         <span id="mobile-theme-text">Switch to Light Mode</span>
       </button>
     </div>
-    <a href="{scope_link}" class="nav__cta" id="mn-cta">Start a scope →</a>
+    <a href="{scope_link}" class="nav__cta" id="mn-cta">Plan your project →</a>
   </div>
 </div>
 """.format(home=esc(linkto("index.html", path)), logo=esc(asset("assets/logo.jpg", path)),
@@ -641,7 +641,7 @@ def system_page(s):
                               "are scope decisions, written down before any build.", center=False)
              + arch_flow(s, "systems/%s.html" % s["slug"])
              + steps(s["workflow"]["steps"])
-             + '<p class="workflow-note">Illustrative flow — the real sequence is set in your written scope.</p>'
+             + '<p class="workflow-note">Illustrative flow — the real sequence is set in your written plan.</p>'
              + "</div></section>")
 
     ind_links = "".join('<li><a class="chip chip--link" href="%s">%s</a></li>'
@@ -718,7 +718,7 @@ def capability_page(c):
              + '<div class="split"><div><h3 class="split__t">Integration notes</h3>'
              + chips(c["integrations"], "Integration notes")
              + '<p class="split__d">Final connector list is scoped per engagement against your systems and permissions.</p></div>'
-             + '<div><h3 class="split__t">Next step</h3><p class="split__d">Describe the workflow on a call; the written scope follows.</p>'
+             + '<div><h3 class="split__t">Next step</h3><p class="split__d">Describe the workflow on a call; the written plan follows.</p>'
              + '<a class="btn btn--primary" href="%s">Discuss this project →</a> %s</div></div>'
              % (esc(linkto("contact.html", p)), brief_btn("capability", c["slug"], c["name"]))
              + "</div></section>")
@@ -735,7 +735,7 @@ def capability_page(c):
              + section_header("FAQ", "Asked about this capability.", None, center=False)
              + faq_block(c["faqs"]) + "</div></section>")
     b.append(cta_band("Scope this capability for your workflow.",
-                      "One conversation about the work — then a written scope, a fixed quote, and milestones you can demo.",
+                      "One conversation about the work — then a written plan you approve, and milestones you can demo.",
                       {"label": "Book an intro call", "href": linkto("contact.html", p)},
                       {"label": "All capabilities", "href": linkto("capabilities.html", p)}))
     return "\n".join(b), c["name"] + " — ReWoo Capabilities", (
@@ -792,13 +792,13 @@ def package_page(p):
     path = "packages/%s.html" % p["slug"]
     b = []
     crumb = crumbs([("Home", "index.html"), ("Packages", "packages.html"), (p["name"], None)], path)
-    ctas = ('<a class="btn btn--primary" href="%s">Request scope →</a>'
+    ctas = ('<a class="btn btn--primary" href="%s">Start with a call →</a>'
             '<a class="btn btn--outline" href="%s#compare">Compare engagements</a>'
             % (esc(linkto("contact.html", path)), esc(linkto("packages.html", path))))
     b.append(page_hero("%s engagement" % p["archetype"], esc(p["name"]), p["short"],
-                       badges=[p["chip"], p["duration"], "%s · estimate" % p["range"], "Written scope", "Fixed quote after discovery"],
+                       badges=[p["chip"], p["duration"], "Written plan first", "You approve before work starts"],
                        ctas=ctas, breadcrumb=crumb))
-    b.append(note_band(p["summary"] + " " + PRICING_NOTE, "Terms"))
+    b.append(note_band(p["summary"] + " " + TERMS_NOTE, "How it works"))
     b.append(plain_band(p["slug"], path))
 
     b.append('<section class="section" aria-label="Who it is for"><div class="wrap">'
@@ -838,9 +838,10 @@ def package_page(p):
     b.append('<section class="section" aria-label="FAQ"><div class="wrap">'
              + section_header("FAQ", "Asked about this engagement.", None, center=False)
              + faq_block(p["faqs"]) + "</div></section>")
-    b.append(cta_band("Start with a request for scope.",
-                      "Describe the workflow on a call or in writing — the scope, milestones, and fixed quote follow.",
-                      {"label": "Request scope", "href": linkto("contact.html", path)},
+    b.append(cta_band("Start with a conversation.",
+                      "Tell us what is slowing your team down — on a call or in writing. A written plan with clear steps "
+                      "and terms follows, and nothing begins until you approve it.",
+                      {"label": "Start with a call", "href": linkto("contact.html", path)},
                       {"label": "Compare engagements", "href": linkto("packages.html", path)}))
     return "\n".join(b), p["name"] + " — ReWoo Engagements", (
         "ReWoo %s: %s Scoped engagement with defined outputs and exclusions; terms per engagement."
@@ -996,10 +997,10 @@ def industries_hub():
 def packages_hub():
     p = "packages.html"
     b = []
-    b.append(page_hero("Engagements", "Five ways to start.", 
-                       "Two audits, two builds, one workshop — every engagement ends in something you own, "
-                       "with terms set per engagement in a written scope."))
-    b.append(note_band(PRICING_NOTE, "Terms"))
+    b.append(page_hero("Engagements", "Five ways to start.",
+                       "Not sure where to begin? That is normal — pick the door that fits where you are. Every one "
+                       "ends with a written plan you approve and a system you own."))
+    b.append(note_band(TERMS_NOTE, "How it works"))
     b.append(note_band("Every engagement page opens with an “In plain words” summary for beginners, plus a "
                        "“How this engagement actually runs” section covering method, acceptance criteria and "
                        "deliverables for technical evaluators.", "Start here", variant="start"))
@@ -1010,24 +1011,23 @@ def packages_hub():
                      '<h2 class="pkg-card__t"><a href="%s">%s</a></h2>'
                      '<p class="pkg-card__d">%s</p>'
                      '<p class="pkg-card__buyers"><strong>For:</strong> %s</p>'
-                     '<p class="pkg-card__meta"><span class="pkg-mini__dur">%s</span>'
-                     '<span class="pkg-mini__range">%s <em>(est.)</em></span></p>'
+                     '<p class="pkg-card__meta"><span class="pkg-mini__dur">%s</span></p>'
                      '<div class="pkg-card__ctas"><a class="btn btn--outline" href="%s">View engagement</a>%s</div>'
                      "</article>"
                      % (icon(pk["icon"], "icon"), esc(pk["chip"]),
                         esc(linkto("packages/%s.html" % pk["slug"], p)), esc(pk["name"]), esc(pk["short"]),
                         esc(pk["buyers"][0].lower()),
-                        esc(pk["duration"]), esc(pk["range"]),
+                        esc(pk["duration"]),
                         esc(linkto("packages/%s.html" % pk["slug"], p)),
                         brief_btn("package", pk["slug"], pk["name"], compact=True)))
     b.append('<section class="section" aria-label="Engagements"><div class="wrap">'
              + '<div class="pkg-grid">' + "".join(cards) + "</div></div></section>")
 
     rows = [
-        ("Archetype", [pk["archetype"] for pk in PACKAGES]),
-        ("Shape", [pk["chip"] for pk in PACKAGES]),
-        ("Typical duration", [pk["duration"] for pk in PACKAGES]),
-        ("Indicative range", [pk["range"] + " (est.)" for pk in PACKAGES]),
+        ("Type", [pk["archetype"] for pk in PACKAGES]),
+        ("Format", [pk["chip"] for pk in PACKAGES]),
+        ("Time it takes", [pk["duration"] for pk in PACKAGES]),
+        ("In one line", [pk["plain"] for pk in PACKAGES]),
         ("Best first when", ["You do not know where to start",
                              "One workflow is clearly worth a build",
                              "The model works but cannot touch your systems",
@@ -1048,14 +1048,14 @@ def packages_hub():
         body_rows.append('<tr><th scope="row">%s</th>%s</tr>' % (esc(label), cells))
     b.append('<section class="section section--surface" id="compare" aria-label="Compare engagements"><div class="wrap">'
              + section_header("Comparison", "Five doors into the same discipline.", 
-                              "Every path ends in a written scope and a system you own — the difference is where you start.",
+                              "Every path ends in a written plan you approve and a system you own — the difference is where you start.",
                               center=True)
              + '<div class="table-wrap"><table class="cmp"><thead><tr><th scope="col">Engagement</th>'
              + head_cells + "</tr></thead><tbody>" + "".join(body_rows) + "</tbody></table></div></div></section>")
     b.append(cta_band("Know which one you need?",
-                      "Request scope for an engagement, or start with a call if the fit is unclear.",
-                      {"label": "Request scope", "href": linkto("contact.html", p)},
-                      {"label": "Readiness unclear? Start with the audit", "href": linkto("packages/ai-readiness-audit.html", p)}))
+                      "Start with a call — or pick a door above if you already know where the pain lives.",
+                      {"label": "Start with a call", "href": linkto("contact.html", p)},
+                      {"label": "Not sure? Start with the audit", "href": linkto("packages/ai-readiness-audit.html", p)}))
     return "\n".join(b), "Engagements — Five Ways to Start | ReWoo", (
         "Five ReWoo engagement types: AI Readiness Audit, AI Agent MVP, AI Integration Sprint, "
         "Workflow Automation Audit, and AI Strategy Workshop. Written scopes, terms per engagement.")
@@ -1065,7 +1065,7 @@ def audiences_page():
     p = "who-we-build-for.html"
     b = []
     b.append(page_hero("Who we build for", "Four profiles. <em>One honest process.</em>",
-                       "Engagement needs differ by stage — the written scope, the milestones, and the handover "
+                       "Engagement needs differ by stage — the written plan, the milestones, and the handover "
                        "are the same for everyone."))
     for n, a in enumerate(AUDIENCES):
         pkg_links = "".join('<li><a class="chip chip--link" href="%s">%s</a></li>'
@@ -1223,7 +1223,7 @@ def main():
     written.append(render_template(
         "about.html", "about.html",
         "About — An AI Systems Studio from Dhaka | ReWoo",
-        "ReWoo is an independent AI systems studio in Dhaka, Bangladesh: written scopes, complete handover, "
+        "ReWoo is an independent AI systems studio in Dhaka, Bangladesh: written plans, complete handover, "
         "and honest feasibility — founded by Adil, an engineer with a research publication and a Kaggle Master rank.",
         "about"))
     SITEMAP_PAGES.append(("about.html", "0.8", "monthly"))
@@ -1250,9 +1250,9 @@ def main():
     SITEMAP_PAGES.append(("demo-search.html", "0.8", "weekly"))
     written.append(render_template(
         "scope-generator.html", "scope-generator.html",
-        "AI Scope Generator — Draft a Written Scope in 60 Seconds | ReWoo",
-        "Describe your workflow and get a draft written scope with a readiness read-out and indicative budget "
-        "range — generated in your browser, transparently. An assistant, not a quote.",
+        "AI Scope Generator — Draft Your Project Plan in 60 Seconds | ReWoo",
+        "Describe your workflow and get a draft written plan with a readiness read-out — generated in your "
+        "browser, transparently. An assistant, not a salesperson.",
         "proof"))
     SITEMAP_PAGES.append(("scope-generator.html", "0.9", "weekly"))
     written.append(render_template(
