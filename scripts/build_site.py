@@ -272,6 +272,35 @@ def related_section(title, cards, note=None):
                ('<p class="related-note">%s</p>' % esc(note)) if note else ""))
 
 
+def arch_flow(s, path):
+    """A compact architecture diagram generated from the system's workflow steps —
+    rendered above the detailed steps on every system page."""
+    nodes = []
+    for st in s["workflow"]["steps"]:
+        nodes.append('<li class="arch-node"><span class="arch-node__dot" aria-hidden="true"></span>'
+                     '<span class="arch-node__t">%s</span></li>' % esc(st["t"]))
+    return ('<ol class="arch-flow" aria-label="Pipeline stages at a glance">%s</ol>'
+            % "".join(nodes))
+
+
+def demo_strip(s, path):
+    """Flagship systems carry a live demo — this band links it."""
+    if s["slug"] not in FLAGSHIPS:
+        return ""
+    if s["slug"] == "voice-intelligence":
+        href, label, sub = "demo-voice.html", "Open the Voice Intelligence demo", \
+            "Real browser transcription in Bangla and English, measured latency, and a full pipeline walkthrough — no signup."
+    else:
+        href, label, sub = "demo-search.html", "Open the Knowledge Search demo", \
+            "Citation-first retrieval you can interrogate, plus a published benchmark you re-run yourself — failures included."
+    return ('<section class="demo-strip" aria-label="Live demo"><div class="wrap demo-strip__inner">'
+            '<div><p class="overline overline--accent">Live demo</p>'
+            '<h2 class="demo-strip__t">This system, running now.</h2>'
+            '<p class="demo-strip__d">%s</p></div>'
+            '<a class="btn btn--primary" href="%s">%s →</a></div></section>'
+            % (esc(sub), esc(linkto(href, path)), esc(label)))
+
+
 def faq_jsonld(items):
     return {"@context": "https://schema.org", "@type": "FAQPage",
             "mainEntity": [{"@type": "Question", "name": f["q"],
@@ -370,26 +399,23 @@ def mega_panel(items, panel_id, footer_href, footer_label, path, columns_class="
             % (panel_id, "", columns_class, "".join(lis), foot))
 
 
+FLAGSHIPS = ("voice-intelligence", "knowledge-retrieval")
+
+
 def nav(path, active=None):
-    systems_items = [{"label": s["name"], "sub": s["category"], "href": "systems/%s.html" % s["slug"],
+    systems_items = [{"label": s["name"], "sub": ("★ Live demo" if s["slug"] in FLAGSHIPS else s["category"]),
+                      "href": "systems/%s.html" % s["slug"],
                       "kind": "system"} for s in SYSTEMS]
-    caps_by_group = []
-    for gkey, gname in CAPABILITY_GROUPS:
-        group_caps = [c for c in CAPABILITIES if c["group"] == gkey]
-        caps_by_group.append('<li class="mega__group"><span class="mega__group-label">%s</span>'
-                              '<ul class="mega__list">%s</ul></li>' % (
-                                  esc(gname),
-                                  "".join('<li><a class="mega__item mega__item--tight" href="%s">%s</a></li>'
-                                          % (esc(linkto("capabilities/%s.html" % c["slug"], path)), esc(c["name"]))
-                                          for c in group_caps)))
-    inds_items = [{"label": i["name"], "href": "industries/%s.html" % i["slug"]} for i in INDUSTRIES]
-    pkgs_items = [{"label": p["name"], "sub": p["archetype"] + " engagement",
+    pkgs_items = [{"label": p["name"], "sub": "%s · %s (est.)" % (p["duration"], p["range"]),
                    "href": "packages/%s.html" % p["slug"], "kind": "package"} for p in PACKAGES]
-    more_items = [
-        {"label": "Who we build for", "sub": "Four engagement profiles", "href": "who-we-build-for.html"},
-        {"label": "Departments", "sub": "Find work by team", "href": "departments.html"},
-        {"label": "Resources", "sub": "Guides and notes", "href": "resources.html"},
-        {"label": "Contact", "sub": "Book a call or write", "href": "contact.html"},
+    proof_items = [
+        {"label": "Voice Intelligence demo", "sub": "Live — runs in your browser", "href": "demo-voice.html"},
+        {"label": "Knowledge Search demo", "sub": "Live — clickable citations", "href": "demo-search.html"},
+        {"label": "Retrieval benchmark", "sub": "19 questions — re-run it yourself", "href": "demo-search.html#benchmark"},
+        {"label": "AI Scope Generator", "sub": "Draft a written scope in 60 seconds", "href": "scope-generator.html"},
+        {"label": "Case study — UK first client", "sub": "In preparation, pending sign-off", "href": "proof.html#case-study"},
+        {"label": "Security & data handling", "sub": "Where your data lives, in writing", "href": "security.html"},
+        {"label": "Public roadmap", "sub": "What ships next, in the open", "href": "roadmap.html"},
     ]
 
     def top(label, key, panel, href=None):
@@ -402,22 +428,28 @@ def nav(path, active=None):
                 % (" is-current" if active == key else "", " is-current" if active == key else "",
                    "panel-" + key, esc(label), panel))
 
+    systems_panel = (
+        '<div class="mega__panel" id="panel-systems">'
+        '<ul class="mega__grid">'
+        + "".join('<li><a class="mega__item" href="%s" data-brief-quick="%s">%s</a></li>'
+                  % (esc(linkto(it["href"], path)), esc(it.get("kind", "")),
+                     esc(it["label"]) + '<span class="mega__sub">%s</span>' % esc(it["sub"]))
+                  for it in systems_items)
+        + '</ul>'
+        '<div class="mega__foot mega__foot--multi"><a href="' + esc(linkto("systems.html", path))
+        + '">All systems →</a><a href="' + esc(linkto("capabilities.html", path))
+        + '">Capabilities</a><a href="' + esc(linkto("industries.html", path))
+        + '">Industries</a></div></div>'
+    )
+
     nav_links = "".join([
-        top("Systems", "systems",
-            mega_panel(systems_items, "panel-systems", "systems.html", "All systems", path)),
-        top("Capabilities", "capabilities",
-            '<div class="mega__panel mega__panel--wide" id="panel-capabilities">'
-            '<ul class="mega__grid mega__grid--groups">%s</ul>'
-            '<div class="mega__foot"><a href="%s">All capabilities →</a></div></div>'
-            % ("".join(caps_by_group), esc(linkto("capabilities.html", path)))),
-        top("Industries", "industries",
-            mega_panel(inds_items, "panel-industries", "industries.html", "All industries", path,
-                       columns_class="mega__grid mega__grid--tight")),
+        top("Systems", "systems", systems_panel),
         top("Packages", "packages",
             mega_panel(pkgs_items, "panel-packages", "packages.html", "Compare engagements", path)),
+        top("Proof", "proof",
+            mega_panel(proof_items, "panel-proof", "proof.html", "Everything checkable, one page", path)),
         top("About", "about", None, href="about.html"),
-        top("More", "more",
-            mega_panel(more_items, "panel-more", "contact.html", "Contact", path)),
+        top("Contact", "contact", None, href="contact.html"),
     ])
 
     # Mobile drawer: grouped native <details> sections (works without JS)
@@ -426,17 +458,28 @@ def nav(path, active=None):
                 % (esc(label), "".join('<a href="%s">%s</a>' % (esc(linkto(i["href"], path)), esc(i["label"]))
                                        for i in items_)))
 
+    def mobile_link(label, href):
+        return '<a class="mdirect" href="%s">%s →</a>' % (esc(linkto(href, path)), esc(label))
+
+    more_items = [{"label": c["name"], "href": "capabilities/%s.html" % c["slug"]} for c in CAPABILITIES] \
+        + [{"label": "All capabilities", "href": "capabilities.html"}] \
+        + [{"label": i["name"], "href": "industries/%s.html" % i["slug"]} for i in INDUSTRIES] \
+        + [{"label": "All industries", "href": "industries.html"}] \
+        + [
+            {"label": "Who we build for", "href": "who-we-build-for.html"},
+            {"label": "Departments", "href": "departments.html"},
+            {"label": "Resources", "href": "resources.html"},
+            {"label": "Privacy Policy", "href": "privacy.html"},
+            {"label": "Terms of Service", "href": "terms.html"},
+        ]
+
     mobile = [
-        mobile_group("Systems", systems_items),
-        mobile_group("Capabilities", [{"label": c["name"], "href": "capabilities/%s.html" % c["slug"]}
-                                      for c in CAPABILITIES] + [{"label": "All capabilities", "href": "capabilities.html"}]),
-        mobile_group("Industries", inds_items + [{"label": "All industries", "href": "industries.html"}]),
+        mobile_group("Systems", systems_items + [{"label": "All systems", "href": "systems.html"}]),
         mobile_group("Packages", pkgs_items + [{"label": "Compare engagements", "href": "packages.html"}]),
-        mobile_group("More", [{"label": "About", "href": "about.html"},
-                              {"label": "Who we build for", "href": "who-we-build-for.html"},
-                              {"label": "Departments", "href": "departments.html"},
-                              {"label": "Resources", "href": "resources.html"},
-                              {"label": "Contact", "href": "contact.html"}]),
+        mobile_group("Proof", proof_items),
+        mobile_link("About the studio", "about.html"),
+        mobile_link("Contact — talk to the founder", "contact.html"),
+        mobile_group("Explore more", more_items),
     ]
 
     sun = ('<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7'
@@ -453,13 +496,13 @@ def nav(path, active=None):
       {links}
     </ul>
     <div class="nav__right nav__right--site">
-      <a href="{contact_link}" class="brief-pill" data-brief-pill hidden>
+      <a href="{brief_link}" class="brief-pill" data-brief-pill hidden>
         Brief <span class="brief-pill__count" data-brief-count>0</span>
       </a>
       <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
         <svg id="theme-icon" viewBox="0 0 24 24">{sun}</svg>
       </button>
-      <a href="{contact_link}" class="nav__cta">Book a Call</a>
+      <a href="{scope_link}" class="nav__cta">Start a scope →</a>
     </div>
     <button class="nav__hamburger" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
@@ -477,11 +520,12 @@ def nav(path, active=None):
         <span id="mobile-theme-text">Switch to Light Mode</span>
       </button>
     </div>
-    <a href="{contact_link}" class="nav__cta" id="mn-cta">Book a Call →</a>
+    <a href="{scope_link}" class="nav__cta" id="mn-cta">Start a scope →</a>
   </div>
 </div>
 """.format(home=esc(linkto("index.html", path)), logo=esc(asset("assets/logo.jpg", path)),
-           links=nav_links, contact_link=esc(linkto("contact.html", path)), sun=sun,
+           links=nav_links, scope_link=esc(linkto("scope-generator.html", path)),
+           brief_link=esc(linkto("contact.html#brief", path)), sun=sun,
            mobile="".join(mobile))
 
 
@@ -501,11 +545,13 @@ def footer(path):
                   + [("Compare all", "packages.html")])
     company_col = col("Company", [
         ("About the studio", "about.html"),
-        ("Who we build for", "who-we-build-for.html"),
-        ("Departments", "departments.html"),
+        ("The founder", "about.html#founder"),
+        ("Proof — demos & benchmark", "proof.html"),
+        ("AI Scope Generator", "scope-generator.html"),
+        ("Security & data handling", "security.html"),
+        ("Public roadmap", "roadmap.html"),
         ("Resources", "resources.html"),
         ("Contact", "contact.html"),
-        ("Task Scoper (earlier agency page)", "solutions.html"),
         ("Privacy Policy", "privacy.html"),
         ("Terms of Service", "terms.html"),
     ])
@@ -571,7 +617,9 @@ def system_page(s):
             '<a class="btn btn--outline" href="%s">Related capabilities</a>'
             % (esc(linkto("contact.html", "systems/%s.html" % s["slug"])),
                "#" + "related"))
-    b.append(page_hero(s["category"], esc(s["name"]), s["lede"], badges=["Scoped build", "Your stack, your data rules"], ctas=ctas, breadcrumb=crumb))
+    b.append(page_hero(s["category"], esc(s["name"]), s["lede"],
+                       badges=["Scoped build", "Your stack, your data rules"], ctas=ctas, breadcrumb=crumb))
+    b.append(demo_strip(s, "systems/%s.html" % s["slug"]))
     b.append(note_band(FORMAT_NOTE, "Format"))
     b.append(plain_band(s["slug"], "systems/%s.html" % s["slug"]))
 
@@ -593,7 +641,10 @@ def system_page(s):
     b.append(tech_section(s["slug"], "systems/%s.html" % s["slug"], kind="system"))
 
     b.append('<section class="section section--surface" aria-label="Example workflow"><div class="wrap">'
-             + section_header("Example workflow", esc(s["workflow"]["title"]), None, center=False)
+             + section_header("Example workflow", esc(s["workflow"]["title"]),
+                              "Illustrative pipeline — the real architecture, models, and integration points "
+                              "are scope decisions, written down before any build.", center=False)
+             + arch_flow(s, "systems/%s.html" % s["slug"])
              + steps(s["workflow"]["steps"])
              + '<p class="workflow-note">Illustrative flow — the real sequence is set in your written scope.</p>'
              + "</div></section>")
@@ -750,7 +801,7 @@ def package_page(p):
             '<a class="btn btn--outline" href="%s#compare">Compare engagements</a>'
             % (esc(linkto("contact.html", path)), esc(linkto("packages.html", path))))
     b.append(page_hero("%s engagement" % p["archetype"], esc(p["name"]), p["short"],
-                       badges=[p["chip"], "Written scope", "Fixed quote after discovery"],
+                       badges=[p["chip"], p["duration"], "%s · estimate" % p["range"], "Written scope", "Fixed quote after discovery"],
                        ctas=ctas, breadcrumb=crumb))
     b.append(note_band(p["summary"] + " " + PRICING_NOTE, "Terms"))
     b.append(plain_band(p["slug"], path))
@@ -806,36 +857,76 @@ def package_page(p):
 def systems_hub():
     p = "systems.html"
     b = []
-    b.append(page_hero("System families", "Seven families. <em>One discipline.</em>",
-                       "Every system is engineered around your stack with review gates, integrations, and honest "
-                       "limits — designed and built to order, not rented from a shelf."))
+    b.append(page_hero("System families", "Two flagships you can open. <em>Five more on request.</em>",
+                       "ReWoo leads with the systems it can prove — voice intelligence and knowledge search both "
+                       "run live on this site. The other five families are scoped builds, engineered around your "
+                       "stack with review gates, integrations, and honest limits."))
     b.append(note_band(FORMAT_NOTE, "Format"))
     b.append(note_band("New to AI systems? Every family page opens with an “In plain words” summary for beginners, "
                        "plus a “For technical evaluators” section with the engineering substance — start with the "
                        "studio guides if you want the ground floor first.", "Start here", variant="start"))
-    cards = []
-    for n, s in enumerate(SYSTEMS, 1):
+
+    def sys_card(s, n):
         feats = "".join('<li>%s</li>' % esc(f["t"]) for f in s["features"][:3])
-        cards.append('<article class="sys-card"><div class="sys-card__head">'
-                     '<span class="sys-card__num">%02d</span><span class="sys-card__icon">%s</span></div>'
-                     '<h2 class="sys-card__t"><a href="%s">%s</a></h2>'
-                     '<p class="sys-card__cat">%s</p><p class="sys-card__d">%s</p>'
-                     '<ul class="sys-card__feats">%s</ul>'
-                     '<div class="sys-card__ctas"><a class="btn btn--outline" href="%s">Explore the system</a>%s</div>'
-                     "</article>"
-                     % (n, icon(s["icon"], "icon"), esc(linkto("systems/%s.html" % s["slug"], p)),
-                        esc(s["name"]), esc(s["category"]), esc(s["short"]), feats,
-                        esc(linkto("systems/%s.html" % s["slug"], p)),
-                        brief_btn("system", s["slug"], s["name"], compact=True)))
-    b.append('<section class="section" aria-label="System families"><div class="wrap">'
-             + '<div class="sys-grid">' + "".join(cards) + "</div></div></section>")
+        return ('<article class="sys-card"><div class="sys-card__head">'
+                '<span class="sys-card__num">%02d</span><span class="sys-card__icon">%s</span></div>'
+                '<h2 class="sys-card__t"><a href="%s">%s</a></h2>'
+                '<p class="sys-card__cat">%s</p><p class="sys-card__d">%s</p>'
+                '<ul class="sys-card__feats">%s</ul>'
+                '<div class="sys-card__ctas"><a class="btn btn--outline" href="%s">Explore the system</a>%s</div>'
+                "</article>"
+                % (n, icon(s["icon"], "icon"), esc(linkto("systems/%s.html" % s["slug"], p)),
+                   esc(s["name"]), esc(s["category"]), esc(s["short"]), feats,
+                   esc(linkto("systems/%s.html" % s["slug"], p)),
+                   brief_btn("system", s["slug"], s["name"], compact=True)))
+
+    flagship = [s for s in SYSTEMS if s["slug"] in FLAGSHIPS]
+    others = [s for s in SYSTEMS if s["slug"] not in FLAGSHIPS]
+
+    # Flagship cards — bigger, with live-demo links
+    def flagship_card(s):
+        demo_href = "demo-voice.html" if s["slug"] == "voice-intelligence" else "demo-search.html"
+        feats = "".join('<li>%s</li>' % esc(f["t"]) for f in s["features"][:4])
+        return ('<article class="flag-card"><div class="flag-card__head">'
+                '<span class="flag-card__icon">%s</span>'
+                '<span class="badge badge--live">Live demo</span></div>'
+                '<h2 class="flag-card__t"><a href="%s">%s</a></h2>'
+                '<p class="flag-card__cat">%s</p><p class="flag-card__d">%s</p>'
+                '<ul class="sys-card__feats">%s</ul>'
+                '<div class="flag-card__ctas"><a class="btn btn--primary" href="%s">Open the live demo →</a>'
+                '<a class="btn btn--outline" href="%s">Explore the system</a>%s</div></article>'
+                % (icon(s["icon"], "icon"),
+                   esc(linkto("systems/%s.html" % s["slug"], p)), esc(s["name"]),
+                   esc(s["category"]), esc(s["lede"]), feats,
+                   esc(linkto(demo_href, p)),
+                   esc(linkto("systems/%s.html" % s["slug"], p)),
+                   brief_btn("system", s["slug"], s["name"], compact=True)))
+
+    b.append('<section class="section" aria-label="Flagship systems"><div class="wrap">'
+             + '<div class="sec-head" data-animate>'
+             + '<p class="overline overline--accent">Flagships</p>'
+             + '<h2 class="s-headline">The two we can <em>prove today.</em></h2>'
+             + '<p class="s-subhead">Both families run as live, openable demos on this site — proof before any '
+               'sales conversation.</p></div>'
+             + '<div class="flag-grid">' + "".join(flagship_card(s) for s in flagship) + "</div></div></section>")
+
+    b.append('<section class="section section--surface" aria-label="Also built on request"><div class="wrap">'
+             + '<div class="sec-head" data-animate>'
+             + '<p class="overline overline--accent">Also built on request</p>'
+             + '<h2 class="s-headline">Five more families. <em>Scoped, not shelved.</em></h2>'
+             + '<p class="s-subhead">Each is a designed-to-order engagement with the same review gates, '
+               'evaluation, and handover — built when the workflow calls for it.</p></div>'
+             + '<div class="sys-grid sys-grid--five">' + "".join(sys_card(s, i) for i, s in enumerate(others, 1))
+             + "</div></div></section>")
+
     b.append(cta_band("Not sure which family fits?",
                       "Describe the workflow — the honest mapping to systems, or a clear no, is part of the first call.",
                       {"label": "Book an intro call", "href": linkto("contact.html", p)},
                       {"label": "Browse capabilities", "href": linkto("capabilities.html", p)}))
-    return "\n".join(b), "AI Systems — Seven Solution Families | ReWoo", (
-        "Seven AI system families — visual production, voice intelligence, assessment, design visualization, "
-        "content pipelines, document intelligence, and knowledge retrieval. Scoped builds by ReWoo.")
+    return "\n".join(b), "AI Systems — Two Flagship Demos and Five Scoped Families | ReWoo", (
+        "ReWoo system families: voice intelligence and knowledge search run live on this site; visual production, "
+        "assessment, design visualization, content pipelines, and document intelligence are scoped builds. "
+        "The AI studio you can audit.")
 
 
 def capabilities_hub():
@@ -924,11 +1015,14 @@ def packages_hub():
                      '<h2 class="pkg-card__t"><a href="%s">%s</a></h2>'
                      '<p class="pkg-card__d">%s</p>'
                      '<p class="pkg-card__buyers"><strong>For:</strong> %s</p>'
+                     '<p class="pkg-card__meta"><span class="pkg-mini__dur">%s</span>'
+                     '<span class="pkg-mini__range">%s <em>(est.)</em></span></p>'
                      '<div class="pkg-card__ctas"><a class="btn btn--outline" href="%s">View engagement</a>%s</div>'
                      "</article>"
                      % (icon(pk["icon"], "icon"), esc(pk["chip"]),
                         esc(linkto("packages/%s.html" % pk["slug"], p)), esc(pk["name"]), esc(pk["short"]),
                         esc(pk["buyers"][0].lower()),
+                        esc(pk["duration"]), esc(pk["range"]),
                         esc(linkto("packages/%s.html" % pk["slug"], p)),
                         brief_btn("package", pk["slug"], pk["name"], compact=True)))
     b.append('<section class="section" aria-label="Engagements"><div class="wrap">'
@@ -937,6 +1031,8 @@ def packages_hub():
     rows = [
         ("Archetype", [pk["archetype"] for pk in PACKAGES]),
         ("Shape", [pk["chip"] for pk in PACKAGES]),
+        ("Typical duration", [pk["duration"] for pk in PACKAGES]),
+        ("Indicative range", [pk["range"] + " (est.)" for pk in PACKAGES]),
         ("Best first when", ["You do not know where to start",
                              "One workflow is clearly worth a build",
                              "The model works but cannot touch your systems",
@@ -1116,15 +1212,15 @@ def main():
     SITEMAP_PAGES.append(("industries.html", "0.8", "weekly"))
     written.append(write_page("packages.html", *packages_hub(), active="packages"))
     SITEMAP_PAGES.append(("packages.html", "0.9", "weekly"))
-    written.append(write_page("who-we-build-for.html", *audiences_page(), active="more"))
+    written.append(write_page("who-we-build-for.html", *audiences_page(), active=None))
     SITEMAP_PAGES.append(("who-we-build-for.html", "0.7", "monthly"))
-    written.append(write_page("departments.html", *departments_page(), active="more"))
+    written.append(write_page("departments.html", *departments_page(), active=None))
     SITEMAP_PAGES.append(("departments.html", "0.7", "monthly"))
 
     # Hand-written templates
     written.append(render_template(
         "index.html", "index.html",
-        "ReWoo — AI Systems Studio | Agents, Pipelines, Retrieval",
+        "ReWoo — The AI Studio You Can Audit | Agents, Pipelines, Retrieval",
         SITE["description"], None,
         [ORG_JSONLD, {"@context": "https://schema.org", "@type": "WebSite",
                       "name": "ReWoo", "url": SITE["url"]}, faq_jsonld(HOME["faq"]["items"])]))
@@ -1133,22 +1229,64 @@ def main():
         "about.html", "about.html",
         "About — An AI Systems Studio from Dhaka | ReWoo",
         "ReWoo is an independent AI systems studio in Dhaka, Bangladesh: written scopes, complete handover, "
-        "and honest feasibility — founded by a builder with a research publication and a Kaggle Master rank.",
+        "and honest feasibility — founded by Adil, an engineer with a research publication and a Kaggle Master rank.",
         "about"))
     SITEMAP_PAGES.append(("about.html", "0.8", "monthly"))
+    written.append(render_template(
+        "proof.html", "proof.html",
+        "Proof — Live Demos, Benchmark, Research | ReWoo",
+        "The AI studio you can audit: two live demos, a retrieval benchmark you re-run yourself, research "
+        "credentials, and a case study honestly labeled as in preparation. Everything on this page is checkable.",
+        "proof"))
+    SITEMAP_PAGES.append(("proof.html", "0.9", "weekly"))
+    written.append(render_template(
+        "demo-voice.html", "demo-voice.html",
+        "Voice Intelligence Demo — Bangla & English, Live | ReWoo",
+        "A voice demo you can open: real browser transcription in Bangla and English with measured latency, "
+        "plus a code-switched support call walking the full pipeline. No signup, no server.",
+        "proof"))
+    SITEMAP_PAGES.append(("demo-voice.html", "0.8", "weekly"))
+    written.append(render_template(
+        "demo-search.html", "demo-search.html",
+        "Knowledge Search Demo + Retrieval Benchmark | ReWoo",
+        "Ask a real knowledge base questions with clickable citations, then re-run the published retrieval "
+        "benchmark — 19 questions, BM25, computed live in your browser with failures included.",
+        "proof"))
+    SITEMAP_PAGES.append(("demo-search.html", "0.8", "weekly"))
+    written.append(render_template(
+        "scope-generator.html", "scope-generator.html",
+        "AI Scope Generator — Draft a Written Scope in 60 Seconds | ReWoo",
+        "Describe your workflow and get a draft written scope with a readiness read-out and indicative budget "
+        "range — generated in your browser, transparently. An assistant, not a quote.",
+        "proof"))
+    SITEMAP_PAGES.append(("scope-generator.html", "0.9", "weekly"))
+    written.append(render_template(
+        "security.html", "security.html",
+        "Security & Data Handling | ReWoo",
+        "Where your data lives, in writing: client-owned infrastructure, least access, no silent retention, "
+        "consent design, and deployment models from your cloud to fully on-premise.",
+        None))
+    SITEMAP_PAGES.append(("security.html", "0.6", "monthly"))
+    written.append(render_template(
+        "roadmap.html", "roadmap.html",
+        "Public Roadmap — Proof Room, Review Console, and What's Next | ReWoo",
+        "ReWoo's public roadmap with honest status labels: live now (demos, benchmark, Scope Generator), "
+        "building next (Proof Room, review console, cost dashboard), and exploring (MCP, red-team, on-prem).",
+        "proof"))
+    SITEMAP_PAGES.append(("roadmap.html", "0.6", "monthly"))
     written.append(render_template(
         "resources.html", "resources.html",
         "Resources — Guides and Studio Notes | ReWoo",
         "Practical guides from ReWoo's client work: how to brief an AI system, the automation ladder, "
         "and a plain-English glossary of the AI stack. Plus concepts honestly labeled as explorations.",
-        "more"))
+        None))
     SITEMAP_PAGES.append(("resources.html", "0.6", "monthly"))
     written.append(render_template(
         "contact.html", "contact.html",
         "Contact — Book a Call or Write | ReWoo",
         "Book an intro call with ReWoo — thirty minutes on your workflow with the person who would build it — "
-        "or send a written inquiry. Composed email drafts; nothing sent or stored automatically.",
-        None, [faq_jsonld(CONTACT["faq"])]))
+        "or send a written inquiry with brief or RFP listing and an NDA option. Nothing sent or stored automatically.",
+        "contact", [faq_jsonld(CONTACT["faq"])]))
     SITEMAP_PAGES.append(("contact.html", "0.8", "weekly"))
 
     # Preserved public routes stay in the sitemap

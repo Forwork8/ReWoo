@@ -1,0 +1,110 @@
+<!-- ReWoo — security and data handling. Rendered by scripts/build_site.py. -->
+
+<!--@NAV-->
+
+<main id="main-content" aria-label="Security and data handling">
+
+  <header class="page-hero page-hero--tight">
+    <div class="wrap">
+      <p class="overline overline--accent">Security &amp; data handling</p>
+      <h1 class="page-hero__title">Where your data lives. <em>In writing.</em></h1>
+      <p class="page-hero__sub">The short version: in your infrastructure, under your rules, for exactly as long
+        as the engagement needs — and this page says so in enough detail to survive a security review.</p>
+      <div class="page-hero__badges">
+        <span class="badge">Client-owned infrastructure</span>
+        <span class="badge">No data retention after handover</span>
+        <span class="badge">NDA-ready</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="note" aria-label="Honesty note">
+    <div class="wrap note__inner">
+      <span class="note__label">Read this honestly</span>
+      <p>ReWoo is an independent studio, not an ISO-certified enterprise. This page describes exactly how data is
+        handled today — including the limits — because a studio selling honest systems runs its own claims the
+        same way. Formal certification is on the roadmap, not on this page.</p>
+    </div>
+  </div>
+
+  <!-- ========================= PRINCIPLES ========================= -->
+  <section class="section" aria-label="Data principles">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">The rules</p>
+        <h2 class="s-headline">Your code. Your data. <em>Your keys.</em></h2>
+      </div>
+      <div class="card-grid card-grid--3">
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Systems live in your accounts</h3><p class="m-card__d">Builds deploy into infrastructure you own — your cloud account, your repositories, your API keys. Nothing production-critical lives in ReWoo's hands after handover.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Least access, time-boxed</h3><p class="m-card__d">During a build, access is scoped to what the milestone needs and revoked at handover. Credentials rotate on delivery. Access is never broader than the written scope.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">No silent retention</h3><p class="m-card__d">After handover, ReWoo retains no client data unless support is explicitly scoped. Working copies are deleted; what remains is the engagement record you also hold.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= HANDLING DETAIL ========================= -->
+  <section class="section section--surface" aria-label="Handling in detail">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">In detail</p>
+        <h2 class="s-headline">The handling, <em>stage by stage.</em></h2>
+      </div>
+      <div class="card-grid card-grid--3">
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Discovery</h3><p class="m-card__d">NDAs signed before sensitive material is shared — yours or a standard mutual one. What you share before an NDA is treated as confidential anyway, contractually.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Building</h3><p class="m-card__d">Test data stays inside the environment agreed in the scope. Redaction and synthetic substitution are offered before real customer data ever touches a prototype.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Model calls</h3><p class="m-card__d">Which providers may receive which data is an explicit scope line. For data that cannot leave your infrastructure, private or on-premise delivery with open-weight models is a scoped option.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Consent design</h3><p class="m-card__d">Systems that touch people — callers, candidates, customers — ship with consent and disclosure flows designed in, not bolted on. Recording notices and opt-outs are part of the build.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Logs and traces</h3><p class="m-card__d">Observability is designed for privacy: logs carry what the runbook needs, retention windows are set in the scope, and sensitive fields are masked at write time, not by promise.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Handover</h3><p class="m-card__d">Everything transfers — repository, configuration, credentials (rotated), documentation, runbooks. ReWoo's access ends when you say the engagement is done.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= DEPLOYMENT MODELS ========================= -->
+  <section class="section" aria-label="Deployment models">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Deployment</p>
+        <h2 class="s-headline">Three places a system can live.</h2>
+      </div>
+      <div class="card-grid card-grid--3">
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Your cloud</h3><p class="m-card__d">The default: the system deploys into your AWS, GCP, Azure, or on-prem environment. ReWoo builds inside it; ownership never leaves it.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Private / on-premise</h3><p class="m-card__d">For banks, healthcare, and government-adjacent work: open-weight models and local retrieval on hardware you control, with no external API calls. Scoped per engagement.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Hybrid</h3><p class="m-card__d">Sensitive data stays local; only non-sensitive steps use external models. The split is drawn in the written scope and enforced in the routing layer.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= FOR PROCUREMENT ========================= -->
+  <section class="section section--surface" aria-label="For procurement teams">
+    <div class="wrap wrap--narrow">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">For procurement</p>
+        <h2 class="s-headline">What you can ask for, <em>and receive.</em></h2>
+      </div>
+      <ul class="checks sec-checks" data-animate>
+        <li><span>A mutual NDA — yours or ours — signed before anything sensitive moves</span></li>
+        <li><span>IP assignment and confidentiality terms written into the engagement, not assumed</span></li>
+        <li><span>A data-processing description per engagement: what is touched, where it lives, how long it stays</span></li>
+        <li><span>Security documentation of the design, ready for your review team</span></li>
+        <li><span>Phased rollouts with checkpoints as the default shape for larger organizations</span></li>
+        <li><span>Complete handover at the end — no recurring dependency unless you scope it</span></li>
+      </ul>
+      <p class="sec-cta-row" data-animate><a class="btn btn--ghost" href="contact.html">Ask for any of this on the first call →</a></p>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-label="Next step">
+    <div class="wrap cta-band__inner">
+      <h2 class="cta-band__t">Security questions welcome.</h2>
+      <p class="cta-band__s">Bring your review team's checklist to the first call — answering it is part of the work, not an interruption.</p>
+      <div class="cta-band__btns">
+        <a class="btn btn--primary" href="contact.html" data-wa-link data-wa-text="Hi Adil, I have security questions about working with ReWoo.">Message on WhatsApp</a>
+        <a class="btn btn--outline" href="roadmap.html">See the certifications roadmap →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!--@FOOTER-->

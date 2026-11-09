@@ -116,3 +116,115 @@ Every catalog page (7 systems, 12 capabilities, 5 engagements) now carries two n
 - Sitemap lastmod and footer year regenerate at build (current as of this revision).
 
 Verified: 24/24 pages carry both layers (automated), 47 pages crawled — 0 broken links, 0 placeholders; zero console errors; zero horizontal overflow at 1440/390/360px; VLM visual review passed on dark + light, desktop + mobile.
+
+## Revision 6 — 2026-11-09 (the audit-era build: proof-first site, live demos, Scope Generator)
+
+Implements the competitive roadmap (Riverborn/Nagorik report, 9 Nov 2026) end to end, with the wedge
+**"The AI studio you can audit."** All work on `main`, deploy-safe conventions preserved.
+
+### Positioning & structure
+
+1. **Wedge everywhere.** Hero eyebrow, site description, Proof hub, and README now lead with "the AI studio
+   you can audit." The owner's keynote line ("Systems do the work. People do the thinking.") stays as the H1.
+2. **Homepage rebuilt, proof-first** (report §12 order): hero → outcome stat strip → two flagship demos →
+   how an engagement runs → founder → packages → who-we-are → FAQ → CTA. The 12-capability grid, 7-system
+   grid, industries chips, why-cards, and evidence section left the homepage (they live on their hubs / Proof).
+3. **Navigation collapsed to Systems / Packages / Proof / About / Contact** (report §12). Capabilities,
+   industries, departments, who-we-build-for, resources demoted to the systems-panel foot, footer, and mobile
+   "Explore more" group. Nav CTA is now "Start a scope →" (outline pill).
+4. **Task Scoper retired from the footer**; `solutions.html` remains a preserved route in the sitemap. Its
+   successor, the **AI Scope Generator**, takes the footer slot and the nav CTA.
+
+### New pages (6)
+
+- `proof.html` — demos, published benchmark, research credentials, UK case study (honestly labeled
+  "in preparation — pending client sign-off" with the publication structure), "audit us with your own AI"
+  (Claude/Perplexity prefilled prompts), roadmap teaser.
+- `demo-voice.html` — **live demo 1**: real browser transcription (Web Speech API, en-US/bn-BD) with measured
+  round-trip latency + a scripted five-stage pipeline on a written Bangla/English code-switched sample call
+  (translation toggle, extracted key-values, human-approved drafted reply, escalation rule). Honest labels:
+  live mode is real; scripted mode is illustrative.
+- `demo-search.html` — **live demo 2**: BM25 search over 34 passages of the studio's own content with
+  clickable citations + the **published retrieval benchmark**: 19 questions with fixed gold passages,
+  Hit@1/Hit@3/MRR/misses computed live in the visitor's browser. Three questions are kept in that genuinely
+  miss (vocabulary mismatch: "cost" vs "price", "confidentiality agreement" vs "NDA") — failures in the open,
+  exactly as the report asked. This is the studio's first published benchmark.
+- `scope-generator.html` — **AI Scope Generator** (report §10 item 2, Phase 2 main CTA): describes a workflow
+  + four context questions → readiness read-out (three scored bars), matched-signal chips, and a nine-section
+  draft written scope (objective, family, in/out of scope, milestones, evaluation & acceptance, indicative
+  shape, open questions, next step). Copy / email / WhatsApp actions. Transparent heuristic in `demos.js`;
+  labeled "an assistant, not a quote."
+- `security.html` — data handling in writing (report Phase 2 item 4): client-owned infrastructure, least
+  access, no silent retention, consent design, deployment models, procurement checklist. States plainly that
+  ISO certification is roadmap, not present.
+- `roadmap.html` — the public roadmap (report §10 + Phases 3–5): Live now (5) / Building next (4: Proof Room,
+  review console, cost dashboard, simulated-caller harness) / Exploring (5: agent audit layer, MCP delivery,
+  red-team, on-prem, partner program) / Horizon (case studies, monthly eval reports, white-label, pay-on-pass).
+
+### Trust repairs (report Phase 0)
+
+- **Founder named**: `about.html#founder` ("Adil — Founder · AI systems engineer") with research, Kaggle
+  Master, UK first client, direct line; mirrored as a homepage section with monogram avatar (photo is an
+  owner-input item; no placeholder captions shipped).
+- **Domain email**: `hello@rewoo.tech` everywhere (footer, contact, mailto composer, legal pages). **Owner
+  action: create the mailbox** (see gaps below).
+- **Outcome stats replace vanity counters**: 2 live demos / 1 first-author publication / Kaggle Master /
+  100% written-scope rule (the "0 projects without scope" counter is gone).
+- **Indicative pricing published** (report Phase 2 item 2): durations + estimate ranges on all five packages,
+  the comparison table, and the packages hub, labeled as estimates with the fixed-quote rule restated.
+- **Contact form upgraded** (report Phase 2 item 3): brief/RFP file listing (no upload — no server; files are
+  listed into the email draft) + "send an NDA first" checkbox that writes the request into the draft.
+
+### Systems & engagement pages
+
+- Systems hub is **flagship-first**: voice intelligence + knowledge search as large cards with live-demo
+  buttons, then "also built on request" for the other five.
+- Flagship system pages carry a **demo strip**; every system page now has a **pipeline diagram** generated
+  from its workflow steps (labeled illustrative).
+- Package pages show duration + indicative range badges; the comparison table gained "Typical duration" and
+  "Indicative range" rows.
+
+### Code
+
+- `demos.js` (new, ~800 lines, zero deps): BM25 index + search UI + benchmark; Web Speech voice demo +
+  scripted pipeline; scope-generator heuristic engine. WhatsApp deep links built at runtime (deploy-safe
+  pattern, same as site.js module 10).
+- `site.js`: contact form composes files + NDA lines; EMAIL_TO is hello@rewoo.tech.
+- `site.css`: +~560 lines — proof cards, founder section, demo consoles, benchmark, scope generator, arch
+  flows, flagship grids, form additions; micro-interaction polish (press states, hover lift, entrance
+  animation, selection color); review-fix passes v4.1/v4.2 (footer 6-col architecture + contrast, CTA
+  hierarchy, 5-across engagements row, light-theme elevation, mobile hero/founder fixes). Also defines the
+  previously-missing `--err`/`--ok` tokens and fixes an invalid `var(--sp-7)` use.
+
+### Verification (this revision)
+
+| Check | Result |
+|---|---|
+| Build | 50 pages + sitemap.xml + robots.txt, clean run |
+| Link integrity | 0 broken hrefs/srcs across all 53 HTML files (automated crawl) |
+| Placeholder scan | No TODO/XXX/【/undefined/NaN in served pages |
+| Deploy safety | No raw wa.me links, phone numbers, or Gmail addresses in served HTML (automated scan) |
+| Console/page errors | 0 on all new pages (agent-browser) |
+| Horizontal overflow | 0px at 1440 and 390 on all new + key pages, including generated scope output |
+| Functional tests | Search returns cited results; benchmark computes (Hit@1 68.4%, Hit@3 84.2%, MRR 0.76, 3 honest misses, verified independently in Node); scope generator produces full draft with actions; voice scripted pipeline renders all stages/turns/extraction; contact form composes files + NDA into the draft |
+| VLM design review | 3 iterative rounds. Final: dark home 9/10, light home 9/10, proof 9/10, mobile 8/10; all three targeted mobile fixes verified PASS. Known remaining nits: hero backdrop is deliberately subtle (owner's choice, Revision 2), mobile footer density, founder photo pending |
+
+### Owner-input gaps (do these to complete the vision)
+
+1. **Create the hello@rewoo.tech mailbox** (Google Workspace / Vercel email forwarding) — every mailto on the
+   site now points there. Until it exists, mail bounces.
+2. **Founder photo + full name + links**: replace the monogram avatar (about + homepage), add the paper link
+   (Bengali speaker diarization), Kaggle profile URL, and personal LinkedIn to `about.html#founder`.
+3. **UK case study**: on client sign-off, fill the structure on `proof.html#case-study` with measured results;
+   update the "in preparation" badge and the sitemap copy.
+4. **Indicative price ranges**: review the five ranges in `scripts/data_packages.py` against real floors —
+   they are labeled estimates and adjustable in one place.
+5. **Calendar booking**: if a scheduler link is preferred over the WhatsApp-first flow, add it in
+   `scripts/templates/contact.html` (one card).
+6. **Walkthrough videos** (report Phase 1 item 4): two short recordings of the demos would complete the
+   flagship pages; embed slots can be added to the demo strips.
+
+## Security note (still true)
+
+The GitHub token used for this work was shared in chat. It is not written into any file in this repository —
+revoke it and issue a fresh one before further work.

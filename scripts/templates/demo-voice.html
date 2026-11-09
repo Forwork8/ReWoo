@@ -1,0 +1,161 @@
+<!-- ReWoo — voice intelligence live demo. Rendered by scripts/build_site.py. -->
+
+<!--@NAV-->
+
+<main id="main-content" aria-label="Voice intelligence demo">
+
+  <header class="page-hero page-hero--tight">
+    <div class="wrap">
+      <p class="overline overline--accent">Live demo · 02</p>
+      <h1 class="page-hero__title">Voice intelligence, <em>in your browser.</em></h1>
+      <p class="page-hero__sub">A voice offering you can actually hear and measure — speak Bangla or English into
+        your browser and watch transcription happen live, then walk a full pipeline on a code-switched support call.</p>
+      <div class="page-hero__badges">
+        <span class="badge badge--live">Live mic mode — real transcription</span>
+        <span class="badge">Scripted pipeline walkthrough</span>
+        <span class="badge">No signup, no server</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="note" aria-label="Honesty note">
+    <div class="wrap note__inner">
+      <span class="note__label">What this is</span>
+      <p>Live mode uses your browser's built-in speech recognition (Web Speech API — Chrome or Edge) and measures
+        real round-trip latency on your device. The scripted pipeline is an illustrative walkthrough on a written
+        sample conversation, clearly labeled as such. Neither pretends to be a production deployment — production
+        systems are measured on your recordings, in your stack, with failure reports included.</p>
+    </div>
+  </div>
+
+  <!-- ========================= LIVE MIC ========================= -->
+  <section class="section" id="live" aria-label="Live transcription">
+    <div class="wrap wrap--narrow">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Mode 1 · Live</p>
+        <h2 class="s-headline">Speak. Watch it transcribe.</h2>
+        <p class="s-subhead s-subhead--centered">Real recognition, real timing — the latency figure is measured on
+          your device, not quoted from a brochure.</p>
+      </div>
+
+      <div class="vd-console" id="vd-app" data-animate>
+        <div class="vd-console__bar">
+          <div class="vd-lang">
+            <label class="vd-lang__label" for="vd-lang">Language</label>
+            <select class="field__input vd-lang__select" id="vd-lang">
+              <option value="en-US">English (US)</option>
+              <option value="bn-BD">বাংলা (Bangla, BD)</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn--primary" id="vd-start">
+            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1"/><path d="M12 18v4"/></svg>
+            Start listening
+          </button>
+          <button type="button" class="btn btn--outline" id="vd-stop" hidden>Stop</button>
+        </div>
+
+        <div class="vd-meter" id="vd-meter" aria-hidden="true">
+          <span class="vd-meter__dot"></span><span class="vd-meter__dot"></span><span class="vd-meter__dot"></span>
+          <span class="vd-meter__label">listening…</span>
+        </div>
+
+        <p class="vd-support" id="vd-support" role="status" hidden></p>
+
+        <div class="vd-transcript-box">
+          <p class="vd-transcript__final" id="vd-transcript">Your words will appear here…</p>
+          <p class="vd-transcript__interim" id="vd-interim" aria-hidden="true"></p>
+        </div>
+
+        <div class="vd-stats">
+          <div class="vd-stat"><span class="vd-stat__v" id="vd-words">0</span><span class="vd-stat__l">words recognized</span></div>
+          <div class="vd-stat"><span class="vd-stat__v" id="vd-latency">—</span><span class="vd-stat__l">measured round-trip</span></div>
+        </div>
+      </div>
+
+      <p class="vd-note" data-animate>In production, the equivalent numbers are measured on your real recordings:
+        word error rate on your accents and audio quality, diarization error rate on your calls, and end-to-end
+        latency in your telephony stack — before any acceptance decision.</p>
+    </div>
+  </section>
+
+  <!-- ========================= SCRIPTED PIPELINE ========================= -->
+  <section class="section section--surface" id="pipeline" aria-label="Scripted pipeline walkthrough">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Mode 2 · Scripted</p>
+        <h2 class="s-headline">One call, five stages.</h2>
+        <p class="s-subhead s-subhead--centered">A written sample conversation — Bangla and English, code-switched
+          mid-sentence, the way real calls sound — walks the pipeline ReWoo builds. Press play.</p>
+      </div>
+
+      <div class="vd-pipeline" data-animate>
+        <ol class="vd-stages" aria-label="Pipeline stages">
+          <li class="vd-stage"><span class="vd-stage__n">01</span><div><h3 class="vd-stage__t">Listen</h3><p class="vd-stage__d">Audio arrives — a support call in Bangla and English, code-switching mid-sentence.</p></div></li>
+          <li class="vd-stage"><span class="vd-stage__n">02</span><div><h3 class="vd-stage__t">Transcribe</h3><p class="vd-stage__d">Speech becomes text, timestamps attached. Accuracy is measured on real recordings, not claimed.</p></div></li>
+          <li class="vd-stage"><span class="vd-stage__n">03</span><div><h3 class="vd-stage__t">Separate speakers</h3><p class="vd-stage__d">Who spoke when — the diarization problem the founder published first-author research on, for Bengali audio.</p></div></li>
+          <li class="vd-stage"><span class="vd-stage__n">04</span><div><h3 class="vd-stage__t">Understand</h3><p class="vd-stage__d">Intent, entities, and sentiment extracted: what the caller wants, and how urgent it is.</p></div></li>
+          <li class="vd-stage"><span class="vd-stage__n">05</span><div><h3 class="vd-stage__t">Act</h3><p class="vd-stage__d">Drafted response, order updated, escalation by rule — humans review anything low-confidence.</p></div></li>
+        </ol>
+
+        <div class="vd-console vd-console--scripted">
+          <div class="vd-console__bar">
+            <button type="button" class="btn btn--primary" id="vd-play">
+              <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
+              Play the sample call
+            </button>
+            <button type="button" class="btn btn--ghost" id="vd-gloss">Bangla only</button>
+          </div>
+
+          <ul class="vd-turns" id="vd-turns" aria-live="polite" aria-label="Conversation turns"></ul>
+
+          <div class="vd-extract-wrap">
+            <h4 class="vd-extract__t">Extracted structure</h4>
+            <ul class="vd-extract" id="vd-extract"></ul>
+          </div>
+
+          <div class="vd-action" id="vd-action"></div>
+
+          <p class="vd-note">Sample conversation written for this demo — not a recording of a real customer.
+            The drafted reply is exactly that: a draft for a human to approve, which is the default in every
+            ReWoo voice system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= PRODUCTION MEASURES ========================= -->
+  <section class="section" aria-label="What production systems measure">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">In production</p>
+        <h2 class="s-headline">What a real system <em>measures.</em></h2>
+        <p class="s-subhead s-subhead--centered">Every voice system ships with its evaluation — the numbers below
+          are the ones agreed in writing before any build is accepted.</p>
+      </div>
+      <div class="card-grid card-grid--3">
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Word error rate</h3><p class="m-card__d">Transcription accuracy scored on a sample of your real recordings — your accents, your audio quality, your vocabulary. Bangla and code-switched speech measured separately.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Diarization error rate</h3><p class="m-card__d">Speaker-separation quality on your calls — the metric the founder's research addresses directly for Bengali audio, where general tools are weakest.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Latency, end to end</h3><p class="m-card__d">Round-trip from speech to response in your actual telephony stack — because for voice, the difference between natural and unbearable is measured in hundreds of milliseconds.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Escalation accuracy</h3><p class="m-card__d">How often the system correctly routes to a human — and how often it escalates unnecessarily. Both directions are reported, per intent.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Review queue health</h3><p class="m-card__d">What lands in the human exception queue, how fast it clears, and what it teaches: corrections feed back into the evaluation set.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Failure log, included</h3><p class="m-card__d">The calls that went wrong ship in the report. If the bar cannot be met on your audio, you get a stop recommendation — before you spend the full build.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-label="Next step">
+    <div class="wrap cta-band__inner">
+      <h2 class="cta-band__t">Voice for your calls — measured, not promised.</h2>
+      <p class="cta-band__s">Bangla, English, or code-switched. Scoped, evaluated on your recordings, handed over completely.</p>
+      <div class="cta-band__btns">
+        <a class="btn btn--primary" href="scope-generator.html">Draft your scope in 60 seconds →</a>
+        <a class="btn btn--outline" href="systems/voice-intelligence.html">See the system family</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="demos.js" defer></script>
+
+<!--@FOOTER-->

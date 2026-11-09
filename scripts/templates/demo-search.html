@@ -1,0 +1,140 @@
+<!-- ReWoo — knowledge search demo + live retrieval benchmark. Rendered by scripts/build_site.py. -->
+
+<!--@NAV-->
+
+<main id="main-content" aria-label="Knowledge search demo">
+
+  <header class="page-hero page-hero--tight">
+    <div class="wrap">
+      <p class="overline overline--accent">Live demo · 01</p>
+      <h1 class="page-hero__title">Knowledge search, <em>with receipts.</em></h1>
+      <p class="page-hero__sub">Ask this studio's own knowledge base a question. Every answer shows the passage it
+        came from — click the citation and check us. Then re-run the retrieval benchmark yourself, failures included.</p>
+      <div class="page-hero__badges">
+        <span class="badge badge--live">Runs in your browser</span>
+        <span class="badge">No signup</span>
+        <span class="badge">Retrieval only — no generation</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="note" aria-label="Honesty note">
+    <div class="wrap note__inner">
+      <span class="note__label">What this is</span>
+      <p>A real BM25 search engine over 34 passages of ReWoo's own published content — the guides, the process,
+        the systems, the FAQs. It runs entirely on this page: no server, no API, nothing leaves your device.
+        It retrieves passages and shows citations; it does not generate prose, so it cannot hallucinate.</p>
+    </div>
+  </div>
+
+  <!-- ========================= SEARCH CONSOLE ========================= -->
+  <section class="section" id="demo" aria-label="Search console">
+    <div class="wrap wrap--narrow">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Try it</p>
+        <h2 class="s-headline">Ask the knowledge base.</h2>
+      </div>
+
+      <div class="ks-console" data-animate>
+        <div class="ks-console__bar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <label class="sr-only" for="ks-input">Ask a question</label>
+          <input type="search" id="ks-input" placeholder="Ask anything — pricing, RAG, handover, briefs…" autocomplete="off">
+          <button type="button" class="btn btn--primary" id="ks-go">Search</button>
+        </div>
+        <div class="ks-samples" id="ks-samples" aria-label="Sample questions"></div>
+        <p class="ks-status" id="ks-status" role="status" aria-live="polite"></p>
+        <div class="ks-results" id="ks-results" aria-live="polite"></div>
+        <p class="ks-empty" id="ks-empty" hidden>No results yet — ask a question above, or tap a sample.</p>
+      </div>
+
+      <p class="ks-cite-note" data-animate>Every result carries its citation. In a client build the same discipline
+        applies to your documents: <strong>no citation, no answer.</strong></p>
+    </div>
+  </section>
+
+  <!-- ========================= HOW IT WORKS ========================= -->
+  <section class="section section--surface" aria-label="How it works">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Under the hood</p>
+        <h2 class="s-headline">How this demo works.</h2>
+        <p class="s-subhead s-subhead--centered">The entire engine is ~90 lines of vanilla JavaScript you can read
+          in this page's source.</p>
+      </div>
+      <div class="card-grid card-grid--3">
+        <div class="m-card" data-animate><div><h3 class="m-card__t">The corpus</h3><p class="m-card__d">34 passages from ReWoo's own site — three guides, the five-step process, seven system families, five engagements, and the honest answers. Real content, no filler.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">The ranker</h3><p class="m-card__d">Classic BM25 (k1 = 1.2, b = 0.75) with English and Bangla tokenization and a 27-term stop-word list. No embeddings, no reranker — deliberately simple, so the benchmark is meaningful.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">The behavior</h3><p class="m-card__d">Passages below a zero score are not shown — the honest empty state. In a client build that becomes a proper “no confident answer” with escalation, instead of a guess.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= BENCHMARK ========================= -->
+  <section class="section" id="benchmark" aria-label="Retrieval benchmark">
+    <div class="wrap wrap--narrow">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">Published benchmark</p>
+        <h2 class="s-headline">Re-run our retrieval benchmark.</h2>
+        <p class="s-subhead s-subhead--centered">19 questions with known gold passages, scored live in your browser
+          at the moment you press the button. Method and failures in the open — the studio's evaluation habit,
+          applied to itself.</p>
+      </div>
+
+      <div class="bench-panel" data-animate>
+        <div class="bench-panel__head">
+          <div>
+            <h3 class="bench-panel__t">BM25 · 34 passages · 19 questions</h3>
+            <p class="bench-panel__d">Metrics: Hit@1, Hit@3, MRR, and the misses. The gold passage for each question
+              was fixed before any tuning — a question counts as answered only if its gold passage ranks first.</p>
+          </div>
+          <button type="button" class="btn btn--primary" id="bench-run">Run the benchmark →</button>
+        </div>
+        <div class="bench-results" id="bench-results" hidden>
+          <div class="bench-summary" id="bench-summary" aria-live="polite"></div>
+          <div class="table-wrap bench-table-wrap">
+            <table class="cmp bench-table" id="bench-table">
+              <thead><tr><th scope="col">Question</th><th scope="col">Gold passage</th><th scope="col">Rank</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <p class="bench-fine" data-animate>Why publish a benchmark on a marketing site? Because “we evaluate our
+        systems” is a claim, and this page is the check. The same discipline — fixed gold sets, measured results,
+        failures listed — ships with every client build, scored against your own questions instead of ours.</p>
+    </div>
+  </section>
+
+  <!-- ========================= CLIENT BUILDS ========================= -->
+  <section class="section section--surface" aria-label="What a client build adds">
+    <div class="wrap">
+      <div class="sec-head sec-head--center" data-animate>
+        <p class="overline overline--accent">From demo to system</p>
+        <h2 class="s-headline">What a client build adds.</h2>
+      </div>
+      <div class="card-grid card-grid--3">
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Your corpus, your rules</h3><p class="m-card__d">Hybrid retrieval (keyword + semantic) over your policies, specs, and manuals — with role-aware access so people only see sources they may see.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Citation-first answers</h3><p class="m-card__d">Generated answers stay grounded: every claim links to the passage it came from, and anything unsupported is refused rather than improvised.</p></div></div>
+        <div class="m-card" data-animate><div><h3 class="m-card__t">Evaluation on your questions</h3><p class="m-card__d">A golden set of your real questions is collected first; acceptance thresholds are agreed in writing — and the failure report is part of delivery.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-label="Next step">
+    <div class="wrap cta-band__inner">
+      <h2 class="cta-band__t">Want this over your documents?</h2>
+      <p class="cta-band__s">A knowledge system you can audit — scoped, built around your stack, handed over completely.</p>
+      <div class="cta-band__btns">
+        <a class="btn btn--primary" href="scope-generator.html">Draft your scope in 60 seconds →</a>
+        <a class="btn btn--outline" href="systems/knowledge-retrieval.html">See the system family</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="demos.js" defer></script>
+
+<!--@FOOTER-->

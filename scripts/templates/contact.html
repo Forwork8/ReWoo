@@ -30,9 +30,8 @@
           <p class="call-card__d">You will talk to the person who architects and builds — about whether AI is the
             right tool for this workflow at all. If it is not, you will hear that.</p>
           <a class="btn btn--primary" id="wa-call"
-             href="mailto:adilshamim696@gmail.com" data-wa-link data-wa-text="Hi Adil, I'd like to book an intro call with ReWoo about an AI system."><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>Message on WhatsApp →</a>
-          <p class="call-card__meta">ReWoo does not run a booking scheduler: reach out directly and we will agree a
-            time. <a href="#written">Prefer writing? Compose an inquiry ↓</a></p>
+             href="mailto:hello@rewoo.tech" data-wa-link data-wa-text="Hi Adil, I'd like to book an intro call with ReWoo about an AI system."><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>Message on WhatsApp →</a>
+          <p class="call-card__meta">No scheduler middleman: message directly and we agree a time in minutes — or <a href="#written">compose a written inquiry ↓</a>. Want a head start? <a href="scope-generator.html">Draft your scope first →</a></p>
         </div>
         <div class="call-card call-card--alt" data-animate>
           <h3 class="call-card__t">What to bring</h3>
@@ -117,6 +116,14 @@
         </div>
 
         <div class="field">
+          <label class="field__label" for="inq-files">Attach a brief or RFP (optional)</label>
+          <input class="field__input field__input--file" id="inq-files" name="files" type="file"
+            accept=".pdf,.doc,.docx,.txt,.md" multiple aria-describedby="inq-files-hint">
+          <p class="field__hint" id="inq-files-hint">PDF, DOC, TXT, or MD. Your files are listed in the email draft —
+            attach them in your email app afterwards. This site has no server: nothing uploads anywhere.</p>
+        </div>
+
+        <div class="field">
           <label class="field__label" for="inq-budget">Budget basis (optional)</label>
           <select class="field__input" id="inq-budget" name="budget">
             <option value="">Select…</option>
@@ -128,6 +135,13 @@
             <option>$15k+</option>
             <option>Prefer to discuss</option>
           </select>
+        </div>
+
+        <div class="field field--check">
+          <input type="checkbox" id="inq-nda" name="nda">
+          <label for="inq-nda">Send an NDA before we discuss details</label>
+          <p class="field__hint">Tick this and the draft asks for your standard NDA first — or ours. Nothing
+            sensitive is discussed before it is signed.</p>
         </div>
 
         <p class="form-note">By sending this email you agree to ReWoo's <a href="privacy.html">privacy policy</a>:
@@ -158,10 +172,10 @@
         <h2 class="s-headline">Direct lines.</h2>
       </div>
       <div class="card-grid card-grid--3">
-        <a class="m-card m-card--link" href="mailto:adilshamim696@gmail.com" data-animate>
-          <div><h3 class="m-card__t">Email</h3><p class="m-card__d">Write directly — same person, same speed.</p><p class="m-card__meta">adilshamim696@gmail.com</p></div>
+        <a class="m-card m-card--link" href="mailto:hello@rewoo.tech" data-animate>
+          <div><h3 class="m-card__t">Email</h3><p class="m-card__d">Write directly — same person, same speed.</p><p class="m-card__meta">hello@rewoo.tech</p></div>
         </a>
-        <a class="m-card m-card--link" href="mailto:adilshamim696@gmail.com" data-wa-link data-animate>
+        <a class="m-card m-card--link" href="mailto:hello@rewoo.tech" data-wa-link data-animate>
           <div><h3 class="m-card__t">WhatsApp</h3><p class="m-card__d">The fastest line to the studio.</p><p class="m-card__meta"><span data-wa-num></span></p></div>
         </a>
         <a class="m-card m-card--link" href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" data-animate>

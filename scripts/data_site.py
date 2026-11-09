@@ -11,13 +11,14 @@ No invented metrics, clients, or awards.
 SITE = {
     "url": "https://rewoo.tech",
     "name": "ReWoo",
-    "positioning": "AI systems studio",
+    "positioning": "The AI studio you can audit",
     "tagline": "AI systems, scoped and shipped.",
     "description": (
-        "ReWoo is an AI systems studio. We scope, design, and build agents, pipelines, and retrieval "
-        "systems that fit the tools you already run — and hand you the keys."
+        "ReWoo is the AI studio you can audit: live demos you can open, a retrieval benchmark you can re-run, "
+        "a written scope before anything is charged, and complete handover. Agents, pipelines, and retrieval "
+        "systems that fit the tools you already run — and then the keys are yours."
     ),
-    "email": "adilshamim696@gmail.com",
+    "email": "hello@rewoo.tech",
     "whatsapp": "+8801321073452",
     "location": "Dhaka, Bangladesh",
     "socials": [
@@ -28,20 +29,37 @@ SITE = {
 
 HOME = {
     "hero": {
-        "eyebrow": "AI systems studio · Dhaka, built for anywhere",
-        "headline": "AI systems that take <em>real work</em> off your team.",
+        "eyebrow": "ReWoo — the AI studio you can audit",
+        "headline": "Systems do the work.<br>People do <em>the thinking.</em>",
         "sub": (
-            "ReWoo scopes, designs, and builds AI systems — agents, pipelines, and retrieval that fit the "
-            "tools you already run. Written scope before anything is charged. Your code, your data, your keys."
+            "ReWoo designs and builds AI systems that take real work off your team — agents, pipelines, and "
+            "retrieval, living inside the tools you already run. Every claim here is checkable: two demos you "
+            "can open, a benchmark you can re-run, a written scope before anything is charged. Your code. Your "
+            "data. Your keys."
         ),
-        "cta_primary": {"label": "Book an intro call", "href": "contact.html"},
-        "cta_secondary": {"label": "Explore the systems", "href": "systems.html"},
+        "cta_primary": {"label": "Message on WhatsApp", "href": "contact.html"},
+        "cta_secondary": {"label": "Get an instant scope", "href": "scope-generator.html"},
         "stats": [
-            {"v": "7", "l": "system families"},
-            {"v": "12", "l": "capabilities"},
-            {"v": "5", "l": "engagement types"},
-            {"v": "0", "l": "work started without a written scope"},
+            {"v": "2", "l": "live demos on this site — open them, no signup"},
+            {"v": "1", "l": "first-author research publication — Bengali speaker diarization"},
+            {"v": "Master", "l": "Kaggle rank — competition-verified"},
+            {"v": "100%", "l": "of engagements begin with a written scope"},
         ],
+    },
+    "proof": {
+        "overline": "Proof, not promises",
+        "headline": "Open the kitchen.",
+        "sub": "Demos, benchmarks, and credentials you can verify yourself — before any call.",
+        "voice": {
+            "t": "Voice Intelligence — live",
+            "d": "Speak Bangla or English into your browser and watch transcription, live latency, and pipeline stages work on your device. No signup, no server.",
+        },
+        "search": {
+            "t": "Knowledge Search — live",
+            "d": "Ask a real knowledge base questions and check every answer against its clickable citations — then re-run the published retrieval benchmark yourself, failures included.",
+        },
+        "more": "Five more system families — visual production, assessment, design visualization, content pipelines, document intelligence — are built on request.",
+        "link": {"label": "Enter the Proof Room", "href": "proof.html"},
     },
     "intro": {
         "overline": "Who we are",
@@ -51,6 +69,22 @@ HOME = {
             "The studio runs on three commitments you can check: every engagement begins with a written scope; every build hands over code, configuration, and documentation you own; and every claim on this site is either verifiable or clearly marked as an offer, not a history.",
         ],
         "link": {"label": "More about the studio", "href": "about.html"},
+    },
+    "founder": {
+        "overline": "The founder",
+        "headline": "Adil. <em>The person who scopes it builds it.</em>",
+        "body": (
+            "An AI systems engineer from Dhaka with a first-author publication on Bengali speaker diarization, "
+            "a Kaggle Master rank, and a first client system delivered in the United Kingdom. One mind from "
+            "first call to handover — no account managers, no hand-offs, no telephone game."
+        ),
+        "facts": [
+            {"t": "First-author research", "d": "Bengali speaker diarization — published, citable, peer-reviewed work in low-resource-language AI."},
+            {"t": "Kaggle Master", "d": "A competition tier earned on leaderboards, not self-awarded — machine learning skill with receipts."},
+            {"t": "UK first client", "d": "The studio's first engagement was delivered for a client in the United Kingdom."},
+            {"t": "Direct line", "d": "Every conversation lands with the engineer who would architect and build the system."},
+        ],
+        "link": {"label": "Meet the founder", "href": "about.html#founder"},
     },
     "capabilities": {
         "overline": "Capabilities",
@@ -125,12 +159,12 @@ HOME = {
         "overline": "Questions",
         "headline": "Asked often.",
         "items": [
-            {"q": "Do you run ready-made AI products we can subscribe to?", "a": "No. ReWoo builds scoped systems to order — this website is our own product work, and everything else is built for a specific client's stack, data rules, and team. If a subscription product fits you better than a build, the audit will say so."},
-            {"q": "How do you price?", "a": "Per engagement, after discovery: a written scope with deliverables, milestones, and a fixed quote. We do not publish prices or make turnaround promises in marketing — anything unverifiable stays out of the copy."},
+            {"q": "Do you run ready-made AI products we can subscribe to?", "a": "Not yet — and the order of operations is deliberate. ReWoo builds scoped systems to order, and productizes what the work proves out: the AI Scope Generator and the live demos on this site are the studio's own product work, built in public. When an exploration earns it, it ships with the same evaluation and handover discipline as a client build. Products generate evidence — that is the direction."},
+            {"q": "How do you price?", "a": "Indicative durations and price ranges are published on the engagements page — labeled estimates, so you can filter by budget before any call. The final number is always a fixed quote inside a written scope, set after discovery, and nothing is charged before you approve that document."},
             {"q": "What if the build is not feasible?", "a": "You learn it early and in writing. Milestone structure and evaluation reports are designed to surface failure before it becomes expensive — including a stop recommendation when the bar cannot be met."},
             {"q": "Who owns the code and data?", "a": "You do. Handover transfers the repository, configuration, credentials, and documentation. There is no hostage-taking and no recurring dependency unless you explicitly scope support."},
-            {"q": "Where is the team based?", "a": "Dhaka, Bangladesh — an independent studio working with teams anywhere. The current site you are reading was designed and built in-house."},
-            {"q": "Can you work with our security and procurement process?", "a": "Yes — designs are documented for security review, scopes are written to survive procurement, and phased rollouts with checkpoints are the default shape for larger organizations."},
+            {"q": "Where is the team based?", "a": "Dhaka, Bangladesh — an independent studio working with teams anywhere. The current site you are reading, including its live demos and the retrieval benchmark, was designed and built in-house."},
+            {"q": "Can you work with our security and procurement process?", "a": "Yes — designs are documented for security review, scopes are written to survive procurement, and phased rollouts with checkpoints are the default shape for larger organizations. The security and data-handling page lists where data lives and how it is treated."},
         ],
     },
 }
@@ -140,6 +174,28 @@ ABOUT = {
         "eyebrow": "About",
         "headline": "An AI systems studio, <em>built like the work it ships.</em>",
         "sub": "Small, senior, and deliberately narrow: we scope, design, and build AI systems — then hand them over completely.",
+    },
+    "founder": {
+        "overline": "The founder",
+        "name": "Adil",
+        "role": "Founder · AI systems engineer",
+        "headline": "The person who scopes it <em>is the person who builds it.</em>",
+        "paras": [
+            "ReWoo is run by Adil, an AI systems engineer from Dhaka, Bangladesh. Before the studio there was research: a first-author publication on Bengali speaker diarization — the problem of deciding who spoke when in audio — and a Kaggle Master rank earned in open competition. Both taught the same lesson the studio now sells: claims should be measured, evaluated, and falsifiable.",
+            "The studio's first client engagement was delivered for a team in the United Kingdom, and the shape of that work set the template every engagement still follows: a written scope before anything was charged, a system built around the client's own stack, and a complete handover.",
+            "Staying deliberately small is the design, not a stage. One mind carries your system from first call to handover — no account managers, no hand-offs, no telephone game between the person who promised and the person who builds. The constraint keeps every claim on this site checkable, because the person making it signs the work.",
+        ],
+        "facts": [
+            {"t": "First-author research publication", "d": "Bengali speaker diarization — low-resource-language AI, where the studio's voice work is grounded."},
+            {"t": "Kaggle Master rank", "d": "One of Kaggle's earned competition tiers — machine learning skill with public leaderboards behind it."},
+            {"t": "First client: United Kingdom", "d": "The studio's first engagement was a delivered system for a UK team — case study in preparation, pending client sign-off."},
+            {"t": "Direct line, always", "d": "WhatsApp and email reach the founder directly — the same person who would architect and build your system."},
+        ],
+        "links": [
+            {"label": "See the live demos", "href": "proof.html"},
+            {"label": "Read the retrieval benchmark", "href": "demo-search.html#benchmark"},
+            {"label": "Message Adil on WhatsApp", "href": "contact.html"},
+        ],
     },
     "story": {
         "overline": "The studio",
@@ -276,6 +332,16 @@ CONTACT = {
             {"id": "company", "label": "Company or project", "type": "text", "required": False, "hint": "Optional context."},
             {"id": "interest", "label": "What are you working on?", "type": "textarea", "required": True, "hint": "The workflow, the pain, and what done looks like. Two or three sentences is plenty."},
         ],
+        "files": {
+            "id": "files",
+            "label": "Attach a brief or RFP (optional)",
+            "hint": "PDF, DOC, TXT, or MD. Your files are listed in the email draft — attach them in your email app, since this site has no server and nothing uploads anywhere.",
+        },
+        "nda": {
+            "id": "nda",
+            "label": "Send an NDA before we discuss details",
+            "hint": "Tick this and the draft asks for your standard NDA first — or ours. Nothing sensitive is discussed before it is signed.",
+        },
         "budget": {
             "id": "budget",
             "label": "Budget basis (optional)",
@@ -304,8 +370,8 @@ CONTACT = {
         "overline": "Other ways",
         "headline": "Direct lines.",
         "items": [
-            {"t": "Email", "d": "Write directly — same person, same speed.", "href": "mailto:adilshamim696@gmail.com", "label": "adilshamim696@gmail.com"},
-            {"t": "WhatsApp", "d": "The fastest line to the studio.", "href": "https://wa.me/+8801321073452", "label": "+880 1321-073452"},
+            {"t": "Email", "d": "Write directly — same person, same speed.", "href": "mailto:hello@rewoo.tech", "label": "hello@rewoo.tech"},
+            {"t": "WhatsApp", "d": "The fastest line to the studio.", "href": "contact.html", "label": "+880 1321-073452"},
             {"t": "LinkedIn", "d": "Studio updates and occasional build notes.", "href": "https://linkedin.com/company/rewoo", "label": "ReWoo on LinkedIn"},
         ],
     },

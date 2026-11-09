@@ -11,10 +11,10 @@ Framing rules:
 """
 
 PRICING_NOTE = (
-    "Request scope. ReWoo's commercial terms are set per engagement: after a short discovery you receive "
-    "a written scope with deliverables, milestones, and a fixed quote. Nothing is charged before you "
-    "approve that document — and we do not publish prices, turnaround promises, or performance guarantees "
-    "we cannot verify."
+    "Indicative ranges, honest terms. Each engagement carries a typical duration and an indicative price "
+    "range — estimates published so you can filter by budget before any call, not quotes. The final number "
+    "is always a fixed quote inside your written scope, set after discovery, and nothing is charged before "
+    "you approve that document."
 )
 
 PACKAGES = [
@@ -24,6 +24,8 @@ PACKAGES = [
         "archetype": "Audit",
         "icon": "clipboard",
         "chip": "Assessment engagement",
+        "duration": "About 1 week",
+        "range": "$600 – $1,400",
         "short": "Find out which of your workflows are worth automating — and which are not — before spending build budget.",
         "buyers": [
             "Founders and operators feeling AI pressure without a clear first move",
@@ -80,6 +82,8 @@ PACKAGES = [
         "archetype": "Build",
         "icon": "rocket",
         "chip": "Build engagement",
+        "duration": "About 4–6 weeks",
+        "range": "$3,500 – $9,000",
         "short": "A working agent for your highest-value workflow — deployed, connected, evaluated, and handed over.",
         "buyers": [
             "Teams with a known painful workflow and a clear idea of done",
@@ -138,6 +142,8 @@ PACKAGES = [
         "archetype": "Build",
         "icon": "plug",
         "chip": "Build engagement",
+        "duration": "About 2–4 weeks",
+        "range": "$2,000 – $6,000",
         "short": "AI wired into the systems you already run — with retries, monitoring, and clean failure behavior.",
         "buyers": [
             "Teams with a working model or agent that cannot touch production systems",
@@ -196,6 +202,8 @@ PACKAGES = [
         "archetype": "Audit",
         "icon": "flow",
         "chip": "Assessment engagement",
+        "duration": "About 1–2 weeks",
+        "range": "$800 – $1,800",
         "short": "Map one messy process end-to-end and find out what to automate, what to fix, and what to leave human.",
         "buyers": [
             "Operations leads with one process everyone complains about",
@@ -253,6 +261,8 @@ PACKAGES = [
         "archetype": "Workshop",
         "icon": "users",
         "chip": "Alignment engagement",
+        "duration": "About 1–2 weeks",
+        "range": "$500 – $1,000",
         "short": "Get leadership aligned on what AI means for this business — with a shared vocabulary and a first plan.",
         "buyers": [
             "Leadership teams split on what to do about AI",

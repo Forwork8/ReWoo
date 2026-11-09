@@ -487,13 +487,15 @@
 
   /* ==========================================================================
      9. CONTACT INQUIRY FORM — validate, compose, review (never auto-send)
+        The draft lists chosen attachments (files never upload — no server)
+        and can request an NDA before details are discussed.
      ====================================================================== */
 
   (function () {
     var form = $('#inquiry-form');
     if (!form) return;
 
-    var EMAIL_TO = 'adilshamim696@gmail.com';
+    var EMAIL_TO = 'hello@rewoo.tech';
     var review = $('#review');
     var reviewPre = $('#review-pre');
     var reviewMailto = $('#review-mailto');
@@ -539,6 +541,8 @@
       var company = fieldEl('company') ? fieldEl('company').value.trim() : '';
       var interest = fieldEl('interest').value.trim();
       var budget = fieldEl('budget') ? fieldEl('budget').value : '';
+      var nda = fieldEl('nda');
+      var files = fieldEl('files');
 
       var lines = [
         'Hi Adil,',
@@ -555,6 +559,17 @@
       if (budget) {
         lines.push('');
         lines.push('Budget basis: ' + budget);
+      }
+      if (nda && nda.checked) {
+        lines.push('');
+        lines.push('NDA: please send an NDA before we discuss details — ours or yours.');
+      }
+      if (files && files.files && files.files.length) {
+        lines.push('');
+        lines.push('Attached to this email (please attach the same files in your email app):');
+        for (var i = 0; i < files.files.length; i++) {
+          lines.push('- ' + files.files[i].name + ' (' + Math.max(1, Math.round(files.files[i].size / 1024)) + ' KB)');
+        }
       }
       var brief = Brief.read();
       if (brief.length) {
