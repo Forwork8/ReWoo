@@ -82,8 +82,8 @@ The homepage, proof, demos, scope generator, security, roadmap, about, resources
 
 - **Proof-first positioning**: two live demos and a published retrieval benchmark run entirely in the visitor's browser — zero servers, zero signup, nothing uploaded.
 - **AI Scope Generator**: a transparent, client-side heuristic that drafts a written scope (readiness read-out, matched signals, indicative range) in seconds; the main conversion path.
-- **Apple-tier design system, unchanged brand**: Fraunces serif display + Inter body, near-black/white dual theme with zero flash of unstyled content, the studio's blue accent (#6E97FF dark / #0066CC light).
-- **50 generated + hand-crafted pages** on one design system; collapsed navigation (Systems, Packages, Proof, About, Contact) with mega menus.
+- **Reference-inspired design system (2026 redesign)**: white canvas, Inter typography (display + body), bright-blue accents, floating charcoal pill navigation, soft pale cards with large rounded corners, pastel illustration panels, and original character artwork (`assets/ui/`). Light theme is the first-visit default; dark mode is charcoal with the same layout, persisted via `rewoo-theme`.
+- **50 generated + hand-crafted pages** on one design system; collapsed navigation (Systems, Packages, Proof, About, Contact) with mega menus that drop centered from the pill.
 - **Working visitor journey**: capability search and filtering, a persistent project brief (localStorage, device-local), a validated inquiry form that composes an email draft (never auto-sends), WhatsApp call booking, and accessible FAQs.
 - **Honest labels throughout**: industries are discovery aids, explorations are marked as explorations, the case study is marked as in preparation, prices are marked as estimates. No invented clients, metrics, or claims.
 - **Accessibility**: skip links, focus-visible outlines, keyboard-operable menus with Escape/outside-click, focus-trapped mobile drawer, native `<details>` accordions, reduced-motion support, and no-JS fallbacks.

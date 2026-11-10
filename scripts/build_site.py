@@ -35,8 +35,7 @@ CAP_BY = {c["slug"]: c for c in CAPABILITIES}
 IND_BY = {i["slug"]: i for i in INDUSTRIES}
 PKG_BY = {p["slug"]: p for p in PACKAGES}
 
-FONTS = ("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;"
-         "1,9..144,200..500&family=Inter:wght@300;400;500;600&display=swap")
+FONTS = ("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap")
 
 # ---------------------------------------------------------------- icons -----
 
@@ -311,9 +310,9 @@ def faq_jsonld(items):
 
 THEME_INIT = (
     "<script>(function () { try { var t = localStorage.getItem('rewoo-theme');"
-    " if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)"
-    " ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', t);"
-    " } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); } })();</script>"
+    " if (!t) t = 'light';"
+    " document.documentElement.setAttribute('data-theme', t);"
+    " } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); } })();</script>"
 )
 
 ORG_JSONLD = {
@@ -333,7 +332,7 @@ def head(title, desc, path, jsonld=None, extra_meta=""):
             blocks.append('<script type="application/ld+json">%s</script>' % json.dumps(j, ensure_ascii=False))
     og_title = title
     return """<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -569,6 +568,7 @@ def footer(path):
       </a>
       <p class="footer__tagline">AI systems, scoped and shipped. An independent studio in Dhaka, building for teams anywhere.</p>
       <a href="mailto:{email}" class="footer__email">{email}</a>
+      <img src="{mascot}" alt="" class="footer__mascot" width="236" height="228" loading="lazy" decoding="async">
       <div class="footer__social">{socials}</div>
     </div>
     {systems_col}
@@ -585,6 +585,7 @@ def footer(path):
 """.format(home=esc(linkto("index.html", path)), logo=esc(asset("assets/logo.jpg", path)),
            email=esc(SITE["email"]), socials=socials, systems_col=systems_col, caps_col=caps_col,
            inds_col=inds_col, pkg_col=pkg_col, company_col=company_col,
+           mascot=esc(asset("assets/ui/hero-character.png", path)),
            year=TODAY[:4], sitejs=esc(asset("site.js", path)))
 
 
@@ -1019,7 +1020,7 @@ def packages_hub():
                         esc(linkto("packages/%s.html" % pk["slug"], p)),
                         brief_btn("package", pk["slug"], pk["name"], compact=True)))
     b.append('<section class="section" aria-label="Engagements"><div class="wrap">'
-             + '<div class="pkg-grid">' + "".join(cards) + "</div></div></section>")
+             + '<div class="pkg-arrange">' + "".join(cards) + "</div></div></section>")
 
     rows = [
         ("Type", [pk["archetype"] for pk in PACKAGES]),
