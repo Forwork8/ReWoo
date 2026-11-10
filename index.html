@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,10 +24,10 @@
 <link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,200..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="site.css">
-<script>(function () { try { var t = localStorage.getItem('rewoo-theme'); if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', t); } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); } })();</script>
+<script>(function () { try { var t = localStorage.getItem('rewoo-theme'); if (!t) t = 'light'; document.documentElement.setAttribute('data-theme', t); } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); } })();</script>
 <noscript><style>[data-animate]{opacity:1 !important;transform:none !important}</style></noscript>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "ReWoo", "url": "https://rewoo.tech", "email": "hello@rewoo.tech", "slogan": "AI systems, scoped and shipped.", "description": "ReWoo is the AI studio you can audit: live demos you can open, a retrieval benchmark you can re-run, a written plan before anything begins, and complete handover. Agents, pipelines, and retrieval systems that fit the tools you already run — and then the keys are yours.", "address": {"@type": "PostalAddress", "addressLocality": "Dhaka", "addressCountry": "BD"}, "sameAs": ["https://linkedin.com/company/rewoo", "https://x.com/ReWootech8"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "ReWoo", "url": "https://rewoo.tech"}</script>
@@ -79,13 +79,6 @@
 
   <!-- ============================ HERO ============================ -->
   <section class="hero" id="top" aria-label="Hero">
-
-    <!-- Background collage — the studio's original image, as on the first site -->
-    <div class="hero__bg-backdrop" aria-hidden="true">
-      <img src="assets/background.png" alt="" class="hero__bg-img" width="1897" height="879" loading="eager" decoding="async">
-      <div class="hero__bg-glow"></div>
-    </div>
-
     <div class="hero__inner">
 
       <div class="hero__pill-cluster hero-in hero-in--1">
@@ -97,8 +90,8 @@
 
       <h1 class="hero__headline hero-in hero-in--2">
         <span class="sr-only">ReWoo AI systems studio: </span>
-        Systems do the work.<br>
-        People do <em>the thinking.</em>
+        <img src="assets/ui/sprite-pink.png" alt="" class="hero-sprite hero-sprite--pink" width="300" height="286" decoding="async">Systems do the work.<img src="assets/ui/sprite-lime.png" alt="" class="hero-sprite hero-sprite--lime" width="300" height="294" decoding="async"><br>
+        <img src="assets/ui/sprite-sky.png" alt="" class="hero-sprite hero-sprite--sky" width="284" height="300" decoding="async">People do <em>the thinking.</em><img src="assets/ui/sprite-lavender.png" alt="" class="hero-sprite hero-sprite--lavender" width="300" height="282" decoding="async">
       </h1>
 
       <p class="hero__sub hero-in hero-in--3">
@@ -115,12 +108,8 @@
         <a href="scope-generator.html" class="btn btn--outline">Get an instant plan →</a>
       </div>
 
-    </div>
+      <img src="assets/ui/hero-character.png" alt="" class="hero__mascot hero-in hero-in--4" width="760" height="735" loading="eager" decoding="async">
 
-    <div class="hero__scroll-indicator" aria-hidden="true">
-      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 5v14M5 12l7 7 7-7" />
-      </svg>
     </div>
   </section>
 
@@ -135,7 +124,7 @@
   </section>
 
   <!-- ========================= FLAGSHIP DEMOS ========================= -->
-  <section class="section section--bg" id="proof" aria-label="Live demos">
+  <section class="section" id="proof" aria-label="Live demos">
     <div class="wrap">
       <div class="sec-head sec-head--center" data-animate>
         <p class="overline overline--accent">Proof, not promises</p>
@@ -144,38 +133,109 @@
           Both run in your browser — no signup, no server, no salesperson unlocking a demo for you.</p>
       </div>
 
-      <div class="proof-grid">
-        <a class="proof-card" href="demo-voice.html" data-animate>
-          <span class="proof-card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1"/><path d="M12 18v4"/></svg></span>
-          <div class="proof-card__body">
-            <p class="proof-card__tag">Live demo · 01</p>
-            <h3 class="proof-card__t">Voice Intelligence</h3>
-            <p class="proof-card__d">Speak Bangla or English and watch real transcription with measured latency —
-              then walk the full pipeline on a code-switched support call.</p>
-          </div>
-          <span class="proof-card__go" aria-hidden="true">Open the demo →</span>
+      <div class="demo-panels">
+        <a class="demo-panel" href="demo-voice.html" data-animate>
+          <span class="demo-panel__art demo-panel__art--sky" aria-hidden="true">
+            <!-- Illustration: a voice waveform with a live mic — decorative, the text below carries the meaning -->
+            <svg viewBox="0 0 320 210" role="img" focusable="false" aria-hidden="true">
+              <circle cx="160" cy="78" r="38" fill="#FFFFFF" opacity="0.9"/>
+              <rect x="152.5" y="52" width="15" height="26" rx="7.5" fill="none" stroke="#1F6FD6" stroke-width="3"/>
+              <path d="M138 80v4a22 22 0 0 0 44 0v-4" fill="none" stroke="#1F6FD6" stroke-width="3" stroke-linecap="round"/>
+              <path d="M160 106v16" stroke="#1F6FD6" stroke-width="3" stroke-linecap="round"/>
+              <g stroke-linecap="round">
+                <line x1="28"  y1="88" x2="28"  y2="112" stroke="#8FC1F5" stroke-width="8"/>
+                <line x1="47"  y1="78" x2="47"  y2="122" stroke="#4F9BF4" stroke-width="8"/>
+                <line x1="66"  y1="64" x2="66"  y2="136" stroke="#1F6FD6" stroke-width="8"/>
+                <line x1="85"  y1="80" x2="85"  y2="120" stroke="#8FC1F5" stroke-width="8"/>
+                <line x1="104" y1="70" x2="104" y2="130" stroke="#4F9BF4" stroke-width="8"/>
+                <line x1="216" y1="70" x2="216" y2="130" stroke="#4F9BF4" stroke-width="8"/>
+                <line x1="235" y1="80" x2="235" y2="120" stroke="#8FC1F5" stroke-width="8"/>
+                <line x1="254" y1="64" x2="254" y2="136" stroke="#1F6FD6" stroke-width="8"/>
+                <line x1="273" y1="78" x2="273" y2="122" stroke="#4F9BF4" stroke-width="8"/>
+                <line x1="292" y1="88" x2="292" y2="112" stroke="#8FC1F5" stroke-width="8"/>
+              </g>
+              <g font-family="Inter, sans-serif" font-size="15" font-weight="600">
+                <rect x="64"  y="152" width="82" height="30" rx="15" fill="#FFFFFF" opacity="0.95"/>
+                <rect x="174" y="152" width="82" height="30" rx="15" fill="#FFFFFF" opacity="0.95"/>
+                <text x="105" y="172" text-anchor="middle" fill="#1F6FD6">বাংলা</text>
+                <text x="215" y="172" text-anchor="middle" fill="#1F6FD6">English</text>
+              </g>
+            </svg>
+          </span>
+          <span class="demo-panel__body">
+            <span class="demo-panel__tag">Live demo · 01</span>
+            <span class="demo-panel__t">Voice Intelligence</span>
+            <span class="demo-panel__d">Speak Bangla or English and watch real transcription with measured latency —
+              then walk the full pipeline on a code-switched support call.</span>
+            <span class="demo-panel__go">Open the demo →</span>
+          </span>
         </a>
 
-        <a class="proof-card" href="demo-search.html" data-animate>
-          <span class="proof-card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></span>
-          <div class="proof-card__body">
-            <p class="proof-card__tag">Live demo · 02</p>
-            <h3 class="proof-card__t">Knowledge Search</h3>
-            <p class="proof-card__d">Ask this site's knowledge base questions and check every citation — then
-              re-run the published retrieval benchmark, failures included.</p>
-          </div>
-          <span class="proof-card__go" aria-hidden="true">Open the demo →</span>
+        <a class="demo-panel" href="demo-search.html" data-animate>
+          <span class="demo-panel__art demo-panel__art--lavender" aria-hidden="true">
+            <!-- Illustration: documents with a highlighted answer and citation markers -->
+            <svg viewBox="0 0 320 210" role="img" focusable="false" aria-hidden="true">
+              <rect x="40" y="34" width="128" height="142" rx="14" fill="#FFFFFF" opacity="0.8"/>
+              <g stroke="#C3B5EA" stroke-width="6" stroke-linecap="round" opacity="0.7">
+                <line x1="62" y1="60" x2="146" y2="60"/>
+                <line x1="62" y1="82" x2="132" y2="82"/>
+                <line x1="62" y1="140" x2="146" y2="140"/>
+                <line x1="62" y1="158" x2="118" y2="158"/>
+              </g>
+              <rect x="150" y="52" width="132" height="124" rx="14" fill="#FFFFFF"/>
+              <g stroke-linecap="round">
+                <line x1="170" y1="84" x2="262" y2="84" stroke="#DDD5F2" stroke-width="8"/>
+                <rect x="170" y="100" width="92" height="14" rx="7" fill="#4F9BF4" opacity="0.9"/>
+                <line x1="170" y1="132" x2="262" y2="132" stroke="#DDD5F2" stroke-width="8"/>
+                <line x1="170" y1="154" x2="240" y2="154" stroke="#DDD5F2" stroke-width="8"/>
+              </g>
+              <g font-family="Inter, sans-serif" font-size="12" font-weight="700">
+                <rect x="162" y="72" width="26" height="18" rx="9" fill="#1F6FD6"/>
+                <text x="175" y="86" text-anchor="middle" fill="#FFFFFF">1</text>
+                <rect x="240" y="122" width="26" height="18" rx="9" fill="#1F6FD6"/>
+                <text x="253" y="136" text-anchor="middle" fill="#FFFFFF">2</text>
+              </g>
+              <circle cx="268" cy="168" r="24" fill="none" stroke="#1F6FD6" stroke-width="5"/>
+              <line x1="285" y1="185" x2="300" y2="200" stroke="#1F6FD6" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="demo-panel__body">
+            <span class="demo-panel__tag">Live demo · 02</span>
+            <span class="demo-panel__t">Knowledge Search</span>
+            <span class="demo-panel__d">Ask this site's knowledge base questions and check every citation — then
+              re-run the published retrieval benchmark, failures included.</span>
+            <span class="demo-panel__go">Open the demo →</span>
+          </span>
         </a>
 
-        <a class="proof-card proof-card--bench" href="demo-search.html#benchmark" data-animate>
-          <span class="proof-card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V7M17 15v-7"/></svg></span>
-          <div class="proof-card__body">
-            <p class="proof-card__tag">Published benchmark</p>
-            <h3 class="proof-card__t">Retrieval, measured in the open</h3>
-            <p class="proof-card__d">19 questions, fixed gold passages, BM25 — computed in your browser when you
-              press run.</p>
-          </div>
-          <span class="proof-card__go" aria-hidden="true">Run it yourself →</span>
+        <a class="demo-panel" href="demo-search.html#benchmark" data-animate>
+          <span class="demo-panel__art demo-panel__art--lime" aria-hidden="true">
+            <!-- Illustration: evaluation results — three measured bars and one honest miss -->
+            <svg viewBox="0 0 320 210" role="img" focusable="false" aria-hidden="true">
+              <rect x="26" y="22" width="268" height="166" rx="16" fill="#FFFFFF" opacity="0.9"/>
+              <line x1="58" y1="144" x2="262" y2="144" stroke="#C9D8B0" stroke-width="4" stroke-linecap="round"/>
+              <g stroke-linecap="round">
+                <line x1="92"  y1="88" x2="92"  y2="144" stroke="#8FC1F5" stroke-width="16"/>
+                <line x1="148" y1="66" x2="148" y2="144" stroke="#4F9BF4" stroke-width="16"/>
+                <line x1="204" y1="52" x2="204" y2="144" stroke="#1F6FD6" stroke-width="16"/>
+              </g>
+              <circle cx="248" cy="122" r="15" fill="#FFFFFF"/>
+              <path d="M241 122l5 5 9-11" fill="none" stroke="#5D9E32" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <g font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#4C6B2F">
+                <text x="92"  y="168" text-anchor="middle">Hit@1</text>
+                <text x="148" y="168" text-anchor="middle">Hit@3</text>
+                <text x="204" y="168" text-anchor="middle">MRR</text>
+                <text x="248" y="168" text-anchor="middle">✓</text>
+              </g>
+            </svg>
+          </span>
+          <span class="demo-panel__body">
+            <span class="demo-panel__tag">Published benchmark</span>
+            <span class="demo-panel__t">Retrieval, measured in the open</span>
+            <span class="demo-panel__d">19 questions, fixed gold passages, BM25 — computed in your browser when you
+              press run.</span>
+            <span class="demo-panel__go">Run it yourself →</span>
+          </span>
         </a>
       </div>
 
@@ -194,19 +254,63 @@
         <p class="overline overline--accent">How an engagement works</p>
         <h2 class="s-headline">Five steps. <em>No mystery.</em></h2>
       </div>
-      <ol class="steps steps--wide" data-animate>
-        <li class="step"><span class="step__num" aria-hidden="true">01</span><div class="step__body"><h3 class="step__t">Intro call</h3><p class="step__d">Thirty minutes on your workflow and whether we are the right builder. An honest no is included.</p></div></li>
-        <li class="step"><span class="step__num" aria-hidden="true">02</span><div class="step__body"><h3 class="step__t">Written plan</h3><p class="step__d">What gets built, the steps, the timeline, and every term — in one document you approve before anything begins.</p></div></li>
-        <li class="step"><span class="step__num" aria-hidden="true">03</span><div class="step__body"><h3 class="step__t">Build in milestones</h3><p class="step__d">Demoable increments; evaluation against your real cases; no big-bang reveal.</p></div></li>
-        <li class="step"><span class="step__num" aria-hidden="true">04</span><div class="step__body"><h3 class="step__t">Integrate and harden</h3><p class="step__d">Wired into your stack with logging, monitoring, and failure behavior designed in.</p></div></li>
-        <li class="step"><span class="step__num" aria-hidden="true">05</span><div class="step__body"><h3 class="step__t">Hand over</h3><p class="step__d">Code, configuration, docs, runbook, and a working session. You own it from day one.</p></div></li>
-      </ol>
+
+      <div class="process-grid" data-animate>
+        <div class="process-col">
+          <div class="pstep"><span class="pstep__num" aria-hidden="true">1</span><div><h3 class="pstep__t">Intro call</h3><p class="pstep__d">Thirty minutes on your workflow and whether we are the right builder. An honest no is included.</p></div></div>
+          <div class="pstep"><span class="pstep__num" aria-hidden="true">2</span><div><h3 class="pstep__t">Written plan</h3><p class="pstep__d">What gets built, the steps, the timeline, and every term — in one document you approve before anything begins.</p></div></div>
+        </div>
+
+        <div class="process-preview" aria-hidden="true">
+          <span class="process-preview__label">What a build looks like</span>
+          <!-- Illustration: the written plan feeding a system pipeline with review gates and handover -->
+          <svg class="process-preview__svg" viewBox="0 0 320 300" role="img" focusable="false">
+            <rect x="76" y="12" width="168" height="86" rx="14" fill="#FFFFFF" stroke="#A9B7C6" stroke-width="2"/>
+            <g stroke-linecap="round">
+              <line x1="98" y1="36" x2="204" y2="36" stroke="#A9B7C6" stroke-width="8"/>
+              <line x1="98" y1="54" x2="186" y2="54" stroke="#A9B7C6" stroke-width="8"/>
+            </g>
+            <rect x="98" y="68" width="84" height="14" rx="7" fill="#4F9BF4" opacity="0.85"/>
+            <path d="M160 102v14" stroke="#7E93A8" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>
+            <path d="M152 112l8 11 8-11" fill="none" stroke="#7E93A8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <rect x="42" y="130" width="236" height="118" rx="16" fill="#FFFFFF" stroke="#A9B7C6" stroke-width="2"/>
+            <text x="62" y="154" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#1F6FD6" letter-spacing="1">YOUR SYSTEM</text>
+            <g>
+              <rect x="62" y="166" width="64" height="44" rx="12" fill="#EFF6FE" stroke="#BBD7F7" stroke-width="1.5"/>
+              <circle cx="94" cy="182" r="7" fill="#4F9BF4"/>
+              <line x1="80" y1="199" x2="108" y2="199" stroke="#8FC1F5" stroke-width="6" stroke-linecap="round"/>
+              <rect x="138" y="166" width="64" height="44" rx="12" fill="#FDEFF5" stroke="#F4CBDF" stroke-width="1.5"/>
+              <circle cx="170" cy="182" r="7" fill="#F2A0C9"/>
+              <line x1="156" y1="199" x2="184" y2="199" stroke="#F2A0C9" stroke-width="6" stroke-linecap="round"/>
+              <rect x="214" y="166" width="46" height="44" rx="12" fill="#F3FAE9" stroke="#D6E7B4" stroke-width="1.5"/>
+              <path d="M230 188l5 5 10-11" fill="none" stroke="#7FB347" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <g stroke="#A9B7C6" stroke-width="3" stroke-linecap="round">
+              <line x1="62" y1="228" x2="258" y2="228"/>
+              <line x1="62" y1="238" x2="222" y2="238"/>
+            </g>
+            <g>
+              <rect x="104" y="260" width="112" height="30" rx="15" fill="#1F6FD6"/>
+              <text x="148" y="280" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="1">HANDOVER</text>
+              <path d="M186 275h14m-6-6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+          <p class="process-preview__note">Illustrative — the real architecture, models, and gates are set in your written plan.</p>
+        </div>
+
+        <div class="process-col">
+          <div class="pstep"><span class="pstep__num" aria-hidden="true">3</span><div><h3 class="pstep__t">Build in milestones</h3><p class="pstep__d">Demoable increments; evaluation against your real cases; no big-bang reveal.</p></div></div>
+          <div class="pstep"><span class="pstep__num" aria-hidden="true">4</span><div><h3 class="pstep__t">Integrate and harden</h3><p class="pstep__d">Wired into your stack with logging, monitoring, and failure behavior designed in.</p></div></div>
+          <div class="pstep"><span class="pstep__num" aria-hidden="true">5</span><div><h3 class="pstep__t">Hand over</h3><p class="pstep__d">Code, configuration, docs, runbook, and a working session. You own it from day one.</p></div></div>
+        </div>
+      </div>
       <p class="sec-cta-row" data-animate><a class="btn btn--ghost" href="scope-generator.html">Start step 2 now — draft your plan →</a></p>
     </div>
   </section>
 
   <!-- ============================ PACKAGES ============================ -->
-  <section class="section section--bg" id="engagements" aria-label="Engagements">
+  <section class="section" id="engagements" aria-label="Engagements">
     <div class="wrap">
       <div class="sec-head sec-head--center" data-animate>
         <p class="overline overline--accent">Engagements</p>
@@ -214,7 +318,7 @@
         <p class="s-subhead s-subhead--centered">Two audits, two builds, one workshop — pick the door that fits
           where you are. Every one ends with a written plan you approve before work starts.</p>
       </div>
-      <div class="pkg-mini-grid">
+      <div class="pkg-arrange">
         <a class="pkg-mini" href="packages/ai-readiness-audit.html">
           <span class="badge">Audit</span><h3 class="pkg-mini__t">AI Readiness Audit</h3>
           <p class="pkg-mini__d">Which workflows are worth automating — and which are not.</p>
@@ -243,30 +347,42 @@
     </div>
   </section>
 
-  <!-- ============================ WHO WE ARE (compact) ============================ -->
+  <!-- ============================ WHO WE ARE ============================ -->
   <section class="section section--surface" id="intro" aria-label="Who we are">
-    <div class="wrap intro-grid">
-      <div data-animate>
+    <div class="wrap studio-grid">
+      <div class="studio-copy" data-animate>
         <p class="overline overline--accent">Who we are</p>
         <h2 class="s-headline">A small studio. One focus: <em>systems that hold up.</em></h2>
+        <div class="s-body">
+          <p>ReWoo is an independent AI systems studio based in Dhaka, Bangladesh, working with teams anywhere.
+            We design and build scoped systems — not decks, not demos, not a platform you rent forever.</p>
+          <p>The studio runs on three commitments you can check: every engagement begins with a written plan;
+            every build hands over code, configuration, and documentation you own; and every claim on this site
+            is either verifiable or clearly marked as an offer, not a history.</p>
+          <p class="studio-links">
+            <a class="btn btn--ghost" href="about.html">More about the studio →</a>
+            <a class="btn btn--ghost" href="systems.html">All seven system families →</a>
+            <a class="btn btn--ghost" href="capabilities.html">Twelve capabilities →</a>
+          </p>
+        </div>
       </div>
-      <div class="s-body" data-animate>
-        <p>ReWoo is an independent AI systems studio based in Dhaka, Bangladesh, working with teams anywhere.
-          We design and build scoped systems — not decks, not demos, not a platform you rent forever.</p>
-        <p>The studio runs on three commitments you can check: every engagement begins with a written plan;
-          every build hands over code, configuration, and documentation you own; and every claim on this site
-          is either verifiable or clearly marked as an offer, not a history.</p>
-        <p class="sec-cta-row">
-          <a class="btn btn--ghost" href="about.html">More about the studio →</a>
-          <a class="btn btn--ghost" href="systems.html">All seven system families →</a>
-          <a class="btn btn--ghost" href="capabilities.html">Twelve capabilities →</a>
-        </p>
+      <div class="orbital" data-animate aria-hidden="true">
+        <span class="orbital__ring orbital__ring--3"></span>
+        <span class="orbital__ring orbital__ring--2"></span>
+        <span class="orbital__ring orbital__ring--1"></span>
+        <span class="orbital__core">ReWoo</span>
+        <span class="orbital__node orbital__node--a">Voice Intelligence</span>
+        <span class="orbital__node orbital__node--b">Knowledge Retrieval</span>
+        <span class="orbital__node orbital__node--c">Document Intelligence</span>
+        <span class="orbital__node orbital__node--d">Content Pipelines</span>
+        <span class="orbital__node orbital__node--e">Visual Production</span>
+        <span class="orbital__node orbital__node--f">Assessment Systems</span>
       </div>
     </div>
   </section>
 
   <!-- ============================== FAQ ============================== -->
-  <section class="section section--bg" id="faq" aria-label="Frequently asked questions">
+  <section class="section" id="faq" aria-label="Frequently asked questions">
     <div class="wrap wrap--narrow">
       <div class="sec-head sec-head--center" data-animate>
         <p class="overline overline--accent">Questions</p>
@@ -308,6 +424,7 @@
       </a>
       <p class="footer__tagline">AI systems, scoped and shipped. An independent studio in Dhaka, building for teams anywhere.</p>
       <a href="mailto:hello@rewoo.tech" class="footer__email">hello@rewoo.tech</a>
+      <img src="assets/ui/hero-character.png" alt="" class="footer__mascot" width="236" height="228" loading="lazy" decoding="async">
       <div class="footer__social"><a href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 6a2 2 0 1 0 0-.01z"/></svg></a><a href="https://x.com/ReWootech8" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M4 20L20 4"/></svg></a></div>
     </div>
     <div class="footer__col"><span class="footer__col-label">Systems</span><ul class="footer__links"><li><a href="systems/visual-production.html">Visual Production Systems</a></li><li><a href="systems/voice-intelligence.html">Voice &amp; Communication Intelligence</a></li><li><a href="systems/assessment-systems.html">Assessment &amp; Training Systems</a></li><li><a href="systems/design-visualization.html">Design Visualization</a></li><li><a href="systems/content-pipelines.html">Content Generation Pipelines</a></li><li><a href="systems/document-intelligence.html">Document Intelligence</a></li><li><a href="systems/knowledge-retrieval.html">Knowledge Search &amp; Retrieval</a></li><li><a href="systems.html">All systems</a></li></ul></div>

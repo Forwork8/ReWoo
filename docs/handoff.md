@@ -341,3 +341,104 @@ founder section — the footer and mobile-drawer "The founder" links still resol
 
 The GitHub token used for this work was shared in chat. It is not written into any file in this repository —
 revoke it and issue a fresh one before further work.
+
+## Revision 10 — 2026-11-10 (reference-inspired UI redesign: white canvas, pill nav, character artwork)
+
+Branch: **`ui/reference-inspired-redesign`** (commit on top of `main` @ `c4ec8b8`; not merged, not pushed,
+not deployed). Implements the ReWoo_UI_Redesign_Agent_Prompt brief end to end against the ArticulAI
+reference (new-10.foundingdev.com), inspected live in a browser at desktop and mobile widths.
+
+### Visual system (the reference's language, ReWoo's content)
+
+1. **White canvas, Inter everywhere.** The Fraunces serif display face is retired; display and body are
+   Inter (400–700). Primary text `#242424`, supporting `#666666`, interactive blue `#1F6FD6` (AA on white),
+   bright decoration blue `#4F9BF4`. Light mode is the first-visit default (THEME_INIT + `<html>` attr +
+   legal/solutions inline inits + manifest); a saved `rewoo-theme` is honored, and dark mode is a deliberate
+   charcoal theme (`#191A1D` bg) with the same layout.
+2. **Floating charcoal pill navigation** (~`#484848`, 56px, full pill radius, soft shadow, floating 14px
+   from top, ≤1024px wide): ReWoo logo + wordmark, near-white labels, absolutely-centered links, theme
+   toggle, and the "Plan your project →" blue pill CTA. Mega menus drop **centered below the pill** (list
+   items static, panels anchored to the fixed nav, `min(560px, 100vw−40px)` wide) — no clipping, keyboard
+   and hover opening preserved. Mobile keeps the pill (logo + hamburger) with the existing drawer, focus
+   trap, and Escape behavior.
+3. **Hero**: compact centered sans-serif headline ("Systems do the work. People do **the thinking.**" —
+   blue emphasis on the existing phrase), eyebrow chip, existing copy (trimmed presentation only), side-by-side
+   pill CTAs (blue gradient primary + white outline secondary, both 46px-ish), four small original pastel
+   character mascots inline with the headline (like the reference), and a large original blue fluffy
+   character below the CTAs fading into the canvas via a CSS mask. The photo-collage hero backdrop and the
+   page-wide body texture are removed from the markup/CSS (`assets/background.png` retained on disk).
+4. **Demo panels**: the three proof cards are now square pastel illustration panels (sky / lavender / lime)
+   with hand-drawn SVG artwork — a Bangla/English waveform with live mic, documents with citation markers,
+   and the Hit@1/Hit@3/MRR benchmark bars with an honest "miss" check — real destinations and descriptions
+   preserved; all illustrations are decorative (aria-hidden) with the meaning kept in text.
+5. **Engagement process**: the five existing steps (correct order, full copy) as soft cards arranged
+   2 + preview + 3 around a central sticky "what a build looks like" panel (plan document → YOUR SYSTEM →
+   handover, drawn as HTML/SVG with sequence arrows between steps). Mobile: preview first, then a single
+   ordered column 1→5.
+6. **Engagements**: 3 + 2 centered arrangement on desktop (two columns ≤1130px, one column ≤640px) on both
+   the homepage strip and the packages hub. No prices, no duration badges (Revs 8–9 intact).
+7. **Studio section**: existing text + links on the left; on the right a fine-ring **orbital** with a blue
+   ReWoo core and floating node chips for six system families (ReWoo's own concepts — no vendor logos).
+   On ≤560px the side nodes hide (top/bottom only) to avoid collisions.
+8. **FAQ**: narrow centered column of separate rounded rows (pale fill, hairline border, +/− affordance);
+   native `details`/`summary` preserved. Final CTA band: white, generous space, same two actions. Footer:
+   same catalog/company/legal/contact/social destinations, quiet `#F2F4F7` band, mascot beside the brand
+   block.
+9. **Cards/notes/forms**: pale `#F7F8FA` cards with 20–36px radii, hairline borders and quiet shadows;
+   section bands `#F2F4F7`; note bands became rounded callout cards (start-here variant = pastel sky);
+   buttons, inputs, badges, chips, steps, comparison table, demo consoles, scope generator and benchmark
+   all restyled on the same tokens — no override blocks (the v4.1 nav-CTA override and the 5-in-a-row
+   package override were removed; v4/v4.1/v4.2 rules were folded in or superseded deliberately).
+
+### Assets
+
+- `assets/ui/hero-character.png` (760×735), `sprite-pink/lime/lavender/sky.png` (~300px) — original
+  AI-generated plush mascots (friendly rounded blue character + pastel companions), post-processed with a
+  custom white→alpha matte extractor (border flood-fill + connectivity-based soft-shadow removal +
+  fringe un-blending) so they composite cleanly on white **and** charcoal. Empty `alt` (decorative).
+- All other illustrations (demo panels, process preview, orbital) are inline SVG — no hotlinked or
+  reference-branded assets anywhere.
+
+### Code
+
+- `styles.css`: token system + base + pill nav + hero + buttons + sections + footer rewritten in place
+  (same class names throughout; legacy sections kept for solutions/legal pages).
+- `site.css`: navigation (pill link colors, centered mega panels), page heroes, cards, FAQ rows, notes,
+  and the new v5 homepage components (stat band, demo panels, process grid, 3+2 arrangement, orbital).
+- `scripts/build_site.py`: Inter-only font link, light-default THEME_INIT, `<html data-theme="light">`,
+  footer mascot slot, packages hub on the 3+2 arrangement. All IDs/data-hooks for `site.js`/`demos.js`
+  untouched — no JS changes were needed.
+- `manifest.json`: white background + blue theme color. `privacy/terms/solutions`: inline first-visit
+  default flipped to light (content otherwise untouched).
+
+### Verification (this revision; automated + browser)
+
+| Check | Result |
+|---|---|
+| Build | 53 pages + sitemap + robots, clean; second build byte-identical (reproducible) |
+| Link integrity | 0 broken hrefs/srcs across all 63 served pages (automated crawl; template-relative links resolve after generation) |
+| Placeholders / prices / durations / deploy safety | No TODO/XXX/【/undefined/NaN; only price *language* is the approved "no price list" FAQ answer; 0 duration estimates; 0 raw wa.me/phone/gmail in served HTML |
+| Console & page errors | 0 across 20 visited pages (home, proof, both demos, scope generator, contact, about, systems hub + detail, capabilities hub + detail, packages hub + detail, industries hub + detail, audiences, departments, security, roadmap, resources) |
+| Horizontal overflow | 0px at 360, 390, 768, 1024, 1440 on all sampled pages (home, hubs, detail, contact, demos, generator) |
+| Navigation | Mega open (click + aria-expanded) → Escape closes + focus restore; hover/focus-within opens; panel opaque, centered, unclipped. Mobile drawer opens, Escape closes; skip link appears on focus; focus-visible outlines confirmed |
+| Theme | First visit = light; toggle → dark → persisted (`rewoo-theme`); back → light; both themes screenshotted and reviewed (dark = intentional charcoal, same layout) |
+| Interactions | Capability search ("voice" → 1 result) + group filter (3) + reset (12); brief add → contact list → composed draft; contact validation errors all fire; draft composes files/brief lines + mailto; WhatsApp deep links wired at runtime with prefilled text |
+| Demos | Scope generator produces full DRAFT PLAN; knowledge search returns cited results; benchmark re-runs live: **Hit@1 68.4%, Hit@3 84.2%, MRR 0.76, 3 misses — identical to the published numbers**; voice scripted pipeline completes (5 stages, 3 turns, 5 key-values, action card); microphone not triggered on load |
+| VLM design review | 3+ iterative rounds (hero sprites → inline like the reference; CTA pair side-by-side after fixing a width:100% regression; mascot fade geometry; card/band contrast; note bands → rounded callouts; packages 3+2). Final comparison vs the reference: "strong stylistic match" on pill nav, headline, mascots, buttons, whitespace |
+| Legacy routes | `solutions.html`, `privacy.html`, `terms.html` render coherently on the new tokens, no overflow; `order-desk/` untouched |
+
+### Known limits / owner-input items
+
+- Full-page screenshots flatten fixed-position elements (the pill paints mid-canvas in some captures) —
+  viewport screenshots were used for judgment; not a site bug.
+- The mobile footer remains a long two-column list (disclosure groups were optional per the brief and not
+  required); say the word and it becomes `<details>` groups.
+- The hero mascot is decorative AI-generated artwork; if the owner has brand artwork to substitute, drop
+  replacements into `assets/ui/` with the same filenames.
+- No screen-reader (NVDA/VoiceOver) or Lighthouse run — verified structurally (ARIA, focus, semantics)
+  and visually only, same as previous revisions.
+
+### Git
+
+Single commit on `ui/reference-inspired-redesign` (authored as Forwork8). **Not pushed, not merged, not
+deployed** — review with `git checkout ui/reference-inspired-redesign && python3 -m http.server 3000`.

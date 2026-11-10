@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,10 +24,10 @@
 <link rel="manifest" href="../manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,200..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../site.css">
-<script>(function () { try { var t = localStorage.getItem('rewoo-theme'); if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', t); } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); } })();</script>
+<script>(function () { try { var t = localStorage.getItem('rewoo-theme'); if (!t) t = 'light'; document.documentElement.setAttribute('data-theme', t); } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); } })();</script>
 <noscript><style>[data-animate]{opacity:1 !important;transform:none !important}</style></noscript>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this replace our LMS?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not. It generates and maintains the assessment layer — deployed standalone or connected into your LMS where it supports SCORM or LTI."}}, {"@type": "Question", "name": "How accurate is machine-generated assessment?", "acceptedAnswer": {"@type": "Answer", "text": "The generation is a draft engine. Every question goes through your subject experts before it counts — the workflow is designed around that review."}}, {"@type": "Question", "name": "Can it grade open-ended answers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, against rubrics you approve, with flagged low-confidence answers routed to a human grader."}}]}</script>
 
@@ -120,6 +120,7 @@
       </a>
       <p class="footer__tagline">AI systems, scoped and shipped. An independent studio in Dhaka, building for teams anywhere.</p>
       <a href="mailto:hello@rewoo.tech" class="footer__email">hello@rewoo.tech</a>
+      <img src="../assets/ui/hero-character.png" alt="" class="footer__mascot" width="236" height="228" loading="lazy" decoding="async">
       <div class="footer__social"><a href="https://linkedin.com/company/rewoo" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 6a2 2 0 1 0 0-.01z"/></svg></a><a href="https://x.com/ReWootech8" target="_blank" rel="noopener noreferrer" aria-label="ReWoo on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M4 20L20 4"/></svg></a></div>
     </div>
     <div class="footer__col"><span class="footer__col-label">Systems</span><ul class="footer__links"><li><a href="../systems/visual-production.html">Visual Production Systems</a></li><li><a href="../systems/voice-intelligence.html">Voice &amp; Communication Intelligence</a></li><li><a href="../systems/assessment-systems.html">Assessment &amp; Training Systems</a></li><li><a href="../systems/design-visualization.html">Design Visualization</a></li><li><a href="../systems/content-pipelines.html">Content Generation Pipelines</a></li><li><a href="../systems/document-intelligence.html">Document Intelligence</a></li><li><a href="../systems/knowledge-retrieval.html">Knowledge Search &amp; Retrieval</a></li><li><a href="../systems.html">All systems</a></li></ul></div>
