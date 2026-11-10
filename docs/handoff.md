@@ -344,9 +344,10 @@ revoke it and issue a fresh one before further work.
 
 ## Revision 10 — 2026-11-10 (reference-inspired UI redesign: white canvas, pill nav, character artwork)
 
-Branch: **`ui/reference-inspired-redesign`** (commit on top of `main` @ `c4ec8b8`; not merged, not pushed,
-not deployed). Implements the ReWoo_UI_Redesign_Agent_Prompt brief end to end against the ArticulAI
-reference (new-10.foundingdev.com), inspected live in a browser at desktop and mobile widths.
+Branch: **`ui/reference-inspired-redesign`** (commit on top of `main` @ `c4ec8b8`; pushed to origin as its
+own branch; not merged, not deployed). Implements the ReWoo_UI_Redesign_Agent_Prompt brief end to end
+against the ArticulAI reference (new-10.foundingdev.com), inspected live in a browser at desktop and
+mobile widths.
 
 ### Visual system (the reference's language, ReWoo's content)
 
@@ -440,5 +441,12 @@ reference (new-10.foundingdev.com), inspected live in a browser at desktop and m
 
 ### Git
 
-Single commit on `ui/reference-inspired-redesign` (authored as Forwork8). **Not pushed, not merged, not
-deployed** — review with `git checkout ui/reference-inspired-redesign && python3 -m http.server 3000`.
+Authored as Forwork8 on `ui/reference-inspired-redesign` (design commit `7bfccca`; this status
+correction follows it). **Pushed to `origin/ui/reference-inspired-redesign` (2026-11-10); not merged
+into `main`, not deployed** — review with `git checkout ui/reference-inspired-redesign &&
+python3 -m http.server 3000`.
+
+Re-verified on a fresh clone of the pushed branch (2026-11-10): regeneration byte-identical
+(0 diff after rebuild); homepage, capabilities hub, and a nested system page render with 0 console
+errors, 0 broken images, and 0 horizontal overflow; VLM screenshot review of the homepage confirms
+the white canvas, pill navigation, blue-emphasis headline, and mascot artwork.
